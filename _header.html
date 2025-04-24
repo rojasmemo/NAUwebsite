@@ -1,0 +1,90 @@
+<!-- Cabecera Responsiva -->
+<!-- Ajustamos altura, padding y comportamiento flex para móvil -->
+<header
+  class="bg-custom-light-teal text-custom-darker-teal shadow-md min-h-[80px] md:h-[131px]"
+>
+  <!-- Contenedor principal de la cabecera. Añadido 'relative' para posicionar el menú móvil absoluto si es necesario -->
+  <div
+    class="container mx-auto flex flex-wrap justify-between items-center h-full px-4 md:px-10 py-4 md:py-0 relative"
+  >
+    <!-- Logo con tamaño ajustado opcionalmente en móvil -->
+    <a href="index.html" class="">
+      <img
+        src="images/LOGO-NAU-WEB.webp"
+        alt="Logo de Nau"
+        class="h-12 md:max-h-full w-auto"
+      />
+      <!-- Ajusta h-12 si es necesario -->
+    </a>
+    <!-- Botón Hamburguesa (Visible solo en móvil) -->
+    <button
+      id="hamburger-button"
+      class="md:hidden p-2 rounded-md text-custom-darker-teal hover:bg-custom-dark-teal hover:text-white focus:outline-none focus:ring-2 focus:ring-inset focus:ring-white"
+      aria-label="Abrir menú"
+      aria-expanded="false"
+      aria-controls="mobile-menu"
+    >
+      <!-- Icono Hamburguesa (SVG) -->
+      <svg
+        class="h-6 w-6"
+        fill="none"
+        viewBox="0 0 24 24"
+        stroke="currentColor"
+      >
+        <path
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          stroke-width="2"
+          d="M4 6h16M4 12h16m-7 6h7"
+        />
+      </svg>
+    </button>
+
+    <!-- Navegación: Oculta en móvil por defecto, visible en md+ -->
+    <nav
+      id="mobile-menu"
+      class="hidden md:flex md:items-center w-full md:w-auto mt-4 md:mt-0"
+    >
+      <ul
+        class="flex flex-col md:flex-row md:space-x-5 space-y-2 md:space-y-0 items-center w-full md:w-auto text-center md:text-left"
+      >
+        <li>
+          <a
+            href="index.html"
+            class="font-semibold text-white transition-colors duration-300 hover:text-custom-hover-teal block py-1"
+            >Inicio</a
+          >
+        </li>
+        <li>
+          <a
+            href="sobre-nau.html"
+            class="font-semibold text-white transition-colors duration-300 hover:text-custom-hover-teal block py-1"
+            >Sobre Nau</a
+          >
+        </li>
+        <li>
+          <a
+            href="servicios.html"
+            class="font-semibold text-white transition-colors duration-300 hover:text-custom-hover-teal block py-1"
+            >Servicios</a
+          >
+        </li>
+        <li>
+          <a
+            href="campanas.html"
+            class="font-semibold text-white transition-colors duration-300 hover:text-custom-hover-teal block py-1"
+            >Campañas</a
+          >
+        </li>
+        <li class="mt-2 md:mt-0 w-full md:w-auto">
+          <a
+            href="donar.html"
+            class="bg-custom-dark-teal text-white font-semibold py-2 px-6 rounded-md hover:bg-gray-100 hover:text-custom-dark-teal transition duration-300 inline-block"
+          >
+            Dona ahora
+          </a>
+        </li>
+      </ul>
+    </nav>
+  </div>
+</header>

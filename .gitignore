@@ -1,0 +1,34 @@
+# Dependencias de Node
+node_modules/
+
+# Archivo CSS de entrada (no necesario en producción)
+styles/input.css
+
+# Archivos de entorno (si los usas)
+.env
+*.env.*
+!.env.example
+
+# Logs
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+*.log
+
+# Archivos del sistema operativo
+.DS_Store
+Thumbs.db
+
+# Editor/IDE specific files
+.vscode/
+.idea/
+
+# Temporary files / Backup files
+*.tmp
+*.bak
+*~
+*.swp
+
+# Build output (Descomentar si se usa una carpeta de build separada)
+# dist/
+# build/

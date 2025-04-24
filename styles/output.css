@@ -1354,10 +1354,6 @@ select {
   font-weight: 600;
 }
 
-.leading-tight {
-  line-height: 1.25;
-}
-
 .text-custom-dark-teal {
   --tw-text-opacity: 1;
   color: rgb(30 96 106 / var(--tw-text-opacity, 1));
@@ -1501,10 +1497,6 @@ select {
 
   .md\:mb-4 {
     margin-bottom: 1rem;
-  }
-
-  .md\:mb-6 {
-    margin-bottom: 1.5rem;
   }
 
   .md\:mb-8 {
@@ -1720,15 +1712,6 @@ select {
   .md\:text-4xl {
     font-size: 2.25rem;
     line-height: 2.5rem;
-  }
-
-  .md\:text-\[35px\] {
-    font-size: 35px;
-  }
-
-  .md\:text-xl {
-    font-size: 1.25rem;
-    line-height: 1.75rem;
   }
 }
 

@@ -13,11 +13,11 @@ module.exports = {
         sans: ['Poppins', ...defaultTheme.fontFamily.sans],
       },
       colors: {
-        // Colores personalizados basados en el boceto (aproximados)
+        // Colores personalizados
         'custom-light-teal': '#3dcad8', // Aguamarina
         'custom-medium-teal': '#4F98A2', // Teal medio
         'custom-dark-teal': '#1E606A',  // Teal oscuro
-        'custom-darker-teal': '#143946', // Teal muy oscuro (para texto/imágenes)
+        'custom-darker-teal': '#143946', // Teal muy oscuro
         'custom-specific-blue': '#005366',
         'custom-hover-teal': '#d1e3e5', // Este es el color del hover del menú
         'custom-pale-teal': '#b3dddd',  // El color de fondo correcto para la sección de contenido 2

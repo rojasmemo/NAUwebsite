@@ -12,7 +12,6 @@
   <link rel="preload" href="fonts/poppins-v22-latin-600.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="preload" href="fonts/poppins-v22-latin-700.woff2" as="font" type="font/woff2" crossorigin>
   <!-- FIN PRECARGA DE FUENTES -->
-
   <link href="styles/output.css" rel="stylesheet">
 </head>
 
@@ -22,8 +21,8 @@
   <!-- Contenido principal -->
   <main>
     <!-- Sección Hero 1 -->
-    <!-- Ajustado padding vertical -->
-    <section class="hero-bg bg-custom-medium-teal text-white py-12 md:py-16 lg:py-24 px-4 text-center"
+    <section
+      class="hero-bg bg-custom-medium-teal text-white py-12 md:py-16 lg:py-20 xl:py-24 2xl:py-32 px-4 text-center"
       style="background-image: url('images/1-BANNER-NAU-WEB.webp')">
       <div class="container mx-auto px-4 md:px-8">
         <h2 class="h2-base">
@@ -43,13 +42,9 @@
     </section>
 
     <!-- Sección de contenido 1 -->
-    <!-- Padding ajustado -->
-    <section class="py-12 md:py-16 px-4 md:px-16 bg-white">
-      <!-- Grid ya es responsivo (apila en móvil, 2 cols en md+) -->
-      <div class="container mx-auto grid md:grid-cols-2 gap-8 items-center">
-        <!-- Cambiado items-start a items-center para mejor alineación vertical -->
-        <!-- Padding ajustado para móvil -->
-        <div class="bg-white p-4 md:py-8 md:pr-6 md:pl-20 rounded-lg flex flex-col justify-center order-2 md:order-1">
+    <section class="py-12 md:py-8 px-4 md:px-20 bg-white">
+      <div class="container mx-auto grid md:grid-cols-2 gap-8 items-center px-4 md:px-8 lg:px-16">
+        <div class="bg-white p-4 md:py-8 rounded-lg flex flex-col justify-center order-2 md:order-1">
           <!-- Orden cambiado para imagen arriba en móvil -->
           <h2 class="h2-base text-custom-dark-teal">
             ¿Sientes que algo te frena?
@@ -65,7 +60,7 @@
           </h3>
         </div>
         <!-- Orden cambiado para imagen arriba en móvil -->
-        <div class="rounded-lg overflow-hidden flex justify-center items-center order-1 md:order-2 px-6 md:px-12">
+        <div class="rounded-lg overflow-hidden flex justify-center items-center order-1 md:order-2">
           <!-- images/2-BANNER-NAU-WEB-896w.webp 896w,
           images/2-BANNER-NAU-WEB-1024w.webp 1024w, 
           images/2-BANNER-NAU-WEB-1140w.webp 1140w,
@@ -76,17 +71,16 @@
           images/2-BANNER-NAU-WEB-2048w.webp 2048w" -->
 
           <img src="images/2-BANNER-NAU-WEB-521w.webp"
-            srcset="images/2-BANNER-NAU-WEB-400w.webp 400w, images/2-BANNER-NAU-WEB-521w.webp 521w, images/2-BANNER-NAU-WEB.webp 781w"
-            sizes="(min-width: 2040px) 656px, (min-width: 1580px) calc(9.55vw + 463px), (min-width: 1520px) calc(190vw - 2360px), (min-width: 1280px) calc(29.09vw + 92px), (min-width: 1240px) 400px, (min-width: 1040px) calc(31.11vw + 20px), (min-width: 940px) 272px, (min-width: 780px) calc(41.43vw - 109px), (min-width: 560px) 448px, calc(95vw - 65px)"
+            srcset="images/2-BANNER-NAU-WEB-300w.webp 300w, images/2-BANNER-NAU-WEB-400w.webp 400w, images/2-BANNER-NAU-WEB-521w.webp 521w, images/2-BANNER-NAU-WEB.webp 781w"
+            sizes="(min-width: 960px) 320px, (min-width: 780px) calc(36.88vw - 27px), (min-width: 420px) 320px, calc(84vw - 16px)"
             alt="Persona meditando al aire libre conectando con su esencia"
-            class="w-full max-w-md md:max-w-none h-auto object-contain rounded-lg" loading="lazy" width="521"
+            class="w-full max-w-xs md:max-w-xs h-auto object-contain rounded-lg" loading="lazy" width="521"
             height="435">
         </div>
       </div>
     </section>
 
     <!-- Sección Hero 2 -->
-    <!-- Padding ajustado -->
     <section class="hero-bg bg-custom-dark-teal text-white py-12 md:py-16 lg:py-24 px-4 text-center"
       style="background-image: url('images/3-BANNER-NAU-WEB.webp')">
       <div class="container mx-auto px-4 md:px-8">
@@ -110,23 +104,18 @@
     </section>
 
     <!-- Sección de contenido 2 -->
-    <!-- Padding ajustado -->
     <section class="py-12 md:py-16 px-4 md:px-16 bg-custom-pale-teal">
       <div class="container mx-auto text-center">
         <h2 class="h2-base text-custom-darker-teal mb-12 md:mb-16">
           Hemos diseñado experiencias y herramientas transformadoras:
         </h2>
-        <!--  Grid ya responsivo. Padding ajustado. Gap ajustado. -->
         <div class="grid md:grid-cols-2 gap-12 md:gap-8 mb-8 px-4 md:px-8 lg:px-24">
-          <!-- Añadido padding superior para icono en móvil -->
           <div class="relative bg-white p-6 md:p-8 pt-8 md:pt-8 rounded-lg shadow-md text-custom-darker-teal">
-            <!-- Tamaño icono ajustado para móvil -->
             <img src="images/4-BANNER-NAU-WEB.webp" alt="Icono representativo de Encuentros NAU"
               class="absolute top-0 left-1/2 -translate-x-1/2 -translate-y-1/2 w-auto h-12 md:h-16" loading="lazy">
             <h3 class="text-2xl font-semibold mt-4 md:mt-8 mb-3 text-custom-darker-teal">
               ENCUENTROS
             </h3>
-            <!-- Padding lista ajustado -->
             <ul class="list-disc list-outside space-y-1 text-custom-darker-teal text-left pl-4 md:pl-12">
               <li>Trabajar por ti y para ti</li>
               <li>Retorno a lo femenino y masculino</li>
@@ -134,15 +123,12 @@
               <li>Relaciones de pareja</li>
             </ul>
           </div>
-          <!-- Añadido padding superior para icono en móvil -->
           <div class="relative bg-white p-6 md:p-8 pt-8 md:pt-8 rounded-lg shadow-md text-custom-darker-teal">
-            <!-- Tamaño icono ajustado para móvil -->
             <img src="images/4-BANNER-NAU-WEB.webp" alt="Icono representativo de Simbolismo Numérico NAU"
               class="absolute top-0 left-1/2 -translate-x-1/2 -translate-y-1/2 w-auto h-12 md:h-16" loading="lazy">
             <h3 class="text-2xl font-semibold mt-4 md:mt-8 mb-3 text-custom-darker-teal">
               SIMBOLISMO NUMÉRICO
             </h3>
-            <!-- Padding lista ajustado -->
             <ul class="list-disc list-outside space-y-1 text-custom-darker-teal text-left pl-4 md:pl-12">
               <li>Lección de vida</li>
               <li>Número del alma</li>
@@ -164,32 +150,28 @@
     </section>
 
     <!-- Sección de contenido 3 -->
-    <!-- Padding ajustado -->
-    <section class="py-12 md:py-16 px-4 md:px-16 bg-white">
+    <section class="py-12 md:py-14 px-4 md:px-16 bg-white">
       <!-- Padding título ajustado -->
-      <div class="container mx-auto text-center text-custom-darker-teal mb-8 md:mb-12">
+      <div class="container mx-auto text-center text-custom-darker-teal mb-8 md:mb-10">
         <!-- Color cambiado a darker-teal para contraste en fondo blanco -->
         <h2 class="h2-base text-custom-dark-teal">
           ¿Qué pasa si sigues esperando el momento perfecto?
         </h2>
       </div>
-      <!-- Grid ya responsivo. Padding ajustado. Gap ajustado. -->
       <div class="container mx-auto grid md:grid-cols-2 gap-8 items-center px-4 md:px-8 lg:px-16">
-        <!-- Quitado height fijo. Ajustado flex y padding. -->
-        <div class="bg-white rounded-lg flex justify-center md:justify-end items-center order-1 md:order-1">
+        <div class="bg-white rounded-lg flex justify-center items-center order-1 md:order-1">
           <!-- images/5-BANNER-NAU-WEB-1152w.webp 1152w,
           images/5-BANNER-NAU-WEB-1374w.webp 1374w,
           images/5-BANNER-NAU-WEB-1740w.webp 1740w,
           images/5-BANNER-NAU-WEB-2048w.webp 2048w  -->
           <img src="images/5-BANNER-NAU-WEB-687w.webp" srcset="images/5-BANNER-NAU-WEB-687w.webp 687w,
           images/5-BANNER-NAU-WEB.webp 902w"
-            sizes="(min-width: 2140px) 688px, (min-width: 1580px) calc(7.78vw + 523px), (min-width: 1520px) calc(190vw - 2328px), (min-width: 1280px) calc(29.09vw + 124px), (min-width: 1240px) 432px, (min-width: 1040px) calc(31.11vw + 52px), (min-width: 960px) 336px, (min-width: 780px) 36.25vw, (min-width: 480px) 384px, calc(92.5vw - 42px)"
+            sizes="(min-width: 1040px) 372px, (min-width: 960px) 336px, (min-width: 780px) 36.25vw, (min-width: 480px) 384px, calc(92.5vw - 42px)"
             alt="Persona mirando reflexivamente hacia el futuro" loading="lazy"
-            class="w-full max-w-sm md:max-w-full h-auto object-contain" width="687" height="413">
+            class="w-full max-w-sm md:max-w-sm h-auto object-contain" width="687" height="413">
         </div>
         <div
           class="bg-white text-custom-darker-teal p-4 md:p-8 rounded-lg text-center md:text-left flex flex-col justify-center items-center md:items-start order-2 md:order-2">
-          <!-- Tamaño fuente ajustado -->
           <p class="p-base text-left">
             El tiempo sigue pasando. Las mismas dudas, los mismos miedos. La
             transformación no llega sola, requiere un acto de valentía.
@@ -198,7 +180,6 @@
             Hoy puedes elegir soltar lo que te limita y abrirte a una vida más
             auténtica.
           </p>
-          <!-- Tamaño fuente ajustado -->
           <h3 class="h3-base text-custom-dark-teal text-center md:text-left mb-2 md:mb-4">
             Atrévete al cambio,
           </h3>
@@ -210,7 +191,6 @@
     </section>
 
     <!-- Sección Hero 3 -->
-    <!-- Padding ajustado -->
     <section class="hero-bg bg-custom-medium-teal text-white py-12 md:py-16 lg:py-24 px-4 text-center"
       style="background-image: url('images/6-BANNER-NAU-WEB.webp')">
       <div class="container mx-auto px-4 md:px-8">

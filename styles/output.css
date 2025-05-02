@@ -1072,10 +1072,6 @@ select {
   max-width: 48rem;
 }
 
-.max-w-md {
-  max-width: 28rem;
-}
-
 .max-w-sm {
   max-width: 24rem;
 }
@@ -1382,6 +1378,16 @@ select {
   color: rgb(255 255 255 / var(--tw-text-opacity, 1));
 }
 
+.text-custom-hover-teal {
+  --tw-text-opacity: 1;
+  color: rgb(209 227 229 / var(--tw-text-opacity, 1));
+}
+
+.text-green-50 {
+  --tw-text-opacity: 1;
+  color: rgb(240 253 244 / var(--tw-text-opacity, 1));
+}
+
 .underline {
   text-decoration-line: underline;
 }
@@ -1415,7 +1421,7 @@ select {
 .hero-bg {
   background-size: cover;
   /* Cubre el área, mantiene proporción, puede recortar */
-  background-position: top center;
+  background-position: center;
   /* Centra la imagen */
   background-repeat: no-repeat;
   /* No repetir la imagen */
@@ -1551,10 +1557,6 @@ select {
     width: auto;
   }
 
-  .md\:max-w-full {
-    max-width: 100%;
-  }
-
   .md\:max-w-sm {
     max-width: 24rem;
   }
@@ -1621,11 +1623,6 @@ select {
     padding-right: 2.5rem;
   }
 
-  .md\:px-12 {
-    padding-left: 3rem;
-    padding-right: 3rem;
-  }
-
   .md\:px-16 {
     padding-left: 4rem;
     padding-right: 4rem;
@@ -1689,14 +1686,6 @@ select {
     padding-left: 3rem;
   }
 
-  .md\:pl-20 {
-    padding-left: 5rem;
-  }
-
-  .md\:pr-2 {
-    padding-right: 0.5rem;
-  }
-
   .md\:pt-16 {
     padding-top: 4rem;
   }
@@ -1744,6 +1733,11 @@ select {
     padding-right: 6rem;
   }
 
+  .lg\:py-20 {
+    padding-top: 5rem;
+    padding-bottom: 5rem;
+  }
+
   .lg\:py-24 {
     padding-top: 6rem;
     padding-bottom: 6rem;
@@ -1752,11 +1746,6 @@ select {
   .lg\:py-28 {
     padding-top: 7rem;
     padding-bottom: 7rem;
-  }
-
-  .lg\:py-20 {
-    padding-top: 5rem;
-    padding-bottom: 5rem;
   }
 
   .lg\:pb-52 {
@@ -1769,11 +1758,6 @@ select {
 }
 
 @media (min-width: 1280px) {
-  .xl\:py-28 {
-    padding-top: 7rem;
-    padding-bottom: 7rem;
-  }
-
   .xl\:py-24 {
     padding-top: 6rem;
     padding-bottom: 6rem;
@@ -1784,10 +1768,5 @@ select {
   .\32xl\:py-32 {
     padding-top: 8rem;
     padding-bottom: 8rem;
-  }
-
-  .\32xl\:py-28 {
-    padding-top: 7rem;
-    padding-bottom: 7rem;
   }
 }

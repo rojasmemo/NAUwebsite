@@ -44,8 +44,8 @@ function setActiveMenuItem() {
         const isDonateButton = link.getAttribute('href') === 'donar.html';
 
         // Quitar clases de estado activo/inactivo y aria-current (solo las que gestionamos aquí)
-        link.classList.remove('text-custom-darker-teal', 'text-white', 'hover:text-custom-hover-teal');
-        link.removeAttribute('aria-current');
+        // Asegúrate de quitar todas las clases de color y hover que podríamos añadir
+        link.classList.remove('text-custom-darker-teal', 'text-white', 'text-custom-hover-teal', 'hover:text-custom-hover-teal', 'hover:text-white', 'text-custom-dark-teal');
 
         if (isDonateButton) {
             // --- Caso Especial: Botón "Dona ahora" ---
@@ -67,11 +67,12 @@ function setActiveMenuItem() {
 
             if (isMatchingPage) {
                 // Es la página activa
-                link.classList.add('text-custom-darker-teal'); // Clase activa
+                link.classList.add('text-white'); // Clase activa (seleccionado)
                 link.setAttribute('aria-current', 'page');
             } else {
                 // Es una página inactiva
-                link.classList.add('text-white', 'hover:text-custom-hover-teal'); // Clases inactivas
+                link.classList.add('text-custom-dark-teal', 'hover:text-custom-hover-teal'); // Clases inactivas (no seleccionado)
+                link.removeAttribute('aria-current'); // Asegurarse de quitar aria-current si no es la página activa
             }
         }
     });

@@ -1452,6 +1452,27 @@ select {
 
 /* <link rel="preload" href="images/1-BANNER-NAU-WEB-1024w.webp" as="image" type="image/webp" fetchpriority="high"> */
 
+.hero-background-sn-1 {
+  /* Imagen por defecto para pantallas pequeñas (ej: 1024px de ancho) */
+  background-image: url('../images/1-SOBRE-NAU-WEB-1024w.webp');
+  /* <- Tu imagen pequeña/mediana */
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+/* Pantallas medianas/grandes (ej: a partir de 768px o 1024px) */
+
+@media (min-width: 1024px) {
+  /* Ajusta este breakpoint si es necesario */
+
+  .hero-background-sn-1 {
+    /* Imagen para escritorios estándar (ej: 1920px de ancho) */
+    background-image: url('../images/1-SOBRE-NAU-WEB-1920w.webp');
+    /* <- Tu imagen mediana/grande */
+  }
+}
+
 .hover\:bg-custom-dark-teal:hover {
   --tw-bg-opacity: 1;
   background-color: rgb(30 96 106 / var(--tw-bg-opacity, 1));
@@ -1795,4 +1816,3 @@ select {
     padding-bottom: 8rem;
   }
 }
-

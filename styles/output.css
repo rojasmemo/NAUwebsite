@@ -1378,16 +1378,6 @@ select {
   color: rgb(255 255 255 / var(--tw-text-opacity, 1));
 }
 
-.text-custom-hover-teal {
-  --tw-text-opacity: 1;
-  color: rgb(209 227 229 / var(--tw-text-opacity, 1));
-}
-
-.text-green-50 {
-  --tw-text-opacity: 1;
-  color: rgb(240 253 244 / var(--tw-text-opacity, 1));
-}
-
 .underline {
   text-decoration-line: underline;
 }
@@ -1426,6 +1416,41 @@ select {
   background-repeat: no-repeat;
   /* No repetir la imagen */
 }
+
+.hero-background-1 {
+  /* Imagen por defecto para pantallas pequeñas (ej: 1024px de ancho) */
+  background-image: url('../images/1-BANNER-NAU-WEB-1024w.webp');
+  /* <- Tu imagen pequeña/mediana */
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+/* Pantallas medianas/grandes (ej: a partir de 768px o 1024px) */
+
+@media (min-width: 1024px) {
+  /* Ajusta este breakpoint si es necesario */
+
+  .hero-background-1 {
+    /* Imagen para escritorios estándar (ej: 1920px de ancho) */
+    background-image: url('../images/1-BANNER-NAU-WEB-1920w.webp');
+    /* <- Tu imagen mediana/grande */
+  }
+}
+
+/* Pantallas extra grandes (ej: a partir de 1280px o 1536px)
+@media (min-width: 1280px) { /* Ajusta este breakpoint si es necesario
+  .hero-background-1 {
+    /* Imagen para pantallas grandes/alta resolución (ej: 2560px de ancho) 
+    background-image: url('../images/1-BANNER-NAU-WEB-2560w.webp'); /* <- Tu imagen más grande 
+  }
+}
+
+/* --- Opcional: Precarga la imagen más común o la más pequeña --- */
+
+/* Si decides precargar, ajusta la línea en tu index.html así: */
+
+/* <link rel="preload" href="images/1-BANNER-NAU-WEB-1024w.webp" as="image" type="image/webp" fetchpriority="high"> */
 
 .hover\:bg-custom-dark-teal:hover {
   --tw-bg-opacity: 1;
@@ -1770,3 +1795,4 @@ select {
     padding-bottom: 8rem;
   }
 }
+

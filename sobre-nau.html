@@ -1,28 +1,36 @@
 <!DOCTYPE html>
 <html lang="es">
 
+<!-- Página "Sobre NAU": Explica la misión, visión y propósito de NAU -->
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="description"
     content="Descubre NAU: te ayudamos a conectar con tu esencia, romper bloqueos y transformar tu vida a través de encuentros y simbolismo numérico.">
   <title>Sobre NAU</title>
-  <!-- PRECARGA DE FUENTES -->
+
+  <!-- PRECARGA DE FUENTES: Mejora el rendimiento al indicar al navegador que cargue estas fuentes prioritariamente -->
   <link rel="preload" href="fonts/poppins-v22-latin-regular.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="preload" href="fonts/poppins-v22-latin-600.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="preload" href="fonts/poppins-v22-latin-700.woff2" as="font" type="font/woff2" crossorigin>
 
+  <!-- PRECARGA IMAGEN HERO: Carga la imagen principal de la sección hero con alta prioridad para mejorar el LCP (Largest Contentful Paint) -->
   <link rel="preload" href="images/1-SOBRE-NAU-WEB-1024w.webp" as="image" type="image/webp" fetchpriority="high">
 
+  <!-- Enlace a la hoja de estilos principal (generada por Tailwind CSS) -->
   <link href="styles/output.css" rel="stylesheet">
 </head>
 
 <body class="font-sans">
+  <!-- Placeholder para el encabezado: El contenido del header se carga aquí dinámicamente mediante JavaScript -->
   <div id="header-placeholder" class="min-h-[80px]"></div>
 
-  <!-- Contenido principal -->
+  <!-- ============================================= -->
+  <!--            CONTENIDO PRINCIPAL DE LA PÁGINA   -->
+  <!-- ============================================= -->
   <main>
-    <!-- Sección Hero 1 -->
+    <!-- Sección Hero 1: "Bienvenid@ a NAU." -->
     <section
       class="relative hero-background-sn-1 bg-custom-medium-teal text-white pt-16 pb-24 md:pt-16 md:pb-48 lg:pt-24 lg:pb-52 px-4 text-center mb-4 md:mb-16 lg:mb-22">
       <div class="container mx-auto px-4 md:px-8">
@@ -32,13 +40,13 @@
         </p>
       </div>
 
-      <!-- Imagen posicionada -->
+      <!-- Imagen decorativa posicionada en la parte inferior de la sección hero -->
       <img src="images/2-SOBRE-NAU-WEB.webp" alt="Imagen decorativa Sobre NAU"
         class="absolute bottom-0 left-1/2 transform -translate-x-1/2 translate-y-1/2 w-16 md:w-28 lg:w-40 h-auto"
         loading="lazy">
-    </section>
+    </section> <!-- Fin Sección Hero 1 -->
 
-    <!-- Sección de Contenido 1 -->
+    <!-- Sección de Contenido 1: "¿Por qué existimos?" -->
     <section class="py-10 md:py-16 bg-white px-8 md:px-36">
       <div class="container mx-auto text-center">
         <h2 class="h2-base text-custom-specific-blue">
@@ -58,10 +66,10 @@
           diseñamos espacios para que cada persona pueda reconectar consigo
           misma y encontrar su propio camino
         </p>
-      </div>
-    </section>
+      </div> <!-- Fin container -->
+    </section> <!-- Fin Sección de Contenido 1 -->
 
-    <!-- Sección de contenido 2 -->
+    <!-- Sección de Contenido 2: "¿Qué hacemos y cómo?" -->
     <section class="py-10 md:py-16 px-4 md:px-36 bg-custom-pale-teal">
       <div class="container mx-auto grid md:grid-cols-5 gap-8 items-center">
         <!-- Columna de Texto: Ocupa 3 de 5 columnas en md+ (60%) -->
@@ -97,14 +105,14 @@
             alt="Persona meditando al aire libre conectando con su esencia"
             class="w-full max-w-xs md:max-w-xs h-auto object-contain rounded-lg" loading="lazy" width="841"
             height="1023">
-        </div>
-      </div>
-    </section>
+        </div> <!-- Fin Columna de Imagen -->
+      </div> <!-- Fin container grid -->
+    </section> <!-- Fin Sección de Contenido 2 -->
 
-    <!-- Sección de Contenido 3 -->
+    <!-- Sección de Contenido 3: "Nuestro Propósito" -->
     <section class="py-10 md:py-16 bg-white px-8 md:px-36">
       <div class="container mx-auto text-center">
-        <img src="images/4-SOBRE-NAU-WEB.webp" alt="Ilustración decorativa del propósito de NAU"
+        <img src="images/4-SOBRE-NAU-WEB.webp" alt="Icono representativo de NAU"
           class="block mx-auto w-24 md:w-36 h-auto mb-8" loading="lazy">
         <h2 class="h2-base text-custom-specific-blue">
           Nuestro Propósito:
@@ -122,9 +130,10 @@
           Queremos contribuir a una sociedad más consciente, donde las
           personas vivan con más calma, autenticidad y conexión.
         </p>
-      </div>
-    </section>
-    <!-- Sección Hero 2 -->
+      </div> <!-- Fin container -->
+    </section> <!-- Fin Sección de Contenido 3 -->
+
+    <!-- Sección Hero 2: "Empecemos el camino, a tu manera." -->
     <section class="hero-bg bg-custom-medium-teal text-white py-12 md:py-20 lg:py-28 px-4 text-center"
       style="background-image: url('images/6-SOBRE-NAU-WEB.webp')">
       <div class="container mx-auto px-4 md:px-8">
@@ -135,13 +144,18 @@
           class="inline-block bg-custom-light-teal text-custom-darker-teal font-semibold py-2 px-6 rounded-md hover:bg-opacity-80 hover:text-custom-dark-teal transition duration-300">
           Contáctanos
         </a>
-      </div>
-    </section>
+      </div> <!-- Fin container -->
+    </section> <!-- Fin Sección Hero 2 -->
   </main>
+  <!-- Fin del contenido principal -->
 
+  <!-- Placeholder para el pie de página: El contenido del footer se carga aquí dinámicamente mediante JavaScript -->
   <div id="footer-placeholder"></div>
 
-  <!-- Script para cargar parciales header y footer y manejar menú/hamburguesa -->
+  <!-- ============================================= -->
+  <!--                 SCRIPTS GLOBALES              -->
+  <!-- ============================================= -->
+  <!-- Script para cargar parciales (header y footer) y manejar la funcionalidad del menú hamburguesa en móviles -->
   <script src="js/loadPartials.js"></script>
 </body>
 

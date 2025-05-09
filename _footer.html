@@ -1,56 +1,62 @@
-<!-- Pie de página Responsivo -->
+<!-- Parcial del Pie de Página Responsivo del sitio NAU -->
+<!-- Contiene el logo, información de contacto, redes sociales, enlace a donaciones y aviso de copyright. -->
+<!-- Se carga dinámicamente en las páginas principales mediante JavaScript (loadPartials.js). -->
+
 <footer class=" bg-custom-darker-teal text-white">
-  <!-- Grid ya responsivo. Quitado height fijo. Padding ajustado. Gap ajustado. -->
+  <!-- Contenedor principal del pie de página con grid responsivo -->
   <div
     class=" container mx-auto grid grid-cols-1 md:grid-cols-4 gap-8 items-start px-4 md:px-10 py-12 md:py-10">
-  <!-- items-start para alinear arriba en móvil -->
-  <!-- Logo centrado en móvil -->
-  <div class="flex justify-center md:justify-start md:col-span-1">
-    <img src="images/LOGO-FOOTER-NAU-WEB.webp" alt="Logo de Nau" class="h-16 md:max-h-full w-auto" loading="lazy">
-    <!-- Altura ajustada -->
-  </div>
-  <!-- Columnas con texto centrado/izquierda en móvil -->
-  <div class="md:col-span-1 text-sm text-center md:text-left">
-    <h2 class="font-semibold mb-2 text-lg underline">Contáctanos</h2>
-    <ul>
-      <li>
-        Móvil:
-        <a href="tel:+573005429620" class="hover:underline transition-colors duration-300">+57 300 542 9620</a>
-      </li>
-      <li>
-        Email:
-        <a href="mailto:naufundacion@gmail.com"
-          class="hover:underline transition-colors duration-300">naufundacion@gmail.com</a>
-      </li>
-    </ul>
-  </div>
-  <div class="md:col-span-1 text-sm text-center md:text-left">
-    <h2 class="font-semibold mb-2 text-lg underline">Síguenos</h2>
-    <ul>
-      <li>
-        <a href="https://www.instagram.com/tu_usuario_instagram/" target="_blank" rel="noopener noreferrer"
-          class="hover:underline">Instagram</a>
-      </li>
-      <!-- Reemplaza tu_usuario_instagram -->
-    </ul>
-  </div>
-  <!-- Columna con texto y botón centrados/izquierda en móvil -->
-  <div class="md:col-span-1 text-sm text-center md:text-left flex flex-col items-center md:items-start">
-    <!-- flex-col para apilar en móvil -->
-    <ul>
-      <li>Si conectas con nuestro propósito,</li>
-      <li>te invitamos a donar</li>
-      <li>
-        <a href="donar.html"
-          class="inline-block bg-custom-light-teal text-custom-darker-teal font-semibold py-2 px-6 rounded-md hover:bg-opacity-80 hover:text-custom-dark-teal transition duration-300 mt-1">
-          Dona ahora</a>
-      </li>
-    </ul>
-  </div>
-  </div>
-  <!-- Copyright con padding ajustado -->
+    <!-- Columna 1: Logo -->
+    <div class="flex justify-center md:justify-start md:col-span-1">
+      <img src="images/LOGO-FOOTER-NAU-WEB.webp" alt="Logo de Nau en el pie de página"
+        class="h-16 md:max-h-full w-auto" loading="lazy">
+    </div> <!-- Fin Columna Logo -->
+
+    <!-- Columna 2: Contáctanos -->
+    <div class="md:col-span-1 text-sm text-center md:text-left">
+      <h2 class="font-semibold mb-2 text-lg underline">Contáctanos</h2>
+      <ul>
+        <li>
+          Móvil:
+          <a href="tel:+573005429620" class="hover:underline transition-colors duration-300">+57 300 542 9620</a>
+        </li>
+        <li>
+          Email:
+          <a href="mailto:naufundacion@gmail.com"
+            class="hover:underline transition-colors duration-300">naufundacion@gmail.com</a>
+        </li>
+      </ul>
+    </div> <!-- Fin Columna Contáctanos -->
+
+    <!-- Columna 3: Síguenos -->
+    <div class="md:col-span-1 text-sm text-center md:text-left">
+      <h2 class="font-semibold mb-2 text-lg underline">Síguenos</h2>
+      <ul>
+        <li>
+          <a href="https://www.instagram.com/tu_usuario_instagram/" target="_blank" rel="noopener noreferrer"
+            class="hover:underline">Instagram</a>
+          <!-- TODO: Reemplazar 'tu_usuario_instagram' con el usuario real -->
+        </li>
+      </ul>
+    </div> <!-- Fin Columna Síguenos -->
+
+    <!-- Columna 4: Invitación a Donar -->
+    <div class="md:col-span-1 text-sm text-center md:text-left flex flex-col items-center md:items-start">
+      <ul>
+        <li>Si conectas con nuestro propósito,</li>
+        <li>te invitamos a donar</li>
+        <li>
+          <a href="donar.html"
+            class="inline-block bg-custom-light-teal text-custom-darker-teal font-semibold py-2 px-6 rounded-md hover:bg-opacity-80 hover:text-custom-dark-teal transition duration-300 mt-1">
+            Dona ahora</a>
+        </li>
+      </ul>
+    </div> <!-- Fin Columna Donar -->
+  </div> <!-- Fin container grid principal -->
+
+  <!-- Sección de Copyright -->
   <div
     class="text-center text-sm copyright-notice bg-custom-light-teal text-custom-darker-teal font-normal py-3 md:py-4">
     © 2025 Fundación Nau. Todos los derechos reservados.
-  </div>
-</footer>
+  </div> <!-- Fin Sección Copyright -->
+</footer> <!-- Fin pie de página -->

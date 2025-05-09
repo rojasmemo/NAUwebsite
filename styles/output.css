@@ -1,6 +1,18 @@
-/* styles/input.css (o tu archivo CSS personalizado) */
+/* /home/guillermo/NuevoWSNau/styles/input.css */
 
-/* poppins-regular - latin */
+/* Archivo CSS de entrada principal para el proyecto NAU. */
+
+/* Este archivo es procesado por Tailwind CSS para generar output.css. */
+
+/* Contiene la importación de fuentes, directivas de Tailwind y estilos personalizados. */
+
+/* ============================================= */
+
+/*            DEFINICIÓN DE FUENTES              */
+
+/* ============================================= */
+
+/* Fuente Poppins - Regular (400) - Latin */
 
 @font-face {
   font-display: swap;
@@ -19,7 +31,7 @@
   /* Chrome 4+, Firefox 3.5+, IE 9+, Safari 3.1+, iOS 4.2+, Android Browser 2.2+ */
 }
 
-/* poppins-600 - latin */
+/* Fuente Poppins - Semibold (600) - Latin */
 
 @font-face {
   font-display: swap;
@@ -38,7 +50,7 @@
   /* Chrome 4+, Firefox 3.5+, IE 9+, Safari 3.1+, iOS 4.2+, Android Browser 2.2+ */
 }
 
-/* poppins-700 - latin */
+/* Fuente Poppins - Bold (700) - Latin */
 
 @font-face {
   font-display: swap;
@@ -57,7 +69,13 @@
   /* Chrome 4+, Firefox 3.5+, IE 9+, Safari 3.1+, iOS 4.2+, Android Browser 2.2+ */
 }
 
-/* Tailwind's base, components, and utilities layers */
+/* ============================================= */
+
+/*            DIRECTIVAS DE TAILWIND CSS         */
+
+/* ============================================= */
+
+/* Estas directivas inyectan los estilos base, componentes y utilidades de Tailwind CSS. */
 
 *, ::before, ::after {
   --tw-border-spacing-x: 0;
@@ -808,7 +826,7 @@ select {
   outline: 1px auto -webkit-focus-ring-color;
 }
 
-/* Estilos base y reset de Tailwind */
+/* Inyecta los estilos base de Tailwind (reset, preflight). */
 
 .container {
   width: 100%;
@@ -844,6 +862,8 @@ select {
   }
 }
 
+/* Clase base para encabezados H2 */
+
 .h2-base {
   margin-bottom: 1rem;
   font-size: 1.5rem;
@@ -859,6 +879,8 @@ select {
   }
 }
 
+/* Clase base para encabezados H3 */
+
 .h3-base {
   margin-bottom: 1rem;
   font-size: 1.25rem;
@@ -872,6 +894,8 @@ select {
     line-height: 2rem;
   }
 }
+
+/* Clase base para párrafos de contenido general */
 
 .p-base {
   margin-bottom: 1rem;
@@ -889,6 +913,8 @@ select {
   }
 }
 
+/* Clase base para párrafos en secciones Hero (generalmente sobre fondos oscuros) */
+
 .p-base-hero {
   margin-bottom: 0.5rem;
   font-size: 1rem;
@@ -905,11 +931,7 @@ select {
   }
 }
 
-/* Clases de componentes de Tailwind */
-
-.visible {
-  visibility: visible;
-}
+/* Inyecta las clases de componentes de Tailwind. */
 
 .absolute {
   position: absolute;
@@ -1406,9 +1428,18 @@ select {
   transition-duration: 300ms;
 }
 
-/* Utilidades de Tailwind */
+/* Inyecta las clases de utilidad de Tailwind. */
+
+/* ============================================= */
+
+/*            COMPONENTES PERSONALIZADOS         */
+
+/* ============================================= */
+
+/* Definición de clases de componentes reutilizables usando la directiva @layer y @apply. */
 
 .hero-bg {
+  /* Estilos base para fondos de secciones Hero */
   background-size: cover;
   /* Cubre el área, mantiene proporción, puede recortar */
   background-position: center;
@@ -1416,6 +1447,14 @@ select {
   background-repeat: no-repeat;
   /* No repetir la imagen */
 }
+
+/* ============================================= */
+
+/*     ESTILOS PARA FONDOS DE SECCIÓN HERO       */
+
+/* ============================================= */
+
+/* Estilos para el fondo de la sección Hero en la página "Index" (index.html) */
 
 .hero-background-1 {
   /* Imagen por defecto para pantallas pequeñas (ej: 1024px de ancho) */
@@ -1426,7 +1465,7 @@ select {
   background-repeat: no-repeat;
 }
 
-/* Pantallas medianas/grandes (ej: a partir de 768px o 1024px) */
+/* Media query para pantallas medianas/grandes (a partir de 1024px) para .hero-background-1 */
 
 @media (min-width: 1024px) {
   /* Ajusta este breakpoint si es necesario */
@@ -1438,19 +1477,17 @@ select {
   }
 }
 
-/* Pantallas extra grandes (ej: a partir de 1280px o 1536px)
-@media (min-width: 1280px) { /* Ajusta este breakpoint si es necesario
+/* Media query opcional para pantallas extra grandes (ej: a partir de 1280px) para .hero-background-1
+@media (min-width: 1980px) { /* Ajusta este breakpoint si es necesario
   .hero-background-1 {
     /* Imagen para pantallas grandes/alta resolución (ej: 2560px de ancho) 
     background-image: url('../images/1-BANNER-NAU-WEB-2560w.webp'); /* <- Tu imagen más grande 
   }
 }
 
-/* --- Opcional: Precarga la imagen más común o la más pequeña --- */
+/* NOTA: La precarga de imágenes se gestiona en el HTML (<link rel="preload">) para optimizar el LCP. */
 
-/* Si decides precargar, ajusta la línea en tu index.html así: */
-
-/* <link rel="preload" href="images/1-BANNER-NAU-WEB-1024w.webp" as="image" type="image/webp" fetchpriority="high"> */
+/* Estilos para el fondo de la sección Hero en la página "Sobre NAU" (sobre-nau.html) */
 
 .hero-background-sn-1 {
   /* Imagen por defecto para pantallas pequeñas (ej: 1024px de ancho) */
@@ -1461,7 +1498,7 @@ select {
   background-repeat: no-repeat;
 }
 
-/* Pantallas medianas/grandes (ej: a partir de 768px o 1024px) */
+/* Media query para pantallas medianas/grandes (a partir de 1024px) para .hero-background-sn-1 */
 
 @media (min-width: 1024px) {
   /* Ajusta este breakpoint si es necesario */

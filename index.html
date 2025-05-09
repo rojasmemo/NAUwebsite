@@ -1,27 +1,36 @@
 <!DOCTYPE html>
 <html lang="es">
 
+<!-- Archivo principal de la página de inicio de NAU -->
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="description"
     content="Descubre NAU: te ayudamos a conectar con tu esencia, romper bloqueos y transformar tu vida a través de encuentros y simbolismo numérico.">
   <title>Inicio NAU</title>
-  <!-- PRECARGA DE FUENTES -->
+
+  <!-- PRECARGA DE FUENTES: Mejora el rendimiento al indicar al navegador que cargue estas fuentes prioritariamente -->
   <link rel="preload" href="fonts/poppins-v22-latin-regular.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="preload" href="fonts/poppins-v22-latin-600.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="preload" href="fonts/poppins-v22-latin-700.woff2" as="font" type="font/woff2" crossorigin>
-  <!-- PRECARGA IMAGEN HERO -->
+
+  <!-- PRECARGA IMAGEN HERO: Carga la imagen principal de la sección hero con alta prioridad para mejorar el LCP (Largest Contentful Paint) -->
   <link rel="preload" href="images/1-BANNER-NAU-WEB-1024w.webp" as="image" type="image/webp" fetchpriority="high">
+
+  <!-- Enlace a la hoja de estilos principal (generada por Tailwind CSS) -->
   <link href="styles/output.css" rel="stylesheet">
 </head>
 
 <body class="font-sans">
+  <!-- Placeholder para el encabezado: El contenido del header se carga aquí dinámicamente mediante JavaScript -->
   <div id="header-placeholder" class="min-h-[80px]"></div>
 
-  <!-- Contenido principal -->
+  <!-- ============================================= -->
+  <!--            CONTENIDO PRINCIPAL DE LA PÁGINA   -->
+  <!-- ============================================= -->
   <main>
-    <!-- Sección Hero 1 -->
+    <!-- Sección Hero 1: "Despiértate" -->
     <section
       class="hero-background-1 bg-custom-medium-teal text-white py-12 md:py-16 lg:py-20 xl:py-24 2xl:py-32 px-4 text-center">
       <div class="container mx-auto px-4 md:px-8">
@@ -38,10 +47,10 @@
           class="inline-block bg-custom-dark-teal text-white font-semibold py-2 px-6 rounded-md hover:bg-gray-100 hover:text-custom-dark-teal transition duration-300">
           Quiero saber más
         </a>
-      </div>
-    </section>
+      </div> <!-- Fin container -->
+    </section> <!-- Fin Sección Hero 1 -->
 
-    <!-- Sección de contenido 1 -->
+    <!-- Sección de contenido 1: "¿Sientes que algo te frena?" -->
     <section class="py-12 md:py-8 px-4 md:px-20 bg-white">
       <div class="container mx-auto grid md:grid-cols-2 gap-8 items-center px-4 md:px-8 lg:px-16">
         <div class="bg-white p-4 md:py-8 rounded-lg flex flex-col justify-center order-2 md:order-1">
@@ -59,28 +68,18 @@
             ¡Haz espacio para tu transformación!
           </h3>
         </div>
-        <!-- Orden cambiado para imagen arriba en móvil -->
         <div class="rounded-lg overflow-hidden flex justify-center items-center order-1 md:order-2">
-          <!-- images/2-BANNER-NAU-WEB-896w.webp 896w,
-          images/2-BANNER-NAU-WEB-1024w.webp 1024w, 
-          images/2-BANNER-NAU-WEB-1140w.webp 1140w,
-          images/2-BANNER-NAU-WEB-1344w.webp 1344w,
-          images/2-BANNER-NAU-WEB-1504w.webp 1504w,
-          images/2-BANNER-NAU-WEB-1710w.webp 1710w,
-          images/2-BANNER-NAU-WEB-1880w.webp 1880w,
-          images/2-BANNER-NAU-WEB-2048w.webp 2048w" -->
-
           <img src="images/2-BANNER-NAU-WEB-521w.webp"
             srcset="images/2-BANNER-NAU-WEB-300w.webp 300w, images/2-BANNER-NAU-WEB-400w.webp 400w, images/2-BANNER-NAU-WEB-521w.webp 521w, images/2-BANNER-NAU-WEB.webp 781w"
             sizes="(min-width: 960px) 320px, (min-width: 780px) calc(36.88vw - 27px), (min-width: 420px) 320px, calc(84vw - 16px)"
             alt="Persona meditando al aire libre conectando con su esencia"
-            class="w-full max-w-xs md:max-w-xs h-auto object-contain rounded-lg" loading="lazy" width="521"
+            class="w-full max-w-xs md:max-w-xs h-auto object-contain rounded-lg" loading="lazy" width="521" 
             height="435">
-        </div>
-      </div>
-    </section>
+        </div> <!-- Fin div imagen -->
+      </div> <!-- Fin container grid -->
+    </section> <!-- Fin Sección de contenido 1 -->
 
-    <!-- Sección Hero 2 -->
+    <!-- Sección Hero 2: "No estás solo en este proceso" -->
     <section class="hero-bg bg-custom-dark-teal text-white py-12 md:py-16 lg:py-24 px-4 text-center"
       style="background-image: url('images/3-BANNER-NAU-WEB.webp')">
       <div class="container mx-auto px-4 md:px-8">
@@ -100,18 +99,21 @@
           class="inline-block bg-custom-light-teal text-custom-darker-teal font-semibold py-2 px-6 rounded-md hover:bg-opacity-80 hover:text-custom-dark-teal transition duration-300">
           Descubre cómo te acompañamos
         </a>
-      </div>
-    </section>
+      </div> <!-- Fin container -->
+    </section> <!-- Fin Sección Hero 2 -->
 
-    <!-- Sección de contenido 2 -->
+    <!-- Sección de contenido 2: Presentación de "Experiencias y herramientas transformadoras" (Encuentros y Simbolismo Numérico) -->
     <section class="py-12 md:py-16 px-4 md:px-16 bg-custom-pale-teal">
       <div class="container mx-auto text-center">
         <h2 class="h2-base text-custom-darker-teal mb-12 md:mb-16">
           Hemos diseñado experiencias y herramientas transformadoras:
         </h2>
+        <!-- Grid para mostrar las dos principales ofertas: Encuentros y Simbolismo Numérico -->
         <div class="grid md:grid-cols-2 gap-12 md:gap-8 mb-8 px-4 md:px-8 lg:px-24">
+          <!-- Tarjeta de Encuentros -->
           <div class="relative bg-white p-6 md:p-8 pt-8 md:pt-8 rounded-lg shadow-md text-custom-darker-teal">
-            <img src="images/4-BANNER-NAU-WEB.webp" alt="Icono representativo de Encuentros NAU"
+            <!-- Icono posicionado en la parte superior de la tarjeta -->
+            <img src="images/4-BANNER-NAU-WEB.webp" alt="Icono representativo de NAU"
               class="absolute top-0 left-1/2 -translate-x-1/2 -translate-y-1/2 w-auto h-12 md:h-16" loading="lazy">
             <h3 class="text-2xl font-semibold mt-4 md:mt-8 mb-3 text-custom-darker-teal">
               ENCUENTROS
@@ -122,9 +124,11 @@
               <li>Relación padres e hijos</li>
               <li>Relaciones de pareja</li>
             </ul>
-          </div>
+          </div> <!-- Fin Tarjeta de Encuentros -->
+          <!-- Tarjeta de Simbolismo Numérico -->
           <div class="relative bg-white p-6 md:p-8 pt-8 md:pt-8 rounded-lg shadow-md text-custom-darker-teal">
-            <img src="images/4-BANNER-NAU-WEB.webp" alt="Icono representativo de Simbolismo Numérico NAU"
+            <!-- Icono posicionado en la parte superior de la tarjeta -->
+            <img src="images/4-BANNER-NAU-WEB.webp" alt="Icono representativo de NAU"
               class="absolute top-0 left-1/2 -translate-x-1/2 -translate-y-1/2 w-auto h-12 md:h-16" loading="lazy">
             <h3 class="text-2xl font-semibold mt-4 md:mt-8 mb-3 text-custom-darker-teal">
               SIMBOLISMO NUMÉRICO
@@ -137,8 +141,8 @@
               <li>Año personal</li>
               <li>El Triángulo Divino</li>
             </ul>
-          </div>
-        </div>
+          </div> <!-- Fin Tarjeta de Simbolismo Numérico -->
+        </div> <!-- Fin grid tarjetas -->
         <h3 class="h3-base text-custom-darker-teal">
           Inicia tu transformación con nosotros.
         </h3>
@@ -146,30 +150,24 @@
           class="inline-block bg-custom-dark-teal text-white font-semibold py-2 px-6 rounded-md hover:bg-gray-100 hover:text-custom-dark-teal transition duration-300 self-start">
           Conoce más
         </a>
-      </div>
-    </section>
+      </div> <!-- Fin container -->
+    </section> <!-- Fin Sección de contenido 2 -->
 
-    <!-- Sección de contenido 3 -->
+    <!-- Sección de contenido 3: "¿Qué pasa si sigues esperando el momento perfecto?" -->
     <section class="py-12 md:py-14 px-4 md:px-16 bg-white">
-      <!-- Padding título ajustado -->
       <div class="container mx-auto text-center text-custom-darker-teal mb-8 md:mb-10">
-        <!-- Color cambiado a darker-teal para contraste en fondo blanco -->
         <h2 class="h2-base text-custom-dark-teal">
           ¿Qué pasa si sigues esperando el momento perfecto?
         </h2>
-      </div>
+      </div> <!-- Fin container título -->
       <div class="container mx-auto grid md:grid-cols-2 gap-8 items-center px-4 md:px-8 lg:px-16">
         <div class="bg-white rounded-lg flex justify-center items-center order-1 md:order-1">
-          <!-- images/5-BANNER-NAU-WEB-1152w.webp 1152w,
-          images/5-BANNER-NAU-WEB-1374w.webp 1374w,
-          images/5-BANNER-NAU-WEB-1740w.webp 1740w,
-          images/5-BANNER-NAU-WEB-2048w.webp 2048w  -->
           <img src="images/5-BANNER-NAU-WEB-687w.webp" srcset="images/5-BANNER-NAU-WEB-687w.webp 687w,
           images/5-BANNER-NAU-WEB.webp 902w"
             sizes="(min-width: 1040px) 372px, (min-width: 960px) 336px, (min-width: 780px) 36.25vw, (min-width: 480px) 384px, calc(92.5vw - 42px)"
             alt="Persona mirando reflexivamente hacia el futuro" loading="lazy"
-            class="w-full max-w-sm md:max-w-sm h-auto object-contain" width="687" height="413">
-        </div>
+            class="w-full max-w-sm md:max-w-sm h-auto object-contain" width="687" height="413"> <!-- Imagen reflexiva -->
+        </div> <!-- Fin div imagen -->
         <div
           class="bg-white text-custom-darker-teal p-4 md:p-8 rounded-lg text-center md:text-left flex flex-col justify-center items-center md:items-start order-2 md:order-2">
           <p class="p-base text-left">
@@ -186,11 +184,11 @@
           <h3 class="h3-base text-custom-dark-teal text-center md:text-left">
             ¡EL MOMENTO ES AHORA!
           </h3>
-        </div>
-      </div>
-    </section>
+        </div> <!-- Fin div texto -->
+      </div> <!-- Fin container grid -->
+    </section> <!-- Fin Sección de contenido 3 -->
 
-    <!-- Sección Hero 3 -->
+    <!-- Sección Hero 3: Llamada final a la acción "Esa vida es posible" -->
     <section class="hero-bg bg-custom-medium-teal text-white py-12 md:py-16 lg:py-24 px-4 text-center"
       style="background-image: url('images/6-BANNER-NAU-WEB.webp')">
       <div class="container mx-auto px-4 md:px-8">
@@ -206,13 +204,18 @@
           class="inline-block bg-custom-light-teal text-custom-darker-teal font-semibold py-2 px-6 rounded-md hover:bg-opacity-80 hover:text-custom-dark-teal transition duration-300">
           Empieza aquí
         </a>
-      </div>
-    </section>
+      </div> <!-- Fin container -->
+    </section> <!-- Fin Sección Hero 3 -->
   </main>
+  <!-- Fin del contenido principal -->
 
+  <!-- Placeholder para el pie de página: El contenido del footer se carga aquí dinámicamente mediante JavaScript -->
   <div id="footer-placeholder"></div>
 
-  <!-- Script para cargar parciales header y footer y manejar menú/hamburguesa -->
+  <!-- ============================================= -->
+  <!--                 SCRIPTS GLOBALES              -->
+  <!-- ============================================= -->
+  <!-- Script para cargar parciales (header y footer) y manejar la funcionalidad del menú hamburguesa en móviles -->
   <script src="js/loadPartials.js"></script>
 </body>
 

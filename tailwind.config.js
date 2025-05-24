@@ -1,6 +1,6 @@
 /** @type {import('tailwindcss').Config} */
 // Importa el tema por defecto de Tailwind para poder extenderlo, especialmente útil para la familia de fuentes.
-const defaultTheme = require('tailwindcss/defaultTheme'); 
+const defaultTheme = require('tailwindcss/defaultTheme');
 
 module.exports = {
   // 'content' define los archivos que Tailwind CSS escaneará para buscar clases de utilidad.
@@ -30,6 +30,8 @@ module.exports = {
         'custom-specific-blue': '#005366', // Azul específico para ciertos elementos de diseño.
         'custom-hover-teal': '#d1e3e5',    // Color para el estado hover en elementos del menú.
         'custom-pale-teal': '#b3dddd',     // Teal pálido, usado como color de fondo para secciones de contenido.
+        'custom-frosty-teal': '#e6efef',   // Azul muy claro, usado para fondos de tarjetas.
+        'custom-gray-blue': '#CAD4E0',     // Gris perla azulado, usado en líneas separadoras.
       }
     }, // Fin de 'extend'
   }, // Fin de 'theme'

@@ -949,8 +949,20 @@ select {
   left: 50%;
 }
 
+.right-8 {
+  right: 2rem;
+}
+
 .top-0 {
   top: 0px;
+}
+
+.left-3\/4 {
+  left: 75%;
+}
+
+.z-10 {
+  z-index: 10;
 }
 
 .order-1 {
@@ -964,6 +976,10 @@ select {
 .mx-auto {
   margin-left: auto;
   margin-right: auto;
+}
+
+.-mt-20 {
+  margin-top: -5rem;
 }
 
 .mb-10 {
@@ -1014,12 +1030,12 @@ select {
   margin-top: 1rem;
 }
 
-.mt-6 {
-  margin-top: 1.5rem;
-}
-
 .mt-8 {
   margin-top: 2rem;
+}
+
+.-mt-12 {
+  margin-top: -3rem;
 }
 
 .block {
@@ -1090,8 +1106,8 @@ select {
   max-width: 42rem;
 }
 
-.max-w-3xl {
-  max-width: 48rem;
+.max-w-4xl {
+  max-width: 56rem;
 }
 
 .max-w-sm {
@@ -1100,6 +1116,10 @@ select {
 
 .max-w-xs {
   max-width: 20rem;
+}
+
+.flex-grow {
+  flex-grow: 1;
 }
 
 .-translate-x-1\/2 {
@@ -1119,10 +1139,6 @@ select {
 
 .transform {
   transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
-}
-
-.list-inside {
-  list-style-position: inside;
 }
 
 .list-outside {
@@ -1169,10 +1185,13 @@ select {
   gap: 2rem;
 }
 
-.space-y-1 > :not([hidden]) ~ :not([hidden]) {
-  --tw-space-y-reverse: 0;
-  margin-top: calc(0.25rem * calc(1 - var(--tw-space-y-reverse)));
-  margin-bottom: calc(0.25rem * var(--tw-space-y-reverse));
+.gap-x-8 {
+  -moz-column-gap: 2rem;
+       column-gap: 2rem;
+}
+
+.gap-y-12 {
+  row-gap: 3rem;
 }
 
 .space-y-2 > :not([hidden]) ~ :not([hidden]) {
@@ -1201,6 +1220,16 @@ select {
   border-radius: 0.375rem;
 }
 
+.rounded-b-lg {
+  border-bottom-right-radius: 0.5rem;
+  border-bottom-left-radius: 0.5rem;
+}
+
+.rounded-t-lg {
+  border-top-left-radius: 0.5rem;
+  border-top-right-radius: 0.5rem;
+}
+
 .border {
   border-width: 1px;
 }
@@ -1209,9 +1238,18 @@ select {
   border-top-width: 1px;
 }
 
+.border-t-4 {
+  border-top-width: 4px;
+}
+
 .border-custom-dark-teal {
   --tw-border-opacity: 1;
   border-color: rgb(30 96 106 / var(--tw-border-opacity, 1));
+}
+
+.border-custom-gray-blue {
+  --tw-border-opacity: 1;
+  border-color: rgb(202 212 224 / var(--tw-border-opacity, 1));
 }
 
 .bg-custom-dark-teal {
@@ -1222,6 +1260,11 @@ select {
 .bg-custom-darker-teal {
   --tw-bg-opacity: 1;
   background-color: rgb(20 57 70 / var(--tw-bg-opacity, 1));
+}
+
+.bg-custom-frosty-teal {
+  --tw-bg-opacity: 1;
+  background-color: rgb(230 239 239 / var(--tw-bg-opacity, 1));
 }
 
 .bg-custom-light-teal {
@@ -1301,6 +1344,16 @@ select {
   padding-bottom: 0.5rem;
 }
 
+.py-20 {
+  padding-top: 5rem;
+  padding-bottom: 5rem;
+}
+
+.py-24 {
+  padding-top: 6rem;
+  padding-bottom: 6rem;
+}
+
 .py-3 {
   padding-top: 0.75rem;
   padding-bottom: 0.75rem;
@@ -1315,16 +1368,24 @@ select {
   padding-bottom: 6rem;
 }
 
+.pb-4 {
+  padding-bottom: 1rem;
+}
+
 .pl-4 {
   padding-left: 1rem;
 }
 
-.pt-16 {
-  padding-top: 4rem;
+.pl-6 {
+  padding-left: 1.5rem;
 }
 
-.pt-6 {
-  padding-top: 1.5rem;
+.pt-12 {
+  padding-top: 3rem;
+}
+
+.pt-16 {
+  padding-top: 4rem;
 }
 
 .pt-8 {
@@ -1454,7 +1515,7 @@ select {
 
 /* ============================================= */
 
-/* Estilos para el fondo de la sección Hero en la página "Index" (index.html) */
+/* Estilos para el fondo de la sección Hero 1 en la página "Index" (index.html) */
 
 .hero-background-1 {
   /* Imagen por defecto para pantallas pequeñas (ej: 1024px de ancho) */
@@ -1487,7 +1548,7 @@ select {
 
 /* NOTA: La precarga de imágenes se gestiona en el HTML (<link rel="preload">) para optimizar el LCP. */
 
-/* Estilos para el fondo de la sección Hero en la página "Sobre NAU" (sobre-nau.html) */
+/* Estilos para el fondo de la sección Hero 1 en la página "Sobre NAU" (sobre-nau.html) */
 
 .hero-background-sn-1 {
   /* Imagen por defecto para pantallas pequeñas (ej: 1024px de ancho) */
@@ -1506,6 +1567,75 @@ select {
   .hero-background-sn-1 {
     /* Imagen para escritorios estándar (ej: 1920px de ancho) */
     background-image: url('../images/1-SOBRE-NAU-WEB-1920w.webp');
+    /* <- Tu imagen mediana/grande */
+  }
+}
+
+/* Estilos para el fondo de la sección Hero 1 en la página "Encuentros" (encuentros.html) */
+
+.hero-background-encuentros-1 {
+  /* Imagen por defecto para pantallas pequeñas (ej: 1024px de ancho) */
+  background-image: url('../images/BANNER-INICIAL-ENCUENTROS.webp');
+  /* <- Tu imagen pequeña/mediana */
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+/* Media query para pantallas medianas/grandes (a partir de 1024px) para .hero-background-encuentros-1 */
+
+@media (min-width: 1024px) {
+  /* Ajusta este breakpoint si es necesario */
+
+  .hero-background-encuentros-1 {
+    /* Imagen para escritorios estándar (ej: 1920px de ancho) */
+    background-image: url('../images/BANNER-INICIAL-ENCUENTROS.webp');
+    /* <- Tu imagen mediana/grande */
+  }
+}
+
+/* Estilos para el fondo de la sección Hero 1 en la página "Simbolismo Numérico" (simbolismo-numerico.html) */
+
+.hero-background-simbolismo-1 {
+  /* Imagen por defecto para pantallas pequeñas (ej: 1024px de ancho) */
+  background-image: url('../images/BANNER-INICIAL-NUM.webp');
+  /* <- Tu imagen pequeña/mediana */
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+/* Media query para pantallas medianas/grandes (a partir de 1024px) para .hero-background-simbolismo-1 */
+
+@media (min-width: 1024px) {
+  /* Ajusta este breakpoint si es necesario */
+
+  .hero-background-simbolismo-1 {
+    /* Imagen para escritorios estándar (ej: 1920px de ancho) */
+    background-image: url('../images/BANNER-INICIAL-NUM.webp');
+    /* <- Tu imagen mediana/grande */
+  }
+}
+
+/* Estilos para el fondo de la sección Hero 1 en la página "Donar" (donar.html) */
+
+.hero-background-donar-1 {
+  /* Imagen por defecto para pantallas pequeñas (ej: 1024px de ancho) */
+  background-image: url('../images/1-DONA.webp');
+  /* <- Tu imagen pequeña/mediana */
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+/* Media query para pantallas medianas/grandes (a partir de 1024px) para .hero-background-donar-1 */
+
+@media (min-width: 1024px) {
+  /* Ajusta este breakpoint si es necesario */
+
+  .hero-background-donar-1 {
+    /* Imagen para escritorios estándar (ej: 1920px de ancho) */
+    background-image: url('../images/1-DONA.webp');
     /* <- Tu imagen mediana/grande */
   }
 }
@@ -1584,6 +1714,10 @@ select {
     grid-column: span 3 / span 3;
   }
 
+  .md\:-mt-28 {
+    margin-top: -7rem;
+  }
+
   .md\:mb-10 {
     margin-bottom: 2.5rem;
   }
@@ -1606,6 +1740,14 @@ select {
 
   .md\:mt-8 {
     margin-top: 2rem;
+  }
+
+  .md\:mt-16 {
+    margin-top: 4rem;
+  }
+
+  .md\:-mt-16 {
+    margin-top: -4rem;
   }
 
   .md\:flex {
@@ -1680,6 +1822,15 @@ select {
     gap: 2rem;
   }
 
+  .md\:gap-x-10 {
+    -moz-column-gap: 2.5rem;
+         column-gap: 2.5rem;
+  }
+
+  .md\:gap-y-16 {
+    row-gap: 4rem;
+  }
+
   .md\:space-x-5 > :not([hidden]) ~ :not([hidden]) {
     --tw-space-x-reverse: 0;
     margin-right: calc(1.25rem * var(--tw-space-x-reverse));
@@ -1690,6 +1841,11 @@ select {
     --tw-space-y-reverse: 0;
     margin-top: calc(0px * calc(1 - var(--tw-space-y-reverse)));
     margin-bottom: calc(0px * var(--tw-space-y-reverse));
+  }
+
+  .md\:rounded-t-xl {
+    border-top-left-radius: 0.75rem;
+    border-top-right-radius: 0.75rem;
   }
 
   .md\:p-8 {
@@ -1719,6 +1875,11 @@ select {
   .md\:px-36 {
     padding-left: 9rem;
     padding-right: 9rem;
+  }
+
+  .md\:px-6 {
+    padding-left: 1.5rem;
+    padding-right: 1.5rem;
   }
 
   .md\:px-8 {
@@ -1751,6 +1912,16 @@ select {
     padding-bottom: 5rem;
   }
 
+  .md\:py-24 {
+    padding-top: 6rem;
+    padding-bottom: 6rem;
+  }
+
+  .md\:py-28 {
+    padding-top: 7rem;
+    padding-bottom: 7rem;
+  }
+
   .md\:py-4 {
     padding-top: 1rem;
     padding-bottom: 1rem;
@@ -1761,8 +1932,16 @@ select {
     padding-bottom: 2rem;
   }
 
+  .md\:pb-32 {
+    padding-bottom: 8rem;
+  }
+
   .md\:pb-48 {
     padding-bottom: 12rem;
+  }
+
+  .md\:pb-6 {
+    padding-bottom: 1.5rem;
   }
 
   .md\:pl-12 {
@@ -1802,6 +1981,10 @@ select {
 }
 
 @media (min-width: 1024px) {
+  .lg\:-mt-20 {
+    margin-top: -5rem;
+  }
+
   .lg\:w-40 {
     width: 10rem;
   }
@@ -1809,6 +1992,11 @@ select {
   .lg\:px-16 {
     padding-left: 4rem;
     padding-right: 4rem;
+  }
+
+  .lg\:px-20 {
+    padding-left: 5rem;
+    padding-right: 5rem;
   }
 
   .lg\:px-24 {
@@ -1831,6 +2019,11 @@ select {
     padding-bottom: 7rem;
   }
 
+  .lg\:py-32 {
+    padding-top: 8rem;
+    padding-bottom: 8rem;
+  }
+
   .lg\:pb-52 {
     padding-bottom: 13rem;
   }
@@ -1845,11 +2038,31 @@ select {
     padding-top: 6rem;
     padding-bottom: 6rem;
   }
+
+  .xl\:py-32 {
+    padding-top: 8rem;
+    padding-bottom: 8rem;
+  }
+
+  .xl\:py-36 {
+    padding-top: 9rem;
+    padding-bottom: 9rem;
+  }
 }
 
 @media (min-width: 1536px) {
   .\32xl\:py-32 {
     padding-top: 8rem;
     padding-bottom: 8rem;
+  }
+
+  .\32xl\:py-40 {
+    padding-top: 10rem;
+    padding-bottom: 10rem;
+  }
+
+  .\32xl\:py-44 {
+    padding-top: 11rem;
+    padding-bottom: 11rem;
   }
 }

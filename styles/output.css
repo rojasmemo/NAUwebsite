@@ -879,6 +879,27 @@ select {
   }
 }
 
+@media (min-width: 1024px) {
+  .h2-base {
+    font-size: 1.875rem;
+    line-height: 2.25rem;
+  }
+}
+
+@media (min-width: 1280px) {
+  .h2-base {
+    font-size: 1.875rem;
+    line-height: 2.25rem;
+  }
+}
+
+@media (min-width: 1536px) {
+  .h2-base {
+    font-size: 2.25rem;
+    line-height: 2.5rem;
+  }
+}
+
 /* Clase base para encabezados H3 */
 
 .h3-base {
@@ -892,6 +913,27 @@ select {
   .h3-base {
     font-size: 1.5rem;
     line-height: 2rem;
+  }
+}
+
+@media (min-width: 1024px) {
+  .h3-base {
+    font-size: 1.5rem;
+    line-height: 2rem;
+  }
+}
+
+@media (min-width: 1280px) {
+  .h3-base {
+    font-size: 1.5rem;
+    line-height: 2rem;
+  }
+}
+
+@media (min-width: 1536px) {
+  .h3-base {
+    font-size: 1.875rem;
+    line-height: 2.25rem;
   }
 }
 
@@ -913,6 +955,27 @@ select {
   }
 }
 
+@media (min-width: 1024px) {
+  .p-base {
+    font-size: 1.25rem;
+    line-height: 1.75rem;
+  }
+}
+
+@media (min-width: 1280px) {
+  .p-base {
+    font-size: 1.25rem;
+    line-height: 1.75rem;
+  }
+}
+
+@media (min-width: 1536px) {
+  .p-base {
+    font-size: 1.5rem;
+    line-height: 2rem;
+  }
+}
+
 /* Clase base para párrafos en secciones Hero (generalmente sobre fondos oscuros) */
 
 .p-base-hero {
@@ -928,6 +991,27 @@ select {
   .p-base-hero {
     font-size: 1.125rem;
     line-height: 1.75rem;
+  }
+}
+
+@media (min-width: 1024px) {
+  .p-base-hero {
+    font-size: 1.25rem;
+    line-height: 1.75rem;
+  }
+}
+
+@media (min-width: 1280px) {
+  .p-base-hero {
+    font-size: 1.25rem;
+    line-height: 1.75rem;
+  }
+}
+
+@media (min-width: 1536px) {
+  .p-base-hero {
+    font-size: 1.5rem;
+    line-height: 2rem;
   }
 }
 
@@ -1110,12 +1194,20 @@ select {
   max-width: 56rem;
 }
 
+.max-w-\[1920px\] {
+  max-width: 1920px;
+}
+
 .max-w-sm {
   max-width: 24rem;
 }
 
 .max-w-xs {
   max-width: 20rem;
+}
+
+.max-w-5xl {
+  max-width: 64rem;
 }
 
 .flex-grow {

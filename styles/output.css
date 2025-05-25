@@ -1037,8 +1037,8 @@ select {
   bottom: 0px;
 }
 
-.bottom-6 {
-  bottom: 1.5rem;
+.bottom-4 {
+  bottom: 1rem;
 }
 
 .left-1\/2 {
@@ -1049,8 +1049,8 @@ select {
   left: 75%;
 }
 
-.right-6 {
-  right: 1.5rem;
+.right-4 {
+  right: 1rem;
 }
 
 .right-8 {
@@ -1059,14 +1059,6 @@ select {
 
 .top-0 {
   top: 0px;
-}
-
-.bottom-4 {
-  bottom: 1rem;
-}
-
-.right-4 {
-  right: 1rem;
 }
 
 .z-10 {
@@ -1224,10 +1216,6 @@ select {
 
 .max-w-5xl {
   max-width: 64rem;
-}
-
-.max-w-\[1920px\] {
-  max-width: 1920px;
 }
 
 .max-w-sm {
@@ -1434,6 +1422,11 @@ select {
   padding: 1.5rem;
 }
 
+.px-3 {
+  padding-left: 0.75rem;
+  padding-right: 0.75rem;
+}
+
 .px-4 {
   padding-left: 1rem;
   padding-right: 1rem;
@@ -1452,6 +1445,11 @@ select {
 .py-1 {
   padding-top: 0.25rem;
   padding-bottom: 0.25rem;
+}
+
+.py-1\.5 {
+  padding-top: 0.375rem;
+  padding-bottom: 0.375rem;
 }
 
 .py-10 {
@@ -1487,16 +1485,6 @@ select {
 .py-4 {
   padding-top: 1rem;
   padding-bottom: 1rem;
-}
-
-.px-3 {
-  padding-left: 0.75rem;
-  padding-right: 0.75rem;
-}
-
-.py-1\.5 {
-  padding-top: 0.375rem;
-  padding-bottom: 0.375rem;
 }
 
 .pb-24 {
@@ -1654,8 +1642,20 @@ select {
 
 /* Definición de clases de componentes reutilizables usando la directiva @layer y @apply. */
 
+/* Clase para envolver secciones de contenido principal, limitando su ancho y centrándolas */
+
+.content-section-wrapper {
+  margin-left: auto;
+  margin-right: auto;
+  max-width: 1920px;
+}
+
 .hero-bg {
   /* Estilos base para fondos de secciones Hero */
+  margin-left: auto;
+  margin-right: auto;
+  max-width: 1920px;
+  /* Centrado y con ancho máximo */
   background-size: cover;
   /* Cubre el área, mantiene proporción, puede recortar */
   background-position: center;
@@ -1664,30 +1664,31 @@ select {
   /* No repetir la imagen */
 }
 
-/* ============================================= */
-
-/*     ESTILOS PARA FONDOS DE SECCIÓN HERO       */
-
-/* ============================================= */
-
 /* Estilos para el fondo de la sección Hero 1 en la página "Index" (index.html) */
 
-.hero-background-1 {
-  /* Imagen por defecto para pantallas pequeñas (ej: 1024px de ancho) */
-  background-image: url('../images/1-BANNER-NAU-WEB-1024w.webp');
-  /* <- Tu imagen pequeña/mediana */
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
+.hero-background-index-1 {
+  /* Imagen por defecto para pantallas pequeñas (hasta 600px de ancho) */
+  background-image: url('../images/1-BANNER-NAU-WEB-480w.webp');
+  /* <- Tu imagen pequeña */
 }
 
-/* Media query para pantallas medianas/grandes (a partir de 1024px) para .hero-background-1 */
+/* Media query para pantallas medianas (entre 601px y 1200px) para .hero-background-index-1 */
 
-@media (min-width: 1024px) {
+@media (min-width: 601px) {
   /* Ajusta este breakpoint si es necesario */
 
-  .hero-background-1 {
-    /* Imagen para escritorios estándar (ej: 1920px de ancho) */
+  .hero-background-index-1 {
+    background-image: url('../images/1-BANNER-NAU-WEB-1024w.webp');
+    /* <- Tu imagen mediana */
+  }
+}
+
+/* Media query para pantallas medianas/grandes (a partir de 1201px) para .hero-background-index-1 */
+
+@media (min-width: 1201px) {
+  /* Ajusta este breakpoint si es necesario */
+
+  .hero-background-index-1 {
     background-image: url('../images/1-BANNER-NAU-WEB-1920w.webp');
     /* <- Tu imagen mediana/grande */
   }
@@ -1703,25 +1704,124 @@ select {
 
 /* NOTA: La precarga de imágenes se gestiona en el HTML (<link rel="preload">) para optimizar el LCP. */
 
+/* Estilos para el fondo de la sección Hero 2 en la página "Index" (index.html) */
+
+.hero-background-index-2 {
+  /* Imagen por defecto para pantallas pequeñas (hasta 600px de ancho) */
+  background-image: url('../images/3-BANNER-NAU-WEB-480w.webp');
+  /* <- Tu imagen pequeña */
+}
+
+/* Media query para pantallas medianas (entre 601px y 1200px) para .hero-background-index-2 */
+
+@media (min-width: 601px) {
+  /* Ajusta este breakpoint si es necesario */
+
+  .hero-background-index-2 {
+    background-image: url('../images/3-BANNER-NAU-WEB-1024w.webp');
+    /* <- Tu imagen mediana */
+  }
+}
+
+/* Media query para pantallas medianas/grandes (a partir de 1201px) para .hero-background-index-2 */
+
+@media (min-width: 1201px) {
+  /* Ajusta este breakpoint si es necesario */
+
+  .hero-background-index-2 {
+    background-image: url('../images/3-BANNER-NAU-WEB-1920w.webp');
+    /* <- Tu imagen mediana/grande */
+  }
+}
+
+/* Estilos para el fondo de la sección Hero 3 en la página "Index" (index.html) */
+
+.hero-background-index-3 {
+  /* Imagen por defecto para pantallas pequeñas (hasta 600px de ancho) */
+  background-image: url('../images/6-BANNER-NAU-WEB-480w.webp');
+  /* <- Tu imagen pequeña */
+}
+
+/* Media query para pantallas medianas (entre 601px y 1200px) para .hero-background-index-3 */
+
+@media (min-width: 601px) {
+  /* Ajusta este breakpoint si es necesario */
+
+  .hero-background-index-3 {
+    background-image: url('../images/6-BANNER-NAU-WEB-1024w.webp');
+    /* <- Tu imagen mediana */
+  }
+}
+
+/* Media query para pantallas medianas/grandes (a partir de 1201px) para .hero-background-index-3 */
+
+@media (min-width: 1201px) {
+  /* Ajusta este breakpoint si es necesario */
+
+  .hero-background-index-3 {
+    background-image: url('../images/6-BANNER-NAU-WEB-1920w.webp');
+    /* <- Tu imagen mediana/grande */
+  }
+}
+
 /* Estilos para el fondo de la sección Hero 1 en la página "Sobre NAU" (sobre-nau.html) */
 
 .hero-background-sn-1 {
-  /* Imagen por defecto para pantallas pequeñas (ej: 1024px de ancho) */
-  background-image: url('../images/1-SOBRE-NAU-WEB-1024w.webp');
-  /* <- Tu imagen pequeña/mediana */
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
+  /* Imagen por defecto para pantallas pequeñas (hasta 600px de ancho) */
+  background-image: url('../images/1-SOBRE-NAU-WEB-480w.webp');
+  /* <- Tu imagen pequeña */
 }
 
 /* Media query para pantallas medianas/grandes (a partir de 1024px) para .hero-background-sn-1 */
 
-@media (min-width: 1024px) {
+@media (min-width: 601px) {
   /* Ajusta este breakpoint si es necesario */
 
   .hero-background-sn-1 {
-    /* Imagen para escritorios estándar (ej: 1920px de ancho) */
+    /* Imagen para escritorios estándar (entre 601px y 1200px) */
+    background-image: url('../images/1-SOBRE-NAU-WEB-1024w.webp');
+    /* <- Tu imagen mediana */
+  }
+}
+
+/* Media query para pantallas medianas/grandes (a partir de 1201px) para .hero-background-sn-1 */
+
+@media (min-width: 1201px) {
+  /* Ajusta este breakpoint si es necesario */
+
+  .hero-background-sn-1 {
     background-image: url('../images/1-SOBRE-NAU-WEB-1920w.webp');
+    /* <- Tu imagen mediana/grande */
+  }
+}
+
+/* Estilos para el fondo de la sección Hero 2 en la página "Sobre NAU" (sobre-nau.html) */
+
+.hero-background-sn-2 {
+  /* Imagen por defecto para pantallas pequeñas (hasta 600px de ancho) */
+  background-image: url('../images/5-SOBRE-NAU-WEB-480w.webp');
+  /* <- Tu imagen pequeña */
+}
+
+/* Media query para pantallas medianas/grandes (a partir de 1024px) para .hero-background-sn-1 */
+
+@media (min-width: 601px) {
+  /* Ajusta este breakpoint si es necesario */
+
+  .hero-background-sn-2 {
+    /* Imagen para escritorios estándar (entre 601px y 1200px) */
+    background-image: url('../images/5-SOBRE-NAU-WEB-1024w.webp');
+    /* <- Tu imagen mediana */
+  }
+}
+
+/* Media query para pantallas medianas/grandes (a partir de 1201px) para .hero-background-sn-1 */
+
+@media (min-width: 1201px) {
+  /* Ajusta este breakpoint si es necesario */
+
+  .hero-background-sn-2 {
+    background-image: url('../images/5-SOBRE-NAU-WEB-1920w.webp');
     /* <- Tu imagen mediana/grande */
   }
 }
@@ -1732,9 +1832,6 @@ select {
   /* Imagen por defecto para pantallas pequeñas (ej: 1024px de ancho) */
   background-image: url('../images/BANNER-INICIAL-ENCUENTROS.webp');
   /* <- Tu imagen pequeña/mediana */
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
 }
 
 /* Media query para pantallas medianas/grandes (a partir de 1024px) para .hero-background-encuentros-1 */
@@ -1755,9 +1852,6 @@ select {
   /* Imagen por defecto para pantallas pequeñas (ej: 1024px de ancho) */
   background-image: url('../images/BANNER-INICIAL-NUM.webp');
   /* <- Tu imagen pequeña/mediana */
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
 }
 
 /* Media query para pantallas medianas/grandes (a partir de 1024px) para .hero-background-simbolismo-1 */
@@ -1778,9 +1872,6 @@ select {
   /* Imagen por defecto para pantallas pequeñas (ej: 1024px de ancho) */
   background-image: url('../images/1-DONA.webp');
   /* <- Tu imagen pequeña/mediana */
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
 }
 
 /* Media query para pantallas medianas/grandes (a partir de 1024px) para .hero-background-donar-1 */
@@ -2049,6 +2140,11 @@ select {
     padding-right: 9rem;
   }
 
+  .md\:px-4 {
+    padding-left: 1rem;
+    padding-right: 1rem;
+  }
+
   .md\:px-6 {
     padding-left: 1.5rem;
     padding-right: 1.5rem;
@@ -2079,6 +2175,11 @@ select {
     padding-bottom: 4rem;
   }
 
+  .md\:py-2 {
+    padding-top: 0.5rem;
+    padding-bottom: 0.5rem;
+  }
+
   .md\:py-20 {
     padding-top: 5rem;
     padding-bottom: 5rem;
@@ -2102,16 +2203,6 @@ select {
   .md\:py-8 {
     padding-top: 2rem;
     padding-bottom: 2rem;
-  }
-
-  .md\:px-4 {
-    padding-left: 1rem;
-    padding-right: 1rem;
-  }
-
-  .md\:py-2 {
-    padding-top: 0.5rem;
-    padding-bottom: 0.5rem;
   }
 
   .md\:pb-32 {
@@ -2251,5 +2342,10 @@ select {
   .\32xl\:py-44 {
     padding-top: 11rem;
     padding-bottom: 11rem;
+  }
+
+  .\32xl\:text-xl {
+    font-size: 1.25rem;
+    line-height: 1.75rem;
   }
 }

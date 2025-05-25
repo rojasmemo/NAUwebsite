@@ -15,9 +15,6 @@
   <link rel="preload" href="fonts/poppins-v22-latin-600.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="preload" href="fonts/poppins-v22-latin-700.woff2" as="font" type="font/woff2" crossorigin>
 
-  <!-- PRECARGA IMAGEN HERO: Carga la imagen principal de la sección hero con alta prioridad para mejorar el LCP (Largest Contentful Paint) -->
-  <link rel="preload" href="images/1-BANNER-NAU-WEB-1024w.webp" as="image" type="image/webp" fetchpriority="high">
-
   <!-- Enlace a la hoja de estilos principal (generada por Tailwind CSS) -->
   <link href="styles/output.css" rel="stylesheet">
 </head>
@@ -32,7 +29,7 @@
   <main>
     <!-- Sección Hero 1: "Despiértate" -->
     <section
-      class="hero-background-1 max-w-[1920px] mx-auto bg-custom-medium-teal text-white py-12 md:py-16 lg:py-20 xl:py-24 2xl:py-32 px-4 text-center">
+      class="hero-bg hero-background-index-1 bg-custom-medium-teal text-white py-12 md:py-16 lg:py-20 xl:py-24 2xl:py-32 px-4 text-center">
       <div class="px-4 md:px-8">
         <h2 class="h2-base">
           Despiértate. Conéctate. Transforma tu vida.
@@ -51,7 +48,7 @@
     </section> <!-- Fin Sección Hero 1 -->
 
     <!-- Sección de contenido 1: "¿Sientes que algo te frena?" -->
-    <section class="max-w-[1920px] mx-auto py-12 md:py-8 px-4 md:px-20 bg-white">
+    <section class="content-section-wrapper py-12 md:py-8 px-4 md:px-20 bg-white">
       <div class="grid md:grid-cols-2 gap-8 items-center px-4 md:px-8 lg:px-16">
         <div class="bg-white p-4 md:py-8 rounded-lg flex flex-col justify-center order-2 md:order-1">
           <!-- Orden cambiado para imagen arriba en móvil -->
@@ -69,20 +66,17 @@
           </h3>
         </div>
         <div class="rounded-lg overflow-hidden flex justify-center items-center order-1 md:order-2">
-          <img src="images/2-BANNER-NAU-WEB-521w.webp"
-            srcset="images/2-BANNER-NAU-WEB-300w.webp 300w, images/2-BANNER-NAU-WEB-400w.webp 400w, images/2-BANNER-NAU-WEB-521w.webp 521w, images/2-BANNER-NAU-WEB.webp 781w"
-            sizes="(min-width: 960px) 320px, (min-width: 780px) calc(36.88vw - 27px), (min-width: 420px) 320px, calc(84vw - 16px)"
+          <img src="images/2-BANNER-NAU-WEB-400w.webp"
             alt="Personas juntando y elevando sus manos"
-            class="w-full max-w-xs md:max-w-xs h-auto object-contain rounded-lg" loading="lazy" width="521" 
-            height="435">
+            class="w-full max-w-xs md:max-w-xs h-auto object-contain rounded-lg" loading="lazy" width="400" 
+            height="334">
         </div> <!-- Fin div imagen -->
       </div> <!-- Fin container grid -->
     </section> <!-- Fin Sección de contenido 1 -->
 
     <!-- Sección Hero 2: "No estás solo en este proceso" -->
-    <section class="hero-bg max-w-[1920px] mx-auto bg-custom-dark-teal text-white py-12 md:py-16 lg:py-24 px-4 text-center"
-      style="background-image: url('images/3-BANNER-NAU-WEB.webp')">
-      <div class="container mx-auto px-4 md:px-8">
+    <section class="hero-bg hero-background-index-2 bg-custom-dark-teal text-white py-12 md:py-16 lg:py-24 px-4 text-center">
+      <div class="px-4 md:px-8">
         <h2 class="h2-base max-w-2xl mx-auto">
           No estás solo en este proceso,
           la transformación no ocurre en soledad.
@@ -103,7 +97,7 @@
     </section> <!-- Fin Sección Hero 2 -->
 
     <!-- Sección de contenido 2: Presentación de "Experiencias y herramientas transformadoras" (Encuentros y Simbolismo Numérico) -->
-    <section class="max-w-[1920px] mx-auto py-12 md:py-16 px-4 md:px-16 bg-custom-pale-teal">
+    <section class="content-section-wrapper py-12 md:py-16 px-4 md:px-16 bg-custom-pale-teal">
       <div class="text-center">
         <h2 class="h2-base text-custom-darker-teal mb-12 md:mb-16">
           Hemos diseñado experiencias y herramientas transformadoras:
@@ -154,7 +148,7 @@
     </section> <!-- Fin Sección de contenido 2 -->
 
     <!-- Sección de contenido 3: "¿Qué pasa si sigues esperando el momento perfecto?" -->
-    <section class="max-w-[1920px] mx-auto py-12 md:py-14 px-4 md:px-16 bg-white">
+    <section class="content-section-wrapper py-12 md:py-14 px-4 md:px-16 bg-white">
       <div class="text-center text-custom-darker-teal mb-8 md:mb-10">
         <h2 class="h2-base text-custom-dark-teal">
           ¿Qué pasa si sigues esperando el momento perfecto?
@@ -162,11 +156,9 @@
       </div> <!-- Fin container título -->
       <div class="container mx-auto grid md:grid-cols-2 gap-8 items-center px-4 md:px-8 lg:px-16">
         <div class="bg-white rounded-lg flex justify-center items-center order-1 md:order-1">
-          <img src="images/5-BANNER-NAU-WEB-687w.webp" srcset="images/5-BANNER-NAU-WEB-687w.webp 687w,
-          images/5-BANNER-NAU-WEB.webp 902w"
-            sizes="(min-width: 1040px) 372px, (min-width: 960px) 336px, (min-width: 780px) 36.25vw, (min-width: 480px) 384px, calc(92.5vw - 42px)"
+          <img src="images/5-BANNER-NAU-WEB-480w.webp"
             alt="Personas mirando reflexivamente hacia el futuro" loading="lazy"
-            class="w-full max-w-sm md:max-w-sm h-auto object-contain" width="687" height="413"> <!-- Imagen reflexiva -->
+            class="w-full max-w-sm md:max-w-sm h-auto object-contain" width="480" height="288"> <!-- Imagen reflexiva -->
         </div> <!-- Fin div imagen -->
         <div
           class="bg-white text-custom-darker-teal p-4 md:p-8 rounded-lg text-center md:text-left flex flex-col justify-center items-center md:items-start order-2 md:order-2">
@@ -189,8 +181,7 @@
     </section> <!-- Fin Sección de contenido 3 -->
 
     <!-- Sección Hero 3: Llamada final a la acción "Esa vida es posible" -->
-    <section class="hero-bg max-w-[1920px] mx-auto bg-custom-medium-teal text-white py-12 md:py-16 lg:py-24 px-4 text-center"
-      style="background-image: url('images/6-BANNER-NAU-WEB.webp')">
+    <section class="hero-bg hero-background-index-3 bg-custom-medium-teal text-white py-12 md:py-16 lg:py-24 px-4 text-center">
       <div class="px-4 md:px-8">
         <p class="p-base-hero max-w-2xl mx-auto">
           Imagina vivir sin las cargas del pasado, sin miedo a avanzar.

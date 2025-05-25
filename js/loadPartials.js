@@ -23,7 +23,35 @@ async function loadHTML(url, elementId) {
         }
         const text = await response.text();
         // Insertar el HTML cargado en el elemento especificado.
+
+        if (url === '_footer.html') {
+            console.log(`loadPartials.js: Contenido crudo de _footer.html (primeros 300 caracteres): ${text.substring(0, 300)}`);
+            if (text.includes('<script src="js/main.js">')) {
+                console.log("loadPartials.js: El contenido de _footer.html SÍ incluye la etiqueta script para main.js ANTES de la inyección.");
+            } else {
+                console.error("loadPartials.js: ERROR CRÍTICO - El contenido de _footer.html NO incluye la etiqueta script para main.js ANTES de la inyección.");
+            }
+        }
+ 
         element.innerHTML = text;
+ 
+        // Específicamente para el footer, manejar la carga del script main.js
+        if (url === '_footer.html') {
+            const mainScriptInDOM = element.querySelector('script[src="js/main.js"]');
+            if (mainScriptInDOM) {
+                console.log("loadPartials.js: Etiqueta <script src='js/main.js'> ENCONTRADA en el DOM después de inyectar el footer.");
+                // Eliminar el script original insertado por innerHTML (que no se ejecuta)
+                mainScriptInDOM.remove();
+
+                // Crear un nuevo elemento script y añadirlo al body para que se ejecute
+                const newScript = document.createElement('script');
+                newScript.src = 'js/main.js'; // O podrías tomarlo de mainScriptInDOM.src
+                document.body.appendChild(newScript);
+                console.log("loadPartials.js: Nuevo script para main.js creado y añadido dinámicamente al body.");
+            } else {
+                console.error("loadPartials.js: ERROR CRÍTICO - Etiqueta <script src='js/main.js'> NO FUE ENCONTRADA en el DOM después de inyectar el footer.");
+            }
+        }
     } catch (error) {
         console.error(`Error al cargar ${url}:`, error);
         // Opcional: Mostrar un mensaje de error en la interfaz de usuario dentro del elemento.

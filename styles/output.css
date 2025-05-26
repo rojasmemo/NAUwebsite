@@ -1772,7 +1772,7 @@ select {
   /* <- Tu imagen pequeña */
 }
 
-/* Media query para pantallas medianas/grandes (a partir de 1024px) para .hero-background-sn-1 */
+/* Media query para pantallas medianas/grandes (entre 601px y 1200px) para .hero-background-sn-1 */
 
 @media (min-width: 601px) {
   /* Ajusta este breakpoint si es necesario */
@@ -1803,7 +1803,7 @@ select {
   /* <- Tu imagen pequeña */
 }
 
-/* Media query para pantallas medianas/grandes (a partir de 1024px) para .hero-background-sn-1 */
+/* Media query para pantallas medianas/grandes (entre 601px y 1200px) para .hero-background-sn-1 */
 
 @media (min-width: 601px) {
   /* Ajusta este breakpoint si es necesario */
@@ -1826,62 +1826,188 @@ select {
   }
 }
 
-/* Estilos para el fondo de la sección Hero 1 en la página "Encuentros" (encuentros.html) */
+/* Estilos para el fondo de la sección Hero 1 en la página "encuentros" (encuentros.html) */
 
 .hero-background-encuentros-1 {
-  /* Imagen por defecto para pantallas pequeñas (ej: 1024px de ancho) */
-  background-image: url('../images/BANNER-INICIAL-ENCUENTROS.webp');
-  /* <- Tu imagen pequeña/mediana */
+  /* Imagen por defecto para pantallas pequeñas (hasta 600px de ancho) */
+  background-image: url('../images/BANNER-INICIAL-ENCUENTROS-480w.webp');
+  /* <- Tu imagen pequeña */
 }
 
-/* Media query para pantallas medianas/grandes (a partir de 1024px) para .hero-background-encuentros-1 */
+/* Media query para pantallas medianas/grandes (entre 601px y 1200px) para .hero-background-encuentros-1 */
 
-@media (min-width: 1024px) {
+@media (min-width: 601px) {
   /* Ajusta este breakpoint si es necesario */
 
   .hero-background-encuentros-1 {
-    /* Imagen para escritorios estándar (ej: 1920px de ancho) */
-    background-image: url('../images/BANNER-INICIAL-ENCUENTROS.webp');
+    /* Imagen para escritorios estándar (entre 601px y 1200px) */
+    background-image: url('../images/BANNER-INICIAL-ENCUENTROS-1024w.webp');
+    /* <- Tu imagen mediana */
+  }
+}
+
+/* Media query para pantallas medianas/grandes (a partir de 1201px) para .hero-background-encuentros-1 */
+
+@media (min-width: 1201px) {
+  /* Ajusta este breakpoint si es necesario */
+
+  .hero-background-encuentros-1 {
+    background-image: url('../images/BANNER-INICIAL-ENCUENTROS-1920w.webp');
     /* <- Tu imagen mediana/grande */
   }
 }
 
-/* Estilos para el fondo de la sección Hero 1 en la página "Simbolismo Numérico" (simbolismo-numerico.html) */
+/* Estilos para el fondo de la sección Hero 2 en la página "encuentros" (encuentros.html) */
 
-.hero-background-simbolismo-1 {
-  /* Imagen por defecto para pantallas pequeñas (ej: 1024px de ancho) */
-  background-image: url('../images/BANNER-INICIAL-NUM.webp');
-  /* <- Tu imagen pequeña/mediana */
+.hero-background-encuentros-2 {
+  /* Imagen por defecto para pantallas pequeñas (hasta 600px de ancho) */
+  background-image: url('../images/BANNER-FINAL-ENCUENTROS-480w.webp');
+  /* <- Tu imagen pequeña */
 }
 
-/* Media query para pantallas medianas/grandes (a partir de 1024px) para .hero-background-simbolismo-1 */
+/* Media query para pantallas medianas/grandes (entre 601px y 1200px) para .hero-background-encuentros-2 */
 
-@media (min-width: 1024px) {
+@media (min-width: 601px) {
+  /* Ajusta este breakpoint si es necesario */
+
+  .hero-background-encuentros-2 {
+    /* Imagen para escritorios estándar (entre 601px y 1200px) */
+    background-image: url('../images/BANNER-FINAL-ENCUENTROS-1024w.webp');
+    /* <- Tu imagen mediana */
+  }
+}
+
+/* Media query para pantallas medianas/grandes (a partir de 1201px) para .hero-background-encuentros-2 */
+
+@media (min-width: 1201px) {
+  /* Ajusta este breakpoint si es necesario */
+
+  .hero-background-encuentros-2 {
+    background-image: url('../images/BANNER-FINAL-ENCUENTROS-1920w.webp');
+    /* <- Tu imagen mediana/grande */
+  }
+}
+
+/* Estilos para el fondo de la sección Hero 1 en la página "simbolismo" (simbolismo.html) */
+
+.hero-background-simbolismo-1 {
+  /* Imagen por defecto para pantallas pequeñas (hasta 600px de ancho) */
+  background-image: url('../images/BANNER-INICIAL-NUM-480w.webp');
+  /* <- Tu imagen pequeña */
+}
+
+/* Media query para pantallas medianas/grandes (entre 601px y 1200px) para .hero-background-simbolismo-1 */
+
+@media (min-width: 601px) {
   /* Ajusta este breakpoint si es necesario */
 
   .hero-background-simbolismo-1 {
-    /* Imagen para escritorios estándar (ej: 1920px de ancho) */
-    background-image: url('../images/BANNER-INICIAL-NUM.webp');
+    /* Imagen para escritorios estándar (entre 601px y 1200px) */
+    background-image: url('../images/BANNER-INICIAL-NUM-1024w.webp');
+    /* <- Tu imagen mediana */
+  }
+}
+
+/* Media query para pantallas medianas/grandes (a partir de 1201px) para .hero-background-simbolismo-1 */
+
+@media (min-width: 1201px) {
+  /* Ajusta este breakpoint si es necesario */
+
+  .hero-background-simbolismo-1 {
+    background-image: url('../images/BANNER-INICIAL-NUM-1920w.webp');
     /* <- Tu imagen mediana/grande */
   }
 }
 
-/* Estilos para el fondo de la sección Hero 1 en la página "Donar" (donar.html) */
+/* Estilos para el fondo de la sección Hero 2 en la página "simbolismo" (simbolismo.html) */
 
-.hero-background-donar-1 {
-  /* Imagen por defecto para pantallas pequeñas (ej: 1024px de ancho) */
-  background-image: url('../images/1-DONA.webp');
-  /* <- Tu imagen pequeña/mediana */
+.hero-background-simbolismo-2 {
+  /* Imagen por defecto para pantallas pequeñas (hasta 600px de ancho) */
+  background-image: url('../images/BANNER-FINAL-NUM-480w.webp');
+  /* <- Tu imagen pequeña */
 }
 
-/* Media query para pantallas medianas/grandes (a partir de 1024px) para .hero-background-donar-1 */
+/* Media query para pantallas medianas/grandes (entre 601px y 1200px) para .hero-background-simbolismo-2 */
 
-@media (min-width: 1024px) {
+@media (min-width: 601px) {
+  /* Ajusta este breakpoint si es necesario */
+
+  .hero-background-simbolismo-2 {
+    /* Imagen para escritorios estándar (entre 601px y 1200px) */
+    background-image: url('../images/BANNER-FINAL-NUM-1024w.webp');
+    /* <- Tu imagen mediana */
+  }
+}
+
+/* Media query para pantallas medianas/grandes (a partir de 1201px) para .hero-background-simbolismo-2 */
+
+@media (min-width: 1201px) {
+  /* Ajusta este breakpoint si es necesario */
+
+  .hero-background-simbolismo-2 {
+    background-image: url('../images/BANNER-FINAL-NUM-1920w.webp');
+    /* <- Tu imagen mediana/grande */
+  }
+}
+
+/* Estilos para el fondo de la sección Hero 1 en la página "donar" (donar.html) */
+
+.hero-background-donar-1 {
+  /* Imagen por defecto para pantallas pequeñas (hasta 600px de ancho) */
+  background-image: url('../images/BANNER-INICIAL-DONAR-480w.webp');
+  /* <- Tu imagen pequeña */
+}
+
+/* Media query para pantallas medianas/grandes (entre 601px y 1200px) para .hero-background-donar-1 */
+
+@media (min-width: 601px) {
   /* Ajusta este breakpoint si es necesario */
 
   .hero-background-donar-1 {
-    /* Imagen para escritorios estándar (ej: 1920px de ancho) */
-    background-image: url('../images/1-DONA.webp');
+    /* Imagen para escritorios estándar (entre 601px y 1200px) */
+    background-image: url('../images/BANNER-INICIAL-DONAR-1024w.webp');
+    /* <- Tu imagen mediana */
+  }
+}
+
+/* Media query para pantallas medianas/grandes (a partir de 1201px) para .hero-background-donar-1 */
+
+@media (min-width: 1201px) {
+  /* Ajusta este breakpoint si es necesario */
+
+  .hero-background-donar-1 {
+    background-image: url('../images/BANNER-INICIAL-DONAR-1920w.webp');
+    /* <- Tu imagen mediana/grande */
+  }
+}
+
+/* Estilos para el fondo de la sección Hero 2 en la página "donar" (donar.html) */
+
+.hero-background-donar-2 {
+  /* Imagen por defecto para pantallas pequeñas (hasta 600px de ancho) */
+  background-image: url('../images/BANNER-FINAL-DONAR-480w.webp');
+  /* <- Tu imagen pequeña */
+}
+
+/* Media query para pantallas medianas/grandes (entre 601px y 1200px) para .hero-background-donar-2 */
+
+@media (min-width: 601px) {
+  /* Ajusta este breakpoint si es necesario */
+
+  .hero-background-donar-2 {
+    /* Imagen para escritorios estándar (entre 601px y 1200px) */
+    background-image: url('../images/BANNER-FINAL-DONAR-1024w.webp');
+    /* <- Tu imagen mediana */
+  }
+}
+
+/* Media query para pantallas medianas/grandes (a partir de 1201px) para .hero-background-donar-2 */
+
+@media (min-width: 1201px) {
+  /* Ajusta este breakpoint si es necesario */
+
+  .hero-background-donar-2 {
+    background-image: url('../images/BANNER-FINAL-DONAR-1920w.webp');
     /* <- Tu imagen mediana/grande */
   }
 }

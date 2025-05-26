@@ -2443,6 +2443,11 @@ select {
     padding-bottom: 6rem;
   }
 
+  .xl\:py-28 {
+    padding-top: 7rem;
+    padding-bottom: 7rem;
+  }
+
   .xl\:py-32 {
     padding-top: 8rem;
     padding-bottom: 8rem;
@@ -2455,11 +2460,6 @@ select {
 }
 
 @media (min-width: 1536px) {
-  .\32xl\:py-32 {
-    padding-top: 8rem;
-    padding-bottom: 8rem;
-  }
-
   .\32xl\:py-40 {
     padding-top: 10rem;
     padding-bottom: 10rem;
@@ -2468,6 +2468,19 @@ select {
   .\32xl\:py-44 {
     padding-top: 11rem;
     padding-bottom: 11rem;
+  }
+
+  .\32xl\:py-48 {
+    padding-top: 12rem;
+    padding-bottom: 12rem;
+  }
+
+  .\32xl\:pb-56 {
+    padding-bottom: 14rem;
+  }
+
+  .\32xl\:pt-28 {
+    padding-top: 7rem;
   }
 
   .\32xl\:text-xl {

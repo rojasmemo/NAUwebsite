@@ -2155,6 +2155,10 @@ select {
     height: 131px;
   }
 
+  .md\:h-20 {
+    height: 5rem;
+  }
+
   .md\:max-h-full {
     max-height: 100%;
   }

@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Formulario de Contacto con FormSubmit.co</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            margin: 0;
+            padding: 20px;
+            background-color: #f4f4f4;
+            color: #333;
+        }
+        .container {
+            max-width: 600px;
+            margin: 30px auto;
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        h1 {
+            color: #333;
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: bold;
+        }
+        input[type="text"],
+        input[type="email"],
+        textarea {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 20px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            box-sizing: border-box; /* Para que el padding no afecte el ancho total */
+        }
+        textarea {
+            height: 120px;
+            resize: vertical; /* Permite al usuario redimensionar verticalmente */
+        }
+        button[type="submit"] {
+            display: inline-block;
+            background-color: #007bff;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 16px;
+            transition: background-color 0.3s ease;
+        }
+        button[type="submit"]:hover {
+            background-color: #0056b3;
+        }
+        /* Estilos para mensajes de ayuda o campos ocultos de FormSubmit */
+        .formsubmit-fields {
+            display: none; /* Ocultos por defecto, FormSubmit los usa internamente */
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <h1>Contáctanos</h1>
+        <p>Envíanos tus preguntas o requerimientos y te responderemos a la brevedad.</p>
+
+        <!--
+            INSTRUCCIONES IMPORTANTES PARA FORMSUBMIT.CO:
+            1. Reemplaza 'TU_CORREO_ELECTRONICO@example.com' con tu dirección de email real.
+            2. La primera vez que envíes un formulario a un nuevo email, FormSubmit te enviará
+               un correo de confirmación a esa dirección. Debes hacer clic en el enlace de
+               confirmación para empezar a recibir los envíos del formulario.
+        -->
+        <form action="https://formsubmit.co/naufundacion@gmail.com" method="POST">
+            <div>
+                <label for="nombre">Nombre Completo:</label>
+                <input type="text" id="nombre" name="nombre" placeholder="Ej: Ana Pérez" required>
+            </div>
+
+            <div>
+                <label for="email">Correo Electrónico:</label>
+                <input type="email" id="email" name="email" placeholder="Ej: ana.perez@correo.com" required>
+            </div>
+
+            <div>
+                <label for="asunto">Asunto:</label>
+                <!-- Cambiamos el input de texto por un select -->
+                <select id="asunto" name="asunto" required>
+                    <option value="" disabled selected>Selecciona una opción...</option> 
+                    <!-- La primera opción está deshabilitada y seleccionada por defecto como placeholder -->
+                    <option value="Encuentros">Encuentros</option>
+                    <option value="Simbolismo Numerico">Simbolismo Numérico</option>
+                    <option value="Donaciones">Donaciones</option>
+                    <option value="Otro">Otro</option>
+                </select>
+                <!-- Si quieres que "Asunto" no sea obligatorio, elimina el 'required' del <select> y la opción deshabilitada -->
+            </div>
+
+            <div>
+                <label for="mensaje">Tu Mensaje o Pregunta:</label>
+                <textarea id="mensaje" name="mensaje" placeholder="Escribe aquí tu mensaje detallado..." required></textarea>
+            </div>
+
+            <!-- CAMPOS OPCIONALES DE FORMSUBMIT.CO -->
+
+            <!-- 1. Redirigir a una página de "Gracias" personalizada después del envío -->
+            <!--    Descomenta la siguiente línea y cambia la URL por la de tu página de gracias. -->
+            <!-- <input type="hidden" name="_next" value="https://tusitio.com/gracias.html"> -->
+
+            <!-- 2. Cambiar el asunto del email que recibes de FormSubmit -->
+            <!--    Descomenta la siguiente línea y personaliza el asunto. -->
+            <!-- <input type="hidden" name="_subject" value="¡Nuevo mensaje desde tu sitio web!"> -->
+
+            <!-- 3. Para deshabilitar el CAPTCHA (NO RECOMENDADO a menos que tengas otra protección anti-spam) -->
+            <!-- <input type="hidden" name="_captcha" value="false"> -->
+
+            <!-- 4. Para añadir un campo "CC" o "BCC" (Copia Carbón o Copia Carbón Oculta) -->
+            <!--    Descomenta y reemplaza con el email deseado. -->
+            <!-- <input type="hidden" name="_cc" value="otro_correo@example.com"> -->
+
+            <!-- 5. Plantilla de email (para usuarios de pago de FormSubmit) -->
+            <!-- <input type="hidden" name="_template" value="table"> -->
+
+            <div>
+                <button type="submit">Enviar Mensaje</button>
+            </div>
+        </form>
+    </div>
+
+</body>
+</html>

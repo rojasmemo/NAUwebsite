@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description"
+    content="Descubre NAU: te ayudamos a conectar con tu esencia, romper bloqueos y transformar tu vida a través de encuentros y simbolismo numérico.">
+  <title>Dona ahora NAU</title>
+  
+  <!-- PRECARGA DE FUENTES: Mejora el rendimiento al indicar al navegador que cargue estas fuentes prioritariamente -->
+  <link rel="preload" href="fonts/poppins-v22-latin-regular.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="fonts/poppins-v22-latin-600.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="fonts/poppins-v22-latin-700.woff2" as="font" type="font/woff2" crossorigin>
+
+  <!-- Enlace a la hoja de estilos principal (generada por Tailwind CSS) -->
+  <link href="styles/output.css" rel="stylesheet">
+</head>
+
+<body class="bg-custom-pale-teal font-['Poppins']"> <!-- Fondo de página con tu teal pálido -->
+  <!-- Placeholder para el encabezado: El contenido del header se carga aquí dinámicamente mediante JavaScript -->
+  <div id="header-placeholder" class="min-h-[80px]"></div>
+
+  <!-- ============================================= -->
+  <!--            CONTENIDO PRINCIPAL DE LA PÁGINA   -->
+  <!-- ============================================= -->
+  <main>
+    <div class="container mx-auto max-w-2xl p-4 md:p-8 my-10 bg-white shadow-lg rounded-lg">
+        <div class="text-center mb-6 md:mb-8">
+            <h1 class="text-2xl md:text-3xl font-bold text-custom-darker-teal">Contáctanos</h1>
+            <p class="text-custom-dark-teal mt-2">Envíanos tus preguntas o requerimientos.</p>
+        </div>
+
+        <!--
+            INSTRUCCIONES IMPORTANTES PARA FORMSUBMIT.CO:
+            1. Reemplaza 'TU_CORREO_ELECTRONICO@example.com' con tu dirección de email real.
+            2. La primera vez que envíes un formulario a un nuevo email, FormSubmit te enviará
+               un correo de confirmación a esa dirección. Debes hacer clic en el enlace de
+               confirmación para empezar a recibir los envíos del formulario.
+        -->
+        <form action="https://formsubmit.co/naufundacion@gmail.com" method="POST" class="space-y-6">
+            <div>
+                <label for="nombre" class="block text-sm font-semibold text-custom-dark-teal mb-1">Nombre Completo:</label>
+                <input type="text" id="nombre" name="nombre" placeholder="Ej: Ana Pérez" required
+                       class="mt-1 block w-full px-3 py-2 bg-white border border-custom-gray-blue rounded-md shadow-sm
+                              placeholder-gray-400 focus:outline-none focus:ring-custom-medium-teal focus:border-custom-medium-teal
+                              sm:text-sm text-custom-darker-teal">
+            </div>
+
+            <div>
+                <label for="email" class="block text-sm font-semibold text-custom-dark-teal mb-1">Correo Electrónico:</label>
+                <input type="email" id="email" name="email" placeholder="Ej: ana.perez@correo.com" required
+                       class="mt-1 block w-full px-3 py-2 bg-white border border-custom-gray-blue rounded-md shadow-sm
+                              placeholder-gray-400 focus:outline-none focus:ring-custom-medium-teal focus:border-custom-medium-teal
+                              sm:text-sm text-custom-darker-teal">
+            </div>
+
+            <div>
+                <label for="asunto" class="block text-sm font-semibold text-custom-dark-teal mb-1">Asunto:</label>
+                <!-- Cambiamos el input de texto por un select -->
+                <select id="asunto" name="asunto" required
+                        class="mt-1 block w-full px-3 py-2 bg-white border border-custom-gray-blue rounded-md shadow-sm
+                               focus:outline-none focus:ring-custom-medium-teal focus:border-custom-medium-teal
+                               sm:text-sm text-custom-darker-teal">
+                    <option value="" disabled selected class="text-gray-500">Selecciona una opción...</option> 
+                    <!-- La primera opción está deshabilitada y seleccionada por defecto como placeholder -->
+                    <option value="Encuentros" class="text-custom-darker-teal">Encuentros</option>
+                    <option value="Simbolismo Numerico" class="text-custom-darker-teal">Simbolismo Numérico</option>
+                    <option value="Donaciones" class="text-custom-darker-teal">Donaciones</option>
+                    <option value="Otro" class="text-custom-darker-teal">Otro</option>
+                </select>
+                <!-- Si quieres que "Asunto" no sea obligatorio, elimina el 'required' del <select> y la opción deshabilitada -->
+            </div>
+
+            <div>
+                <label for="mensaje" class="block text-sm font-semibold text-custom-dark-teal mb-1">Tu Mensaje o Pregunta:</label>
+                <textarea id="mensaje" name="mensaje" rows="4" placeholder="Escribe aquí tu mensaje detallado..." required
+                          class="mt-1 block w-full px-3 py-2 bg-white border border-custom-gray-blue rounded-md shadow-sm
+                                 placeholder-gray-400 focus:outline-none focus:ring-custom-medium-teal focus:border-custom-medium-teal
+                                 sm:text-sm text-custom-darker-teal resize-y"></textarea>
+            </div>
+
+            <!-- CAMPOS OPCIONALES DE FORMSUBMIT.CO -->
+
+            <!-- 1. Redirigir a una página de "Gracias" personalizada después del envío -->
+            <!--    Asegúrate de que esta URL sea correcta y la página exista. -->
+            <input type="hidden" name="_next" value="https://rojasmemo.github.io/NAUwebsite/gracias.html">
+
+            <!-- 2. Cambiar el asunto del email que recibes de FormSubmit -->
+            <input type="hidden" name="_subject" value="¡Nuevo mensaje desde tu sitio web NAU!">
+
+            <!-- 3. Para deshabilitar el CAPTCHA (NO RECOMENDADO a menos que tengas otra protección anti-spam) -->
+            <!-- <input type="hidden" name="_captcha" value="false"> -->
+
+            <!-- 4. Para añadir un campo "CC" o "BCC" (Copia Carbón o Copia Carbón Oculta) -->
+            <!--    Descomenta y reemplaza con el email deseado. -->
+            <!-- <input type="hidden" name="_cc" value="otro_correo@example.com"> -->
+
+            <!-- 5. Plantilla de email (para usuarios de pago de FormSubmit) -->
+            <!-- <input type="hidden" name="_template" value="table"> -->
+
+            <div>
+                <button type="submit"
+                        class="w-full flex justify-center py-2.5 px-4 border border-transparent rounded-md shadow-sm
+                               text-sm font-medium text-white bg-custom-dark-teal hover:bg-custom-specific-blue
+                               focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-custom-specific-blue">
+                    Enviar Mensaje
+                </button>
+            </div>
+        </form>
+    </div>
+  </main>
+  <!-- Fin del contenido principal -->
+
+  <!-- Placeholder para el pie de página: El contenido del footer se carga aquí dinámicamente mediante JavaScript -->
+  <div id="footer-placeholder"></div>
+
+  <!-- ============================================= -->
+  <!--                 SCRIPTS GLOBALES              -->
+  <!-- ============================================= -->
+  <!-- Script para cargar parciales (header y footer) y manejar la funcionalidad del menú hamburguesa en móviles -->
+  <script src="js/loadPartials.js"></script>
+</body>
+
+</html>

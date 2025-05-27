@@ -28,7 +28,6 @@
     <div class="container mx-auto max-w-2xl p-4 md:p-8 my-10 bg-white shadow-lg rounded-lg">
         <div class="text-center mb-6 md:mb-8">
             <h1 class="text-2xl md:text-3xl font-bold text-custom-darker-teal">Contáctanos</h1>
-            <p class="text-custom-dark-teal mt-2">Envíanos tus preguntas o requerimientos.</p>
         </div>
 
         <!--
@@ -40,7 +39,7 @@
         -->
         <form action="https://formsubmit.co/naufundacion@gmail.com" method="POST" class="space-y-6">
             <div>
-                <label for="nombre" class="block text-sm font-semibold text-custom-dark-teal mb-1">Nombre Completo:</label>
+                <label for="nombre" class="block text-sm font-semibold text-custom-dark-teal mb-1">* Nombre Completo :</label>
                 <input type="text" id="nombre" name="nombre" placeholder="Ej: Ana Pérez" required
                        class="mt-1 block w-full px-3 py-2 bg-white border border-custom-gray-blue rounded-md shadow-sm
                               placeholder-gray-400 focus:outline-none focus:ring-custom-medium-teal focus:border-custom-medium-teal
@@ -48,7 +47,7 @@
             </div>
 
             <div>
-                <label for="email" class="block text-sm font-semibold text-custom-dark-teal mb-1">Correo Electrónico:</label>
+                <label for="email" class="block text-sm font-semibold text-custom-dark-teal mb-1">*Correo Electrónico:</label>
                 <input type="email" id="email" name="email" placeholder="Ej: ana.perez@correo.com" required
                        class="mt-1 block w-full px-3 py-2 bg-white border border-custom-gray-blue rounded-md shadow-sm
                               placeholder-gray-400 focus:outline-none focus:ring-custom-medium-teal focus:border-custom-medium-teal
@@ -56,7 +55,7 @@
             </div>
 
             <div>
-                <label for="asunto" class="block text-sm font-semibold text-custom-dark-teal mb-1">Asunto:</label>
+                <label for="asunto" class="block text-sm font-semibold text-custom-dark-teal mb-1">* Asunto:</label>
                 <!-- Cambiamos el input de texto por un select -->
                 <select id="asunto" name="asunto" required
                         class="mt-1 block w-full px-3 py-2 bg-white border border-custom-gray-blue rounded-md shadow-sm
@@ -73,7 +72,7 @@
             </div>
 
             <div>
-                <label for="mensaje" class="block text-sm font-semibold text-custom-dark-teal mb-1">Tu Mensaje o Pregunta:</label>
+                <label for="mensaje" class="block text-sm font-semibold text-custom-dark-teal mb-1">* Tu Mensaje o Pregunta:</label>
                 <textarea id="mensaje" name="mensaje" rows="4" placeholder="Escribe aquí tu mensaje detallado..." required
                           class="mt-1 block w-full px-3 py-2 bg-white border border-custom-gray-blue rounded-md shadow-sm
                                  placeholder-gray-400 focus:outline-none focus:ring-custom-medium-teal focus:border-custom-medium-teal

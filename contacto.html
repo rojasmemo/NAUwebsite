@@ -86,11 +86,15 @@
             <!--    Asegúrate de que esta URL sea correcta y la página exista. -->
             <input type="hidden" name="_next" value="https://rojasmemo.github.io/NAUwebsite/gracias.html">
 
-            <!-- 2. Cambiar el asunto del email que recibes de FormSubmit -->
+            <!-- 2. Asunto del email para FormSubmit -->
             <input type="hidden" name="_subject" value="¡Nuevo mensaje desde tu sitio web NAU!">
 
-            <!-- 3. Para deshabilitar el CAPTCHA (NO RECOMENDADO a menos que tengas otra protección anti-spam) -->
-            <!-- <input type="hidden" name="_captcha" value="false"> -->
+            <!-- 3. Deshabilitar CAPTCHA por defecto de FormSubmit (ya que usaremos Google reCAPTCHA) -->
+            <input type="hidden" name="_captcha" value="false">
+
+            <!-- 4. Campo para la Clave Secreta de Google reCAPTCHA (para FormSubmit) -->
+            <input type="hidden" name="_recaptcha_secret" value="6LcCKEwrAAAAAL77j2RBxAcBPOnLHRJDxbNG6kM4">
+            <!-- REEMPLAZA con tu Clave Secreta real -->
 
             <!-- 4. Para añadir un campo "CC" o "BCC" (Copia Carbón o Copia Carbón Oculta) -->
             <!--    Descomenta y reemplaza con el email deseado. -->
@@ -98,6 +102,9 @@
 
             <!-- 5. Plantilla de email (para usuarios de pago de FormSubmit) -->
             <!-- <input type="hidden" name="_template" value="table"> -->
+
+            <!-- Campo oculto para el token de respuesta de Google reCAPTCHA -->
+            <input type="hidden" id="recaptchaResponse" name="g-recaptcha-response">
 
             <div>
                 <button type="submit"
@@ -120,6 +127,30 @@
   <!-- ============================================= -->
   <!-- Script para cargar parciales (header y footer) y manejar la funcionalidad del menú hamburguesa en móviles -->
   <script src="js/loadPartials.js"></script>
+
+  <!-- Script de Google reCAPTCHA v3 -->
+  <!-- REEMPLAZA 'TU_CLAVE_DEL_SITIO_RECAPTCHA' con tu Clave del Sitio real -->
+  <script src="https://www.google.com/recaptcha/api.js?render=6LcCKEwrAAAAAPE7cd3AUr77z8Ql05_lyBc5k7OS"></script>
+  <script>
+    function onClick(e) {
+      e.preventDefault(); // Prevenir el envío inmediato del formulario
+      grecaptcha.ready(function() {
+        // REEMPLAZA 'TU_CLAVE_DEL_SITIO_RECAPTCHA' con tu Clave del Sitio real
+        grecaptcha.execute('6LcCKEwrAAAAAPE7cd3AUr77z8Ql05_lyBc5k7OS', {action: 'submit'}).then(function(token) {
+          // Añade el token al campo oculto
+          document.getElementById('recaptchaResponse').value = token;
+          // Envía el formulario
+          e.target.closest('form').submit();
+        });
+      });
+    }
+
+    // Asigna la función onClick al evento de clic del botón de envío
+    // Es mejor si tu botón de envío tiene un ID, por ejemplo: id="submitButton"
+    // document.getElementById('submitButton').addEventListener('click', onClick);
+    // O, si solo hay un botón de tipo submit en el formulario:
+    document.querySelector('form[action^="https://formsubmit.co"] button[type="submit"]').addEventListener('click', onClick);
+  </script>
 </body>
 
 </html>

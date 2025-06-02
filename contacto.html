@@ -40,7 +40,7 @@
         <form action="https://formsubmit.co/naufundacion@gmail.com" method="POST" class="space-y-6">
             <div>
                 <label for="nombre" class="block text-sm font-semibold text-custom-dark-teal mb-1">* Nombre Completo :</label>
-                <input type="text" id="nombre" name="nombre" placeholder="Ej: Ana Pérez" required
+                <input type="text" id="nombre" name="nombre" placeholder="Ej: Ana Pérez" required autocomplete="name"
                        class="mt-1 block w-full px-3 py-2 bg-white border border-custom-gray-blue rounded-md shadow-sm
                               placeholder-gray-400 focus:outline-none focus:ring-custom-medium-teal focus:border-custom-medium-teal
                               sm:text-sm text-custom-darker-teal">
@@ -48,7 +48,7 @@
 
             <div>
                 <label for="email" class="block text-sm font-semibold text-custom-dark-teal mb-1">*Correo Electrónico:</label>
-                <input type="email" id="email" name="email" placeholder="Ej: ana.perez@correo.com" required
+                <input type="email" id="email" name="email" placeholder="Ej: ana.perez@correo.com" required autocomplete="email"
                        class="mt-1 block w-full px-3 py-2 bg-white border border-custom-gray-blue rounded-md shadow-sm
                               placeholder-gray-400 focus:outline-none focus:ring-custom-medium-teal focus:border-custom-medium-teal
                               sm:text-sm text-custom-darker-teal">
@@ -57,11 +57,11 @@
             <div>
                 <label for="asunto" class="block text-sm font-semibold text-custom-dark-teal mb-1">* Asunto:</label>
                 <!-- Cambiamos el input de texto por un select -->
-                <select id="asunto" name="asunto" required
+                <select id="asunto" name="asunto" required autocomplete="off"
                         class="mt-1 block w-full px-3 py-2 bg-white border border-custom-gray-blue rounded-md shadow-sm
                                focus:outline-none focus:ring-custom-medium-teal focus:border-custom-medium-teal
                                sm:text-sm text-custom-darker-teal">
-                    <option value="" disabled selected class="text-gray-500">Selecciona una opción...</option> 
+                    <option value="" disabled selected class="text-gray-500">Selecciona una opción...</option>
                     <!-- La primera opción está deshabilitada y seleccionada por defecto como placeholder -->
                     <option value="Encuentros" class="text-custom-darker-teal">Encuentros</option>
                     <option value="Simbolismo Numerico" class="text-custom-darker-teal">Simbolismo Numérico</option>
@@ -73,7 +73,7 @@
 
             <div>
                 <label for="mensaje" class="block text-sm font-semibold text-custom-dark-teal mb-1">* Tu Mensaje o Pregunta:</label>
-                <textarea id="mensaje" name="mensaje" rows="4" placeholder="Escribe aquí tu mensaje detallado..." required
+                <textarea id="mensaje" name="mensaje" rows="4" placeholder="Escribe aquí tu mensaje detallado..." required autocomplete="off"
                           class="mt-1 block w-full px-3 py-2 bg-white border border-custom-gray-blue rounded-md shadow-sm
                                  placeholder-gray-400 focus:outline-none focus:ring-custom-medium-teal focus:border-custom-medium-teal
                                  sm:text-sm text-custom-darker-teal resize-y"></textarea>
@@ -83,7 +83,8 @@
 
             <!-- 1. Redirigir a una página de "Gracias" personalizada después del envío -->
             <!--    Asegúrate de que esta URL sea correcta y la página exista. -->
-            <input type="hidden" name="_next" value="https://rojasmemo.github.io/NAUwebsite/gracias.html">
+            <!--    <input type="hidden" name="_next" value="https://rojasmemo.github.io/NAUwebsite/gracias.html"> -->
+            <input type="hidden" name="_next" value="https://naufundacion.org/gracias.html">
 
             <!-- 2. Asunto del email para FormSubmit -->
             <input type="hidden" name="_subject" value="¡Nuevo mensaje desde tu sitio web NAU!">
@@ -92,7 +93,7 @@
             <input type="hidden" name="_captcha" value="false">
 
             <!-- 4. Campo para la Clave Secreta de Google reCAPTCHA (para FormSubmit) -->
-            <input type="hidden" name="_recaptcha_secret" value="6LcCKEwrAAAAAL77j2RBxAcBPOnLHRJDxbNG6kM4">
+            <input type="hidden" name="_recaptcha_secret" value="6LfuV00rAAAAAF_2HX6Y7Ox4VtQngza79biwbVid">
             <!-- REEMPLAZA con tu Clave Secreta real -->
 
             <!-- 4. Para añadir un campo "CC" o "BCC" (Copia Carbón o Copia Carbón Oculta) -->
@@ -106,7 +107,7 @@
             <input type="hidden" id="recaptchaResponse" name="g-recaptcha-response">
 
             <div>
-                <button type="submit"
+                <button type="submit" id="submitButton"
                         class="w-full flex justify-center py-2.5 px-4 border border-transparent rounded-md shadow-sm
                                text-sm font-medium text-white bg-custom-dark-teal hover:bg-custom-specific-blue
                                focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-custom-specific-blue">
@@ -129,17 +130,31 @@
 
   <!-- Script de Google reCAPTCHA v3 -->
   <!-- REEMPLAZA 'TU_CLAVE_DEL_SITIO_RECAPTCHA' con tu Clave del Sitio real -->
-  <script src="https://www.google.com/recaptcha/api.js?render=6LcCKEwrAAAAAPE7cd3AUr77z8Ql05_lyBc5k7OS"></script>
+  <script src="https://www.google.com/recaptcha/api.js?render=6LfuV00rAAAAAKkHWyUtnsaYSag4DBMlQYJMyDyr"></script>
   <script>
     function onClick(e) {
+      const form = e.target.closest('form');
       e.preventDefault(); // Prevenir el envío inmediato del formulario
+
+      // Primero, verificar la validación HTML5 del formulario
+      if (!form.checkValidity()) {
+        // Si el formulario no es válido, muestra los mensajes de validación del navegador
+        // y no continúes con reCAPTCHA ni el envío.
+        form.reportValidity();
+        return;
+      }
+
+      // Si el formulario es válido, procede con reCAPTCHA
       grecaptcha.ready(function() {
         // REEMPLAZA 'TU_CLAVE_DEL_SITIO_RECAPTCHA' con tu Clave del Sitio real
-        grecaptcha.execute('6LcCKEwrAAAAAPE7cd3AUr77z8Ql05_lyBc5k7OS', {action: 'submit'}).then(function(token) {
+        grecaptcha.execute('6LfuV00rAAAAAKkHWyUtnsaYSag4DBMlQYJMyDyr', {action: 'submit'}).then(function(token) {
           // Añade el token al campo oculto
           document.getElementById('recaptchaResponse').value = token;
           // Envía el formulario
-          e.target.closest('form').submit();
+          form.submit();
+        }).catch(function(error) {
+          console.error('Error durante la ejecución de reCAPTCHA:', error);
+          alert('Hubo un error con la verificación reCAPTCHA. Por favor, inténtalo de nuevo.');
         });
       });
     }
@@ -147,8 +162,8 @@
     // Asigna la función onClick al evento de clic del botón de envío
     // Es mejor si tu botón de envío tiene un ID, por ejemplo: id="submitButton"
     // document.getElementById('submitButton').addEventListener('click', onClick);
-    // O, si solo hay un botón de tipo submit en el formulario:
-    document.querySelector('form[action^="https://formsubmit.co"] button[type="submit"]').addEventListener('click', onClick);
+    // O, si solo hay un botón de tipo submit en el formulario (cambiado para usar el ID):
+    document.getElementById('submitButton').addEventListener('click', onClick);
   </script>
 </body>
 

@@ -1,0 +1,68 @@
+# INICIO - Configuración de Caché para el Navegador
+# ----------------------------------------------------------------------
+# Activa el módulo de expiración de Apache si está disponible.
+# Este módulo controla la configuración de las cabeceras Cache-Control y Expires.
+# ----------------------------------------------------------------------
+<IfModule mod_expires.c>
+  # Activa la generación de cabeceras Expires y Cache-Control: max-age.
+  ExpiresActive On
+
+  # --- CACHÉ PARA IMÁGENES ---
+  # Las imágenes se cachean por 1 mes.
+  ExpiresByType image/webp "access plus 1 month"
+  ExpiresByType image/jpeg "access plus 1 month"
+  ExpiresByType image/png "access plus 1 month"
+  ExpiresByType image/gif "access plus 1 month"
+  ExpiresByType image/svg+xml "access plus 1 month"
+  # Para favicons
+  ExpiresByType image/x-icon "access plus 1 month"
+
+  # --- CACHÉ PARA FUENTES WEB ---
+  # Las fuentes se cachean por 1 mes.
+  ExpiresByType application/font-woff2 "access plus 1 month"
+  ExpiresByType application/font-woff "access plus 1 month"
+  # EOT
+  ExpiresByType application/vnd.ms-fontobject "access plus 1 month"
+  # TTF
+  ExpiresByType application/x-font-ttf "access plus 1 month"
+  # OTF
+  ExpiresByType font/opentype "access plus 1 month"
+
+  # --- CACHÉ PARA ARCHIVOS CSS ---
+  # Los archivos CSS se cachean por 1 semana.
+  ExpiresByType text/css "access plus 1 week"
+
+  # --- CACHÉ PARA ARCHIVOS JAVASCRIPT ---
+  # Los archivos JavaScript se cachean por 1 semana.
+  ExpiresByType application/javascript "access plus 1 week"
+  ExpiresByType text/javascript "access plus 1 week"
+</IfModule>
+
+# ----------------------------------------------------------------------
+# Configuración adicional de cabeceras con mod_headers.
+# Esto proporciona un control más granular sobre la cabecera Cache-Control.
+# ----------------------------------------------------------------------
+<IfModule mod_headers.c>
+  # --- CACHÉ PARA IMÁGENES (1 MES) ---
+  <FilesMatch "\.(webp|jpeg|jpg|png|gif|svg|ico)$">
+    Header set Cache-Control "public, max-age=2592000"
+  </FilesMatch>
+
+  # --- CACHÉ PARA FUENTES WEB (1 MES) ---
+  <FilesMatch "\.(woff2|woff|eot|ttf|otf)$">
+    Header set Cache-Control "public, max-age=2592000"
+  </FilesMatch>
+
+  # --- CACHÉ PARA CSS Y JS (1 SEMANA) ---
+  <FilesMatch "\.(css|js)$">
+    Header set Cache-Control "public, max-age=604800"
+  </FilesMatch>
+</IfModule>
+
+# ----------------------------------------------------------------------
+# Configuración de Codificación de Caracteres
+# ----------------------------------------------------------------------
+# Asegurar que los archivos CSS se sirvan como UTF-8
+AddCharset UTF-8 .css
+
+# FIN - Configuración de Caché para el Navegador

@@ -1,0 +1,5 @@
+User-agent: *
+Allow: /
+
+# Opcional: Especifica la ubicación de tu sitemap si tienes uno
+# Sitemap: https://www.naufundacion.org/sitemap.xml

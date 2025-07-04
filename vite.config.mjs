@@ -1,6 +1,6 @@
 // Importa las funciones y módulos necesarios de Vite y Node.js
 import { resolve } from 'path';
-import { defineConfig, loadEnv } from 'vite';
+import { defineConfig } from 'vite';
 import { readdirSync } from 'fs';
 import handlebars from 'vite-plugin-handlebars';
 
@@ -25,20 +25,12 @@ const getHtmlInput = () => {
 };
 
 // La función defineConfig ofrece autocompletado y validación para tu configuración.
-export default defineConfig(({ mode }) => {
-  // Carga las variables de entorno del archivo .env según el modo (development o production)
-  const env = loadEnv(mode, projectRoot, '');
+export default defineConfig({
+  // Para desplegar en un dominio raíz (Netlify, GoDaddy), la base debe ser '/'.
+  base: '/',
 
-  return {
-    // Para desplegar en un dominio raíz (Netlify, GoDaddy), la base debe ser '/'.
-    base: '/',
-
-    // Pone las variables de entorno a disposición del código del lado del cliente.
-    define: {
-      'process.env.VITE_RECAPTCHA_SITE_KEY': JSON.stringify(env.VITE_RECAPTCHA_SITE_KEY),
-      'process.env.VITE_RECAPTCHA_SECRET_KEY': JSON.stringify(env.VITE_RECAPTCHA_SECRET_KEY)
-    },
-
+  // La sección 'define' ya no es necesaria al usar los formularios de Netlify.
+  
     // Configuración para el proceso de compilación (build).
     build: {
       // Usamos la función para generar las entradas dinámicamente.
@@ -52,5 +44,4 @@ export default defineConfig(({ mode }) => {
         partialDirectory: resolve(projectRoot, 'partials'),
       }),
     ],
-  };
 });

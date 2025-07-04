@@ -13,7 +13,7 @@
   font-style: normal;
   font-weight: 400; /* Regular */
   font-display: swap; /* Mejora el rendimiento de carga */
-  src: url('../assets/fonts/poppins-v22-latin-regular.woff2') format('woff2');
+  src: url('/assets/fonts/poppins-v22-latin-regular.woff2') format('woff2');
 }
 
 @font-face {
@@ -21,7 +21,7 @@
   font-style: normal;
   font-weight: 600; /* Semibold */
   font-display: swap;
-  src: url('../assets/fonts/poppins-v22-latin-600.woff2') format('woff2');
+  src: url('/assets/fonts/poppins-v22-latin-600.woff2') format('woff2');
 }
 
 @font-face {
@@ -29,7 +29,7 @@
   font-style: normal;
   font-weight: 700; /* Bold */
   font-display: swap;
-  src: url('../assets/fonts/poppins-v22-latin-700.woff2') format('woff2');
+  src: url('/assets/fonts/poppins-v22-latin-700.woff2') format('woff2');
 }
 
 /*
@@ -89,46 +89,112 @@
 
   /* Usando los breakpoints personalizados (bp601, bp1201) definidos en tailwind.config.js */
   .hero-background-index-1 {
-    @apply bg-[url('../images/1-BANNER-NAU-WEB-480w.webp')] bp601:bg-[url('../images/1-BANNER-NAU-WEB-1024w.webp')] bp1201:bg-[url('../images/1-BANNER-NAU-WEB-1920w.webp')];
+    @apply bg-[url('/images/1-BANNER-NAU-WEB-480w.webp')];
+  }
+  @screen bp601 {
+    .hero-background-index-1 { @apply bg-[url('/images/1-BANNER-NAU-WEB-1024w.webp')]; }
+  }
+  @screen bp1201 {
+    .hero-background-index-1 { @apply bg-[url('/images/1-BANNER-NAU-WEB-1920w.webp')]; }
   }
 
   .hero-background-index-2 {
-    @apply bg-[url('../images/3-BANNER-NAU-WEB-480w.webp')] bp601:bg-[url('../images/3-BANNER-NAU-WEB-1024w.webp')] bp1201:bg-[url('../images/3-BANNER-NAU-WEB-1920w.webp')];
+    @apply bg-[url('/images/3-BANNER-NAU-WEB-480w.webp')];
+  }
+  @screen bp601 {
+    .hero-background-index-2 { @apply bg-[url('/images/3-BANNER-NAU-WEB-1024w.webp')]; }
+  }
+  @screen bp1201 {
+    .hero-background-index-2 { @apply bg-[url('/images/3-BANNER-NAU-WEB-1920w.webp')]; }
   }
 
   .hero-background-index-3 {
-    @apply bg-[url('../images/6-BANNER-NAU-WEB-480w.webp')] bp601:bg-[url('../images/6-BANNER-NAU-WEB-1024w.webp')] bp1201:bg-[url('../images/6-BANNER-NAU-WEB-1920w.webp')];
+    @apply bg-[url('/images/6-BANNER-NAU-WEB-480w.webp')];
+  }
+  @screen bp601 {
+    .hero-background-index-3 { @apply bg-[url('/images/6-BANNER-NAU-WEB-1024w.webp')]; }
+  }
+  @screen bp1201 {
+    .hero-background-index-3 { @apply bg-[url('/images/6-BANNER-NAU-WEB-1920w.webp')]; }
   }
 
   .hero-background-sn-1 {
-    @apply bg-[url('../images/1-SOBRE-NAU-WEB-480w.webp')] bp601:bg-[url('../images/1-SOBRE-NAU-WEB-1024w.webp')] bp1201:bg-[url('../images/1-SOBRE-NAU-WEB-1920w.webp')];
+    @apply bg-[url('/images/1-SOBRE-NAU-WEB-480w.webp')];
+  }
+  @screen bp601 {
+    .hero-background-sn-1 { @apply bg-[url('/images/1-SOBRE-NAU-WEB-1024w.webp')]; }
+  }
+  @screen bp1201 {
+    .hero-background-sn-1 { @apply bg-[url('/images/1-SOBRE-NAU-WEB-1920w.webp')]; }
   }
 
   .hero-background-sn-2 {
-    @apply bg-[url('../images/5-SOBRE-NAU-WEB-480w.webp')] bp601:bg-[url('../images/5-SOBRE-NAU-WEB-1024w.webp')] bp1201:bg-[url('../images/5-SOBRE-NAU-WEB-1920w.webp')];
+    @apply bg-[url('/images/5-SOBRE-NAU-WEB-480w.webp')];
+  }
+  @screen bp601 {
+    .hero-background-sn-2 { @apply bg-[url('/images/5-SOBRE-NAU-WEB-1024w.webp')]; }
+  }
+  @screen bp1201 {
+    .hero-background-sn-2 { @apply bg-[url('/images/5-SOBRE-NAU-WEB-1920w.webp')]; }
   }
 
   .hero-background-encuentros-1 {
-    @apply bg-[url('../images/BANNER-INICIAL-ENCUENTROS-480w.webp')] bp601:bg-[url('../images/BANNER-INICIAL-ENCUENTROS-1024w.webp')] bp1201:bg-[url('../images/BANNER-INICIAL-ENCUENTROS-1920w.webp')];
+    @apply bg-[url('/images/BANNER-INICIAL-ENCUENTROS-480w.webp')];
+  }
+  @screen bp601 {
+    .hero-background-encuentros-1 { @apply bg-[url('/images/BANNER-INICIAL-ENCUENTROS-1024w.webp')]; }
+  }
+  @screen bp1201 {
+    .hero-background-encuentros-1 { @apply bg-[url('/images/BANNER-INICIAL-ENCUENTROS-1920w.webp')]; }
   }
 
   .hero-background-encuentros-2 {
-    @apply bg-[url('../images/BANNER-FINAL-ENCUENTROS-480w.webp')] bp601:bg-[url('../images/BANNER-FINAL-ENCUENTROS-1024w.webp')] bp1201:bg-[url('../images/BANNER-FINAL-ENCUENTROS-1920w.webp')];
+    @apply bg-[url('/images/BANNER-FINAL-ENCUENTROS-480w.webp')];
+  }
+  @screen bp601 {
+    .hero-background-encuentros-2 { @apply bg-[url('/images/BANNER-FINAL-ENCUENTROS-1024w.webp')]; }
+  }
+  @screen bp1201 {
+    .hero-background-encuentros-2 { @apply bg-[url('/images/BANNER-FINAL-ENCUENTROS-1920w.webp')]; }
   }
 
   .hero-background-simbolismo-1 {
-    @apply bg-[url('../images/BANNER-INICIAL-NUM-480w.webp')] bp601:bg-[url('../images/BANNER-INICIAL-NUM-1024w.webp')] bp1201:bg-[url('../images/BANNER-INICIAL-NUM-1920w.webp')];
+    @apply bg-[url('/images/BANNER-INICIAL-NUM-480w.webp')];
+  }
+  @screen bp601 {
+    .hero-background-simbolismo-1 { @apply bg-[url('/images/BANNER-INICIAL-NUM-1024w.webp')]; }
+  }
+  @screen bp1201 {
+    .hero-background-simbolismo-1 { @apply bg-[url('/images/BANNER-INICIAL-NUM-1920w.webp')]; }
   }
 
   .hero-background-simbolismo-2 {
-    @apply bg-[url('../images/BANNER-FINAL-NUM-480w.webp')] bp601:bg-[url('../images/BANNER-FINAL-NUM-1024w.webp')] bp1201:bg-[url('../images/BANNER-FINAL-NUM-1920w.webp')];
+    @apply bg-[url('/images/BANNER-FINAL-NUM-480w.webp')];
+  }
+  @screen bp601 {
+    .hero-background-simbolismo-2 { @apply bg-[url('/images/BANNER-FINAL-NUM-1024w.webp')]; }
+  }
+  @screen bp1201 {
+    .hero-background-simbolismo-2 { @apply bg-[url('/images/BANNER-FINAL-NUM-1920w.webp')]; }
   }
 
   .hero-background-donar-1 {
-    @apply bg-[url('../images/BANNER-INICIAL-DONAR-480w.webp')] bp601:bg-[url('../images/BANNER-INICIAL-DONAR-1024w.webp')] bp1201:bg-[url('../images/BANNER-INICIAL-DONAR-1920w.webp')];
+    @apply bg-[url('/images/BANNER-INICIAL-DONAR-480w.webp')];
+  }
+  @screen bp601 {
+    .hero-background-donar-1 { @apply bg-[url('/images/BANNER-INICIAL-DONAR-1024w.webp')]; }
+  }
+  @screen bp1201 {
+    .hero-background-donar-1 { @apply bg-[url('/images/BANNER-INICIAL-DONAR-1920w.webp')]; }
   }
 
   .hero-background-donar-2 {
-    @apply bg-[url('../images/BANNER-FINAL-DONAR-480w.webp')] bp601:bg-[url('../images/BANNER-FINAL-DONAR-1024w.webp')] bp1201:bg-[url('../images/BANNER-FINAL-DONAR-1920w.webp')];
+    @apply bg-[url('/images/BANNER-FINAL-DONAR-480w.webp')];
+  }
+  @screen bp601 {
+    .hero-background-donar-2 { @apply bg-[url('/images/BANNER-FINAL-DONAR-1024w.webp')]; }
+  }
+  @screen bp1201 {
+    .hero-background-donar-2 { @apply bg-[url('/images/BANNER-FINAL-DONAR-1920w.webp')]; }
   }
 }

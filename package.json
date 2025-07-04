@@ -1,8 +1,7 @@
 {
-  "name": "NAUwebsite",
+  "name": "nauwebsite",
   "version": "1.0.0",
   "description": "Este proyecto es un boceto de una página de entrada, desarrollado siguiendo las mejores prácticas de desarrollo web, estándares web, buscando que funcione en diversos dispositivos, sea fácil de mantener y esté bien documentado.",
-  "main": "index.js",
   "scripts": {
     "dev": "vite",
     "build": "npx vite build",

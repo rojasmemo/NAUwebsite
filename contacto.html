@@ -34,13 +34,13 @@
         -->
         <!--
             FORMULARIO CONFIGURADO PARA NETLIFY: 
-            1. 'name="contact"': Identifica el formulario en el panel de Netlify.
+            1. 'name="contact"': Identifica el formulario en el panel de Netlify. 
             2. 'netlify' o 'data-netlify="true"': Activa el procesamiento de Netlify.
             3. 'data-netlify-recaptcha="true"': Habilita la protección reCAPTCHA de Netlify.
         -->
         <form id="contact-form" name="contact" method="POST" action="/gracias.html" data-netlify="true" data-netlify-recaptcha="true" class="space-y-6">
             <!-- Campo oculto para personalizar el asunto del correo de notificación de Netlify -->
-            <input type="hidden" name="subject" value="¡Nuevo mensaje desde el formulario '{{ .Form.Name }}' en naufundacion.org!" />
+            <input type="hidden" name="subject" value="¡Nuevo mensaje desde el formulario '{{form.name}}' en naufundacion.org!" >
 
             <div>
                 <label for="nombre" class="block text-sm font-semibold text-custom-dark-teal mb-1">* Nombre Completo :</label>

@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<!-- Archivo principal de la página de Donaciones de NAU -->
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description"
+    content="Descubre NAU: te ayudamos a conectar con tu esencia, romper bloqueos y transformar tu vida a través de encuentros y simbolismo numérico.">
+  <title>Dona ahora NAU</title>
+
+  <!-- PRECARGA DE FUENTES: Mejora el rendimiento al indicar al navegador que cargue estas fuentes prioritariamente -->
+  <link rel="preload" href="/assets/poppins-v22-latin-regular-cpxAROuN.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="/assets/poppins-v22-latin-600-zEkxB9Mr.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="/assets/poppins-v22-latin-700-Qrb0O0WB.woff2" as="font" type="font/woff2" crossorigin>
+
+  <!-- PRECARGA IMAGEN HERO: Carga la imagen principal de la sección hero con alta prioridad para mejorar el LCP (Largest Contentful Paint) 
+  <link rel="preload" href="images/1-BANNER-NAU-WEB-1024w.webp" as="image" type="image/webp" fetchpriority="high">-->
+
+  <!-- Enlace a la hoja de estilos principal (generada por Tailwind CSS) -->
+  <!-- Vite inyectará el CSS y JS a través del punto de entrada del script -->
+  <script type="module" crossorigin src="/assets/main-D-8YTGA6.js"></script>
+  <link rel="stylesheet" crossorigin href="/assets/main-CaOGsa3b.css">
+</head>
+
+<body class="font-sans">
+  <!-- Placeholder para el encabezado: El contenido del header se carga aquí dinámicamente mediante JavaScript -->
+  <!-- Parcial de la Cabecera Responsiva del sitio NAU -->
+  <!-- Contiene el logo, la navegación principal y el menú hamburguesa para móviles. -->
+  <!-- Se carga dinámicamente en las páginas principales mediante JavaScript (loadPartials.js). -->
+  <header class="bg-custom-light-teal content-section-wrapper text-custom-darker-teal shadow-md min-h-[80px] md:h-[131px]">
+    <!-- Contenedor principal de la cabecera: Centrado y con padding. 'relative' para el posicionamiento del menú móvil. -->
+    <div class="flex flex-wrap justify-between items-center h-full px-4 md:px-10 py-4 md:py-0 relative">
+      <!-- Logo del sitio -->
+      <a href="index.html" class="">
+        <img src="data:image/webp;base64,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" alt="Logo de Nau" class="h-12 md:h-16 w-auto">
+      </a>
+  
+      <!-- Botón Hamburguesa (Visible solo en móvil) -->
+      <button id="hamburger-button"
+        class="md:hidden p-2 rounded-md text-custom-darker-teal hover:bg-custom-dark-teal hover:text-white focus:outline-none focus:ring-2 focus:ring-inset focus:ring-white"
+        aria-label="Abrir menú" aria-expanded="false" aria-controls="mobile-menu">
+        <!-- Icono SVG para el menú hamburguesa -->
+        <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7" />
+        </svg>
+      </button>
+  
+      <!-- Menú de Navegación Principal -->
+      <!-- Oculto por defecto en móviles ('hidden'), se muestra como 'block' o 'flex' mediante JS. -->
+      <!-- En pantallas medianas y grandes ('md:flex'), se muestra como flexbox. -->
+      <nav id="mobile-menu" class="hidden md:flex md:items-center w-full md:w-auto mt-4 md:mt-0">
+        <ul
+          class="flex flex-col md:flex-row md:space-x-5 space-y-2 md:space-y-0 items-center w-full md:w-auto text-center md:text-left">
+          <li>
+            <a href="index.html" class="nav-link">Inicio</a>
+          </li>
+          <li>
+            <a href="sobre-nau.html" class="nav-link">Sobre Nau</a>
+          </li>
+          <li>
+            <a href="encuentros.html" class="nav-link">Encuentros</a>
+          </li>
+          <li>
+            <a href="simbolismo-numerico.html" class="nav-link">Simbolismo numérico</a>
+          </li>
+          <li class="mt-2 md:mt-0 w-full md:w-auto">
+            <a href="donar.html"
+              class="bg-custom-dark-teal text-white font-semibold py-2 px-6 rounded-md hover:bg-gray-100 hover:text-custom-dark-teal transition duration-300 inline-block">
+              Dona ahora
+            </a>
+          </li>
+        </ul> <!-- Fin lista de enlaces de navegación -->
+      </nav> <!-- Fin menú de navegación principal -->
+    </div> <!-- Fin container principal de la cabecera -->
+  </header> <!-- Fin cabecera -->
+  <!-- ============================================= -->
+  <!--            CONTENIDO PRINCIPAL DE LA PÁGINA   -->
+  <!-- ============================================= -->
+  <main>
+    <!-- Sección Hero 1: "Despiértate" -->
+    <section
+      class="relative hero-bg hero-background-donar-1 bg-custom-medium-teal text-white pt-16 pb-24 md:pt-16 md:pb-48 lg:pt-24 lg:pb-52 2xl:pt-28 2xl:pb-56 px-4 text-center mb-4 md:mb-16 lg:mb-22">
+      <div class="px-4 md:px-8">
+        <h2 class="h2-base md:mb-4">Apoya la Transformación</h2>
+        <p class="p-base-hero max-w-2xl mx-auto">
+          Tu contribución marca la diferencia.
+        </p>
+      </div>
+
+      <!-- Imagen decorativa posicionada en la parte inferior de la sección hero -->
+      <img src="/assets/2-DONA-DTOGLlg7.webp" alt="Imagen decorativa Sobre NAU"
+        class="absolute bottom-0 left-3/4 transform translate-y-1/2 w-16 md:w-28 lg:w-40 h-auto" loading="lazy">
+    </section>
+    <!-- Fin Sección Hero 1 -->
+
+    <!-- Sección de contenido 1: "¿Ayúdanos a ayudar?" -->
+    <section class="content-section-wrapper py-10 md:py-16 bg-white px-8 md:px-36">
+      <div class="text-center">
+        <p class="p-base max-w-3xl mx-auto text-left">
+          En <strong class="font-semibold">NAU</strong>, creemos en el poder de la conexión y la transformación personal
+          como camino hacia una vida más plena y consciente. Tu generosidad nos permite continuar ofreciendo nuestros
+          encuentros, herramientas de simbolismo numérico y campañas de impacto social.</p>
+      </div> <!-- Fin container -->
+    </section>
+    <!-- Fin Sección de contenido 1 -->
+
+    <!-- Sección de contenido 2: Presentación de "Experiencias y herramientas transformadoras" (Encuentros y Simbolismo Numérico) -->
+    <section class="content-section-wrapper py-12 md:py-16 px-4 md:px-16 bg-custom-specific-blue">
+      <div class="text-center">
+        <h2 class="h2-base text-white mb-12 md:mb-16">
+          ¿Cómo puedes donar?
+        </h2>
+        <!-- Grid para mostrar las dos principales ofertas: Encuentros y Simbolismo Numérico -->
+        <div class="grid md:grid-cols-2 gap-12 md:gap-8 mb-8 px-4 md:px-8 lg:px-24">
+          <!-- Tarjeta de Plataformas -->
+          <div class="relative bg-white p-6 md:p-8 pt-8 md:pt-8 rounded-lg shadow-md text-custom-darker-teal">
+            <!-- Icono posicionado en la parte superior de la tarjeta -->
+            <img src="data:image/webp;base64,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" alt="Icono representativo de NAU"
+              class="absolute top-0 left-1/2 -translate-x-1/2 -translate-y-1/2 w-auto h-12 md:h-16" loading="lazy">
+            <p class="p-base text-left mt-4 md:mt-16 mb-3">Dona de forma segura a través de [Nombre de la Plataforma,
+              ej.
+              PayU, Wompi, PayPal]:
+            </p>
+            <a href="donar.html"
+              class="inline-block bg-custom-light-teal text-custom-darker-teal font-semibold py-2 px-6 rounded-md hover:bg-opacity-80 hover:text-custom-dark-teal transition duration-300 mt-1">
+              Dona online</a>
+
+          </div> <!-- Fin Tarjeta de Plataformas -->
+          <!-- Tarjeta de Transferencia bancaria -->
+          <div class="relative bg-white p-6 md:p-8 pt-8 md:pt-8 rounded-lg shadow-md text-custom-darker-teal">
+            <!-- Icono posicionado en la parte superior de la tarjeta -->
+            <img src="data:image/webp;base64,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" alt="Icono representativo de NAU"
+              class="absolute top-0 left-1/2 -translate-x-1/2 -translate-y-1/2 w-auto h-12 md:h-16" loading="lazy">
+            <p class="p-base mt-4 md:mt-8 mb-3">
+              Realiza una transferencia bancaria:
+            </p>
+            <ul class="p-base list-disc list-outside text-custom-darker-teal text-left pl-4 md:pl-12">
+              <li>Banco: [Nombre del Banco]</li>
+              <li>Tipo de Cuenta: [Ahorros/Corriente]</li>
+              <li>Número de Cuenta: [Tu Número de Cuenta]</li>
+              <li>A nombre de: Fundación Nau</li>
+              <li>NIT: [Tu NIT]</li>
+            </ul>
+          </div> <!-- Fin Tarjeta de Transferencia bancaria -->
+        </div> <!-- Fin grid tarjetas -->
+        <p class="p-base text-white mt-4 md:mt-8 mb-3">
+          *Si realizas una transferencia, por favor envíanos el comprobante a naufundacion@gmail.com
+        </p>
+      </div> <!-- Fin container -->
+    </section>
+    <!-- Fin Sección de contenido 2 -->
+
+    <!-- Sección de contenido 3: "¿Qué pasa si sigues esperando el momento perfecto?" -->
+    <section class="content-section-wrapper py-10 md:py-16 px-4 md:px-36 bg-custom-pale-teal">
+      <div class="grid md:grid-cols-5 gap-8 items-center">
+        <!-- Columna de Texto: Ocupa 3 de 5 columnas en md+ (60%) -->
+        <div class="p-4 rounded-lg flex flex-col justify-center order-2 md:order-1 md:col-span-3">
+          <!-- Orden cambiado para imagen arriba en móvil -->
+          <h3 class="h3-base text-custom-specific-blue text-left">
+            <strong class="font-semibold">Cada donación, sin importar el tamaño, nos ayuda a sostener y expandir nuestra
+              labor, llegando a más
+              personas que buscan despertar, conectar y transformar sus vidas.</strong>
+          </h3>
+        </div>
+        <!-- Columna de Imagen: Ocupa 2 de 5 columnas en md+ (40%) -->
+        <div class="order-1 md:order-2 md:col-span-2 px-6 md:px-0">
+          <!-- Ancho de imagen ajustado para móvil y desktop -->
+          <img src="/assets/3-DONA-420w-DREhHhJx.webp"
+            alt="Personas formando un círculo con sus manos, simbolizando la conexión y la comunidad"
+            class="-mt-12 md:-mt-16 lg:-mt-20 w-full max-w-xs h-auto object-contain rounded-lg mx-auto relative z-10"
+            loading="lazy" width="420" height="500">
+        </div> <!-- Fin Columna de Imagen -->
+      </div> <!-- Fin container grid -->
+    </section> <!-- Fin Sección de Contenido 3 -->
+
+    <!-- Sección Hero 2: Llamada final a aclarar dudas -->
+    <section
+      class="hero-bg hero-background-donar-2 bg-custom-medium-teal text-white py-12 md:py-20 lg:py-28 px-4 text-center">
+      <div class="px-4 md:px-8">
+        <h2 class="h2-base max-w-2xl mx-auto">
+          ¡Gracias por creer en NAU y por ser parte de nuestra comunidad!
+        </h2>
+        <p class="p-base-hero max-w-2xl mx-auto">
+          Si tienes alguna pregunta sobre las donaciones, no dudes en contactarnos.
+        </p>
+        <a href="#experiencias"
+          class="inline-block bg-custom-light-teal text-custom-darker-teal font-semibold py-2 px-6 rounded-md hover:bg-opacity-80 hover:text-custom-dark-teal transition duration-300">
+          Contáctanos
+        </a>
+      </div> <!-- Fin container -->
+    </section>
+    <!-- Fin Sección Hero 2 -->
+  </main>
+  <!-- Fin del contenido principal -->
+
+  <!-- Placeholder para el pie de página: El contenido del footer se carga aquí dinámicamente mediante JavaScript -->
+  <!-- Parcial del Pie de Página Responsivo del sitio NAU -->
+  <!-- Contiene el logo, información de contacto, redes sociales, enlace a donaciones y aviso de copyright. -->
+  <!-- Se carga dinámicamente en las páginas principales mediante JavaScript (main.js). -->
+  
+  <footer class=" bg-custom-darker-teal content-section-wrapper text-white">
+    <!-- Contenedor principal del pie de página con grid responsivo -->
+    <div
+      class="grid grid-cols-1 md:grid-cols-4 gap-8 items-start px-4 md:px-10 py-12 md:py-10">
+      <!-- Columna 1: Logo -->
+      <div class="flex justify-center md:justify-start md:col-span-1">
+        <img src="data:image/webp;base64,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" alt="Logo de Nau en el pie de página"
+          class="h-16 md:max-h-full w-auto" loading="lazy">
+      </div> <!-- Fin Columna Logo -->
+  
+      <!-- Columna 2: Contáctanos -->
+      <div class="md:col-span-1 text-sm text-center md:text-left">
+        <h2 class="font-semibold mb-2 text-lg">Contáctanos</h2>
+        <ul>
+          <li>
+            Móvil:
+            <a href="tel:+573005429620" class="hover:underline transition-colors duration-300">+57 300 542 9620</a>
+          </li>
+          <li>
+            Email:
+            <a href="mailto:naufundacion@gmail.com"
+              class="hover:underline transition-colors duration-300">naufundacion@gmail.com</a>
+          </li>
+        </ul>
+      </div> <!-- Fin Columna Contáctanos -->
+  
+      <!-- Columna 3: Síguenos -->
+      <div class="md:col-span-1 text-sm text-center md:text-left">
+        <h2 class="font-semibold mb-2 text-lg">Síguenos</h2>
+        <ul>
+          <li>
+            <a href="https://www.instagram.com/tu_usuario_instagram/" target="_blank" rel="noopener noreferrer"
+              class="hover:underline">Instagram</a>
+            <!-- TODO: Reemplazar 'tu_usuario_instagram' con el usuario real -->
+          </li>
+        </ul>
+      </div> <!-- Fin Columna Síguenos -->
+  
+      <!-- Columna 4: Invitación a Donar -->
+      <div class="md:col-span-1 text-sm text-center md:text-left flex flex-col items-center md:items-start">
+        <ul>
+          <li>Si conectas con nuestro propósito,</li>
+          <li>te invitamos a donar</li>
+          <li>
+            <a href="donar.html"
+              class="inline-block bg-custom-light-teal text-custom-darker-teal font-semibold py-2 px-6 rounded-md hover:bg-opacity-80 hover:text-custom-dark-teal transition duration-300 mt-1">
+              Dona ahora</a>
+          </li>
+        </ul>
+      </div> <!-- Fin Columna Donar -->
+    </div> <!-- Fin container grid principal -->
+  
+    <!-- Sección de Copyright -->
+    <div
+      class="text-center text-sm copyright-notice bg-custom-light-teal text-custom-darker-teal font-normal py-3 md:py-4"
+    >
+      © <span id="currentYear">2025</span> Fundación Nau. Todos los derechos reservados.
+    </div> <!-- Fin Sección Copyright -->
+  
+    <!-- Botón Volver Arriba -->
+    <a href="#" id="scrollToTopBtn" aria-label="Volver arriba"
+       class="fixed bottom-4 right-4 md:bottom-6 md:right-6 bg-custom-frosty-teal text-custom-darker-teal font-semibold py-1.5 px-3 text-sm md:py-2 md:px-4 md:text-base 2xl:text-xl rounded-md shadow-lg hover:bg-opacity-80 focus:outline-none focus:ring-2 focus:ring-custom-dark-teal focus:ring-offset-2 transition-all duration-300 ease-in-out opacity-0 invisible translate-y-4 z-50">
+      &#9650; Subir
+    </a>
+  </footer>
+
+  <!-- ============================================= -->
+  <!--                 SCRIPTS GLOBALES              -->
+  <!-- ============================================= -->
+  <!-- Script para cargar parciales (header y footer) y manejar la funcionalidad del menú hamburguesa en móviles -->
+</body>
+
+</html>

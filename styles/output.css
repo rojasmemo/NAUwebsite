@@ -1017,6 +1017,10 @@ select {
 
 /* Inyecta las clases de componentes de Tailwind. */
 
+.visible {
+  visibility: visible;
+}
+
 .invisible {
   visibility: hidden;
 }
@@ -1228,8 +1232,8 @@ select {
   max-width: 42rem;
 }
 
-.max-w-4xl {
-  max-width: 56rem;
+.max-w-3xl {
+  max-width: 48rem;
 }
 
 .max-w-5xl {
@@ -1255,6 +1259,11 @@ select {
 
 .-translate-y-1\/2 {
   --tw-translate-y: -50%;
+  transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
+}
+
+.translate-y-0 {
+  --tw-translate-y: 0px;
   transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
 }
 
@@ -1513,11 +1522,6 @@ select {
   padding-bottom: 5rem;
 }
 
-.py-24 {
-  padding-top: 6rem;
-  padding-bottom: 6rem;
-}
-
 .py-3 {
   padding-top: 0.75rem;
   padding-bottom: 0.75rem;
@@ -1623,6 +1627,11 @@ select {
   color: rgb(20 57 70 / var(--tw-text-opacity, 1));
 }
 
+.text-custom-hover-teal {
+  --tw-text-opacity: 1;
+  color: rgb(209 227 229 / var(--tw-text-opacity, 1));
+}
+
 .text-custom-specific-blue {
   --tw-text-opacity: 1;
   color: rgb(0 83 102 / var(--tw-text-opacity, 1));
@@ -1650,6 +1659,10 @@ select {
 
 .opacity-0 {
   opacity: 0;
+}
+
+.opacity-100 {
+  opacity: 1;
 }
 
 .shadow-lg {

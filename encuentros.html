@@ -14,18 +14,18 @@
   <link rel="preload" href="fonts/poppins-v22-latin-700.woff2" as="font" type="font/woff2" crossorigin>
 
   <!-- Enlace a la hoja de estilos principal (generada por Tailwind CSS) -->
-  <link href="styles/output.css" rel="stylesheet">
+  <!-- Vite inyectará el CSS y JS a través del punto de entrada del script -->
 </head>
 
 <body class="font-sans">
   <!-- Placeholder para el encabezado: El contenido del header se carga aquí dinámicamente mediante JavaScript -->
-  <div id="header-placeholder" class="min-h-[80px]"></div>
+  {{> _header }}
 
   <!-- Contenido principal de la página de Encuentros -->
   <main>
     <!-- Sección Hero 1: "Encuentros NAU" -->
     <section
-      class="hero-bg hero-background-encuentros-1 bg-custom-medium-teal text-white py-24 md:py-28 lg:py-32 xl:py-36 2xl:py-48 px-4 text-center">
+      class="hero-bg hero-background-encuentros-1 bg-custom-medium-teal text-white py-20 md:py-28 lg:py-32 xl:py-36 2xl:py-48 px-4 text-center">
       <div class="px-4 md:px-8">
         <h2 class="h2-base md:mb-4">
           Encuentros NAU
@@ -38,15 +38,15 @@
 
     <!-- Sección de contenido 1: Introducción -->
     <section
-      class="content-section-wrapper pt-12 md:pt-16 pb-24 md:pb-32 px-4 md:px-16 bg-custom-specific-blue relative">
-      <div class="text-center">
-        <p class="p-base text-white max-w-2xl mx-auto">
-          En NAU diseñamos Encuentros que inspiran, transforman y reconectan. Son espacios seguros y acompañados para
+      class="content-section-wrapper pt-12 md:pt-16 pb-24 md:pb-32 px-8 md:px-16 bg-custom-specific-blue relative">
+      <div class="text-left">
+        <p class="p-base text-white max-w-3xl mx-auto">
+          Los Encuentros NAU inspiran, transforman y reconectan. Son espacios seguros y acompañados para
           mirar hacia adentro, soltar lo que ya no necesitas y dar paso a una versión más auténtica de ti.
         </p>
-        <p class="p-base text-white max-w-2xl mx-auto">
-          Cada Encuentro es una invitación a explorar dimensiones esenciales de tu vida, con respeto, profundidad y
-          propósito. No hay fórmulas. Hay acompañamiento, preguntas poderosas y herramientas reales para tu camino.
+        <p class="p-base text-white max-w-3xl mx-auto">
+          Son la oportunidad para explorar la esencia de tu vida, con respeto, profundidad y
+          propósito. Sin fórmulas, con preguntas que despiertan y herramientas que impulsan tu camino.
         </p>
       </div>
     </section>
@@ -184,10 +184,10 @@
   <!-- Fin del contenido principal -->
 
   <!-- Placeholder para cargar el footer dinámicamente -->
-  <div id="footer-placeholder"></div>
+  {{> _footer }}
 
   <!-- Script para cargar parciales header y footer y manejar menú/hamburguesa -->
-  <script src="js/loadPartials.js"></script>
+  <script type="module" src="/js/main.js"></script>
 </body>
 
 </html>

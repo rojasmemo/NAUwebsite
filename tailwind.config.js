@@ -5,10 +5,15 @@ const defaultTheme = require('tailwindcss/defaultTheme');
 module.exports = {
   // 'content' define los archivos que Tailwind CSS escaneará para buscar clases de utilidad.
   // Es importante que esta lista incluya todos los archivos HTML, JavaScript, etc., donde uses clases de Tailwind.
+  // La configuración anterior podría no estar detectando los parciales (_header.html, etc.) correctamente.
+  // Esta configuración es más robusta y explícita para asegurar que todos los archivos son escaneados.
   content: [
-    "./index.html",         // Archivo HTML principal en la raíz del proyecto.
-    "./*.html",             // Cualquier otro archivo HTML en la raíz del proyecto.
-    // Ejemplo: "./src/**/*.{html,js}", // Descomentar y ajustar si tienes archivos en una carpeta 'src'.
+    // Este patrón es más seguro y eficiente. Escanea todos los archivos .html
+    // que están DIRECTAMENTE en la carpeta raíz (index.html, _header.html, etc.)
+    // pero evita entrar en subdirectorios como 'node_modules'.
+    "./*.html",
+    "./partials/**/*.html", // Escanea los parciales en su nueva carpeta.
+    "./js/**/*.js",   // Escanea todos los archivos .js dentro de la carpeta js.
   ],
   // 'theme' es donde se personalizan los valores de diseño de Tailwind (colores, fuentes, espaciado, etc.).
   theme: {
@@ -40,7 +45,6 @@ module.exports = {
     require('@tailwindcss/forms'),        // Plugin para estilizar formularios con clases de utilidad.
     require('@tailwindcss/typography'),   // Plugin para añadir estilos de tipografía por defecto (prose).
     require('@tailwindcss/aspect-ratio'), // Plugin para controlar la relación de aspecto de los elementos.
-    require('@tailwindcss/line-clamp'),   // Plugin para truncar texto a un número específico de líneas.
     // Nota: Las 'container queries' ya están incluidas en el core de Tailwind CSS a partir de la v3.3, por lo que no necesitan un plugin separado.
   ], // Fin de 'plugins'
 } // Fin de module.exports

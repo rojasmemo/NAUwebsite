@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!-- Título y descripción específicos para la página de Campañas -->
+  <meta name="description"
+    content="Conoce y apoya las campañas de NAU. Iniciativas enfocadas en el bienestar y la transformación social. ¡Tu ayuda marca la diferencia!">
+  <title>Campañas - NAU</title>
+  <!-- PRECARGA DE FUENTES -->
+  <link rel="preload" href="/assets/poppins-v22-latin-regular-cpxAROuN.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="/assets/poppins-v22-latin-600-zEkxB9Mr.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="/assets/poppins-v22-latin-700-Qrb0O0WB.woff2" as="font" type="font/woff2" crossorigin>
+  <!-- FIN PRECARGA DE FUENTES -->
+
+  <script type="module" crossorigin src="/assets/main-D-8YTGA6.js"></script>
+  <link rel="stylesheet" crossorigin href="/assets/main-CaOGsa3b.css">
+  <link rel="stylesheet" crossorigin href="/assets/campanas-BQjhr5wF.css">
+</head>
+
+<body class="font-sans">
+  <!-- Parcial de la Cabecera Responsiva del sitio NAU -->
+  <!-- Contiene el logo, la navegación principal y el menú hamburguesa para móviles. -->
+  <!-- Se carga dinámicamente en las páginas principales mediante JavaScript (loadPartials.js). -->
+  <header class="bg-custom-light-teal content-section-wrapper text-custom-darker-teal shadow-md min-h-[80px] md:h-[131px]">
+    <!-- Contenedor principal de la cabecera: Centrado y con padding. 'relative' para el posicionamiento del menú móvil. -->
+    <div class="flex flex-wrap justify-between items-center h-full px-4 md:px-10 py-4 md:py-0 relative">
+      <!-- Logo del sitio -->
+      <a href="index.html" class="">
+        <img src="data:image/webp;base64,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" alt="Logo de Nau" class="h-12 md:h-16 w-auto">
+      </a>
+  
+      <!-- Botón Hamburguesa (Visible solo en móvil) -->
+      <button id="hamburger-button"
+        class="md:hidden p-2 rounded-md text-custom-darker-teal hover:bg-custom-dark-teal hover:text-white focus:outline-none focus:ring-2 focus:ring-inset focus:ring-white"
+        aria-label="Abrir menú" aria-expanded="false" aria-controls="mobile-menu">
+        <!-- Icono SVG para el menú hamburguesa -->
+        <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7" />
+        </svg>
+      </button>
+  
+      <!-- Menú de Navegación Principal -->
+      <!-- Oculto por defecto en móviles ('hidden'), se muestra como 'block' o 'flex' mediante JS. -->
+      <!-- En pantallas medianas y grandes ('md:flex'), se muestra como flexbox. -->
+      <nav id="mobile-menu" class="hidden md:flex md:items-center w-full md:w-auto mt-4 md:mt-0">
+        <ul
+          class="flex flex-col md:flex-row md:space-x-5 space-y-2 md:space-y-0 items-center w-full md:w-auto text-center md:text-left">
+          <li>
+            <a href="index.html" class="nav-link">Inicio</a>
+          </li>
+          <li>
+            <a href="sobre-nau.html" class="nav-link">Sobre Nau</a>
+          </li>
+          <li>
+            <a href="encuentros.html" class="nav-link">Encuentros</a>
+          </li>
+          <li>
+            <a href="simbolismo-numerico.html" class="nav-link">Simbolismo numérico</a>
+          </li>
+          <li class="mt-2 md:mt-0 w-full md:w-auto">
+            <a href="donar.html"
+              class="bg-custom-dark-teal text-white font-semibold py-2 px-6 rounded-md hover:bg-gray-100 hover:text-custom-dark-teal transition duration-300 inline-block">
+              Dona ahora
+            </a>
+          </li>
+        </ul> <!-- Fin lista de enlaces de navegación -->
+      </nav> <!-- Fin menú de navegación principal -->
+    </div> <!-- Fin container principal de la cabecera -->
+  </header> <!-- Fin cabecera -->
+  <!-- Contenido principal específico de la página de Campañas -->
+  <main>
+    <!-- Aquí irá el contenido detallado sobre las diferentes campañas -->
+    <section class="py-12 md:py-16 px-4">
+      <div class="container mx-auto">
+        <h1 class="text-3xl md:text-4xl font-bold text-center text-custom-darker-teal mb-10">
+          Nuestras Campañas
+        </h1>
+
+        <!-- Área para describir las campañas activas o pasadas -->
+        <div class="mb-12">
+          <h2 class="text-2xl md:text-3xl font-semibold text-custom-dark-teal mb-4">
+            Iniciativas con Propósito
+          </h2>
+          <p class="text-lg text-custom-darker-teal">
+            Aquí puedes detallar las campañas que NAU está llevando a cabo o
+            ha realizado. Describe sus objetivos, el impacto buscado o
+            logrado, y cómo las personas pueden participar o apoyar. Puedes
+            estructurar esto por campaña, usando subtítulos, imágenes, videos,
+            etc.
+          </p>
+          <!-- Ejemplo de cómo podrías estructurar una campaña -->
+          <!--
+                    <div class="mt-8 border-t pt-8">
+                        <h3 class="text-xl md:text-2xl font-semibold text-custom-dark-teal mb-3">Nombre de la Campaña 1</h3>
+                        <p class="text-lg text-custom-darker-teal mb-4">
+                            Descripción detallada de la campaña, su propósito, a quién beneficia, etc.
+                        </p>
+                        <a href="#enlace-a-mas-info-o-donacion" class="inline-block bg-custom-dark-teal text-white font-semibold py-2 px-6 rounded-md hover:bg-gray-100 hover:text-custom-dark-teal transition duration-300">
+                            Apoyar esta campaña
+                        </a>
+                    </div>
+                    -->
+          <!-- Ejemplo de otra campaña -->
+          <!--
+                    <div class="mt-8 border-t pt-8">
+                        <h3 class="text-xl md:text-2xl font-semibold text-custom-dark-teal mb-3">Nombre de la Campaña 2</h3>
+                        <p class="text-lg text-custom-darker-teal mb-4">
+                            Descripción detallada de la campaña, su propósito, a quién beneficia, etc.
+                        </p>
+                         <p class="text-lg text-custom-darker-teal mb-4">
+                            Estado: Finalizada / Activa / Próxima
+                        </p>
+                        <a href="#enlace-a-mas-info" class="inline-block bg-custom-dark-teal text-white font-semibold py-2 px-6 rounded-md hover:bg-gray-100 hover:text-custom-dark-teal transition duration-300">
+                            Ver resultados
+                        </a>
+                    </div>
+                    -->
+        </div>
+
+        <!-- Puedes añadir una sección general de llamado a la acción o contacto -->
+        <!--
+                 <div class="text-center mt-12">
+                     <h2 class="text-2xl md:text-3xl font-semibold text-custom-dark-teal mb-4">¿Quieres colaborar?</h2>
+                     <p class="text-lg text-custom-darker-teal mb-6">
+                         Tu apoyo es fundamental para seguir transformando vidas. Contáctanos o dona para ser parte del cambio.
+                     </p>
+                     <a href="donar.html" class="inline-block bg-custom-dark-teal text-white font-semibold py-2 px-6 rounded-md hover:bg-gray-100 hover:text-custom-dark-teal transition duration-300 mr-4">
+                        Dona ahora
+                    </a>
+                     <a href="#contacto" class="inline-block border border-custom-dark-teal text-custom-dark-teal font-semibold py-2 px-6 rounded-md hover:bg-custom-dark-teal hover:text-white transition duration-300">
+                        Contáctanos
+                    </a>
+                 </div>
+                 -->
+      </div>
+    </section>
+    <!-- Puedes añadir más secciones si es necesario -->
+  </main>
+
+  <!-- Parcial del Pie de Página Responsivo del sitio NAU -->
+  <!-- Contiene el logo, información de contacto, redes sociales, enlace a donaciones y aviso de copyright. -->
+  <!-- Se carga dinámicamente en las páginas principales mediante JavaScript (main.js). -->
+  
+  <footer class=" bg-custom-darker-teal content-section-wrapper text-white">
+    <!-- Contenedor principal del pie de página con grid responsivo -->
+    <div
+      class="grid grid-cols-1 md:grid-cols-4 gap-8 items-start px-4 md:px-10 py-12 md:py-10">
+      <!-- Columna 1: Logo -->
+      <div class="flex justify-center md:justify-start md:col-span-1">
+        <img src="data:image/webp;base64,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" alt="Logo de Nau en el pie de página"
+          class="h-16 md:max-h-full w-auto" loading="lazy">
+      </div> <!-- Fin Columna Logo -->
+  
+      <!-- Columna 2: Contáctanos -->
+      <div class="md:col-span-1 text-sm text-center md:text-left">
+        <h2 class="font-semibold mb-2 text-lg">Contáctanos</h2>
+        <ul>
+          <li>
+            Móvil:
+            <a href="tel:+573005429620" class="hover:underline transition-colors duration-300">+57 300 542 9620</a>
+          </li>
+          <li>
+            Email:
+            <a href="mailto:naufundacion@gmail.com"
+              class="hover:underline transition-colors duration-300">naufundacion@gmail.com</a>
+          </li>
+        </ul>
+      </div> <!-- Fin Columna Contáctanos -->
+  
+      <!-- Columna 3: Síguenos -->
+      <div class="md:col-span-1 text-sm text-center md:text-left">
+        <h2 class="font-semibold mb-2 text-lg">Síguenos</h2>
+        <ul>
+          <li>
+            <a href="https://www.instagram.com/tu_usuario_instagram/" target="_blank" rel="noopener noreferrer"
+              class="hover:underline">Instagram</a>
+            <!-- TODO: Reemplazar 'tu_usuario_instagram' con el usuario real -->
+          </li>
+        </ul>
+      </div> <!-- Fin Columna Síguenos -->
+  
+      <!-- Columna 4: Invitación a Donar -->
+      <div class="md:col-span-1 text-sm text-center md:text-left flex flex-col items-center md:items-start">
+        <ul>
+          <li>Si conectas con nuestro propósito,</li>
+          <li>te invitamos a donar</li>
+          <li>
+            <a href="donar.html"
+              class="inline-block bg-custom-light-teal text-custom-darker-teal font-semibold py-2 px-6 rounded-md hover:bg-opacity-80 hover:text-custom-dark-teal transition duration-300 mt-1">
+              Dona ahora</a>
+          </li>
+        </ul>
+      </div> <!-- Fin Columna Donar -->
+    </div> <!-- Fin container grid principal -->
+  
+    <!-- Sección de Copyright -->
+    <div
+      class="text-center text-sm copyright-notice bg-custom-light-teal text-custom-darker-teal font-normal py-3 md:py-4"
+    >
+      © <span id="currentYear">2025</span> Fundación Nau. Todos los derechos reservados.
+    </div> <!-- Fin Sección Copyright -->
+  
+    <!-- Botón Volver Arriba -->
+    <a href="#" id="scrollToTopBtn" aria-label="Volver arriba"
+       class="fixed bottom-4 right-4 md:bottom-6 md:right-6 bg-custom-frosty-teal text-custom-darker-teal font-semibold py-1.5 px-3 text-sm md:py-2 md:px-4 md:text-base 2xl:text-xl rounded-md shadow-lg hover:bg-opacity-80 focus:outline-none focus:ring-2 focus:ring-custom-dark-teal focus:ring-offset-2 transition-all duration-300 ease-in-out opacity-0 invisible translate-y-4 z-50">
+      &#9650; Subir
+    </a>
+  </footer>
+
+  <!-- Script para cargar parciales header y footer y manejar menú/hamburguesa -->
+</body>
+
+</html>

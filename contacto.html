@@ -14,12 +14,12 @@
   <link rel="preload" href="fonts/poppins-v22-latin-700.woff2" as="font" type="font/woff2" crossorigin>
 
   <!-- Enlace a la hoja de estilos principal (generada por Tailwind CSS) -->
-  <link href="styles/output.css" rel="stylesheet">
+  <!-- Vite inyectará el CSS y JS a través del punto de entrada del script -->
 </head>
 
 <body class="bg-custom-pale-teal font-['Poppins']"> <!-- Fondo de página con tu teal pálido -->
   <!-- Placeholder para el encabezado: El contenido del header se carga aquí dinámicamente mediante JavaScript -->
-  <div id="header-placeholder" class="min-h-[80px]"></div>
+  {{> _header }}
 
   <!-- ============================================= -->
   <!--            CONTENIDO PRINCIPAL DE LA PÁGINA   -->
@@ -37,7 +37,7 @@
                un correo de confirmación a esa dirección. Debes hacer clic en el enlace de
                confirmación para empezar a recibir los envíos del formulario.
         -->
-        <form action="https://formsubmit.co/naufundacion@gmail.com" method="POST" class="space-y-6">
+        <form id="contact-form" action="https://formsubmit.co/naufundacion@gmail.com" method="POST" class="space-y-6">
             <div>
                 <label for="nombre" class="block text-sm font-semibold text-custom-dark-teal mb-1">* Nombre Completo :</label>
                 <input type="text" id="nombre" name="nombre" placeholder="Ej: Ana Pérez" required autocomplete="name"
@@ -120,51 +120,55 @@
   <!-- Fin del contenido principal -->
 
   <!-- Placeholder para el pie de página: El contenido del footer se carga aquí dinámicamente mediante JavaScript -->
-  <div id="footer-placeholder"></div>
+  {{> _footer }}
 
   <!-- ============================================= -->
   <!--                 SCRIPTS GLOBALES              -->
   <!-- ============================================= -->
   <!-- Script para cargar parciales (header y footer) y manejar la funcionalidad del menú hamburguesa en móviles -->
-  <script src="js/loadPartials.js"></script>
 
   <!-- Script de Google reCAPTCHA v3 -->
   <!-- REEMPLAZA 'TU_CLAVE_DEL_SITIO_RECAPTCHA' con tu Clave del Sitio real -->
   <script src="https://www.google.com/recaptcha/api.js?render=6LfuV00rAAAAAKkHWyUtnsaYSag4DBMlQYJMyDyr"></script>
   <script>
-    function onClick(e) {
-      const form = e.target.closest('form');
-      e.preventDefault(); // Prevenir el envío inmediato del formulario
+    // Se ejecuta cuando el DOM está completamente cargado para asegurar que el formulario existe.
+    document.addEventListener('DOMContentLoaded', function() {
+      const contactForm = document.getElementById('contact-form');
+      const submitButton = document.getElementById('submitButton');
+      // Define la clave del sitio de reCAPTCHA una sola vez para fácil mantenimiento.
+      const recaptchaSiteKey = '6LfuV00rAAAAAKkHWyUtnsaYSag4DBMlQYJMyDyr';
 
-      // Primero, verificar la validación HTML5 del formulario
-      if (!form.checkValidity()) {
-        // Si el formulario no es válido, muestra los mensajes de validación del navegador
-        // y no continúes con reCAPTCHA ni el envío.
-        form.reportValidity();
-        return;
-      }
+      if (contactForm) {
+        contactForm.addEventListener('submit', function(e) {
+          // Prevenimos el envío estándar del formulario para integrarlo con reCAPTCHA.
+          // El navegador ya habrá realizado la validación HTML5 antes de disparar este evento.
+          e.preventDefault();
 
-      // Si el formulario es válido, procede con reCAPTCHA
-      grecaptcha.ready(function() {
-        // REEMPLAZA 'TU_CLAVE_DEL_SITIO_RECAPTCHA' con tu Clave del Sitio real
-        grecaptcha.execute('6LfuV00rAAAAAKkHWyUtnsaYSag4DBMlQYJMyDyr', {action: 'submit'}).then(function(token) {
-          // Añade el token al campo oculto
-          document.getElementById('recaptchaResponse').value = token;
-          // Envía el formulario
-          form.submit();
-        }).catch(function(error) {
-          console.error('Error durante la ejecución de reCAPTCHA:', error);
-          alert('Hubo un error con la verificación reCAPTCHA. Por favor, inténtalo de nuevo.');
+          // Deshabilitamos el botón para evitar envíos duplicados mientras se procesa.
+          submitButton.disabled = true;
+          submitButton.textContent = 'Enviando...';
+
+          grecaptcha.ready(function() {
+            grecaptcha.execute(recaptchaSiteKey, { action: 'submit' }).then(function(token) {
+              // Añadimos el token de reCAPTCHA al campo oculto del formulario.
+              document.getElementById('recaptchaResponse').value = token;
+              // Ahora sí, enviamos el formulario.
+              contactForm.submit();
+            }).catch(function(error) {
+              console.error('Error durante la ejecución de reCAPTCHA:', error);
+              alert('Hubo un error con la verificación reCAPTCHA. Por favor, inténtalo de nuevo.');
+              // Si hay un error, reactivamos el botón.
+              submitButton.disabled = false;
+              submitButton.textContent = 'Enviar Mensaje';
+            });
+          });
         });
-      });
-    }
-
-    // Asigna la función onClick al evento de clic del botón de envío
-    // Es mejor si tu botón de envío tiene un ID, por ejemplo: id="submitButton"
-    // document.getElementById('submitButton').addEventListener('click', onClick);
-    // O, si solo hay un botón de tipo submit en el formulario (cambiado para usar el ID):
-    document.getElementById('submitButton').addEventListener('click', onClick);
+      }
+    });
   </script>
+
+  <!-- Punto de entrada para Vite -->
+  <script type="module" src="/js/main.js"></script>
 </body>
 
 </html>

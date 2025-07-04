@@ -18,8 +18,7 @@
 </head>
 
 <body class="font-sans">
-  <!-- Placeholder para cargar el header dinámicamente -->
-  <div id="header-placeholder" class="min-h-[80px]"></div>
+  {{> _header }}
 
   <!-- Contenido principal específico de la página de Campañas -->
   <main>
@@ -91,11 +90,10 @@
     <!-- Puedes añadir más secciones si es necesario -->
   </main>
 
-  <!-- Placeholder para cargar el footer dinámicamente -->
-  <div id="footer-placeholder"></div>
+  {{> _footer }}
 
   <!-- Script para cargar parciales header y footer y manejar menú/hamburguesa -->
-  <script src="js/loadPartials.js"></script>
+  <script type="module" src="js/main.js"></script>
 </body>
 
 </html>

@@ -14,12 +14,12 @@
   <link rel="preload" href="fonts/poppins-v22-latin-700.woff2" as="font" type="font/woff2" crossorigin>
 
   <!-- Enlace a la hoja de estilos principal (generada por Tailwind CSS) -->
-  <link href="styles/output.css" rel="stylesheet">
+  <!-- Vite inyectará el CSS y JS a través del punto de entrada del script -->
 </head>
 
 <body class="font-sans">
   <!-- Placeholder para el encabezado: El contenido del header se carga aquí dinámicamente mediante JavaScript -->
-  <div id="header-placeholder" class="min-h-[80px]"></div>
+  {{> _header }}
 
   <!-- Contenido principal de la página de Simbolismo Numérico -->
   <main>
@@ -37,13 +37,13 @@
     </section> <!-- Fin Sección Hero 1 -->
 
     <!-- Sección de contenido 1: Introducción -->
-    <section class="content-section-wrapper pt-12 md:pt-16 pb-24 md:pb-32 px-4 md:px-16 bg-custom-pale-teal relative">
-      <div class="text-center">
-        <p class="p-base max-w-4xl text-custom-specific-blue mx-auto">
-          El simbolismo numérico es una poderosa herramienta de autoconocimiento que te ayuda a comprender tus dones,
-          desafíos y aprendizajes desde tu historia personal.
+    <section class="content-section-wrapper pt-12 md:pt-16 pb-24 md:pb-32 px-8 md:px-16 bg-custom-pale-teal relative">
+      <div class="text-left">
+        <p class="p-base max-w-3xl text-custom-specific-blue mx-auto">
+          A través de dos disciplinas ancestrales, como son la numerología pitagórica y la numerología tántrica,
+          te ofrecemos una valiosa guía para el entendimiento y el autoconocimiento de valiosos aspectos de tu vida.
         </p>
-        <p class="p-base max-w-4xl text-custom-specific-blue mx-auto">
+        <p class="p-base max-w-3xl text-custom-specific-blue mx-auto">
           No se trata de predecir el futuro, sino de iluminar tu presente y brindarte claridad para recorrer tu camino
           con más consciencia y sentido.
         </p>
@@ -98,15 +98,13 @@
               class="absolute top-0 right-8 -translate-y-1/2 w-auto h-12 md:h-16 z-10" loading="lazy">
             <div class="bg-custom-frosty-teal p-6 md:p-8 rounded-b-lg flex-grow">
               <h3 class="text-2xl font-semibold mb-3 text-custom-specific-blue">
-                NÚMERO DEL ALMA
+                NÚMERO DEL DESEO DEL CORAZÓN
               </h3>
               <hr class="border-t-4 border-custom-gray-blue mb-6 md:mb-8">
               <p class="p-base text-custom-darker-teal text-left md:mb-8">
-                También conocido como <strong class="font-semibold">"impulso del alma"</strong>, <strong
-                  class="font-semibold">"número del deseo del corazón"</strong> o <strong class="font-semibold">"número
-                  de la motivación"</strong>, es una guía poderosa hacia tu verdad
-                interior: revela lo que te impulsa desde lo profundo, tus deseos más auténticos y aquello que da sentido
-                y dirección a tu vida. Este número refleja:
+                También conocido como <strong class="font-semibold">"número de la motivación"</strong>, es una guía
+                poderosa hacia tu verdad interior: revela lo que te impulsa desde lo profundo, tus deseos más auténticos
+                y aquello que da sentido y dirección a tu vida. Este número refleja:
               </p>
               <ul class="p-base list-disc list-outside text-custom-darker-teal text-left pl-6">
                 <li><strong class="font-semibold">Deseos y motivaciones profundas:</strong> Aquello que enciende tu
@@ -167,10 +165,11 @@
               <ul class="p-base list-disc list-outside text-custom-darker-teal text-left pl-6">
                 <li><strong class="font-semibold">Tu propósito esencial:</strong> La misión profunda que viniste a
                   cumplir, el legado que puedes construir.</li>
-                <li><strong class="font-semibold">Tus talentos innatos:</strong> Habilidades que traes contigo y que te
-                  acercan a tu realización.</li>
-                <li><strong class="font-semibold">Los desafíos y oportunidades:</strong> Pruebas que fortalecen tu
-                  carácter y momentos clave para tu crecimiento.</li>
+                <li><strong class="font-semibold">Tus talentos innatos:</strong> El día de tu natalicio determina las
+                  competencias y destrezas que traes contigo en esta vida.</li>
+                <li><strong class="font-semibold">Los desafíos y oportunidades de tu personalidad:</strong> La primera letra de tu nombre
+                  manifiesta la base de tu personalidad, porque revela tu reacción ante las situaciones que se
+                  presentan en tu vida y la forma como las afrontas.</li>
                 <li><strong class="font-semibold">La dirección de tu vida:</strong> Una guía para tomar decisiones
                   alineadas con tu evolución y bienestar.</li>
               </ul>
@@ -253,10 +252,10 @@
   <!-- Fin del contenido principal -->
 
   <!-- Placeholder para cargar el footer dinámicamente -->
-  <div id="footer-placeholder"></div>
+  {{> _footer }}
 
   <!-- Script para cargar parciales header y footer y manejar menú/hamburguesa -->
-  <script src="js/loadPartials.js"></script>
+  <script type="module" src="/js/main.js"></script>
 </body>
 
 </html>

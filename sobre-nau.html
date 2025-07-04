@@ -16,12 +16,12 @@
   <link rel="preload" href="fonts/poppins-v22-latin-700.woff2" as="font" type="font/woff2" crossorigin>
 
   <!-- Enlace a la hoja de estilos principal (generada por Tailwind CSS) -->
-  <link href="styles/output.css" rel="stylesheet">
+  <!-- Vite inyectará el CSS y JS a través del punto de entrada del script -->
 </head>
 
 <body class="font-sans">
   <!-- Placeholder para el encabezado: El contenido del header se carga aquí dinámicamente mediante JavaScript -->
-  <div id="header-placeholder" class="min-h-[80px]"></div>
+  {{> _header }}
 
   <!-- ============================================= -->
   <!--            CONTENIDO PRINCIPAL DE LA PÁGINA   -->
@@ -55,16 +55,16 @@
         <h3 class="h3-base max-w-5xl mx-auto text-custom-darker-teal text-left md:text-center">
           Porque sabemos cómo se siente estar perdido… y elegimos acompañar.
         </h3>
-        <p class="p-base max-w-5xl mx-auto text-left md:text-center">
+        <p class="p-base max-w-5xl mx-auto text-left">
           NAU nació del deseo profundo de tender la mano. Cada uno de nosotros ha recorrido su propio camino de
           búsqueda, confusión, ansiedad y transformación. Sabemos lo que es sentirnos desconectados, y también lo que
           significa volver a encontrarnos con claridad y sentido.
         </p>
-        <p class="p-base max-w-5xl mx-auto text-left md:text-center">
+        <p class="p-base max-w-5xl mx-auto text-left">
           Desde esa experiencia vivida, creamos espacios donde otros puedan hacer lo mismo: reconectar consigo, soltar
           lo que duele, descubrir lo que necesitan, y caminar con más paz, propósito y verdad.
         </p>
-        <p class="p-base max-w-5xl mx-auto text-left md:text-center">
+        <p class="p-base max-w-5xl mx-auto text-left">
           Acompañamos desde la empatía, porque hemos estado allí. Y porque creemos que nadie debería transitar su
           proceso en soledad.
         </p>
@@ -118,11 +118,11 @@
         <h3 class="h3-base max-w-5xl mx-auto text-custom-darker-teal text-left md:text-center">
           Creemos en el poder transformador de sentirse visto y acompañado.
         </h3>
-        <p class="p-base max-w-5xl mx-auto text-left md:text-center">
+        <p class="p-base max-w-5xl mx-auto text-left">
           No creemos en etiquetas, diagnósticos que limitan ni caminos rígidos. Creemos en la fuerza de la consciencia,
           en la libertad de elegir y en la capacidad real de cambiar cuando te sientes sostenido y apoyado.
         </p>
-        <p class="p-base max-w-5xl mx-auto text-left md:text-center">
+        <p class="p-base max-w-5xl mx-auto text-left">
           Nuestra misión es sembrar consciencia para construir una sociedad donde cada persona viva con calma,
           autenticidad y verdadera conexión consigo misma y con los demás.
         </p>
@@ -149,13 +149,13 @@
   <!-- Fin del contenido principal -->
 
   <!-- Placeholder para el pie de página: El contenido del footer se carga aquí dinámicamente mediante JavaScript -->
-  <div id="footer-placeholder"></div>
+  {{> _footer }}
 
   <!-- ============================================= -->
   <!--                 SCRIPTS GLOBALES              -->
   <!-- ============================================= -->
   <!-- Script para cargar parciales (header y footer) y manejar la funcionalidad del menú hamburguesa en móviles -->
-  <script src="js/loadPartials.js"></script>
+  <script type="module" src="/js/main.js"></script>
 </body>
 
 </html>

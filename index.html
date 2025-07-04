@@ -16,12 +16,12 @@
   <link rel="preload" href="fonts/poppins-v22-latin-700.woff2" as="font" type="font/woff2" crossorigin>
 
   <!-- Enlace a la hoja de estilos principal (generada por Tailwind CSS) -->
-  <link href="styles/output.css" rel="stylesheet">
+  <!-- Vite inyectará el CSS y JS a través del punto de entrada del script -->
 </head>
 
 <body class="font-sans">
   <!-- Placeholder para el encabezado: El contenido del header se carga aquí dinámicamente mediante JavaScript -->
-  <div id="header-placeholder" class="min-h-[80px]"></div>
+  {{> _header }}
 
   <!-- ============================================= -->
   <!--            CONTENIDO PRINCIPAL DE LA PÁGINA   -->
@@ -131,7 +131,7 @@
             </h3>
             <ul class="p-base list-disc list-outside text-custom-darker-teal text-left pl-4 md:pl-12">
               <li>Lección de vida</li>
-              <li>Número del alma</li>
+              <li>Número del deseo del corazón</li>
               <li>Número de personalidad externa</li>
               <li>Número de la vía del destino</li>
               <li>Año personal</li>
@@ -203,13 +203,13 @@
   <!-- Fin del contenido principal -->
 
   <!-- Placeholder para el pie de página: El contenido del footer se carga aquí dinámicamente mediante JavaScript -->
-  <div id="footer-placeholder"></div>
+  {{> _footer }}
 
   <!-- ============================================= -->
   <!--                 SCRIPTS GLOBALES              -->
   <!-- ============================================= -->
   <!-- Script para cargar parciales (header y footer) y manejar la funcionalidad del menú hamburguesa en móviles -->
-  <script src="js/loadPartials.js"></script>
+  <script type="module" src="/js/main.js"></script>
 </body>
 
 </html>

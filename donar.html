@@ -19,12 +19,12 @@
   <link rel="preload" href="images/1-BANNER-NAU-WEB-1024w.webp" as="image" type="image/webp" fetchpriority="high">-->
 
   <!-- Enlace a la hoja de estilos principal (generada por Tailwind CSS) -->
-  <link href="styles/output.css" rel="stylesheet">
+  <!-- Vite inyectará el CSS y JS a través del punto de entrada del script -->
 </head>
 
 <body class="font-sans">
   <!-- Placeholder para el encabezado: El contenido del header se carga aquí dinámicamente mediante JavaScript -->
-  <div id="header-placeholder" class="min-h-[80px]"></div>
+  {{> _header }}
 
   <!-- ============================================= -->
   <!--            CONTENIDO PRINCIPAL DE LA PÁGINA   -->
@@ -49,7 +49,7 @@
     <!-- Sección de contenido 1: "¿Ayúdanos a ayudar?" -->
     <section class="content-section-wrapper py-10 md:py-16 bg-white px-8 md:px-36">
       <div class="text-center">
-        <p class="p-base max-w-5xl mx-auto text-left md:text-center">
+        <p class="p-base max-w-3xl mx-auto text-left">
           En <strong class="font-semibold">NAU</strong>, creemos en el poder de la conexión y la transformación personal
           como camino hacia una vida más plena y consciente. Tu generosidad nos permite continuar ofreciendo nuestros
           encuentros, herramientas de simbolismo numérico y campañas de impacto social.</p>
@@ -147,13 +147,13 @@
   <!-- Fin del contenido principal -->
 
   <!-- Placeholder para el pie de página: El contenido del footer se carga aquí dinámicamente mediante JavaScript -->
-  <div id="footer-placeholder"></div>
+  {{> _footer }}
 
   <!-- ============================================= -->
   <!--                 SCRIPTS GLOBALES              -->
   <!-- ============================================= -->
   <!-- Script para cargar parciales (header y footer) y manejar la funcionalidad del menú hamburguesa en móviles -->
-  <script src="js/loadPartials.js"></script>
+  <script type="module" src="/js/main.js"></script>
 </body>
 
 </html>

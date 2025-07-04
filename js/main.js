@@ -1,59 +1,110 @@
-// js/main.js
-console.log("main.js (desde _footer.html) está siendo leído por el navegador.");
+// main.js
 
-function initializeMainFunctions() {
-  console.log("Inicializando funciones de main.js (DOM listo o ya estaba listo).");
-  // Función para actualizar el año actual en el footer
-  function updateCurrentYear() {
-    const yearSpan = document.getElementById('currentYear'); // Asumiendo que tienes un <span id="currentYear"> en tu footer
-    if (yearSpan) {
-      yearSpan.textContent = new Date().getFullYear();
-    } else {
-      console.warn('Elemento con id "currentYear" no encontrado en el footer.');
-    }
-  }
+// Punto de entrada principal para Vite.
+// Importamos el CSS para que Tailwind y Vite lo procesen y lo incluyan en la página.
+import '../styles/input.css';
 
-  // Función para inicializar el botón de "Volver Arriba"
-  function initScrollToTopButton() {
-    const scrollToTopBtn = document.getElementById('scrollToTopBtn');
-    const scrollThreshold = 300; 
+/**
+ * Gestiona el estado visual de los enlaces de navegación.
+ * Resalta el enlace correspondiente a la página actual.
+ */
+function setActiveMenuItem() {
+    // Obtiene el nombre del archivo de la página actual (ej. "index.html", "sobre-nau.html").
+    const currentPage = window.location.pathname.split('/').pop() || 'index.html';
 
-    if (scrollToTopBtn) {
-      console.log('Botón "scrollToTopBtn" encontrado. Añadiendo listeners.');
-      window.addEventListener('scroll', function() {
-        const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+    // Selecciona solo los enlaces de navegación principales (excluyendo el botón de donar).
+    const navLinks = document.querySelectorAll('header nav a:not([href="donar.html"])');
 
-        if (scrollTop > scrollThreshold) {
-          scrollToTopBtn.classList.remove('opacity-0', 'invisible', 'translate-y-4');
-          scrollToTopBtn.classList.add('opacity-100', 'visible', 'translate-y-0');
-        } else {
-          scrollToTopBtn.classList.remove('opacity-100', 'visible', 'translate-y-0');
-          scrollToTopBtn.classList.add('opacity-0', 'invisible', 'translate-y-4');
+    navLinks.forEach(link => {
+        // Limpia el estado anterior en todos los enlaces.
+        link.removeAttribute('aria-current');
+
+        const linkPage = new URL(link.href).pathname.split('/').pop() || 'index.html';
+
+        // Si el href del enlace coincide con la página actual, lo marca como activo.
+        if (linkPage === currentPage) {
+            link.setAttribute('aria-current', 'page');
         }
-      });
+    });
+}
 
-      scrollToTopBtn.addEventListener('click', function(e) {
-        e.preventDefault(); 
-        window.scrollTo({
-          top: 0,
-          behavior: 'smooth'
+/**
+ * Configura la funcionalidad del menú hamburguesa para dispositivos móviles.
+ */
+function initializeHamburgerMenu() {
+    const hamburgerButton = document.getElementById('hamburger-button');
+    const mobileMenu = document.getElementById('mobile-menu');
+
+    if (hamburgerButton && mobileMenu) {
+        hamburgerButton.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+            const isExpanded = hamburgerButton.getAttribute('aria-expanded') === 'true';
+            hamburgerButton.setAttribute('aria-expanded', !isExpanded);
         });
-      });
-    } else {
-      console.warn('El botón "scrollToTopBtn" no fue encontrado en el DOM.');
-    }
-  }
 
-  // Llamar a las funciones necesarias que dependen de elementos del footer
+        document.addEventListener('click', (event) => {
+            const isMenuVisible = !mobileMenu.classList.contains('hidden');
+            const clickedOutside = !hamburgerButton.contains(event.target) && !mobileMenu.contains(event.target);
+            if (isMenuVisible && clickedOutside) {
+                mobileMenu.classList.add('hidden');
+                hamburgerButton.setAttribute('aria-expanded', 'false');
+            }
+        });
+
+        window.addEventListener('resize', () => {
+            if (window.innerWidth >= 768) {
+                if (!mobileMenu.classList.contains('hidden')) {
+                    mobileMenu.classList.add('hidden');
+                    hamburgerButton.setAttribute('aria-expanded', 'false');
+                }
+            }
+        });
+    }
+}
+
+/**
+ * Actualiza el año del copyright en el footer.
+ */
+function updateCurrentYear() {
+  const yearSpan = document.getElementById('currentYear');
+  if (yearSpan) {
+    yearSpan.textContent = new Date().getFullYear();
+  }
+}
+
+/**
+ * Inicializa el botón de "Volver Arriba".
+ */
+function initScrollToTopButton() {
+  const scrollToTopBtn = document.getElementById('scrollToTopBtn');
+  const scrollThreshold = 300;
+
+  if (scrollToTopBtn) {
+    window.addEventListener('scroll', function() {
+      if (window.pageYOffset > scrollThreshold) {
+        scrollToTopBtn.classList.remove('opacity-0', 'invisible', 'translate-y-4');
+        scrollToTopBtn.classList.add('opacity-100', 'visible', 'translate-y-0');
+      } else {
+        scrollToTopBtn.classList.remove('opacity-100', 'visible', 'translate-y-0');
+        scrollToTopBtn.classList.add('opacity-0', 'invisible', 'translate-y-4');
+      }
+    });
+
+    scrollToTopBtn.addEventListener('click', function(e) {
+      e.preventDefault();
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    });
+  }
+}
+
+// =============================================
+//            EJECUCIÓN PRINCIPAL
+// =============================================
+// Se ejecuta cuando el DOM está completamente cargado y listo.
+document.addEventListener('DOMContentLoaded', () => {
+  // Llama a todas las funciones necesarias para inicializar la página.
+  setActiveMenuItem();
+  initializeHamburgerMenu();
   updateCurrentYear();
   initScrollToTopButton();
-}
-
-// Verificar el estado del DOM. Si ya está 'interactive' o 'complete',
-// DOMContentLoaded ya ha ocurrido, así que ejecutamos las funciones directamente.
-// Si no, esperamos al evento.
-if (document.readyState === 'loading') {
-  document.addEventListener('DOMContentLoaded', initializeMainFunctions);
-} else {
-  initializeMainFunctions();
-}
+});

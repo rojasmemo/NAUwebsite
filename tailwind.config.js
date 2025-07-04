@@ -19,6 +19,15 @@ module.exports = {
   theme: {
     // 'extend' permite añadir nuevas utilidades o modificar las existentes sin sobrescribir completamente el tema por defecto.
     extend: {
+      // Aquí definimos tus breakpoints personalizados para las imágenes.
+      // Esto nos permitirá usar clases como `bp601:bg-red-500`.
+      screens: {
+        'bp601': '601px',
+        // => @media (min-width: 601px) { ... }
+
+        'bp1201': '1201px',
+        // => @media (min-width: 1201px) { ... }
+      },
       // Personalización de la familia de fuentes.
       fontFamily: {
         // Define 'sans' para usar 'Poppins' como fuente principal, manteniendo las fuentes sans-serif por defecto de Tailwind como fallback.

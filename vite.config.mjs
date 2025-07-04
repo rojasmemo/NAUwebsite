@@ -1,39 +1,44 @@
 // Importa las funciones y módulos necesarios de Vite y Node.js
 import { resolve } from 'path';
 import { defineConfig } from 'vite';
+import { readdirSync } from 'fs';
 import handlebars from 'vite-plugin-handlebars';
 
 // Usamos process.cwd() para obtener la ruta raíz del proyecto de forma robusta.
 const projectRoot = process.cwd();
 
+/**
+ * Función que lee la carpeta raíz y encuentra todos los archivos .html
+ * para crear dinámicamente los puntos de entrada para Rollup.
+ * @returns {object} Un objeto con los puntos de entrada para la compilación.
+ */
+const getHtmlInput = () => {
+  const files = readdirSync(projectRoot);
+  return files
+    .filter((file) => file.endsWith('.html'))
+    .reduce((acc, file) => {
+      const name = file.slice(0, -5);
+      // La clave 'main' es especial para 'index.html'
+      acc[name === 'index' ? 'main' : name] = resolve(projectRoot, file);
+      return acc;
+    }, {});
+};
+
 // La función defineConfig ofrece autocompletado y validación para tu configuración.
 export default defineConfig({
-  // No es necesario definir 'root' aquí, ya que por defecto es process.cwd().
-  
+  // Para desplegar en un dominio raíz (Netlify, GoDaddy), la base debe ser '/'.
+  base: '/',
+
   // Configuración para el proceso de compilación (build).
   build: {
-    rollupOptions: {
-      // 'input' define los puntos de entrada de tu aplicación.
-      input: {
-        main: resolve(projectRoot, 'index.html'),
-        sobre: resolve(projectRoot, 'sobre-nau.html'),
-        encuentros: resolve(projectRoot, 'encuentros.html'),
-        simbolismo: resolve(projectRoot, 'simbolismo-numerico.html'),
-        contacto: resolve(projectRoot, 'contacto.html'),
-        donar: resolve(projectRoot, 'donar.html'),
-        campanas: resolve(projectRoot, 'campanas.html'),
-        gracias: resolve(projectRoot, 'gracias.html'),
-      },
-    },
+    // Usamos la función para generar las entradas dinámicamente.
+    rollupOptions: { input: getHtmlInput() },
     // Define el directorio de salida para los archivos compilados.
     outDir: 'dist',
   },
 
-  // 'plugins' es donde activamos las extensiones de Vite.
   plugins: [
-    // Aquí activamos el plugin para procesar los parciales de HTML con Handlebars.
     handlebars({
-      // Especificamos la ruta al directorio que contiene los parciales.
       partialDirectory: resolve(projectRoot, 'partials'),
     }),
   ],

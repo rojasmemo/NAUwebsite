@@ -88,15 +88,12 @@
             <input type="hidden" name="_captcha" value="false">
 
             <!-- 4. Campo para la Clave Secreta de Google reCAPTCHA (para FormSubmit) -->
-            <input type="hidden" name="_recaptcha_secret" value="6LfuV00rAAAAAF_2HX6Y7Ox4VtQngza79biwbVid">
-            <!-- REEMPLAZA con tu Clave Secreta real -->
+            <!-- La clave secreta se inyectará dinámicamente con JavaScript -->
+            <input type="hidden" id="recaptchaSecret" name="_recaptcha_secret" value="">
 
             <!-- 4. Para añadir un campo "CC" o "BCC" (Copia Carbón o Copia Carbón Oculta) -->
             <!--    Descomenta y reemplaza con el email deseado. -->
             <!-- <input type="hidden" name="_cc" value="otro_correo@example.com"> -->
-
-            <!-- 5. Plantilla de email (para usuarios de pago de FormSubmit) -->
-            <!-- <input type="hidden" name="_template" value="table"> -->
 
             <!-- Campo oculto para el token de respuesta de Google reCAPTCHA -->
             <input type="hidden" id="recaptchaResponse" name="g-recaptcha-response">
@@ -121,17 +118,24 @@
   <!--                 SCRIPTS GLOBALES              -->
   <!-- ============================================= -->
   <!-- Script para cargar parciales (header y footer) y manejar la funcionalidad del menú hamburguesa en móviles -->
-
-  <!-- Script de Google reCAPTCHA v3 -->
-  <!-- REEMPLAZA 'TU_CLAVE_DEL_SITIO_RECAPTCHA' con tu Clave del Sitio real -->
-  <script src="https://www.google.com/recaptcha/api.js?render=6LfuV00rAAAAAKkHWyUtnsaYSag4DBMlQYJMyDyr"></script>
+  
+  <!-- El script de reCAPTCHA se cargará dinámicamente desde JavaScript -->
   <script>
     // Se ejecuta cuando el DOM está completamente cargado para asegurar que el formulario existe.
     document.addEventListener('DOMContentLoaded', function() {
       const contactForm = document.getElementById('contact-form');
       const submitButton = document.getElementById('submitButton');
-      // Define la clave del sitio de reCAPTCHA una sola vez para fácil mantenimiento.
-      const recaptchaSiteKey = '6LfuV00rAAAAAKkHWyUtnsaYSag4DBMlQYJMyDyr';
+      // Las claves ahora se leen desde las variables de entorno inyectadas por Vite.
+      const recaptchaSiteKey = process.env.VITE_RECAPTCHA_SITE_KEY;
+      const recaptchaSecretKey = process.env.VITE_RECAPTCHA_SECRET_KEY;
+
+      // Inyectar la clave secreta en el campo oculto del formulario.
+      document.getElementById('recaptchaSecret').value = recaptchaSecretKey;
+
+      // Cargar dinámicamente el script de reCAPTCHA con la clave del sitio.
+      const script = document.createElement('script');
+      script.src = `https://www.google.com/recaptcha/api.js?render=${recaptchaSiteKey}`;
+      document.head.appendChild(script);
 
       if (contactForm) {
         contactForm.addEventListener('submit', function(e) {

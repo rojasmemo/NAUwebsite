@@ -121,6 +121,47 @@ function initScrollToTopButton() {
   }
 }
 
+/**
+ * Gestiona el envío del formulario de contacto con reCAPTCHA v3.
+ */
+function handleContactForm() {
+  const form = document.getElementById('contact-form');
+  if (!form) return;
+
+  form.addEventListener('submit', (event) => {
+    event.preventDefault();
+
+    grecaptcha.ready(function () {
+      // REEMPLAZA 'TU_RECAPTCHA_SITE_KEY' con tu clave pública de reCAPTCHA v3
+      grecaptcha.execute('6Lcy43grAAAAAPTd99MJiK7E42tofYVIbLD8sXgQ', { action: 'submit' }).then(async function (token) {
+        const formData = new FormData(form);
+        const data = Object.fromEntries(formData.entries());
+        data.recaptchaToken = token; // Añadimos el token al objeto de datos
+
+        try {
+          const response = await fetch('/.netlify/functions/enviar-formulario', {
+            method: 'POST',
+            headers: {
+              'Content-Type': 'application/json',
+            },
+            body: JSON.stringify(data),
+          });
+
+          if (response.ok) {
+            window.location.href = '/gracias.html';
+          } else {
+            const errorResult = await response.json();
+            throw new Error(errorResult.message || 'Ocurrió un error al enviar el mensaje.');
+          }
+        } catch (error) {
+          console.error('Error en el envío del formulario:', error);
+          alert(`Error: ${error.message}`);
+        }
+      });
+    });
+  });
+}
+
 // =============================================
 //            EJECUCIÓN PRINCIPAL
 // =============================================
@@ -131,4 +172,5 @@ document.addEventListener('DOMContentLoaded', () => {
   initializeHamburgerMenu();
   updateCurrentYear();
   initScrollToTopButton();
+  handleContactForm(); // Añadido para el formulario de contacto
 });

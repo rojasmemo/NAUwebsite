@@ -5,6 +5,24 @@
 import '../styles/input.css';
 
 /**
+ * Limita la frecuencia con la que se ejecuta una función. Útil para eventos como 'resize' o 'scroll'.
+ * @param {Function} func La función a ejecutar.
+ * @param {number} wait El tiempo de espera en milisegundos.
+ * @returns {Function} La función "debounced".
+ */
+function debounce(func, wait) {
+    let timeout;
+    return function executedFunction(...args) {
+        const later = () => {
+            clearTimeout(timeout);
+            func(...args);
+        };
+        clearTimeout(timeout);
+        timeout = setTimeout(later, wait);
+    };
+}
+
+/**
  * Gestiona el estado visual de los enlaces de navegación.
  * Resalta el enlace correspondiente a la página actual.
  */
@@ -51,14 +69,18 @@ function initializeHamburgerMenu() {
             }
         });
 
-        window.addEventListener('resize', () => {
+        // Usamos debounce para optimizar el evento de redimensionamiento.
+        // La función solo se llamará 250ms después de que el usuario deje de redimensionar la ventana.
+        const handleResize = debounce(() => {
             if (window.innerWidth >= 768) {
                 if (!mobileMenu.classList.contains('hidden')) {
                     mobileMenu.classList.add('hidden');
                     hamburgerButton.setAttribute('aria-expanded', 'false');
                 }
             }
-        });
+        }, 250);
+
+        window.addEventListener('resize', handleResize);
     }
 }
 
@@ -80,7 +102,8 @@ function initScrollToTopButton() {
   const scrollThreshold = 300;
 
   if (scrollToTopBtn) {
-    window.addEventListener('scroll', function() {
+    // Usamos debounce para que la comprobación no se ejecute en cada píxel de scroll, mejorando el rendimiento.
+    const handleScroll = debounce(() => {
       if (window.pageYOffset > scrollThreshold) {
         scrollToTopBtn.classList.remove('opacity-0', 'invisible', 'translate-y-4');
         scrollToTopBtn.classList.add('opacity-100', 'visible', 'translate-y-0');
@@ -88,7 +111,8 @@ function initScrollToTopButton() {
         scrollToTopBtn.classList.remove('opacity-100', 'visible', 'translate-y-0');
         scrollToTopBtn.classList.add('opacity-0', 'invisible', 'translate-y-4');
       }
-    });
+    }, 100); // Un tiempo de espera corto (100ms) es ideal para el scroll.
+    window.addEventListener('scroll', handleScroll);
 
     scrollToTopBtn.addEventListener('click', function(e) {
       e.preventDefault();

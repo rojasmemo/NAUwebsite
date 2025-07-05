@@ -1,6 +1,6 @@
-// main.js
+// js/main.js
 
-// Punto de entrada principal para Vite.
+// Punto de entrada de JavaScript para todas las páginas.
 // Importamos el CSS para que Tailwind y Vite lo procesen y lo incluyan en la página.
 import '../styles/input.css';
 

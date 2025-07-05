@@ -3,6 +3,7 @@ import { resolve } from 'path';
 import { defineConfig } from 'vite';
 import { readdirSync } from 'fs';
 import handlebars from 'vite-plugin-handlebars';
+import sitemap from 'vite-plugin-sitemap';
 
 // Usamos process.cwd() para obtener la ruta raíz del proyecto de forma robusta.
 const projectRoot = process.cwd();
@@ -43,5 +44,6 @@ export default defineConfig({
       handlebars({
         partialDirectory: resolve(projectRoot, 'partials'),
       }),
+      sitemap({ hostname: 'https://www.naufundacion.org' }),
     ],
 });

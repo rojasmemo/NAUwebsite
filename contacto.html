@@ -33,6 +33,8 @@
             3. 'data-netlify-recaptcha="true"': Habilita la protección reCAPTCHA de Netlify.
         -->
         <form id="contact-form" name="contact" method="POST" action="/gracias.html" data-netlify="true" data-netlify-recaptcha="true" class="space-y-6">
+            <!-- Campo oculto para que Netlify identifique el nombre del formulario -->
+            <input type="hidden" name="form-name" value="contact" />
             <!-- Campo oculto para personalizar el asunto del correo de notificación de Netlify -->
             <input type="hidden" name="subject" value="¡Nuevo mensaje desde el formulario '{{form.name}}' en naufundacion.org!" >
 

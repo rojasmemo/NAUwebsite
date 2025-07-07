@@ -1,0 +1,63 @@
+---
+// src/components/Footer.astro
+import { Image } from 'astro:assets';
+import logo from '../assets/images/LOGO-NAU-WEB.webp';
+---
+<footer class="bg-custom-darker-teal content-section-wrapper text-white">
+  <div class="grid grid-cols-1 md:grid-cols-4 gap-8 items-start px-4 md:px-10 py-12 md:py-10">
+    <div class="flex justify-center md:justify-start md:col-span-1">
+      <Image src={logo} alt="Logo de Nau en el pie de página" class="h-16 md:max-h-full w-auto" loading="lazy" width="202" height="91" />
+    </div>
+
+    <div class="md:col-span-1 text-sm text-center md:text-left">
+      <h2 class="font-semibold mb-2 text-lg">Contáctanos</h2>
+      <ul>
+        <li>Móvil: <a href="tel:+573005429620" class="hover:underline transition-colors duration-300">+57 300 542 9620</a></li>
+        <li>Email: <a href="mailto:naufundacion@gmail.com" class="hover:underline transition-colors duration-300">naufundacion@gmail.com</a></li>
+      </ul>
+    </div>
+
+    <div class="md:col-span-1 text-sm text-center md:text-left">
+      <h2 class="font-semibold mb-2 text-lg">Síguenos</h2>
+      <ul>
+        <li><a href="https://www.instagram.com/tu_usuario_instagram/" target="_blank" rel="noopener noreferrer" class="hover:underline">Instagram</a></li>
+      </ul>
+    </div>
+
+    <div class="md:col-span-1 text-sm text-center md:text-left flex flex-col items-center md:items-start">
+      <p>Si conectas con nuestro propósito, te invitamos a donar</p>
+      <a href="/donar" class="inline-block bg-custom-light-teal text-custom-darker-teal font-semibold py-2 px-6 rounded-md hover:bg-opacity-80 transition duration-300 mt-2">Dona ahora</a>
+    </div>
+  </div>
+
+  <div class="text-center text-sm bg-custom-light-teal text-custom-darker-teal font-normal py-3 md:py-4">
+    © <span id="currentYear"></span> Fundación Nau. Todos los derechos reservados.
+  </div>
+
+  <a href="#" id="scrollToTopBtn" aria-label="Volver arriba" class="fixed bottom-4 right-4 md:bottom-6 md:right-6 bg-custom-frosty-teal text-custom-darker-teal font-semibold py-1.5 px-3 text-sm rounded-md shadow-lg hover:bg-opacity-80 focus:outline-none focus:ring-2 focus:ring-custom-dark-teal focus:ring-offset-2 transition-all duration-300 ease-in-out opacity-0 invisible translate-y-4 z-50">
+    &#9650; Subir
+  </a>
+</footer>
+
+<script>
+  // Actualizar año
+  const yearSpan = document.getElementById('currentYear');
+  if (yearSpan) {
+    yearSpan.textContent = new Date().getFullYear().toString();
+  }
+
+  // Botón de volver arriba
+  const scrollToTopBtn = document.getElementById('scrollToTopBtn');
+  if (scrollToTopBtn) {
+    window.addEventListener('scroll', () => {
+      const shouldBeVisible = window.scrollY > 300;
+      scrollToTopBtn.classList.toggle('opacity-0', !shouldBeVisible);
+      scrollToTopBtn.classList.toggle('invisible', !shouldBeVisible);
+    }, { passive: true });
+
+    scrollToTopBtn.addEventListener('click', (e) => {
+      e.preventDefault();
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    });
+  }
+</script>

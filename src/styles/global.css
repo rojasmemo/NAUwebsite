@@ -1,0 +1,186 @@
+/* /src/styles/global.css */
+
+/*
+ * ===================================================================
+ *                  DEFINICIÓN DE FUENTES (WEBFONTS)
+ * ===================================================================
+ * Al importar las fuentes desde la carpeta 'public', Astro las servirá
+ * estáticamente. Asegúrate de que la carpeta 'assets' de tu proyecto
+ * original esté dentro de 'nau-astro-site/public/'.
+ */
+@font-face {
+  font-family: 'Poppins';
+  font-style: normal;
+  font-weight: 400; /* Regular */
+  font-display: swap; /* Mejora el rendimiento de carga */
+  src: url('/assets/fonts/poppins-v22-latin-regular.woff2') format('woff2');
+}
+
+@font-face {
+  font-family: 'Poppins';
+  font-style: normal;
+  font-weight: 600; /* Semibold */
+  font-display: swap;
+  src: url('/assets/fonts/poppins-v22-latin-600.woff2') format('woff2');
+}
+
+@font-face {
+  font-family: 'Poppins';
+  font-style: normal;
+  font-weight: 700; /* Bold */
+  font-display: swap;
+  src: url('/assets/fonts/poppins-v22-latin-700.woff2') format('woff2');
+}
+
+/*
+ * ===================================================================
+ *                  DIRECTIVAS DE TAILWIND CSS
+ * ===================================================================
+ * Estas directivas son esenciales. Tailwind las reemplazará con sus
+ * estilos base, de componentes y de utilidades.
+ */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/*
+ * ===================================================================
+ *                  COMPONENTES PERSONALIZADOS
+ * ===================================================================
+ * Aquí definimos clases de componentes reutilizables.
+ * Usar @layer components le dice a Tailwind que procese estas clases
+ * y nos permite usar utilidades de Tailwind con @apply.
+ */
+@layer components {
+  /* Estilo unificado para los enlaces de navegación */
+  .nav-link {
+    /* Color inicial más oscuro para consistencia y para permitir un cambio en hover. SIN FONDO. */
+    @apply block py-2 px-3 rounded-md text-base font-semibold text-custom-darker-teal transition-colors duration-300;
+    /* Al pasar el ratón, el texto toma el color principal de la marca (el del fondo del botón 'Dona ahora'). */
+    @apply hover:text-white;
+  }
+  /* Estilo para el enlace activo */
+  .nav-link[aria-current="page"] {
+    /* El enlace activo usa el mismo color principal de la marca. SIN FONDO. */
+    @apply text-white;
+  }
+  /* Clase para envolver secciones de contenido principal, limitando su ancho y centrándolas */
+  .content-section-wrapper {
+    @apply mx-auto max-w-[1920px];
+  }
+
+  /* Clases base para tipografía responsiva */
+  .h2-base {
+    @apply mb-4 md:mb-10 text-2xl md:text-3xl lg:text-3xl xl:text-3xl 2xl:text-4xl font-bold;
+  }
+
+  .h3-base {
+    @apply mb-4 text-xl md:text-2xl lg:text-2xl xl:text-2xl 2xl:text-3xl font-semibold;
+  }
+
+  .p-base {
+    @apply mb-4 text-base md:text-lg lg:text-xl xl:text-xl 2xl:text-xl leading-relaxed text-custom-darker-teal;
+  }
+
+  .p-base-hero {
+    @apply mb-2 md:mb-4 text-base md:text-lg lg:text-xl xl:text-xl 2xl:text-xl leading-relaxed text-white;
+  }
+
+  /* Clases para fondos de secciones Hero con imágenes responsivas */
+  .hero-bg {
+    @apply mx-auto max-w-[1920px] bg-cover bg-center bg-no-repeat;
+  }
+
+  
+
+  
+
+  .hero-background-sn-1 {
+    @apply bg-[url('/images/1-SOBRE-NAU-WEB-480w.webp')];
+  }
+  @screen bp601 {
+    .hero-background-sn-1 { @apply bg-[url('/images/1-SOBRE-NAU-WEB-1024w.webp')]; }
+  }
+  @screen bp1201 {
+    .hero-background-sn-1 { @apply bg-[url('/images/1-SOBRE-NAU-WEB-1920w.webp')]; }
+  }
+
+  .hero-background-sn-2 {
+    @apply bg-[url('/images/5-SOBRE-NAU-WEB-480w.webp')];
+  }
+  @screen bp601 {
+    .hero-background-sn-2 { @apply bg-[url('/images/5-SOBRE-NAU-WEB-1024w.webp')]; }
+  }
+  @screen bp1201 {
+    .hero-background-sn-2 { @apply bg-[url('/images/5-SOBRE-NAU-WEB-1920w.webp')]; }
+  }
+
+  .hero-background-encuentros-1 {
+    @apply bg-[url('/images/BANNER-INICIAL-ENCUENTROS-480w.webp')];
+  }
+  @screen bp601 {
+    .hero-background-encuentros-1 { @apply bg-[url('/images/BANNER-INICIAL-ENCUENTROS-1024w.webp')]; }
+  }
+  @screen bp1201 {
+    .hero-background-encuentros-1 { @apply bg-[url('/images/BANNER-INICIAL-ENCUENTROS-1920w.webp')]; }
+  }
+
+  .hero-background-encuentros-2 {
+    @apply bg-[url('/images/BANNER-FINAL-ENCUENTROS-480w.webp')];
+  }
+  @screen bp601 {
+    .hero-background-encuentros-2 { @apply bg-[url('/images/BANNER-FINAL-ENCUENTROS-1024w.webp')]; }
+  }
+  @screen bp1201 {
+    .hero-background-encuentros-2 { @apply bg-[url('/images/BANNER-FINAL-ENCUENTROS-1920w.webp')]; }
+  }
+
+  .hero-background-simbolismo-1 {
+    @apply bg-[url('/images/BANNER-INICIAL-NUM-480w.webp')];
+  }
+  @screen bp601 {
+    .hero-background-simbolismo-1 { @apply bg-[url('/images/BANNER-INICIAL-NUM-1024w.webp')]; }
+  }
+  @screen bp1201 {
+    .hero-background-simbolismo-1 { @apply bg-[url('/images/BANNER-INICIAL-NUM-1920w.webp')]; }
+  }
+
+  .hero-background-simbolismo-2 {
+    @apply bg-[url('/images/BANNER-FINAL-NUM-480w.webp')];
+  }
+  @screen bp601 {
+    .hero-background-simbolismo-2 { @apply bg-[url('/images/BANNER-FINAL-NUM-1024w.webp')]; }
+  }
+  @screen bp1201 {
+    .hero-background-simbolismo-2 { @apply bg-[url('/images/BANNER-FINAL-NUM-1920w.webp')]; }
+  }
+
+  .hero-background-donar-1 {
+    @apply bg-[url('/images/BANNER-INICIAL-DONAR-480w.webp')];
+  }
+  @screen bp601 {
+    .hero-background-donar-1 { @apply bg-[url('/images/BANNER-INICIAL-DONAR-1024w.webp')]; }
+  }
+  @screen bp1201 {
+    .hero-background-donar-1 { @apply bg-[url('/images/BANNER-INICIAL-DONAR-1920w.webp')]; }
+  }
+
+  .hero-background-donar-2 {
+    @apply bg-[url('/images/BANNER-FINAL-DONAR-480w.webp')];
+  }
+  @screen bp601 {
+    .hero-background-donar-2 { @apply bg-[url('/images/BANNER-FINAL-DONAR-1024w.webp')]; }
+  }
+  @screen bp1201 {
+    .hero-background-donar-2 { @apply bg-[url('/images/BANNER-FINAL-DONAR-1024w.webp')]; }
+  }
+}
+
+/*
+ * ===================================================================
+ *                  CONTROL DE VISIBILIDAD DEL MENÚ
+ * ===================================================================
+ * Usamos el sistema de capas de Tailwind para una mejor organización
+ * y para aprovechar sus utilidades de forma nativa.
+ */
+

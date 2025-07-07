@@ -1,0 +1,27 @@
+---
+// src/components/FeatureCard.astro
+import { Image } from 'astro:assets';
+import type { ImageMetadata } from 'astro';
+
+interface Props {
+  icon: ImageMetadata;
+  iconAlt?: string;
+  title: string;
+  link: string;
+}
+
+const { icon, iconAlt = "Icono decorativo", title, link } = Astro.props;
+---
+<div class="relative bg-white p-6 md:p-8 pt-8 md:pt-8 rounded-lg shadow-md text-custom-darker-teal">
+  <Image 
+    src={icon} 
+    alt={iconAlt}
+    class="absolute top-0 left-1/2 -translate-x-1/2 -translate-y-1/2 w-auto h-12 md:h-16" 
+    width="64" height="64" loading="lazy"
+  />
+  <h3 class="text-2xl font-semibold mt-4 md:mt-8 mb-3 text-custom-darker-teal">{title}</h3>
+  <slot />
+  <a href={link} class="inline-block bg-custom-dark-teal text-white font-semibold py-2 px-6 rounded-md hover:bg-gray-100 hover:text-custom-dark-teal transition duration-300 self-start">
+    Conoce más
+  </a>
+</div>

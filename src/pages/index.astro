@@ -1,0 +1,146 @@
+---
+// src/pages/index.astro
+import { Image, Picture } from 'astro:assets';
+import HeroBanner from '../components/HeroBanner.astro';
+import SplitSection from '../components/SplitSection.astro';
+import FeatureCard from '../components/FeatureCard.astro';
+import MainLayout from '../layouts/MainLayout.astro';
+import banner1 from '../assets/images/1-BANNER-NAU-WEB-1920w.webp';
+import banner2 from '../assets/images/2-BANNER-NAU-WEB.webp';
+import banner4 from '../assets/images/4-BANNER-NAU-WEB.webp';
+import banner3 from '../assets/images/3-BANNER-NAU-WEB-1920w.webp';
+import banner6 from '../assets/images/6-BANNER-NAU-WEB-1920w.webp';
+---
+<MainLayout 
+  title="Inicio" 
+  description="Descubre NAU: te ayudamos a conectar con tu esencia, romper bloqueos y transformar tu vida a través de encuentros y simbolismo numérico."
+>
+  <!-- Sección Hero 1: "Despiértate" -->
+  <HeroBanner
+    image={banner1}
+    alt="Una persona sonriendo con los ojos cerrados, representando un despertar interior."
+    bgColorClass="bg-custom-dark-teal"
+    loading="eager"
+    containerClasses="py-12 md:py-16 lg:py-20 xl:py-24 2xl:py-44"
+  >
+      <h2 class="h2-base">
+        Con NAU puedes crecer e inspirar
+      </h2>
+      <p class="p-base-hero max-w-2xl mx-auto">
+        Aporta y participa en las experiencias NAU.
+      </p>
+      <p class="p-base-hero max-w-2xl mx-auto md:mb-4">
+        Así te permites crecer y ayudas a que otros crezcan.
+      </p>
+      <a href="/modelo-nau" class="inline-block bg-custom-dark-teal text-white font-semibold py-2 px-6 rounded-md hover:bg-gray-100 hover:text-custom-dark-teal transition duration-300">
+        Descubre cómo funciona
+      </a>
+  </HeroBanner>
+
+  <!-- Sección de contenido 1: "¿Sientes que algo te frena?" -->
+  <SplitSection reverseOnMobile={true}>
+    <div slot="left" class="bg-white p-4 md:py-8 rounded-lg flex flex-col justify-center">
+      <h2 class="h2-base text-custom-dark-teal">
+        ¿Sientes que algo te frena?
+      </h2>
+      <p class="p-base text-left">
+        A veces la vida se repite en dudas, miedos y emociones que pesan. Quizá no sabes qué te detiene, pero algo
+        dentro de ti intuye que hay algo más. Un camino diferente. Una versión de ti que espera salir.
+      </p>
+      <p class="p-base text-left">
+        Haz espacio para lo nuevo.
+      </p>
+      <h3 class="h3-base text-custom-dark-teal text-center md:text-left">
+        ¡Haz espacio para tu transformación!
+      </h3>
+    </div>
+    <div slot="right" class="rounded-lg overflow-hidden flex justify-center items-center">
+      <Image src={banner2} alt="Personas juntando y elevando sus manos"
+        class="w-full max-w-xs h-auto object-contain rounded-lg" 
+        widths={[250, 400, 581]} 
+        sizes="(max-width: 768px) 250px, (max-width: 1024px) 400px, 581px" />
+    </div>
+  </SplitSection>
+
+  <!-- Sección Hero 2: "No estás solo en este proceso" -->
+  <HeroBanner
+    image={banner3}
+    alt="Una persona abriendo los brazos en señal de bienvenida, con un fondo de naturaleza."
+    bgColorClass="bg-custom-dark-teal"
+  >
+      <h2 class="h2-base max-w-2xl mx-auto">
+        No estás solo. La transformación no ocurre en aislamiento.
+      </h2>
+      <p class="p-base-hero max-w-2xl mx-auto">
+        En NAU caminamos contigo para que vivas con más serenidad y propósito.
+      </p>
+      <p class="p-base-hero max-w-2xl mx-auto md:mb-8">
+        Tu camino es único. Nosotros te ayudamos a que lo recorras con claridad y confianza.
+      </p>
+      <a href="/encuentros" class="inline-block bg-custom-light-teal text-custom-darker-teal font-semibold py-2 px-6 rounded-md hover:bg-opacity-80 transition duration-300">
+        Descubre cómo te acompañamos
+      </a>
+  </HeroBanner>
+
+  <!-- Sección de contenido 2: Presentación de "Experiencias y herramientas transformadoras" -->
+  <section class="content-section-wrapper py-12 md:py-16 px-4 md:px-16 bg-custom-pale-teal">
+    <div class="text-center">
+      <h2 class="h2-base text-custom-darker-teal mb-12 md:mb-16">
+        Abre la puerta a una transformación profunda y consciente:
+      </h2>
+      <div class="grid md:grid-cols-2 gap-12 md:gap-8 mb-8 px-4 md:px-8 lg:px-24">
+        <FeatureCard
+          icon={banner4}
+          iconAlt="Icono representativo de NAU"
+          title="ENCUENTROS"
+          link="/encuentros"
+        >
+          <ul class="p-base list-disc list-outside text-custom-darker-teal text-left pl-4 md:pl-12">
+            <li>Trabajar por ti y para ti</li>
+            <li>Retorno a lo femenino y masculino</li>
+            <li>Relación padres e hijos</li>
+            <li>Relación de pareja</li>
+          </ul>
+        </FeatureCard>
+        <FeatureCard
+          icon={banner4}
+          iconAlt="Icono representativo de NAU"
+          title="SIMBOLISMO NUMÉRICO"
+          link="/simbolismo-numerico"
+        >
+          <ul class="p-base list-disc list-outside text-custom-darker-teal text-left pl-4 md:pl-12">
+            <li>Lección de vida</li>
+            <li>Número del deseo del corazón</li>
+            <li>Número de personalidad externa</li>
+            <li>Número de la vía del destino</li>
+            <li>Año personal</li>
+            <li>El Triángulo Divino</li>
+          </ul>
+        </FeatureCard>
+      </div>
+      <h3 class="h3-base text-custom-darker-teal">
+        Inicia tu transformación con NAU
+      </h3>
+    </div>
+  </section>
+
+  <!-- Sección Hero 3: Llamada final a la acción "Esa vida es posible" -->
+  <HeroBanner
+    image={banner6}
+    alt="Una persona de espaldas mirando un paisaje montañoso, simbolizando un futuro por descubrir."
+    bgColorClass="bg-custom-medium-teal"
+    containerClasses="py-12 md:py-16 lg:py-24 xl:py-28 2xl:py-40"
+  >
+      <p class="p-base-hero max-w-2xl mx-auto">
+        Imagina vivir sin las cargas del pasado, sin miedo a avanzar.
+        Imagina despertar en paz contigo, con claridad y propósito.
+      </p>
+      <h2 class="h2-base max-w-2xl mx-auto">
+        Esa vida es posible. La pregunta es:
+        ¿estás listo o lista para comenzarla?
+      </h2>
+      <a href="/encuentros" class="inline-block bg-custom-light-teal text-custom-darker-teal font-semibold py-2 px-6 rounded-md hover:bg-opacity-80 transition duration-300">
+        Empieza aquí
+      </a>
+  </HeroBanner>
+</MainLayout>

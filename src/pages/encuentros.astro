@@ -1,0 +1,107 @@
+---
+// src/pages/encuentros.astro
+import MainLayout from '../layouts/MainLayout.astro';
+import HeroBanner from '../components/HeroBanner.astro';
+import EncuentroCard from '../components/EncuentroCard.astro';
+import { client } from '../lib/sanity/client.js';
+import { paginaEncuentrosQuery } from '../lib/sanity/queries.js';
+import { PortableText } from 'astro-portabletext';
+
+// Importamos el icono que es estático para todas las tarjetas
+import cardIcon from '../assets/images/CLIP-ENCUENTROS.webp';
+
+
+// 2. Hacemos la llamada a Sanity
+const data = await client.fetch(paginaEncuentrosQuery);
+const { page, encuentros } = data;
+
+// Si no hay datos para la página, podríamos mostrar un error o redirigir
+if (!page) {
+  return new Response('Página no encontrada', { status: 404 });
+}
+
+// Filtramos los encuentros que tienen todo lo necesario para mostrarse.
+// Esto hace el código del template más limpio y previene errores.
+const encuentrosVisibles = encuentros.filter(encuentro => 
+  encuentro.image?.url && encuentro.description
+);
+---
+
+<MainLayout
+  title={page.title}
+  description={page.seoDescription}
+>
+  <main>
+    <!-- Sección Hero 1: "Encuentros NAU" -->
+    {page.mainBanner?.image?.url && (
+      <HeroBanner
+        image={page.mainBanner.image.url}
+        alt={page.mainBanner.alt}
+        width={page.mainBanner.image.width}
+        height={page.mainBanner.image.height}
+        bgColorClass="bg-custom-medium-teal"
+        loading="eager"
+        containerClasses="py-20 md:py-28 lg:py-32 xl:py-36 2xl:py-48"
+      >
+        {page.mainBanner.heading && <h2 class="h2-base md:mb-4">{page.mainBanner.heading}</h2>}
+        {page.mainBanner.tagline && <p class="p-base-hero max-w-2xl mx-auto">{page.mainBanner.tagline}</p>}
+      </HeroBanner>
+    )}
+
+    <!-- Sección de contenido 1: Introducción -->
+    <section class="content-section-wrapper pt-12 md:pt-16 pb-24 md:pb-32 px-8 md:px-16 bg-custom-specific-blue relative">
+      <div class="text-left">
+        <!-- Usamos PortableText para renderizar el texto enriquecido de Sanity -->
+        <div class="prose prose-p:text-white prose-p:p-base max-w-3xl mx-auto">
+          <PortableText value={page.introduction} />
+        </div>
+      </div>
+    </section>
+
+    <!-- Sección de contenido 2: Descripción de cada uno de los 4 Encuentros -->
+    <section id="experiencias" class="relative content-section-wrapper z-10 -mt-20 md:-mt-28 pt-12 md:pt-16 pb-4 md:pb-6 px-4 md:px-16 rounded-t-lg md:rounded-t-xl">
+      <div class="text-center">
+        <div class="grid md:grid-cols-2 gap-y-12 gap-x-8 md:gap-y-16 md:gap-x-10 mb-8 px-4 md:px-6 lg:px-20">
+          {encuentrosVisibles.length > 0 ? (
+            encuentrosVisibles.map((encuentro) => (
+              <a href={`/encuentros/${encuentro.slug}`} class="block hover:scale-105 transition-transform duration-300 focus:outline-none focus:ring-2 focus:ring-custom-light-teal rounded-lg">
+                <EncuentroCard image={encuentro.image.url} imageAlt={encuentro.alt || encuentro.title} icon={cardIcon} width={encuentro.image.width} height={encuentro.image.height} title={encuentro.title}>
+                  <div class="prose prose-p:text-custom-darker-teal prose-p:p-base prose-strong:font-semibold text-left">
+                    <PortableText value={encuentro.description} />
+                  </div>
+                </EncuentroCard>
+              </a>
+            ))
+          ) : (
+            <div class="col-span-full text-center py-10">
+              <p class="text-lg text-gray-700">Actualmente no hay nuevos encuentros para mostrar.</p>
+              <p class="text-gray-500 mt-2">Por favor, revisa el CMS para asegurarte de que los encuentros estén publicados y tengan una imagen y descripción asignadas.</p>
+            </div>
+          )}
+        </div>
+      </div>
+    </section>
+
+    <!-- Sección Hero 2: "El momento es ahora." -->
+    {page.ctaBanner?.image?.url && (
+      <HeroBanner
+        image={page.ctaBanner.image.url}
+        alt={page.ctaBanner.alt}
+        width={page.ctaBanner.image.width}
+        height={page.ctaBanner.image.height}
+        bgColorClass="bg-custom-medium-teal"
+        containerClasses="py-12 md:py-20 lg:py-28 xl:py-36 2xl:py-48"
+      >
+        {page.ctaBanner.heading && <h2 class="h2-base">{page.ctaBanner.heading}</h2>}
+        {page.ctaBanner.cta && page.ctaBanner.cta.link && (
+          <a
+            href={page.ctaBanner.cta.link}
+            class="inline-block bg-custom-light-teal text-custom-darker-teal font-semibold py-2 px-6 rounded-md hover:bg-opacity-80 hover:text-custom-dark-teal transition duration-300 mt-4"
+          >
+            {page.ctaBanner.cta.text}
+          </a>
+        )}
+      </HeroBanner>
+    )}
+  </main>
+</MainLayout>

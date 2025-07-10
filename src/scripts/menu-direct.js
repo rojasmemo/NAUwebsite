@@ -18,13 +18,7 @@ function initializeDirectMenu() {
 
   hamburgerButton.addEventListener('click', (event) => {
     // Detenemos la propagación para que el listener del documento no lo cierre inmediatamente.
-    event.stopPropagation();
-    const isHidden = mobileMenu.classList.contains('hidden');
-    if (isHidden) {
-      openMenu();
-    } else {
-      closeMenu();
-    }
+    mobileMenu.classList.contains('hidden') ? openMenu() : closeMenu();
   });
 
   // Listener para cerrar con scroll
@@ -37,19 +31,21 @@ function initializeDirectMenu() {
   // Listener para cerrar al hacer clic fuera
   document.addEventListener('click', (event) => {
     // Si el menú está visible y el clic NO fue dentro del menú
-    if (!mobileMenu.classList.contains('hidden')) {
-      // El botón de la hamburguesa no está dentro del menú, así que también lo excluimos.
-      if (!mobileMenu.contains(event.target) && event.target !== hamburgerButton) {
-        closeMenu();
-      }
+    if (!mobileMenu.classList.contains('hidden') && !mobileMenu.contains(event.target) && !hamburgerButton.contains(event.target)) {
+      closeMenu();
     }
   });
 
   // Listener para cerrar al redimensionar a escritorio
+  let resizeTimeout;
   window.addEventListener('resize', () => {
-    if (window.innerWidth >= 768) {
-      closeMenu();
-    }
+    // "Debounce" para no ejecutar el código en cada píxel de redimensión
+    clearTimeout(resizeTimeout);
+    resizeTimeout = setTimeout(() => {
+      if (window.innerWidth >= 768 && !mobileMenu.classList.contains('hidden')) {
+        closeMenu();
+      }
+    }, 150);
   }, { passive: true });
 }
 

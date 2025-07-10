@@ -1,0 +1,184 @@
+---
+// src/components/ContactForm.astro
+
+// La clave pública de reCAPTCHA v3 es segura para exponer en el frontend.
+const recaptchaSiteKey = '6Lcy43grAAAAAPTd99MJiK7E42tofYVIbLD8sXgQ';
+---
+
+<!-- Formulario gestionado por el script de abajo -->
+<form id="contact-form" class="space-y-6">
+  <div>
+    <label for="nombre" class="block text-sm font-semibold text-custom-dark-teal mb-1">* Nombre Completo:</label>
+    <input type="text" id="nombre" name="nombre" placeholder="Ej: Ana Pérez" required autocomplete="name"
+           class="form-input mt-1 block w-full px-3 py-2 bg-white border border-custom-gray-blue rounded-md shadow-sm
+                  placeholder-gray-400 focus:outline-none focus:ring-custom-medium-teal focus:border-custom-medium-teal
+                  sm:text-sm text-custom-darker-teal">
+    <p id="nombre-error" class="error-message"></p>
+  </div>
+
+  <div>
+    <label for="email" class="block text-sm font-semibold text-custom-dark-teal mb-1">* Correo Electrónico:</label>
+    <input type="email" id="email" name="email" placeholder="Ej: ana.perez@correo.com" required autocomplete="email"
+           class="form-input mt-1 block w-full px-3 py-2 bg-white border border-custom-gray-blue rounded-md shadow-sm
+                  placeholder-gray-400 focus:outline-none focus:ring-custom-medium-teal focus:border-custom-medium-teal
+                  sm:text-sm text-custom-darker-teal">
+    <p id="email-error" class="error-message"></p>
+  </div>
+
+  <div>
+    <label for="asunto" class="block text-sm font-semibold text-custom-dark-teal mb-1">* Asunto:</label>
+    <select id="asunto" name="asunto" required autocomplete="off"
+            class="form-input mt-1 block w-full px-3 py-2 bg-white border border-custom-gray-blue rounded-md shadow-sm
+                   focus:outline-none focus:ring-custom-medium-teal focus:border-custom-medium-teal
+                   sm:text-sm text-custom-darker-teal">
+      <option value="" disabled selected class="text-gray-500">Selecciona una opción...</option>
+      <option value="Encuentros" class="text-custom-darker-teal">Encuentros</option>
+      <option value="Simbolismo Numerico" class="text-custom-darker-teal">Simbolismo Numérico</option>
+      <option value="Donaciones" class="text-custom-darker-teal">Donaciones</option>
+      <option value="Otro" class="text-custom-darker-teal">Otro</option>
+    </select>
+    <p id="asunto-error" class="error-message"></p>
+  </div>
+
+  <div>
+    <label for="mensaje" class="block text-sm font-semibold text-custom-dark-teal mb-1">* Tu Mensaje o Pregunta:</label>
+    <textarea id="mensaje" name="mensaje" rows="4" placeholder="Escribe aquí tu mensaje detallado..." required autocomplete="off"
+              class="form-input mt-1 block w-full px-3 py-2 bg-white border border-custom-gray-blue rounded-md shadow-sm
+                     placeholder-gray-400 focus:outline-none focus:ring-custom-medium-teal focus:border-custom-medium-teal
+                     sm:text-sm text-custom-darker-teal resize-y"></textarea>
+    <p id="mensaje-error" class="error-message"></p>
+  </div>
+  
+  <div class="text-right">
+    <button type="submit" class="btn btn-primary">Enviar Mensaje</button>
+  </div>
+</form>
+
+<style>
+  .error-message {
+    @apply text-red-600 text-sm mt-1 h-5 transition-opacity duration-300; /* h-5 para reservar espacio y evitar saltos de layout */
+  }
+  .form-input.invalid {
+    @apply border-red-500 ring-1 ring-red-500;
+  }
+</style>
+
+<!-- 
+  Script de reCAPTCHA. Se carga de forma asíncrona.
+  Astro se encargará de incluirlo solo en esta página.
+-->
+<script is:inline src={`https://www.google.com/recaptcha/api.js?render=${recaptchaSiteKey}`} async defer></script>
+
+<!--
+  Lógica del formulario.
+  Astro procesará este script y lo incluirá en la página.
+  Aquí irá el contenido de tu `main.js` relacionado con el formulario.
+-->
+<script define:vars={{ recaptchaSiteKey }}>
+  document.addEventListener('DOMContentLoaded', () => {
+    const form = document.getElementById('contact-form');
+    if (!form) return;
+    
+    const inputs = form.querySelectorAll('.form-input');
+    const submitButton = form.querySelector('button[type="submit"]');
+    const originalButtonText = submitButton.innerHTML;
+
+    function validateField(input) {
+      const errorElement = document.getElementById(`${input.id}-error`);
+      // Limpiamos validaciones personalizadas previas
+      input.setCustomValidity('');
+
+      // Forzamos la validación del navegador
+      const isValid = input.checkValidity();
+
+      if (input.validity.valueMissing) {
+        input.setCustomValidity('Este campo es obligatorio.');
+      } else if (input.validity.typeMismatch) {
+        input.setCustomValidity('Por favor, introduce un formato válido.');
+      }
+
+      const validationMessage = input.validationMessage;
+
+      if (validationMessage) {
+        input.classList.add('invalid');
+        errorElement.textContent = validationMessage;
+      } else {
+        input.classList.remove('invalid');
+        errorElement.textContent = '';
+      }
+      return !validationMessage;
+    }
+
+    function validateForm() {
+      let isFormValid = true;
+      inputs.forEach(input => {
+        if (!validateField(input)) {
+          isFormValid = false;
+        }
+      });
+      return isFormValid;
+    }
+
+    inputs.forEach(input => {
+      // Validamos cuando el usuario deja el campo (blur)
+      input.addEventListener('blur', () => validateField(input));
+      // Y también al escribir, para una respuesta más rápida una vez que hay un error
+      input.addEventListener('input', () => {
+        if (input.classList.contains('invalid')) {
+          validateField(input);
+        }
+      });
+    });
+
+    form.addEventListener('submit', (event) => {
+      event.preventDefault();
+
+      if (!validateForm()) {
+        return; // Detiene el envío si el formulario no es válido
+      }
+
+      // `grecaptcha` es cargado por el script de Google en la cabecera del componente.
+      // Si no está listo, salimos para evitar errores.
+      if (typeof grecaptcha === 'undefined') {
+        console.error('reCAPTCHA no está cargado.');
+        alert('Error de configuración. Por favor, inténtalo de nuevo más tarde.');
+        return;
+      }
+      // Deshabilitar botón y mostrar estado de envío
+      submitButton.disabled = true;
+      submitButton.innerHTML = 'Enviando...';
+
+      grecaptcha.ready(function () {
+        grecaptcha.execute(recaptchaSiteKey, { action: 'submit' }).then(async function (token) {
+          const formData = new FormData(form);
+          const data = Object.fromEntries(formData.entries());
+          data.recaptchaToken = token;
+
+          let response;
+          try {
+            response = await fetch('/api/enviar-formulario', {
+              method: 'POST',
+              headers: { 'Content-Type': 'application/json' },
+              body: JSON.stringify(data),
+            });
+
+            if (response.ok) {
+              // Redirigimos a la página de gracias de Astro.
+              window.location.href = '/gracias';
+            } else {
+              const errorResult = await response.json();
+              throw new Error(errorResult.message || 'Ocurrió un error al enviar el mensaje.');
+            }
+          } catch (error) {
+            console.error('Error en el envío del formulario:', error);
+            alert(`Error: ${error.message}`);
+          } finally {
+            // Restaurar el botón en cualquier caso (éxito o error)
+            submitButton.disabled = false;
+            submitButton.innerHTML = originalButtonText;
+          }
+        });
+      });
+    });
+  });
+</script>

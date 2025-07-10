@@ -1,0 +1,32 @@
+---
+// src/components/SanityImage.astro
+import { urlForImage } from '../lib/sanity/client.js';
+import type { Image as SanityImage } from 'sanity';
+
+interface Props {
+  image: SanityImage;
+  class?: string;
+  width?: number; // Ancho para la optimización de la URL
+}
+
+const { image, class: className, width = 800 } = Astro.props;
+const dimensions = image?.asset?.metadata?.dimensions;
+
+// No renderizar nada si la imagen o su asset no existen.
+if (!image?.asset) {
+  return null;
+}
+
+// Construimos la URL de la imagen con las optimizaciones deseadas.
+const src = urlForImage(image).width(width).auto('format').url();
+const alt = image.alt || 'Imagen descriptiva del encuentro'; // Fallback por si el alt no está definido
+---
+<img
+  src={src}
+  alt={alt}
+  loading="lazy"
+  decoding="async"
+  width={dimensions?.width}
+  height={dimensions?.height}
+  class:list={["w-full h-auto rounded-lg shadow-lg object-cover", className]}
+/>

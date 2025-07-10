@@ -5,20 +5,26 @@ interface Props {
   bgColorClass?: string;
   containerClasses?: string;
   reverseOnMobile?: boolean;
+  gridColsClass?: string;
+  leftColClass?: string;
+  rightColClass?: string;
 }
 
 const { 
   bgColorClass = 'bg-white',
   containerClasses = 'py-12 md:py-8 px-4 md:px-20',
-  reverseOnMobile = false
+  reverseOnMobile = false,
+  gridColsClass = 'md:grid-cols-2',
+  leftColClass = 'md:col-span-1',
+  rightColClass = 'md:col-span-1'
 } = Astro.props;
 
 const leftOrder = reverseOnMobile ? 'order-2 md:order-1' : 'order-1';
 const rightOrder = reverseOnMobile ? 'order-1 md:order-2' : 'order-2';
 ---
 <section class:list={["content-section-wrapper", bgColorClass, containerClasses]}>
-  <div class="grid md:grid-cols-2 gap-8 items-center px-4 md:px-8 lg:px-16">
-    <div class:list={[leftOrder]}><slot name="left" /></div>
-    <div class:list={[rightOrder]}><slot name="right" /></div>
+  <div class:list={["grid gap-8 items-center", gridColsClass]}>
+    <div class:list={[leftOrder, leftColClass]}><slot name="left" /></div>
+    <div class:list={[rightOrder, rightColClass]}><slot name="right" /></div>
   </div>
 </section>

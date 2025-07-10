@@ -1,6 +1,7 @@
 ---
 // src/pages/index.astro
-import { Image, Picture } from 'astro:assets';
+import { Image } from 'astro:assets';
+import { sanityClient } from 'sanity:client';
 import HeroBanner from '../components/HeroBanner.astro';
 import SplitSection from '../components/SplitSection.astro';
 import FeatureCard from '../components/FeatureCard.astro';
@@ -9,7 +10,22 @@ import banner1 from '../assets/images/1-BANNER-NAU-WEB-1920w.webp';
 import banner2 from '../assets/images/2-BANNER-NAU-WEB.webp';
 import banner4 from '../assets/images/4-BANNER-NAU-WEB.webp';
 import banner3 from '../assets/images/3-BANNER-NAU-WEB-1920w.webp';
+import banner5 from '../assets/images/5-BANNER-NAU-WEB.webp';
 import banner6 from '../assets/images/6-BANNER-NAU-WEB-1920w.webp';
+
+// Creamos un objeto para las consultas para mantenerlo organizado
+const queries = {
+  encuentros: `*[_type == "encuentro"] | order(order asc)[0...4] {
+    title,
+    "slug": slug.current
+  }`,
+  simbolismos: `*[_type == "simbolismo"] | order(order asc) {
+    title,
+    "slug": slug.current
+  }`
+};
+const encuentros = await sanityClient.fetch(queries.encuentros);
+const simbolismos = await sanityClient.fetch(queries.simbolismos);
 ---
 <MainLayout 
   title="Inicio" 
@@ -57,8 +73,8 @@ import banner6 from '../assets/images/6-BANNER-NAU-WEB-1920w.webp';
     <div slot="right" class="rounded-lg overflow-hidden flex justify-center items-center">
       <Image src={banner2} alt="Personas juntando y elevando sus manos"
         class="w-full max-w-xs h-auto object-contain rounded-lg" 
-        widths={[250, 400, 581]} 
-        sizes="(max-width: 768px) 250px, (max-width: 1024px) 400px, 581px" />
+        widths={[250, 400, 581]}
+        sizes="(max-width: 767px) 90vw, 320px" />
     </div>
   </SplitSection>
 
@@ -95,11 +111,10 @@ import banner6 from '../assets/images/6-BANNER-NAU-WEB-1920w.webp';
           title="ENCUENTROS"
           link="/encuentros"
         >
-          <ul class="p-base list-disc list-outside text-custom-darker-teal text-left pl-4 md:pl-12">
-            <li>Trabajar por ti y para ti</li>
-            <li>Retorno a lo femenino y masculino</li>
-            <li>Relación padres e hijos</li>
-            <li>Relación de pareja</li>
+          <ul class="p-base list-disc list-outside text-custom-darker-teal text-left pl-4 md:pl-12 space-y-2">
+            {encuentros.map(item => (
+              <li>{item.title}</li>
+            ))}
           </ul>
         </FeatureCard>
         <FeatureCard
@@ -108,13 +123,12 @@ import banner6 from '../assets/images/6-BANNER-NAU-WEB-1920w.webp';
           title="SIMBOLISMO NUMÉRICO"
           link="/simbolismo-numerico"
         >
-          <ul class="p-base list-disc list-outside text-custom-darker-teal text-left pl-4 md:pl-12">
-            <li>Lección de vida</li>
-            <li>Número del deseo del corazón</li>
-            <li>Número de personalidad externa</li>
-            <li>Número de la vía del destino</li>
-            <li>Año personal</li>
-            <li>El Triángulo Divino</li>
+          <ul class="p-base list-disc list-outside text-custom-darker-teal text-left pl-4 md:pl-12 space-y-2">
+            {simbolismos.length > 0 ? (
+              simbolismos.map(item => <li>{item.title}</li>)
+            ) : (
+              <li class="list-none italic">Aún no hay elementos para mostrar.</li>
+            )}
           </ul>
         </FeatureCard>
       </div>
@@ -123,6 +137,31 @@ import banner6 from '../assets/images/6-BANNER-NAU-WEB-1920w.webp';
       </h3>
     </div>
   </section>
+
+  <!-- Sección de contenido 3: "¿Qué pasa si sigues esperando?" -->
+  <SplitSection bgColorClass="bg-white">
+    <div slot="left" class="rounded-lg overflow-hidden flex justify-center items-center">
+      <Image 
+        src={banner5} 
+        alt="Personas mirando reflexivamente hacia el futuro" 
+        class="w-full max-w-sm h-auto object-contain" 
+        widths={[240, 480, 687]}
+        sizes="(max-width: 767px) 90vw, 384px"
+      />
+    </div>
+    <div slot="right" class="bg-white text-custom-darker-teal p-4 md:p-8 rounded-lg text-center md:text-left flex flex-col justify-center items-center md:items-start">
+      <h2 class="h2-base text-custom-dark-teal">
+        ¿Qué pasa si sigues esperando el momento perfecto?
+      </h2>
+      <p class="p-base text-left">
+        El tiempo no se detiene. Las dudas y los miedos siguen ahí, igual que antes. La transformación no llega sola, requiere un acto de valentía.
+      </p>
+      <p class="p-base text-left mb-6">
+        Hoy puedes decidir soltar lo que te limita y abrir la puerta a una vida más auténtica.
+      </p>
+      <h3 class="h3-base text-custom-dark-teal text-center md:text-left mb-0">¡EL MOMENTO ES AHORA!</h3>
+    </div>
+  </SplitSection>
 
   <!-- Sección Hero 3: Llamada final a la acción "Esa vida es posible" -->
   <HeroBanner

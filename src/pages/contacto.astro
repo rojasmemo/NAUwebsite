@@ -1,0 +1,22 @@
+---
+// src/pages/contacto.astro
+import MainLayout from '../layouts/MainLayout.astro';
+import ContactForm from '../components/ContactForm.astro';
+---
+
+<MainLayout
+  title="Contacto - NAU"
+  description="Ponte en contacto con NAU para saber más sobre nuestros encuentros, simbolismo numérico o para cualquier otra consulta."
+  bodyClass="bg-custom-pale-teal"
+>
+  <main>
+    <section class="py-10">
+      <div class="container mx-auto max-w-2xl p-4 md:p-8 my-10 bg-white shadow-lg rounded-lg">
+        <div class="text-center mb-6 md:mb-8">
+          <h1 class="text-2xl md:text-3xl font-bold text-custom-darker-teal">Contáctanos</h1>
+        </div>
+        <ContactForm />
+      </div>
+    </section>
+  </main>
+</MainLayout>

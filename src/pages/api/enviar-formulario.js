@@ -2,14 +2,12 @@
 
 import nodemailer from 'nodemailer';
 
-// Configuración de Nodemailer usando las variables de entorno de Netlify
+// Configuración de Nodemailer para Gmail
 const transporter = nodemailer.createTransport({
-  host: 'smtp.hostinger.com',
-  port: 465,
-  secure: true, // true para 465, false para otros puertos
+  service: 'gmail',
   auth: {
     user: process.env.EMAIL_USER,
-    pass: process.env.EMAIL_PASS,
+    pass: process.env.EMAIL_PASS, // Debe ser una contraseña de aplicación de Google
   },
 });
 
@@ -25,11 +23,8 @@ async function validateRecaptcha(token) {
 
   const data = await response.json();
   
-  // Log detallado de la respuesta de Google
-  console.log("Respuesta de la API de reCAPTCHA:", JSON.stringify(data, null, 2));
-
+  // Si la validación falla, registra los códigos de error para depuración.
   if (!data.success) {
-    // Log de los códigos de error si la validación falla
     console.error("Falló la verificación de reCAPTCHA. Códigos de error:", data['error-codes']);
   }
 

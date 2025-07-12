@@ -6,3 +6,7 @@
   command = "npm run build"
   # La carpeta que Netlify debe publicar después de la construcción.
   publish = "dist"
+
+# Agregamos una variable de entorno para solucionar conflictos de dependencias.
+[build.environment]
+  NPM_FLAGS = "--legacy-peer-deps"

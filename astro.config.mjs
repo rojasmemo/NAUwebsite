@@ -9,6 +9,15 @@ export default defineConfig({
   // Cambiamos a 'server' para habilitar funciones del lado del servidor con el adaptador de Netlify.
   output: 'server',
   adapter: netlify(),
+  image: {
+    service: {
+      entrypoint: '@astrojs/netlify/image-service'
+    },
+    remotePatterns: [{
+      protocol: "https",
+      hostname: "cdn.sanity.io"
+    }]
+  },
   integrations: [
     tailwind(),
     sanity({

@@ -25,6 +25,8 @@ if (!page) {
 const encuentrosVisibles = encuentros.filter(encuentro => 
   encuentro.image?.url && encuentro.description
 );
+
+console.log('Datos de encuentros para renderizar:', JSON.stringify(encuentrosVisibles, null, 2));
 ---
 
 <MainLayout

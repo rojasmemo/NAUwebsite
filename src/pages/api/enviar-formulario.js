@@ -24,6 +24,15 @@ async function validateRecaptcha(token) {
   });
 
   const data = await response.json();
+  
+  // Log detallado de la respuesta de Google
+  console.log("Respuesta de la API de reCAPTCHA:", JSON.stringify(data, null, 2));
+
+  if (!data.success) {
+    // Log de los códigos de error si la validación falla
+    console.error("Falló la verificación de reCAPTCHA. Códigos de error:", data['error-codes']);
+  }
+
   return data.success && data.score >= 0.5; // Umbral de puntuación de reCAPTCHA v3
 }
 

@@ -12,7 +12,7 @@ export const client = createClient({
 
   // La fecha de hoy en formato YYYY-MM-DD.
   // Esto asegura que si Sanity actualiza su API, tu sitio no se rompa inesperadamente.
-  apiVersion: import.meta.env.PUBLIC_SANITY_API_VERSION,
+  apiVersion: import.meta.env.PUBLIC_SANITY_API_VERSION || '2024-07-11',
 
   // `false` si quieres datos frescos en cada petición durante el desarrollo.
   // `true` para producción para usar la CDN global y que sea más rápido.

@@ -17,7 +17,7 @@ export default defineConfig({
       // Usamos una variable de entorno para el CDN. `false` en desarrollo para ver cambios al instante,
       // y `true` en producción (Netlify) para máxima velocidad.
       useCdn: process.env.NODE_ENV === 'production',
-      apiVersion: process.env.PUBLIC_SANITY_API_VERSION // Usa una fecha reciente en formato YYYY-MM-DD.
+      apiVersion: process.env.PUBLIC_SANITY_API_VERSION || '2024-07-11' // Usa una fecha reciente en formato YYYY-MM-DD.
     })
   ],
 });

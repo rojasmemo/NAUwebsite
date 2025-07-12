@@ -12,12 +12,12 @@ export default defineConfig({
     tailwind(),
     sanity({
       // REEMPLAZA 'xxxxxx' con el mismo Project ID que usaste en Sanity Studio.
-      projectId: 'b9a3y4ri',
-      dataset: 'production',
+      projectId: process.env.PUBLIC_SANITY_PROJECT_ID,
+      dataset: process.env.PUBLIC_SANITY_DATASET,
       // Usamos una variable de entorno para el CDN. `false` en desarrollo para ver cambios al instante,
       // y `true` en producción (Netlify) para máxima velocidad.
       useCdn: process.env.NODE_ENV === 'production',
-      apiVersion: '2024-07-08' // Usa una fecha reciente en formato YYYY-MM-DD.
+      apiVersion: process.env.PUBLIC_SANITY_API_VERSION // Usa una fecha reciente en formato YYYY-MM-DD.
     })
   ],
 });

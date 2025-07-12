@@ -1,8 +1,6 @@
-# Astro Starter Kit: Minimal
+# NAU Website
 
-```sh
-npm create astro@latest -- --template minimal
-```
+This is the official website for NAU, built with Astro and Sanity.
 
 [![Open in StackBlitz](https://developer.stackblitz.com/img/open_in_stackblitz.svg)](https://stackblitz.com/github/withastro/astro/tree/latest/examples/minimal)
 [![Open with CodeSandbox](https://assets.codesandbox.io/github/button-edit-lime.svg)](https://codesandbox.io/p/sandbox/github/withastro/astro/tree/latest/examples/minimal)

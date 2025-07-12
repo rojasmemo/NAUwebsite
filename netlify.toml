@@ -2,13 +2,7 @@
 # Tiene prioridad sobre cualquier configuración en la interfaz de Netlify.
 
 [build]
-  # El comando que Netlify debe ejecutar para construir tu sitio.
-  command = "pnpm build"
+  # Cambiamos el comando para usar npm, que es el estándar.
+  command = "npm run build"
   # La carpeta que Netlify debe publicar después de la construcción.
   publish = "dist"
-
-# Especificamos el entorno de construcción para asegurar la consistencia.
-[build.environment]
-  # Le decimos a Netlify que use la versión 9 de pnpm, que es la que
-  # corresponde a nuestro archivo pnpm-lock.yaml.
-  PNPM_VERSION = "9"

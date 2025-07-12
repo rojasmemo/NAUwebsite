@@ -156,7 +156,7 @@ const recaptchaSiteKey = '6Lcy43grAAAAAPTd99MJiK7E42tofYVIbLD8sXgQ';
 
           let response;
           try {
-            response = await fetch('/api/enviar-formulario', {
+            response = await fetch('/.netlify/functions/enviar-formulario', {
               method: 'POST',
               headers: { 'Content-Type': 'application/json' },
               body: JSON.stringify(data),

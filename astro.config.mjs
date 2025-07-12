@@ -14,8 +14,9 @@ export default defineConfig({
       // REEMPLAZA 'xxxxxx' con el mismo Project ID que usaste en Sanity Studio.
       projectId: 'b9a3y4ri',
       dataset: 'production',
-      // Usa 'false' durante el desarrollo para ver los cambios al instante.
-      useCdn: false,
+      // Usamos una variable de entorno para el CDN. `false` en desarrollo para ver cambios al instante,
+      // y `true` en producción (Netlify) para máxima velocidad.
+      useCdn: process.env.NODE_ENV === 'production',
       apiVersion: '2024-07-08' // Usa una fecha reciente en formato YYYY-MM-DD.
     })
   ],

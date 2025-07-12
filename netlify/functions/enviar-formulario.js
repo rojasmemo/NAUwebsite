@@ -16,14 +16,14 @@ export const handler = async (event) => {
     port: 465,
     secure: true,
     auth: {
-      user: process.env.GMAIL_USER,
-      pass: process.env.GMAIL_APP_PASSWORD,
+      user: process.env.EMAIL_USER,
+      pass: process.env.EMAIL_PASS,
     },
   });
 
   const mailOptions = {
     from: email,
-    to: process.env.GMAIL_USER,
+    to: process.env.EMAIL_USER,
     subject: `Nuevo mensaje de ${nombre}`,
     html: `
       <p><strong>Nombre:</strong> ${nombre}</p>

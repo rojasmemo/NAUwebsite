@@ -67,7 +67,7 @@ const recaptchaSiteKey = '6Lcy43grAAAAAPTd99MJiK7E42tofYVIbLD8sXgQ';
   Script de reCAPTCHA. Se carga de forma asíncrona.
   Astro se encargará de incluirlo solo en esta página.
 -->
-<script is:inline src={`https://www.google.com/recaptcha/api.js?render=${recaptchaSiteKey}`} async defer></script>
+<script src={`https://www.google.com/recaptcha/api.js?render=${recaptchaSiteKey}`} async defer></script>
 
 <!--
   Lógica del formulario.

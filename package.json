@@ -10,12 +10,12 @@
     "astro": "astro"
   },
   "dependencies": {
-    "@astrojs/netlify": "^6.4.1",
+    "@astrojs/netlify": "^6.5.0",
     "@astrojs/tailwind": "^5.1.0",
     "@sanity/astro": "^3.2.6",
     "@sanity/client": "^6.29.1",
     "@sanity/image-url": "^1.1.0",
-    "astro": "^5.11.0",
+    "astro": "^5.11.1",
     "astro-portabletext": "^0.11.1",
     "node-fetch": "^3.3.2",
     "nodemailer": "^6.9.14",
@@ -29,6 +29,7 @@
     "@tailwindcss/typography": "^0.5.16",
     "@types/nodemailer": "^6.4.17",
     "autoprefixer": "^10.4.21",
+    "dotenv": "^17.2.0",
     "postcss": "^8.5.6"
   },
   "overrides": {

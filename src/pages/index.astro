@@ -32,17 +32,21 @@ const {
 <MainLayout title={title} description={seoDescription}>
 
   <!-- Hero 1 -->
+  {hero1?.image?.url && (
   <HeroBanner 
-    image={hero1.image}
-    alt={hero1.alt}
+    image={hero1.image.url}
+    alt={hero1.alt || hero1.heading}
+    width={hero1.image.width}
+    height={hero1.image.height}
     bgColorClass="bg-custom-dark-teal"
     loading="eager"
   >
     <h2 class="h2-base">{hero1.heading}</h2>
     <p class="p-base-hero max-w-2xl mx-auto">{hero1.subheading1}</p>
     <p class="p-base-hero max-w-2xl mx-auto md:mb-4">{hero1.subheading2}</p>
-    <a href={hero1.cta.link} class="btn btn-primary">{hero1.cta.text}</a>
+    {hero1.cta?.link && <a href={hero1.cta.link} class="btn btn-primary">{hero1.cta.text}</a>}
   </HeroBanner>
+  )}
 
   <!-- Split Section 1 -->
   <SplitSection reverseOnMobile={true}>
@@ -52,28 +56,35 @@ const {
       <p class="p-base text-left">{splitSection1.paragraph2}</p>
       <h3 class="h3-base text-custom-dark-teal text-center md:text-left">{splitSection1.subheading}</h3>
     </div>
+    {splitSection1?.image && (
     <div slot="right" class="rounded-lg overflow-hidden flex justify-center items-center">
       <SanityImage image={splitSection1.image} maxWidth={400} />
     </div>
+    )}
   </SplitSection>
 
   <!-- Hero 2 -->
+  {hero2?.image?.url && (
   <HeroBanner 
-    image={hero2.image}
-    alt={hero2.alt}
+    image={hero2.image.url}
+    alt={hero2.alt || hero2.heading}
+    width={hero2.image.width}
+    height={hero2.image.height}
     bgColorClass="bg-custom-dark-teal"
   >
     <h2 class="h2-base max-w-2xl mx-auto">{hero2.heading}</h2>
     <p class="p-base-hero max-w-2xl mx-auto">{hero2.subheading1}</p>
     <p class="p-base-hero max-w-2xl mx-auto md:mb-8">{hero2.subheading2}</p>
-    <a href={hero2.cta.link} class="btn btn-secondary">{hero2.cta.text}</a>
+    {hero2.cta?.link && <a href={hero2.cta.link} class="btn btn-secondary">{hero2.cta.text}</a>}
   </HeroBanner>
+  )}
 
   <!-- Feature Section -->
   <section class="content-section-wrapper py-12 md:py-16 px-4 md:px-16 bg-custom-pale-teal">
     <div class="text-center">
       <h2 class="h2-base text-custom-darker-teal mb-12 md:mb-16">{featureSection.heading}</h2>
       <div class="grid md:grid-cols-2 gap-12 md:gap-8 mb-8 px-4 md:px-8 lg:px-24">
+        {featureSection.feature1?.icon && (
         <FeatureCard
           icon={featureSection.feature1.icon} 
           iconAlt={featureSection.feature1.iconAlt}
@@ -84,6 +95,8 @@ const {
             {featureSection.feature1.items.map(item => <li>{item}</li>)}
           </ul>
         </FeatureCard>
+        )}
+        {featureSection.feature2?.icon && (
         <FeatureCard
           icon={featureSection.feature2.icon}
           iconAlt={featureSection.feature2.iconAlt}
@@ -94,6 +107,7 @@ const {
             {featureSection.feature2.items.map(item => <li>{item}</li>)}
           </ul>
         </FeatureCard>
+        )}
       </div>
       <h3 class="h3-base text-custom-darker-teal">{featureSection.subheading}</h3>
     </div>
@@ -101,9 +115,11 @@ const {
 
   <!-- Split Section 2 -->
   <SplitSection bgColorClass="bg-white">
+    {splitSection2?.image && (
     <div slot="left" class="rounded-lg overflow-hidden flex justify-center items-center">
       <SanityImage image={splitSection2.image} maxWidth={500} />
     </div>
+    )}
     <div slot="right" class="bg-white text-custom-darker-teal p-4 md:p-8 rounded-lg text-center md:text-left flex flex-col justify-center items-center md:items-start">
       <h2 class="h2-base text-custom-dark-teal">{splitSection2.heading}</h2>
       <p class="p-base text-left">{splitSection2.paragraph1}</p>
@@ -113,14 +129,18 @@ const {
   </SplitSection>
 
   <!-- Hero 3 -->
+  {hero3?.image?.url && (
   <HeroBanner 
-    image={hero3.image}
-    alt={hero3.alt}
+    image={hero3.image.url}
+    alt={hero3.alt || hero3.heading}
+    width={hero3.image.width}
+    height={hero3.image.height}
     bgColorClass="bg-custom-medium-teal"
   >
     <p class="p-base-hero max-w-2xl mx-auto">{hero3.subheading1}</p>
     <h2 class="h2-base max-w-2xl mx-auto">{hero3.heading}</h2>
-    <a href={hero3.cta.link} class="btn btn-secondary">{hero3.cta.text}</a>
+    {hero3.cta?.link && <a href={hero3.cta.link} class="btn btn-secondary">{hero3.cta.text}</a>}
   </HeroBanner>
+  )}
 
 </MainLayout>

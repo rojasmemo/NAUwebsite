@@ -14,6 +14,10 @@ export const paginaEncuentrosQuery = `{
         url,
         "width": metadata.dimensions.width,
         "height": metadata.dimensions.height
+      },
+      cta {
+        ...,
+        "link": internalLink->.slug.current
       }
     },
     introduction,
@@ -23,6 +27,10 @@ export const paginaEncuentrosQuery = `{
         url,
         "width": metadata.dimensions.width,
         "height": metadata.dimensions.height
+      },
+      cta {
+        ...,
+        "link": internalLink->.slug.current
       }
     }
   },

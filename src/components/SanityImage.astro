@@ -1,7 +1,14 @@
 ---
 // src/components/SanityImage.astro
-import { urlForImage } from '../lib/sanity/client.js';
+import { sanityClient } from 'sanity:client';
+import imageUrlBuilder from '@sanity/image-url';
 import type { Image as SanityImage } from 'sanity';
+
+// Recreamos el constructor de URLs de imágenes aquí
+const builder = imageUrlBuilder(sanityClient);
+function urlForImage(source: SanityImage) {
+  return builder.image(source);
+}
 
 interface Props {
   image: SanityImage;
@@ -19,7 +26,7 @@ if (!image?.asset) {
 
 // Construimos la URL de la imagen con las optimizaciones deseadas.
 const src = urlForImage(image).width(width).auto('format').url();
-const alt = image.alt || 'Imagen descriptiva del encuentro'; // Fallback por si el alt no está definido
+const alt = image.alt || 'Imagen descriptiva de NAU'; // Fallback por si el alt no está definido
 ---
 <img
   src={src}

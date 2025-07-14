@@ -3,8 +3,8 @@
 import { Picture, Image, type ImageMetadata } from 'astro:assets';
 
 interface Props {
-  image: ImageMetadata | string; // Acepta imagen local o URL remota
-  imageAlt: string;
+  image?: ImageMetadata | string; // Acepta imagen local o URL remota
+  imageAlt?: string;
   icon: ImageMetadata;
   iconAlt?: string;
   title: string;
@@ -16,16 +16,18 @@ const { image, imageAlt, icon, iconAlt = "Icono representativo de NAU", title, w
 ---
 <div class="relative flex flex-col rounded-lg shadow-md text-custom-darker-teal">
   <!-- Imagen de cabecera de la tarjeta -->
-  <Picture
-    src={image}
-    alt={imageAlt}
-    width={width}
-    height={height}
-    class="w-full h-auto rounded-t-lg"
-    widths={[400, 600, 850]}
-    sizes="(max-width: 767px) 90vw, (max-width: 1024px) 45vw, 850px"
-    formats={['avif', 'webp']}
-  />
+  {image && (
+    <Picture
+      src={image}
+      alt={imageAlt || title}
+      width={width}
+      height={height}
+      class="w-full h-auto rounded-t-lg"
+      widths={[400, 600, 850]}
+      sizes="(max-width: 767px) 90vw, (max-width: 1024px) 45vw, 850px"
+      formats={['avif', 'webp']}
+    />
+  )}
 
   <!-- Icono posicionado en la parte superior de la tarjeta -->
   <Image 

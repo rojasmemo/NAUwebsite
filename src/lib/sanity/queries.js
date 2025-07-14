@@ -52,3 +52,54 @@ export const encuentroPorSlugQuery = `*[_type == "encuentro" && slug.current == 
   },
   "description": body
 }`;
+
+// Consulta para la página de inicio
+export const homePageQuery = `*[_type == "homePage" && !(_id in path("drafts.**"))][0] {
+  title,
+  seoDescription,
+  hero1 {
+    ...,
+    "image": image.asset->{
+      url,
+      "width": metadata.dimensions.width,
+      "height": metadata.dimensions.height
+    }
+  },
+  splitSection1,
+  hero2 {
+    ...,
+    "image": image.asset->{
+      url,
+      "width": metadata.dimensions.width,
+      "height": metadata.dimensions.height
+    }
+  },
+  featureSection {
+    ...,
+    feature1 {
+      ...,
+      "icon": icon.asset->{
+        url,
+        "width": metadata.dimensions.width,
+        "height": metadata.dimensions.height
+      }
+    },
+    feature2 {
+      ...,
+      "icon": icon.asset->{
+        url,
+        "width": metadata.dimensions.width,
+        "height": metadata.dimensions.height
+      }
+    }
+  },
+  splitSection2,
+  hero3 {
+    ...,
+    "image": image.asset->{
+      url,
+      "width": metadata.dimensions.width,
+      "height": metadata.dimensions.height
+    }
+  }
+}`;

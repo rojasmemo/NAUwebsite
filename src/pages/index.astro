@@ -1,185 +1,126 @@
 ---
-// src/pages/index.astro
-import { Image } from 'astro:assets';
 import { sanityClient } from 'sanity:client';
+import { homePageQuery } from '../lib/sanity/queries';
+import MainLayout from '../layouts/MainLayout.astro';
 import HeroBanner from '../components/HeroBanner.astro';
 import SplitSection from '../components/SplitSection.astro';
 import FeatureCard from '../components/FeatureCard.astro';
-import MainLayout from '../layouts/MainLayout.astro';
-import banner1 from '../assets/images/1-BANNER-NAU-WEB-1920w.webp';
-import banner2 from '../assets/images/2-BANNER-NAU-WEB.webp';
-import banner4 from '../assets/images/4-BANNER-NAU-WEB.webp';
-import banner3 from '../assets/images/3-BANNER-NAU-WEB-1920w.webp';
-import banner5 from '../assets/images/5-BANNER-NAU-WEB.webp';
-import banner6 from '../assets/images/6-BANNER-NAU-WEB-1920w.webp';
+import SanityImage from '../components/SanityImage.astro';
 
-// Creamos un objeto para las consultas para mantenerlo organizado
-const queries = {
-  encuentros: `*[_type == "encuentro"] | order(order asc)[0...4] {
-    title,
-    "slug": slug.current
-  }`,
-  simbolismos: `*[_type == "simbolismo"] | order(order asc) {
-    title,
-    "slug": slug.current
-  }`
-};
-const encuentros = await sanityClient.fetch(queries.encuentros);
-const simbolismos = await sanityClient.fetch(queries.simbolismos);
+const data = await sanityClient.fetch(homePageQuery);
+
+// Fallback por si no hay datos
+if (!data) {
+  return new Response(null, {
+    status: 404,
+    statusText: 'No encontrado'
+  });
+}
+
+const { 
+  title,
+  seoDescription,
+  hero1,
+  splitSection1,
+  hero2,
+  featureSection,
+  splitSection2,
+  hero3
+} = data;
 ---
-<MainLayout 
-  title="Inicio" 
-  description="Descubre NAU: te ayudamos a conectar con tu esencia, romper bloqueos y transformar tu vida a través de encuentros y simbolismo numérico."
->
-  <!-- Sección Hero 1: "Despiértate" -->
-  <HeroBanner
-    image={banner1}
-    alt="Una persona sonriendo con los ojos cerrados, representando un despertar interior."
+
+<MainLayout title={title} description={seoDescription}>
+
+  <!-- Hero 1 -->
+  <HeroBanner 
+    image={hero1.image}
+    alt={hero1.alt}
     bgColorClass="bg-custom-dark-teal"
     loading="eager"
-    containerClasses="py-12 md:py-16 lg:py-20 xl:py-24 2xl:py-44"
   >
-      <h2 class="h2-base">
-        Con NAU puedes crecer e inspirar
-      </h2>
-      <p class="p-base-hero max-w-2xl mx-auto">
-        Aporta y participa en las experiencias NAU.
-      </p>
-      <p class="p-base-hero max-w-2xl mx-auto md:mb-4">
-        Así te permites crecer y ayudas a que otros crezcan.
-      </p>
-      <a href="/modelo-nau" class="inline-block bg-custom-dark-teal text-white font-semibold py-2 px-6 rounded-md hover:bg-gray-100 hover:text-custom-dark-teal transition duration-300">
-        Descubre cómo funciona
-      </a>
+    <h2 class="h2-base">{hero1.heading}</h2>
+    <p class="p-base-hero max-w-2xl mx-auto">{hero1.subheading1}</p>
+    <p class="p-base-hero max-w-2xl mx-auto md:mb-4">{hero1.subheading2}</p>
+    <a href={hero1.cta.link} class="btn btn-primary">{hero1.cta.text}</a>
   </HeroBanner>
 
-  <!-- Sección de contenido 1: "¿Sientes que algo te frena?" -->
+  <!-- Split Section 1 -->
   <SplitSection reverseOnMobile={true}>
     <div slot="left" class="bg-white p-4 md:py-8 rounded-lg flex flex-col justify-center">
-      <h2 class="h2-base text-custom-dark-teal">
-        ¿Sientes que algo te frena?
-      </h2>
-      <p class="p-base text-left">
-        A veces la vida se repite en dudas, miedos y emociones que pesan. Quizá no sabes qué te detiene, pero algo
-        dentro de ti intuye que hay algo más. Un camino diferente. Una versión de ti que espera salir.
-      </p>
-      <p class="p-base text-left">
-        Haz espacio para lo nuevo.
-      </p>
-      <h3 class="h3-base text-custom-dark-teal text-center md:text-left">
-        ¡Haz espacio para tu transformación!
-      </h3>
+      <h2 class="h2-base text-custom-dark-teal">{splitSection1.heading}</h2>
+      <p class="p-base text-left">{splitSection1.paragraph1}</p>
+      <p class="p-base text-left">{splitSection1.paragraph2}</p>
+      <h3 class="h3-base text-custom-dark-teal text-center md:text-left">{splitSection1.subheading}</h3>
     </div>
     <div slot="right" class="rounded-lg overflow-hidden flex justify-center items-center">
-      <Image src={banner2} alt="Personas juntando y elevando sus manos"
-        class="w-full max-w-xs h-auto object-contain rounded-lg" 
-        widths={[250, 400, 581]}
-        sizes="(max-width: 767px) 90vw, 320px" />
+      <SanityImage image={splitSection1.image} maxWidth={400} />
     </div>
   </SplitSection>
 
-  <!-- Sección Hero 2: "No estás solo en este proceso" -->
-  <HeroBanner
-    image={banner3}
-    alt="Una persona abriendo los brazos en señal de bienvenida, con un fondo de naturaleza."
+  <!-- Hero 2 -->
+  <HeroBanner 
+    image={hero2.image}
+    alt={hero2.alt}
     bgColorClass="bg-custom-dark-teal"
   >
-      <h2 class="h2-base max-w-2xl mx-auto">
-        No estás solo. La transformación no ocurre en aislamiento.
-      </h2>
-      <p class="p-base-hero max-w-2xl mx-auto">
-        En NAU caminamos contigo para que vivas con más serenidad y propósito.
-      </p>
-      <p class="p-base-hero max-w-2xl mx-auto md:mb-8">
-        Tu camino es único. Nosotros te ayudamos a que lo recorras con claridad y confianza.
-      </p>
-      <a href="/encuentros" class="inline-block bg-custom-light-teal text-custom-darker-teal font-semibold py-2 px-6 rounded-md hover:bg-opacity-80 transition duration-300">
-        Descubre cómo te acompañamos
-      </a>
+    <h2 class="h2-base max-w-2xl mx-auto">{hero2.heading}</h2>
+    <p class="p-base-hero max-w-2xl mx-auto">{hero2.subheading1}</p>
+    <p class="p-base-hero max-w-2xl mx-auto md:mb-8">{hero2.subheading2}</p>
+    <a href={hero2.cta.link} class="btn btn-secondary">{hero2.cta.text}</a>
   </HeroBanner>
 
-  <!-- Sección de contenido 2: Presentación de "Experiencias y herramientas transformadoras" -->
+  <!-- Feature Section -->
   <section class="content-section-wrapper py-12 md:py-16 px-4 md:px-16 bg-custom-pale-teal">
     <div class="text-center">
-      <h2 class="h2-base text-custom-darker-teal mb-12 md:mb-16">
-        Abre la puerta a una transformación profunda y consciente:
-      </h2>
+      <h2 class="h2-base text-custom-darker-teal mb-12 md:mb-16">{featureSection.heading}</h2>
       <div class="grid md:grid-cols-2 gap-12 md:gap-8 mb-8 px-4 md:px-8 lg:px-24">
         <FeatureCard
-          icon={banner4}
-          iconAlt="Icono representativo de NAU"
-          title="ENCUENTROS"
-          link="/encuentros"
+          icon={featureSection.feature1.icon} 
+          iconAlt={featureSection.feature1.iconAlt}
+          title={featureSection.feature1.title}
+          link={featureSection.feature1.link}
         >
           <ul class="p-base list-disc list-outside text-custom-darker-teal text-left pl-4 md:pl-12 space-y-2">
-            {encuentros.map(item => (
-              <li>{item.title}</li>
-            ))}
+            {featureSection.feature1.items.map(item => <li>{item}</li>)}
           </ul>
         </FeatureCard>
         <FeatureCard
-          icon={banner4}
-          iconAlt="Icono representativo de NAU"
-          title="SIMBOLISMO NUMÉRICO"
-          link="/simbolismo-numerico"
+          icon={featureSection.feature2.icon}
+          iconAlt={featureSection.feature2.iconAlt}
+          title={featureSection.feature2.title}
+          link={featureSection.feature2.link}
         >
           <ul class="p-base list-disc list-outside text-custom-darker-teal text-left pl-4 md:pl-12 space-y-2">
-            {simbolismos.length > 0 ? (
-              simbolismos.map(item => <li>{item.title}</li>)
-            ) : (
-              <li class="list-none italic">Aún no hay elementos para mostrar.</li>
-            )}
+            {featureSection.feature2.items.map(item => <li>{item}</li>)}
           </ul>
         </FeatureCard>
       </div>
-      <h3 class="h3-base text-custom-darker-teal">
-        Inicia tu transformación con NAU
-      </h3>
+      <h3 class="h3-base text-custom-darker-teal">{featureSection.subheading}</h3>
     </div>
   </section>
 
-  <!-- Sección de contenido 3: "¿Qué pasa si sigues esperando?" -->
+  <!-- Split Section 2 -->
   <SplitSection bgColorClass="bg-white">
     <div slot="left" class="rounded-lg overflow-hidden flex justify-center items-center">
-      <Image 
-        src={banner5} 
-        alt="Personas mirando reflexivamente hacia el futuro" 
-        class="w-full max-w-sm h-auto object-contain" 
-        widths={[240, 480, 687]}
-        sizes="(max-width: 767px) 90vw, 384px"
-      />
+      <SanityImage image={splitSection2.image} maxWidth={500} />
     </div>
     <div slot="right" class="bg-white text-custom-darker-teal p-4 md:p-8 rounded-lg text-center md:text-left flex flex-col justify-center items-center md:items-start">
-      <h2 class="h2-base text-custom-dark-teal">
-        ¿Qué pasa si sigues esperando el momento perfecto?
-      </h2>
-      <p class="p-base text-left">
-        El tiempo no se detiene. Las dudas y los miedos siguen ahí, igual que antes. La transformación no llega sola, requiere un acto de valentía.
-      </p>
-      <p class="p-base text-left mb-6">
-        Hoy puedes decidir soltar lo que te limita y abrir la puerta a una vida más auténtica.
-      </p>
-      <h3 class="h3-base text-custom-dark-teal text-center md:text-left mb-0">¡EL MOMENTO ES AHORA!</h3>
+      <h2 class="h2-base text-custom-dark-teal">{splitSection2.heading}</h2>
+      <p class="p-base text-left">{splitSection2.paragraph1}</p>
+      <p class="p-base text-left mb-6">{splitSection2.paragraph2}</p>
+      <h3 class="h3-base text-custom-dark-teal text-center md:text-left mb-0">{splitSection2.subheading}</h3>
     </div>
   </SplitSection>
 
-  <!-- Sección Hero 3: Llamada final a la acción "Esa vida es posible" -->
-  <HeroBanner
-    image={banner6}
-    alt="Una persona de espaldas mirando un paisaje montañoso, simbolizando un futuro por descubrir."
+  <!-- Hero 3 -->
+  <HeroBanner 
+    image={hero3.image}
+    alt={hero3.alt}
     bgColorClass="bg-custom-medium-teal"
-    containerClasses="py-12 md:py-16 lg:py-24 xl:py-28 2xl:py-40"
   >
-      <p class="p-base-hero max-w-2xl mx-auto">
-        Imagina vivir sin las cargas del pasado, sin miedo a avanzar.
-        Imagina despertar en paz contigo, con claridad y propósito.
-      </p>
-      <h2 class="h2-base max-w-2xl mx-auto">
-        Esa vida es posible. La pregunta es:
-        ¿estás listo o lista para comenzarla?
-      </h2>
-      <a href="/encuentros" class="inline-block bg-custom-light-teal text-custom-darker-teal font-semibold py-2 px-6 rounded-md hover:bg-opacity-80 transition duration-300">
-        Empieza aquí
-      </a>
+    <p class="p-base-hero max-w-2xl mx-auto">{hero3.subheading1}</p>
+    <h2 class="h2-base max-w-2xl mx-auto">{hero3.heading}</h2>
+    <a href={hero3.cta.link} class="btn btn-secondary">{hero3.cta.text}</a>
   </HeroBanner>
+
 </MainLayout>

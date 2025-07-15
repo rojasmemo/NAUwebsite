@@ -1,7 +1,7 @@
 ---
 // src/pages/encuentros/[slug].astro
 import MainLayout from '../../layouts/MainLayout.astro';
-import { client } from '../../lib/sanity/client.js';
+import { sanityClient as client } from 'sanity:client';
 import { encuentroSlugsQuery, encuentroPorSlugQuery } from '../../lib/sanity/queries.js';
 import { PortableText } from 'astro-portabletext';
 import SanityImage from '../../components/SanityImage.astro';

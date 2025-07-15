@@ -71,6 +71,10 @@ export const homePageQuery = `*[_type == "homePage" && !(_id in path("drafts.**"
       url,
       "width": metadata.dimensions.width,
       "height": metadata.dimensions.height
+    },
+    cta {
+      ...,
+      "link": internalLink->.slug.current
     }
   },
   splitSection1,
@@ -80,6 +84,10 @@ export const homePageQuery = `*[_type == "homePage" && !(_id in path("drafts.**"
       url,
       "width": metadata.dimensions.width,
       "height": metadata.dimensions.height
+    },
+    cta {
+      ...,
+      "link": internalLink->.slug.current
     }
   },
   featureSection {
@@ -108,6 +116,10 @@ export const homePageQuery = `*[_type == "homePage" && !(_id in path("drafts.**"
       url,
       "width": metadata.dimensions.width,
       "height": metadata.dimensions.height
+    },
+    cta {
+      ...,
+      "link": internalLink->.slug.current
     }
   }
 }`;

@@ -71,15 +71,15 @@
 
   /* Estilos base para botones */
   .btn {
-    @apply inline-block py-3 px-8 border rounded-md shadow-sm text-base font-semibold transition-all duration-300 ease-in-out transform hover:scale-105;
+    @apply inline-block py-2.5 px-6 border border-transparent rounded-md shadow-sm text-sm font-medium transition-colors duration-300;
   }
 
   .btn-primary {
-    @apply text-white bg-custom-dark-teal border-transparent hover:bg-custom-specific-blue focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-custom-dark-teal focus:ring-white;
+    @apply text-white bg-custom-dark-teal hover:bg-custom-specific-blue focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-custom-specific-blue;
   }
 
   .btn-secondary {
-    @apply text-white bg-transparent border-white hover:bg-white hover:text-custom-dark-teal focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-custom-medium-teal focus:ring-white;
+    @apply text-white bg-transparent border-white hover:bg-white hover:text-custom-dark-teal focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-white;
   }
 
 

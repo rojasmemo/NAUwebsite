@@ -8,6 +8,7 @@ interface Props {
   gridColsClass?: string;
   leftColClass?: string;
   rightColClass?: string;
+  gapClass?: string; // Nueva propiedad para el gap
 }
 
 const { 
@@ -16,14 +17,15 @@ const {
   reverseOnMobile = false,
   gridColsClass = 'md:grid-cols-2',
   leftColClass = 'md:col-span-1',
-  rightColClass = 'md:col-span-1'
+  rightColClass = 'md:col-span-1',
+  gapClass = 'gap-8' // Valor por defecto
 } = Astro.props;
 
 const leftOrder = reverseOnMobile ? 'order-2 md:order-1' : 'order-1';
 const rightOrder = reverseOnMobile ? 'order-1 md:order-2' : 'order-2';
 ---
 <section class:list={["content-section-wrapper", bgColorClass, containerClasses]}>
-  <div class:list={["grid gap-8 items-center", gridColsClass]}>
+  <div class:list={["grid items-center", gridColsClass, gapClass]}> 
     <div class:list={[leftOrder, leftColClass]}><slot name="left" /></div>
     <div class:list={[rightOrder, rightColClass]}><slot name="right" /></div>
   </div>

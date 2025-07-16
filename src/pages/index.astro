@@ -9,9 +9,7 @@ import FeatureCard from '../components/FeatureCard.astro';
 import SanityImage from '../components/SanityImage.astro';
 
 const data = await sanityClient.fetch(homePageQuery);
-console.log('Datos recibidos para la página de inicio:', JSON.stringify(data, null, 2));
 
-// Fallback por si no hay datos
 if (!data) {
   return new Response(null, {
     status: 404,

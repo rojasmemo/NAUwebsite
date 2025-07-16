@@ -70,8 +70,8 @@ const hero3CtaLink = resolveCtaLink(hero3?.cta);
     </div>
     {splitSection1?.image && (
     <div slot="right" class="rounded-lg overflow-hidden flex justify-center items-center">
-      <div style={`max-width: 400px;`}>
-        <SanityImage image={splitSection1.image} width={400} />
+      <div style={`max-width: 320px;`}>
+        <SanityImage image={splitSection1.image} width={320} noShadow={true} />
       </div>
     </div>
     )}
@@ -100,7 +100,7 @@ const hero3CtaLink = resolveCtaLink(hero3?.cta);
   )}
 
   <!-- Feature Section -->
-  <section class="content-section-wrapper py-12 md:py-16 px-4 md:px-16 bg-custom-pale-teal">
+  <section class="content-section-wrapper py-12 md:py-16 bg-custom-pale-teal">
     <div class="text-center">
       <h2 class="h2-base text-custom-darker-teal mb-12 md:mb-16">{featureSection.heading}</h2>
       <div class="grid md:grid-cols-2 gap-12 md:gap-8 mb-8 px-4 md:px-8 lg:px-24">
@@ -137,8 +137,8 @@ const hero3CtaLink = resolveCtaLink(hero3?.cta);
   <SplitSection bgColorClass="bg-white">
     {splitSection2?.image && (
     <div slot="left" class="rounded-lg overflow-hidden flex justify-center items-center">
-      <div style={`max-width: 500px;`}>
-        <SanityImage image={splitSection2.image} width={500} />
+      <div style={`max-width: 400px;`}>
+        <SanityImage image={splitSection2.image} width={400} noShadow={true} />
       </div>
     </div>
     )}

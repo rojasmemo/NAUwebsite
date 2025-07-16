@@ -14,9 +14,10 @@ interface Props {
   image: SanityImage;
   class?: string;
   width?: number; // Ancho para la optimización de la URL
+  noShadow?: boolean;
 }
 
-const { image, class: className, width = 800 } = Astro.props;
+const { image, class: className, width = 800, noShadow = false } = Astro.props;
 const dimensions = image?.asset?.metadata?.dimensions;
 
 // No renderizar nada si la imagen o su asset no existen.
@@ -27,6 +28,12 @@ if (!image?.asset) {
 // Construimos la URL de la imagen con las optimizaciones deseadas.
 const src = urlForImage(image).width(width).auto('format').url();
 const alt = image.alt || 'Imagen descriptiva de NAU'; // Fallback por si el alt no está definido
+
+const imageClasses = [
+  "w-full h-auto rounded-lg object-cover",
+  !noShadow && "shadow-lg",
+  className
+].filter(Boolean).join(' ');
 ---
 <img
   src={src}
@@ -35,5 +42,5 @@ const alt = image.alt || 'Imagen descriptiva de NAU'; // Fallback por si el alt 
   decoding="async"
   width={dimensions?.width}
   height={dimensions?.height}
-  class:list={["w-full h-auto rounded-lg shadow-lg object-cover", className]}
+  class={imageClasses}
 />

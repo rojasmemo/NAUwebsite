@@ -1,0 +1,57 @@
+---
+// src/pages/simbolismo-numerico/[slug].astro
+import MainLayout from '../../layouts/MainLayout.astro';
+import { sanityClient as client } from 'sanity:client';
+import { simbolismoNumericoSlugsQuery, simbolismoNumericoPorSlugQuery } from '../../lib/sanity/queries.js';
+import { PortableText } from 'astro-portabletext';
+import SanityImage from '../../components/SanityImage.astro';
+
+export async function getStaticPaths() {
+  const servicios = await client.fetch(simbolismoNumericoSlugsQuery);
+
+  return servicios.map((servicio) => ({
+    params: { slug: servicio.slug },
+  }));
+}
+
+const { slug } = Astro.params;
+
+const servicio = await client.fetch(simbolismoNumericoPorSlugQuery, { slug });
+
+if (!servicio) {
+  return new Response('Página no encontrada', { status: 404 });
+}
+---
+
+<MainLayout
+  title={servicio.title}
+  description={servicio.seoDescription || `Detalles sobre el servicio: ${servicio.title}`}
+>
+  <main class="container mx-auto px-4 py-12">
+    <article class="max-w-3xl mx-auto">
+      <h1 class="text-3xl md:text-4xl font-bold text-custom-darker-teal mb-4">{servicio.title}</h1>
+      
+      <div class="mb-8">
+        {servicio.image ? (
+          <SanityImage
+            image={servicio.image}
+            alt={servicio.image.alt || `Imagen principal para ${servicio.title}`}
+            width={1200}
+          />
+        ) : (
+          <div class="aspect-video bg-gray-200 rounded-lg flex items-center justify-center border border-dashed">
+            <p class="text-gray-500">Imagen no disponible</p>
+          </div>
+        )}
+      </div>
+
+      <div class="prose prose-lg max-w-none text-gray-800">
+        {servicio.description ? (
+          <PortableText value={servicio.description} />
+        ) : (
+          <p class="italic text-gray-600">La descripción para este servicio estará disponible próximamente.</p>
+        )}
+      </div>
+    </article>
+  </main>
+</MainLayout>

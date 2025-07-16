@@ -1,140 +1,88 @@
 ---
-// src/pages/simbolismo-numerico.astro
 import MainLayout from '../layouts/MainLayout.astro';
 import HeroBanner from '../components/HeroBanner.astro';
-import EncuentroCard from '../components/EncuentroCard.astro'; // Reutilizamos el componente de tarjeta
+import SimbolismoNumericoCard from '../components/SimbolismoNumericoCard.astro';
+import { sanityClient } from '../lib/sanity/client';
+import { paginaSimbolismoNumericoQuery } from '../lib/sanity/queries';
+import { PortableText } from 'astro-portabletext';
+import SanityImage from '../components/SanityImage.astro';
 
-// Importamos las imágenes que Astro optimizará
-import hero1 from '../assets/images/BANNER-INICIAL-NUM-1920w.webp';
-import hero2 from '../assets/images/BANNER-FINAL-NUM-1920w.webp';
+// Fetch data from Sanity
+const data = await sanityClient.fetch(paginaSimbolismoNumericoQuery);
+const { page, servicios } = data;
+
+// Import a local icon since it's the same for all cards
 import cardIcon from '../assets/images/CLIP-NUM.webp';
-import cardImg1 from '../assets/images/LECCION-DE-VIDA-NUM-850w.webp';
-import cardImg2 from '../assets/images/DEL-ALMA-NUM-850w.webp';
-import cardImg3 from '../assets/images/PERSONALIDAD-NUM-850w.webp';
-import cardImg4 from '../assets/images/DESTINO-NUM-850w.webp';
-import cardImg5 from '../assets/images/ANIO-PERSONAL-NUM-850w.webp';
-import cardImg6 from '../assets/images/TRIANGULO-NUM-850w.webp';
 ---
 
 <MainLayout
-  title="Simbolismo Numérico - NAU"
-  description="Descubre los servicios de NAU: Análisis de Simbolismo Numérico para ayudarte a conectar con tu esencia y propósito."
+  title={page?.title || 'Simbolismo Numérico - NAU'}
+  description={page?.seoDescription || 'Descubre los servicios de NAU: Análisis de Simbolismo Numérico para ayudarte a conectar con tu esencia y propósito.'}
 >
   <main>
-    <!-- Sección Hero 1: "Simbolismo Numérico NAU" -->
-    <HeroBanner
-      image={hero1}
-      alt="Representación abstracta de números y símbolos."
-      bgColorClass="bg-custom-medium-teal"
-      loading="eager"
-      containerClasses="py-20 md:py-24 lg:py-28 xl:py-36 2xl:py-44"
-    >
-      <h2 class="h2-base md:mb-4">Simbolismo Numérico</h2>
-      <p class="p-base-hero max-w-2xl mx-auto">
-        Descubre los mensajes que tus números tienen para ti.
-      </p>
-    </HeroBanner>
-
-    <!-- Sección de contenido 1: Introducción -->
-    <section class="content-section-wrapper pt-12 md:pt-16 pb-24 md:pb-32 px-8 md:px-16 bg-custom-pale-teal relative">
-      <div class="text-left">
-        <p class="p-base max-w-3xl text-custom-specific-blue mx-auto">
-          A través de dos disciplinas ancestrales, como son la numerología pitagórica y la numerología tántrica, te ofrecemos una valiosa guía para el entendimiento y el autoconocimiento de valiosos aspectos de tu vida.
+    <!-- Main Banner Section -->
+    {page?.mainBanner && (
+      <HeroBanner
+        image={page.mainBanner.image.url}
+        alt={page.mainBanner.alt || 'Banner principal de Simbolismo Numérico'}
+        bgColorClass="bg-custom-medium-teal"
+        loading="eager"
+        containerClasses="py-20 md:py-24 lg:py-28 xl:py-36 2xl:py-44"
+      >
+        <h2 class="h2-base md:mb-4">{page.mainBanner.heading}</h2>
+        <p class="p-base-hero max-w-2xl mx-auto">
+          {page.mainBanner.subheading}
         </p>
-        <p class="p-base max-w-3xl text-custom-specific-blue mx-auto">
-          No se trata de predecir el futuro, sino de iluminar tu presente y brindarte claridad para recorrer tu camino con más consciencia y sentido.
-        </p>
-      </div>
-    </section>
+      </HeroBanner>
+    )}
 
-    <!-- Sección de contenido 2: Descripción de cada uno de los 6 Simbolismos -->
-    <section class="relative content-section-wrapper z-10 -mt-20 md:-mt-28 pt-12 md:pt-16 pb-4 md:pb-6 px-4 md:px-16 rounded-t-lg md:rounded-t-xl">
-      <div class="text-center">
-        <div class="grid md:grid-cols-2 gap-y-12 gap-x-8 md:gap-y-16 md:gap-x-10 mb-8 px-4 md:px-6 lg:px-20">
-          
-          <EncuentroCard image={cardImg1} imageAlt="Representación visual del simbolismo de lección de vida" icon={cardIcon} title="NÚMERO DE LECCIÓN DE VIDA">
-            <p class="p-base text-custom-darker-teal text-left md:mb-8">
-              También llamado <strong class="font-semibold">"sendero natal"</strong>, representa las lecciones y desafíos que estás llamado a enfrentar para evolucionar y cumplir tu propósito. La vida te guía con cada experiencia, invitándote a crecer, transformar lo difícil y vivir con más autenticidad y consciencia.
-            </p>
-            <p class="p-base font-semibold text-custom-darker-teal text-left md:mb-8">
-              Las lecciones clave son:
-            </p>
-            <ul class="p-base list-disc list-outside text-custom-darker-teal text-left pl-6">
-              <li>Abrazar el fracaso como motor de resiliencia.</li>
-              <li>Vivir con gratitud y liberar el corazón a través del perdón.</li>
-              <li>Estar presentes y aprender de cada paso dado.</li>
-              <li>Acoger el cambio con amor propio y apertura.</li>
-              <li>Poner límites con claridad y comunicar con empatía.</li>
-            </ul>
-          </EncuentroCard>
-
-          <EncuentroCard image={cardImg2} imageAlt="Representación visual del simbolismo de número del alma" icon={cardIcon} title="NÚMERO DEL DESEO DEL CORAZÓN">
-            <p class="p-base text-custom-darker-teal text-left md:mb-8">
-              También conocido como <strong class="font-semibold">"número de la motivación"</strong>, es una guía poderosa hacia tu verdad interior: revela lo que te impulsa desde lo profundo, tus deseos más auténticos y aquello que da sentido y dirección a tu vida. Este número refleja:
-            </p>
-            <ul class="p-base list-disc list-outside text-custom-darker-teal text-left pl-6">
-              <li><strong class="font-semibold">Deseos y motivaciones profundas:</strong> Aquello que enciende tu pasión, lo que impulsa tus decisiones más auténticas y lo que sueñas en lo más profundo de ti.</li>
-              <li><strong class="font-semibold">Tu verdadera esencia:</strong> Más allá de los roles y expectativas, te muestra quién eres realmente, ayudándote a reconectar con tu ser más genuino.</li>
-            </ul>
-          </EncuentroCard>
-
-          <EncuentroCard image={cardImg3} imageAlt="Representación visual del simbolismo de número de personalidad externa" icon={cardIcon} title="NÚMERO DE PERSONALIDAD EXTERNA">
-            <p class="p-base text-custom-darker-teal text-left md:mb-8">
-              Revela la imagen que proyectas al mundo, la primera impresión que causas y cómo los demás interpretan tu presencia. Este número refleja:
-            </p>
-            <ul class="p-base list-disc list-outside text-custom-darker-teal text-left pl-6">
-              <li><strong class="font-semibold">La impresión que causas:</strong> Describe cómo te perciben en un primer encuentro, tu actitud ante los demás y el efecto que generas en tu entorno.</li>
-              <li><strong class="font-semibold">Las expectativas externas:</strong> Refleja lo que otros creen de ti con base en tu apariencia, lenguaje y comportamiento.</li>
-              <li><strong class="font-semibold">Tu estilo de interacción:</strong> Muestra la forma en que te comunicas, te mueves y te presentas en espacios sociales.</li>
-            </ul>
-          </EncuentroCard>
-
-          <EncuentroCard image={cardImg4} imageAlt="Representación visual del simbolismo de número de la vía del destino" icon={cardIcon} title="NÚMERO DE LA VÍA DEL DESTINO">
-            <p class="p-base text-custom-darker-teal text-left md:mb-8">
-              Señala el camino que puede llevarte a una vida con propósito y realización. Este número refleja:
-            </p>
-            <ul class="p-base list-disc list-outside text-custom-darker-teal text-left pl-6">
-              <li><strong class="font-semibold">Tu propósito esencial:</strong> La misión profunda que viniste a cumplir, el legado que puedes construir.</li>
-              <li><strong class="font-semibold">Tus talentos innatos:</strong> El día de tu natalicio determina las competencias y destrezas que traes contigo en esta vida.</li>
-              <li><strong class="font-semibold">Los desafíos y oportunidades de tu personalidad:</strong> La primera letra de tu nombre manifiesta la base de tu personalidad, porque revela tu reacción ante las situaciones que se presentan en tu vida y la forma como las afrontas.</li>
-              <li><strong class="font-semibold">La dirección de tu vida:</strong> Una guía para tomar decisiones alineadas con tu evolución y bienestar.</li>
-            </ul>
-          </EncuentroCard>
-
-          <EncuentroCard image={cardImg5} imageAlt="Representación visual del simbolismo de año personal" icon={cardIcon} title="AÑO PERSONAL">
-            <p class="p-base text-custom-darker-teal text-left md:mb-8">
-              Tu vida se mueve en <strong class="font-semibold">ciclos de nueve años,</strong> y cada uno trae consigo una energía distinta que influye en tu camino.
-            </p>
-            <p class="p-base text-custom-darker-teal text-left md:mb-8">
-              <strong class="font-semibold">Cada Año Personal tiene una vibración especial</strong> que influye en tus decisiones, relaciones, emociones y proyectos durante doce meses, guiando los aprendizajes clave de ese período.
-            </p>
-            <p class="p-base text-custom-darker-teal text-left md:mb-8">
-              Lo más revelador es que esta energía se repite cada nueve años, recordándonos que, aunque las circunstancias cambien, el aprendizaje esencial permanece. ¡Comprenderlo te ayuda a fluir mejor con la vida!
-            </p>
-          </EncuentroCard>
-
-          <EncuentroCard image={cardImg6} imageAlt="Representación visual del simbolismo de triángulo divino" icon={cardIcon} title="TRIÁNGULO DIVINO">
-            <p class="p-base text-custom-darker-teal text-left md:mb-8">
-              El Triángulo Divino es un mapa simbólico que revela la grandeza de tu ser y la riqueza de tu experiencia humana. Representa la unión de tres dimensiones que, en equilibrio, te permiten vivir con más coherencia y plenitud.
-            </p>
-            <ul class="p-base list-disc list-outside text-custom-darker-teal text-left pl-6">
-              <li><strong class="font-semibold">Mente:</strong> Tu poder para pensar, analizar y dar sentido al mundo.</li>
-              <li><strong class="font-semibold">Alma:</strong> Tu centro emocional y espiritual, donde habitan tus sueños, intuiciones y deseos más profundos.</li>
-              <li><strong class="font-semibold">Espíritu:</strong> Tu conexión con lo trascendente, la chispa que te une a algo mayor que tú.</li>
-            </ul>
-          </EncuentroCard>
-
+    <!-- Introduction Section -->
+    {page?.introduction && (
+      <section class="content-section-wrapper pt-12 md:pt-16 pb-24 md:pb-32 px-8 md:px-16 bg-custom-pale-teal relative">
+        <div class="text-left max-w-3xl mx-auto text-custom-specific-blue">
+          <PortableText value={page.introduction} />
         </div>
+      </section>
+    )}
+
+    <!-- Services Section -->
+    <section class="relative content-section-wrapper z-10 -mt-20 md:-mt-28 pt-12 md:pt-16 pb-4 md:pb-6 px-4 md:px-16 rounded-t-lg md:rounded-t-xl">
+      <div class="grid md:grid-cols-2 gap-y-12 gap-x-8 md:gap-y-16 md:gap-x-10 mb-8 px-4 md:px-6 lg:px-20">
+        {servicios?.map(servicio => (
+          <a href={`/simbolismo-numerico/${servicio.slug}`} class="block no-underline">
+            <SimbolismoNumericoCard 
+              title={servicio.title}
+              icon={cardIcon}
+            >
+              <div class="p-base text-custom-darker-teal text-left md:mb-8">
+                <PortableText value={servicio.description} />
+              </div>
+            </SimbolismoNumericoCard>
+          </a>
+        ))}
       </div>
     </section>
 
-    <!-- Sección Hero 2: "Usa los números a tu favor." -->
-    <HeroBanner image={hero2} alt="Un camino que se abre paso en un paisaje natural, simbolizando el inicio de un viaje." bgColorClass="bg-custom-medium-teal" containerClasses="py-12 md:py-20 lg:py-28 xl:py-32 2xl:py-44">
-      <p class="p-base-hero max-w-2xl mx-auto">¡Haz que tus números jueguen a tu favor!</p>
-      <h2 class="h2-base max-w-2xl mx-auto">Transforma tu vida con tu lectura de Simbolismo Numérico</h2>
-      <a href="/contacto" class="inline-block bg-custom-light-teal text-custom-darker-teal font-semibold py-2 px-6 rounded-md hover:bg-opacity-80 hover:text-custom-dark-teal transition duration-300">
-        Contáctanos
-      </a>
-    </HeroBanner>
+    <!-- CTA Banner Section -->
+    {page?.ctaBanner && (
+      <HeroBanner 
+        image={page.ctaBanner.image.url}
+        alt={page.ctaBanner.alt || 'Banner de llamada a la acción'}
+        bgColorClass="bg-custom-medium-teal" 
+        containerClasses="py-12 md:py-20 lg:py-28 xl:py-32 2xl:py-44"
+      >
+        <p class="p-base-hero max-w-2xl mx-auto">{page.ctaBanner.subheading}</p>
+        <h2 class="h2-base max-w-2xl mx-auto">{page.ctaBanner.heading}</h2>
+        {page.ctaBanner.cta?.internalLink ? (
+          <a href={page.ctaBanner.cta.internalLink.slug} class="inline-block bg-custom-light-teal text-custom-darker-teal font-semibold py-2 px-6 rounded-md hover:bg-opacity-80 hover:text-custom-dark-teal transition duration-300">
+            {page.ctaBanner.cta.text}
+          </a>
+        ) : page.ctaBanner.cta?.externalUrl && (
+          <a href={page.ctaBanner.cta.externalUrl} target="_blank" rel="noopener noreferrer" class="inline-block bg-custom-light-teal text-custom-darker-teal font-semibold py-2 px-6 rounded-md hover:bg-opacity-80 hover:text-custom-dark-teal transition duration-300">
+            {page.ctaBanner.cta.text}
+          </a>
+        )}
+      </HeroBanner>
+    )}
   </main>
 </MainLayout>

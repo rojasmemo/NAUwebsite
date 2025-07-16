@@ -128,3 +128,65 @@ export const homePageQuery = `*[_type == "homePage" && !(_id in path("drafts.**"
     }
   }
 }`;
+
+// --- Consultas para Simbolismo Numérico ---
+
+// Consulta para la página principal de /simbolismo-numerico
+export const paginaSimbolismoNumericoQuery = `{
+  "page": *[_type == "paginaSimbolismoNumerico" && !(_id in path("drafts.**"))][0] {
+    title,
+    seoDescription,
+    mainBanner {
+      ...,
+      "image": image.asset->{
+        url,
+        "width": metadata.dimensions.width,
+        "height": metadata.dimensions.height
+      },
+      cta {
+        text,
+        externalUrl,
+        internalLink->{_type, "slug": slug.current}
+      }
+    },
+    introduction,
+    ctaBanner {
+      ...,
+      "image": image.asset->{
+        url,
+        "width": metadata.dimensions.width,
+        "height": metadata.dimensions.height
+      },
+      cta {
+        text,
+        externalUrl,
+        internalLink->{_type, "slug": slug.current}
+      }
+    }
+  },
+  "servicios": *[_type == "simbolismoNumerico" && !(_id in path("drafts.**"))] | order(order asc) {
+    title,
+    "slug": slug.current,
+    "image": mainImage.asset->{
+      url,
+      "width": metadata.dimensions.width,
+      "height": metadata.dimensions.height
+    },
+    "alt": mainImage.alt,
+    "description": body
+  }
+}`;
+
+// Consulta para obtener todos los slugs de los servicios de simbolismo numérico
+export const simbolismoNumericoSlugsQuery = `*[_type == "simbolismoNumerico" && defined(slug.current) && !(_id in path("drafts.**"))]{ "slug": slug.current }`;
+
+// Consulta para una página de servicio individual por slug
+export const simbolismoNumericoPorSlugQuery = `*[_type == "simbolismoNumerico" && slug.current == $slug && !(_id in path("drafts.**"))][0]{
+  title,
+  seoDescription,
+  "image": mainImage {
+    ...,
+    asset->
+  },
+  "description": body
+}`;

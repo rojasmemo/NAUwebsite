@@ -12,7 +12,7 @@ interface Props {
 
 const { 
   bgColorClass = 'bg-white',
-  containerClasses = 'py-12 md:py-8 px-4 md:px-20',
+  containerClasses = 'py-12 md:py-8 px-4 md:px-24', // Aumentado el padding horizontal
   reverseOnMobile = false,
   gridColsClass = 'md:grid-cols-2',
   leftColClass = 'md:col-span-1',
@@ -23,7 +23,7 @@ const leftOrder = reverseOnMobile ? 'order-2 md:order-1' : 'order-1';
 const rightOrder = reverseOnMobile ? 'order-1 md:order-2' : 'order-2';
 ---
 <section class:list={["content-section-wrapper", bgColorClass, containerClasses]}>
-  <div class:list={["grid gap-8 items-center", gridColsClass]}>
+  <div class:list={["grid gap-6 items-center", gridColsClass]}> // Reducido el gap
     <div class:list={[leftOrder, leftColClass]}><slot name="left" /></div>
     <div class:list={[rightOrder, rightColClass]}><slot name="right" /></div>
   </div>

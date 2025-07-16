@@ -64,10 +64,6 @@
     /* El enlace activo usa el mismo color principal de la marca. SIN FONDO. */
     @apply text-white;
   }
-  /* Clase para envolver secciones de contenido principal, limitando su ancho y centrándolas */
-  .content-section-wrapper {
-    @apply mx-auto max-w-[1920px];
-  }
 
   /* Estilos base para botones */
   .btn {

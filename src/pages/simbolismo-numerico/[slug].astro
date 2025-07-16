@@ -45,13 +45,19 @@ if (!servicio) {
         )}
       </div>
 
-      <div class="prose prose-lg max-w-none text-gray-800">
+      <div class="p-base">
         {servicio.description ? (
           <PortableText value={servicio.description} />
         ) : (
           <p class="italic text-gray-600">La descripción para este servicio estará disponible próximamente.</p>
         )}
       </div>
+
+      <pre class="bg-gray-100 p-4 rounded-lg mt-8">
+        <code>
+          {JSON.stringify(servicio, null, 2)}
+        </code>
+      </pre>
     </article>
   </main>
 </MainLayout>

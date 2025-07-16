@@ -53,6 +53,10 @@ import cardIcon from '../assets/images/CLIP-NUM.webp';
             <SimbolismoNumericoCard 
               title={servicio.title}
               icon={cardIcon}
+              image={servicio.image.url}
+              imageAlt={servicio.alt}
+              width={servicio.image.width}
+              height={servicio.image.height}
             >
               <div class="p-base text-custom-darker-teal text-left md:mb-8">
                 <PortableText value={servicio.description} />

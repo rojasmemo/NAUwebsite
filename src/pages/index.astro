@@ -61,9 +61,9 @@ const hero3CtaLink = resolveCtaLink(hero3?.cta);
   )}
 
   <!-- Split Section 1 -->
-  <SplitSection reverseOnMobile={true}>
+  <SplitSection reverseOnMobile={true} containerClasses="py-12 md:py-8 px-4 md:px-24">
     <div slot="left" class="bg-white p-4 md:py-8 rounded-lg flex flex-col justify-center">
-      <div style="max-width: 450px; margin: auto;">
+      <div class="max-w-md mx-auto">
         <h2 class="h2-base text-custom-dark-teal">{splitSection1.heading}</h2>
         <p class="p-base text-left">{splitSection1.paragraph1}</p>
         <p class="p-base text-left">{splitSection1.paragraph2}</p>
@@ -72,7 +72,7 @@ const hero3CtaLink = resolveCtaLink(hero3?.cta);
     </div>
     {splitSection1?.image && (
     <div slot="right" class="rounded-lg overflow-hidden flex justify-center items-center">
-      <div style={`max-width: 320px;`}>
+      <div class="max-w-xs">
         <SanityImage image={splitSection1.image} width={320} noShadow={true} />
       </div>
     </div>
@@ -136,16 +136,16 @@ const hero3CtaLink = resolveCtaLink(hero3?.cta);
   </section>
 
   <!-- Split Section 2 -->
-  <SplitSection bgColorClass="bg-white">
+  <SplitSection bgColorClass="bg-white" containerClasses="py-12 md:py-8 px-4 md:px-24">
     {splitSection2?.image && (
     <div slot="left" class="rounded-lg overflow-hidden flex justify-center items-center">
-      <div style={`max-width: 400px;`}>
+      <div class="max-w-sm">
         <SanityImage image={splitSection2.image} width={400} noShadow={true} />
       </div>
     </div>
     )}
     <div slot="right" class="bg-white text-custom-darker-teal p-4 md:p-8 rounded-lg text-center md:text-left flex flex-col justify-center items-center md:items-start">
-      <div style="max-width: 450px; margin: auto;">
+      <div class="max-w-md mx-auto">
         <h2 class="h2-base text-custom-dark-teal">{splitSection2.heading}</h2>
         <p class="p-base text-left">{splitSection2.paragraph1}</p>
         <p class="p-base text-left mb-6">{splitSection2.paragraph2}</p>

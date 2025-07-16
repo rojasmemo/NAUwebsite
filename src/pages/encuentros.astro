@@ -6,6 +6,7 @@ import EncuentroCard from '../components/EncuentroCard.astro';
 import { sanityClient } from 'sanity:client';
 import { paginaEncuentrosQuery } from '../lib/sanity/queries.js';
 import { PortableText } from 'astro-portabletext';
+import type { Cta } from '../lib/sanity/types';
 
 // Importamos el icono que es estático para todas las tarjetas
 import cardIcon from '../assets/images/CLIP-ENCUENTROS.webp';
@@ -25,6 +26,27 @@ if (!page) {
 const encuentrosVisibles = encuentros.filter(encuentro => 
   encuentro.slug && encuentro.title
 );
+
+// Función para resolver el enlace del CTA
+const resolveCtaLink = (cta: Cta | undefined) => {
+  if (!cta) return null;
+  if (cta.externalUrl) return cta.externalUrl;
+  if (cta.internalLink) {
+    switch (cta.internalLink._type) {
+      case 'homePage':
+        return '/';
+      case 'paginaEncuentros':
+        return '/encuentros';
+      // Agrega más casos según los tipos de página que tengas
+      default:
+        return cta.internalLink.slug ? `/${cta.internalLink.slug}` : null;
+    }
+  }
+  return null;
+};
+
+const mainBannerCtaLink = resolveCtaLink(page.mainBanner?.cta);
+const ctaBannerCtaLink = resolveCtaLink(page.ctaBanner?.cta);
 
 console.log('Datos de encuentros para renderizar:', JSON.stringify(encuentrosVisibles, null, 2));
 ---
@@ -47,6 +69,13 @@ console.log('Datos de encuentros para renderizar:', JSON.stringify(encuentrosVis
       >
         {page.mainBanner.heading && <h2 class="h2-base md:mb-4">{page.mainBanner.heading}</h2>}
         {page.mainBanner.tagline && <p class="p-base-hero max-w-2xl mx-auto">{page.mainBanner.tagline}</p>}
+		    {page.mainBanner.cta?.text && (
+          mainBannerCtaLink ? (
+            <a href={mainBannerCtaLink} class="btn btn-primary">{page.mainBanner.cta.text}</a>
+          ) : (
+            <span class="btn btn-primary btn-disabled">{page.mainBanner.cta.text}</span>
+          )
+        )}
       </HeroBanner>
     )}
 
@@ -95,15 +124,21 @@ console.log('Datos de encuentros para renderizar:', JSON.stringify(encuentrosVis
         containerClasses="py-12 md:py-20 lg:py-28 xl:py-36 2xl:py-48"
       >
         {page.ctaBanner.heading && <h2 class="h2-base">{page.ctaBanner.heading}</h2>}
-        {page.ctaBanner.cta && (page.ctaBanner.cta.externalUrl || page.ctaBanner.cta.link) && (
-          <a
-            href={page.ctaBanner.cta.externalUrl || `/${page.ctaBanner.cta.link}`}
-            class="inline-block bg-custom-light-teal text-custom-darker-teal font-semibold py-2 px-6 rounded-md hover:bg-opacity-80 hover:text-custom-dark-teal transition duration-300 mt-4"
-          >
-            {page.ctaBanner.cta.text}
-          </a>
+        {page.ctaBanner.cta?.text && (
+          ctaBannerCtaLink ? (
+            <a 
+              href={ctaBannerCtaLink} 
+              class="inline-block bg-custom-light-teal text-custom-darker-teal font-semibold py-2 px-6 rounded-md hover:bg-opacity-80 hover:text-custom-dark-teal transition duration-300 mt-4"
+            >
+              {page.ctaBanner.cta.text}
+            </a>
+          ) : (
+            <span class="inline-block bg-custom-light-teal text-custom-darker-teal font-semibold py-2 px-6 rounded-md transition duration-300 mt-4 btn-disabled">
+              {page.ctaBanner.cta.text}
+            </span>
+          )
         )}
       </HeroBanner>
     )}
   </main>
-</MainLayout> 
+</MainLayout>

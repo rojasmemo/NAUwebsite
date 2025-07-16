@@ -16,8 +16,9 @@ export const paginaEncuentrosQuery = `{
         "height": metadata.dimensions.height
       },
       cta {
-        ...,
-        "link": internalLink->.slug.current
+        text,
+        externalUrl,
+        internalLink->{_type, "slug": slug.current}
       }
     },
     introduction,
@@ -29,8 +30,9 @@ export const paginaEncuentrosQuery = `{
         "height": metadata.dimensions.height
       },
       cta {
-        ...,
-        "link": internalLink->.slug.current
+        text,
+        externalUrl,
+        internalLink->{_type, "slug": slug.current}
       }
     }
   },
@@ -73,8 +75,9 @@ export const homePageQuery = `*[_type == "homePage" && !(_id in path("drafts.**"
       "height": metadata.dimensions.height
     },
     cta {
-      ...,
-      "link": internalLink->.slug.current
+      text,
+      externalUrl,
+      internalLink->{_type, "slug": slug.current}
     }
   },
   splitSection1,
@@ -86,8 +89,9 @@ export const homePageQuery = `*[_type == "homePage" && !(_id in path("drafts.**"
       "height": metadata.dimensions.height
     },
     cta {
-      ...,
-      "link": internalLink->.slug.current
+      text,
+      externalUrl,
+      internalLink->{_type, "slug": slug.current}
     }
   },
   featureSection {
@@ -118,8 +122,9 @@ export const homePageQuery = `*[_type == "homePage" && !(_id in path("drafts.**"
       "height": metadata.dimensions.height
     },
     cta {
-      ...,
-      "link": internalLink->.slug.current
+      text,
+      externalUrl,
+      internalLink->{_type, "slug": slug.current}
     }
   }
 }`;

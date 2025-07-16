@@ -6,3 +6,12 @@ export interface SanityImage {
   height: number;
   alt?: string;
 }
+
+export interface Cta {
+  text?: string;
+  externalUrl?: string;
+  internalLink?: {
+    _type: string;
+    slug?: string;
+  };
+}

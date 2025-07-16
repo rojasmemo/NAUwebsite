@@ -82,6 +82,10 @@
     @apply text-white bg-transparent border-white hover:bg-white hover:text-custom-dark-teal focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-white;
   }
 
+  .btn-disabled {
+    @apply cursor-not-allowed bg-gray-400 opacity-60;
+  }
+
 
   /* Clases base para tipografía responsiva */
   .h2-base {

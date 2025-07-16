@@ -98,11 +98,7 @@ export const homePageQuery = `*[_type == "homePage" && !(_id in path("drafts.**"
     ...,
     feature1 {
       ...,
-      "icon": icon.asset->{
-        url,
-        "width": metadata.dimensions.width,
-        "height": metadata.dimensions.height
-      },
+      icon,
       link {
         externalUrl,
         internalLink->{_type, "slug": slug.current}
@@ -110,11 +106,7 @@ export const homePageQuery = `*[_type == "homePage" && !(_id in path("drafts.**"
     },
     feature2 {
       ...,
-      "icon": icon.asset->{
-        url,
-        "width": metadata.dimensions.width,
-        "height": metadata.dimensions.height
-      },
+      icon,
       link {
         externalUrl,
         internalLink->{_type, "slug": slug.current}

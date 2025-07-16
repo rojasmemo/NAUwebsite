@@ -102,6 +102,10 @@ export const homePageQuery = `*[_type == "homePage" && !(_id in path("drafts.**"
         url,
         "width": metadata.dimensions.width,
         "height": metadata.dimensions.height
+      },
+      link {
+        externalUrl,
+        internalLink->{_type, "slug": slug.current}
       }
     },
     feature2 {
@@ -110,6 +114,10 @@ export const homePageQuery = `*[_type == "homePage" && !(_id in path("drafts.**"
         url,
         "width": metadata.dimensions.width,
         "height": metadata.dimensions.height
+      },
+      link {
+        externalUrl,
+        internalLink->{_type, "slug": slug.current}
       }
     }
   },

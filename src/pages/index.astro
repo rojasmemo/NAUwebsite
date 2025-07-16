@@ -33,6 +33,9 @@ const {
 const hero1CtaLink = resolveCtaLink(hero1?.cta);
 const hero2CtaLink = resolveCtaLink(hero2?.cta);
 const hero3CtaLink = resolveCtaLink(hero3?.cta);
+
+const feature1CtaLink = resolveCtaLink(featureSection?.feature1?.link);
+const feature2CtaLink = resolveCtaLink(featureSection?.feature2?.link);
 ---
 
 <MainLayout title={title} description={seoDescription}>
@@ -111,7 +114,7 @@ const hero3CtaLink = resolveCtaLink(hero3?.cta);
           icon={featureSection.feature1.icon} 
           iconAlt={featureSection.feature1.iconAlt}
           title={featureSection.feature1.title}
-          link={featureSection.feature1.link}
+          link={feature1CtaLink}
         >
           <ul class="p-base list-disc list-outside text-custom-darker-teal text-left pl-4 md:pl-12 space-y-2">
             {featureSection.feature1.items.map(item => <li>{item}</li>)}
@@ -123,7 +126,7 @@ const hero3CtaLink = resolveCtaLink(hero3?.cta);
           icon={featureSection.feature2.icon}
           iconAlt={featureSection.feature2.iconAlt}
           title={featureSection.feature2.title}
-          link={featureSection.feature2.link}
+          link={feature2CtaLink}
         >
           <ul class="p-base list-disc list-outside text-custom-darker-teal text-left pl-4 md:pl-12 space-y-2">
             {featureSection.feature2.items.map(item => <li>{item}</li>)}

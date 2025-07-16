@@ -25,7 +25,9 @@ const { title, description, bodyClass } = Astro.props;
 </head>
 <body class:list={["font-sans", bodyClass]}>
   <Header />
-  <slot />
+  <main class="max-w-screen-xl mx-auto px-4">
+    <slot />
+  </main>
   <Footer />
 </body>
 </html>

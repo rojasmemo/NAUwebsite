@@ -61,7 +61,7 @@ const hero3CtaLink = resolveCtaLink(hero3?.cta);
   )}
 
   <!-- Split Section 1 -->
-  <SplitSection reverseOnMobile={true} containerClasses="py-12 md:py-8 px-4 md:px-24" gapClass="gap-6">
+  <SplitSection reverseOnMobile={true}>
     <div slot="left" class="bg-white p-4 md:py-8 rounded-lg flex flex-col justify-center">
       <div class="max-w-lg mx-auto">
         <h2 class="h2-base text-custom-dark-teal">{splitSection1.heading}</h2>
@@ -136,7 +136,7 @@ const hero3CtaLink = resolveCtaLink(hero3?.cta);
   </section>
 
   <!-- Split Section 2 -->
-  <SplitSection bgColorClass="bg-white" containerClasses="py-12 md:py-8 px-4 md:px-24" gapClass="gap-6">
+  <SplitSection bgColorClass="bg-white">
     {splitSection2?.image && (
     <div slot="left" class="rounded-lg overflow-hidden flex justify-center items-center">
       <div class="max-w-sm">

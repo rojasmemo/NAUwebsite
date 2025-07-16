@@ -47,17 +47,13 @@ const feature2CtaLink = resolveCtaLink(featureSection?.feature2?.link);
     height={hero1.image.height}
     bgColorClass="bg-custom-dark-teal"
     loading="eager"
+    buttonText={hero1.cta?.text}
+    buttonLink={hero1CtaLink}
+    buttonStyle="primary"
   >
     <h2 class="h2-base">{hero1.heading}</h2>
     <p class="p-base-hero max-w-2xl mx-auto">{hero1.subheading1}</p>
     <p class="p-base-hero max-w-2xl mx-auto md:mb-4">{hero1.subheading2}</p>
-    {hero1.cta?.text && (
-      hero1CtaLink ? (
-        <a href={hero1CtaLink} class="btn btn-primary">{hero1.cta.text}</a>
-      ) : (
-        <span class="btn btn-primary btn-disabled">{hero1.cta.text}</span>
-      )
-    )}
   </HeroBanner>
   )}
 
@@ -88,17 +84,13 @@ const feature2CtaLink = resolveCtaLink(featureSection?.feature2?.link);
     width={hero2.image.width}
     height={hero2.image.height}
     bgColorClass="bg-custom-dark-teal"
+    buttonText={hero2.cta?.text}
+    buttonLink={hero2CtaLink}
+    buttonStyle="secondary"
   >
     <h2 class="h2-base max-w-2xl mx-auto">{hero2.heading}</h2>
     <p class="p-base-hero max-w-2xl mx-auto">{hero2.subheading1}</p>
     <p class="p-base-hero max-w-2xl mx-auto md:mb-8">{hero2.subheading2}</p>
-    {hero2.cta?.text && (
-      hero2CtaLink ? (
-        <a href={hero2CtaLink} class="btn btn-secondary">{hero2.cta.text}</a>
-      ) : (
-        <span class="btn btn-secondary btn-disabled">{hero2.cta.text}</span>
-      )
-    )}
   </HeroBanner>
   )}
 
@@ -163,16 +155,12 @@ const feature2CtaLink = resolveCtaLink(featureSection?.feature2?.link);
     width={hero3.image.width}
     height={hero3.image.height}
     bgColorClass="bg-custom-medium-teal"
+    buttonText={hero3.cta?.text}
+    buttonLink={hero3CtaLink}
+    buttonStyle="secondary"
   >
     <p class="p-base-hero max-w-2xl mx-auto">{hero3.subheading1}</p>
     <h2 class="h2-base max-w-2xl mx-auto">{hero3.heading}</h2>
-    {hero3.cta?.text && (
-      hero3CtaLink ? (
-        <a href={hero3CtaLink} class="btn btn-secondary">{hero3.cta.text}</a>
-      ) : (
-        <span class="btn btn-secondary btn-disabled">{hero3.cta.text}</span>
-      )
-    )}
   </HeroBanner>
   )}
 

@@ -9,6 +9,7 @@ import FeatureCard from '../components/FeatureCard.astro';
 import SanityImage from '../components/SanityImage.astro';
 
 const data = await sanityClient.fetch(homePageQuery);
+console.log('Datos recibidos para la página de inicio:', JSON.stringify(data, null, 2));
 
 // Fallback por si no hay datos
 if (!data) {
@@ -49,11 +50,11 @@ const hero3CtaLink = resolveCtaLink(hero3?.cta);
     <h2 class="h2-base">{hero1.heading}</h2>
     <p class="p-base-hero max-w-2xl mx-auto">{hero1.subheading1}</p>
     <p class="p-base-hero max-w-2xl mx-auto md:mb-4">{hero1.subheading2}</p>
-    {hero1.cta && hero1.cta.text && (
+    {hero1.button?.text && (
       hero1CtaLink ? (
-        <a href={hero1CtaLink} class="btn btn-primary">{hero1.cta.text}</a>
+        <a href={hero1CtaLink} class="btn btn-primary">{hero1.button.text}</a>
       ) : (
-        <span class="btn btn-primary btn-disabled">{hero1.cta.text}</span>
+        <span class="btn btn-primary btn-disabled">{hero1.button.text}</span>
       )
     )}
   </HeroBanner>
@@ -86,11 +87,11 @@ const hero3CtaLink = resolveCtaLink(hero3?.cta);
     <h2 class="h2-base max-w-2xl mx-auto">{hero2.heading}</h2>
     <p class="p-base-hero max-w-2xl mx-auto">{hero2.subheading1}</p>
     <p class="p-base-hero max-w-2xl mx-auto md:mb-8">{hero2.subheading2}</p>
-    {hero2.cta && hero2.cta.text && (
+    {hero2.button?.text && (
       hero2CtaLink ? (
-        <a href={hero2CtaLink} class="btn btn-secondary">{hero2.cta.text}</a>
+        <a href={hero2CtaLink} class="btn btn-secondary">{hero2.button.text}</a>
       ) : (
-        <span class="btn btn-secondary btn-disabled">{hero2.cta.text}</span>
+        <span class="btn btn-secondary btn-disabled">{hero2.button.text}</span>
       )
     )}
   </HeroBanner>
@@ -156,11 +157,11 @@ const hero3CtaLink = resolveCtaLink(hero3?.cta);
   >
     <p class="p-base-hero max-w-2xl mx-auto">{hero3.subheading1}</p>
     <h2 class="h2-base max-w-2xl mx-auto">{hero3.heading}</h2>
-    {hero3.cta && hero3.cta.text && (
+    {hero3.button?.text && (
       hero3CtaLink ? (
-        <a href={hero3CtaLink} class="btn btn-secondary">{hero3.cta.text}</a>
+        <a href={hero3CtaLink} class="btn btn-secondary">{hero3.button.text}</a>
       ) : (
-        <span class="btn btn-secondary btn-disabled">{hero3.cta.text}</span>
+        <span class="btn btn-secondary btn-disabled">{hero3.button.text}</span>
       )
     )}
   </HeroBanner>

@@ -1,12 +1,11 @@
 ---
-// src/pages/encuentros.astro
 import MainLayout from '../layouts/MainLayout.astro';
 import HeroBanner from '../components/HeroBanner.astro';
 import EncuentroCard from '../components/EncuentroCard.astro';
 import { sanityClient } from 'sanity:client';
 import { paginaEncuentrosQuery } from '../lib/sanity/queries.js';
 import { PortableText } from 'astro-portabletext';
-import type { Cta } from '../lib/sanity/types';
+import { resolveCtaLink } from '../lib/utils';
 
 // Importamos el icono que es estático para todas las tarjetas
 import cardIcon from '../assets/images/CLIP-ENCUENTROS.webp';
@@ -26,24 +25,6 @@ if (!page) {
 const encuentrosVisibles = encuentros.filter(encuentro => 
   encuentro.slug && encuentro.title
 );
-
-// Función para resolver el enlace del CTA
-const resolveCtaLink = (cta: Cta | undefined) => {
-  if (!cta) return null;
-  if (cta.externalUrl) return cta.externalUrl;
-  if (cta.internalLink) {
-    switch (cta.internalLink._type) {
-      case 'homePage':
-        return '/';
-      case 'paginaEncuentros':
-        return '/encuentros';
-      // Agrega más casos según los tipos de página que tengas
-      default:
-        return cta.internalLink.slug ? `/${cta.internalLink.slug}` : null;
-    }
-  }
-  return null;
-};
 
 const mainBannerCtaLink = resolveCtaLink(page.mainBanner?.cta);
 const ctaBannerCtaLink = resolveCtaLink(page.ctaBanner?.cta);
@@ -126,14 +107,11 @@ console.log('Datos de encuentros para renderizar:', JSON.stringify(encuentrosVis
         {page.ctaBanner.heading && <h2 class="h2-base">{page.ctaBanner.heading}</h2>}
         {page.ctaBanner.cta?.text && (
           ctaBannerCtaLink ? (
-            <a 
-              href={ctaBannerCtaLink} 
-              class="inline-block bg-custom-light-teal text-custom-darker-teal font-semibold py-2 px-6 rounded-md hover:bg-opacity-80 hover:text-custom-dark-teal transition duration-300 mt-4"
-            >
+            <a href={ctaBannerCtaLink} class="btn btn-tertiary mt-4">
               {page.ctaBanner.cta.text}
             </a>
           ) : (
-            <span class="inline-block bg-custom-light-teal text-custom-darker-teal font-semibold py-2 px-6 rounded-md transition duration-300 mt-4 btn-disabled">
+            <span class="btn btn-tertiary btn-disabled mt-4">
               {page.ctaBanner.cta.text}
             </span>
           )

@@ -82,6 +82,10 @@
     @apply text-white bg-transparent border-white hover:bg-white hover:text-custom-dark-teal focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-white;
   }
 
+  .btn-tertiary {
+    @apply bg-custom-light-teal text-custom-darker-teal hover:bg-opacity-80 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-custom-light-teal;
+  }
+
   .btn-disabled {
     @apply cursor-not-allowed bg-gray-400 opacity-60;
   }

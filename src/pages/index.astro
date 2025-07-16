@@ -1,7 +1,7 @@
 ---
 import { sanityClient } from 'sanity:client';
 import { homePageQuery } from '../lib/sanity/queries';
-import type { Cta } from '../lib/sanity/types';
+import { resolveCtaLink } from '../lib/utils';
 import MainLayout from '../layouts/MainLayout.astro';
 import HeroBanner from '../components/HeroBanner.astro';
 import SplitSection from '../components/SplitSection.astro';
@@ -29,24 +29,6 @@ const {
   hero3
 } = data;
 
-// Función para resolver el enlace del CTA
-const resolveCtaLink = (cta: Cta | undefined) => {
-  if (!cta) return null;
-  if (cta.externalUrl) return cta.externalUrl;
-  if (cta.internalLink) {
-    switch (cta.internalLink._type) {
-      case 'homePage':
-        return '/';
-      case 'paginaEncuentros':
-        return '/encuentros';
-      // Agrega más casos según los tipos de página que tengas
-      default:
-        return cta.internalLink.slug ? `/${cta.internalLink.slug}` : null;
-    }
-  }
-  return null;
-};
-
 const hero1CtaLink = resolveCtaLink(hero1?.cta);
 const hero2CtaLink = resolveCtaLink(hero2?.cta);
 const hero3CtaLink = resolveCtaLink(hero3?.cta);
@@ -67,7 +49,7 @@ const hero3CtaLink = resolveCtaLink(hero3?.cta);
     <h2 class="h2-base">{hero1.heading}</h2>
     <p class="p-base-hero max-w-2xl mx-auto">{hero1.subheading1}</p>
     <p class="p-base-hero max-w-2xl mx-auto md:mb-4">{hero1.subheading2}</p>
-    {hero1.cta?.text && (
+    {hero1.cta && hero1.cta.text && (
       hero1CtaLink ? (
         <a href={hero1CtaLink} class="btn btn-primary">{hero1.cta.text}</a>
       ) : (
@@ -104,7 +86,7 @@ const hero3CtaLink = resolveCtaLink(hero3?.cta);
     <h2 class="h2-base max-w-2xl mx-auto">{hero2.heading}</h2>
     <p class="p-base-hero max-w-2xl mx-auto">{hero2.subheading1}</p>
     <p class="p-base-hero max-w-2xl mx-auto md:mb-8">{hero2.subheading2}</p>
-    {hero2.cta?.text && (
+    {hero2.cta && hero2.cta.text && (
       hero2CtaLink ? (
         <a href={hero2CtaLink} class="btn btn-secondary">{hero2.cta.text}</a>
       ) : (
@@ -174,7 +156,7 @@ const hero3CtaLink = resolveCtaLink(hero3?.cta);
   >
     <p class="p-base-hero max-w-2xl mx-auto">{hero3.subheading1}</p>
     <h2 class="h2-base max-w-2xl mx-auto">{hero3.heading}</h2>
-    {hero3.cta?.text && (
+    {hero3.cta && hero3.cta.text && (
       hero3CtaLink ? (
         <a href={hero3CtaLink} class="btn btn-secondary">{hero3.cta.text}</a>
       ) : (

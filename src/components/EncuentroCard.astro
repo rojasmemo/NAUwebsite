@@ -14,7 +14,7 @@ interface Props {
 
 const { image, imageAlt, icon, iconAlt = "Icono representativo de NAU", title, width, height } = Astro.props;
 ---
-<div class="relative flex flex-col rounded-lg text-custom-darker-teal">
+<div class="relative flex flex-col rounded-lg text-custom-darker-teal h-full">
   <!-- Imagen de cabecera de la tarjeta -->
   {image && (
     <Picture

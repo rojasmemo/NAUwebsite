@@ -74,7 +74,7 @@ const ctaBannerCtaLink = resolveCtaLink(page.ctaBanner?.cta);
         <div class="grid md:grid-cols-2 gap-y-12 gap-x-8 md:gap-y-16 md:gap-x-10 mb-8 px-4 md:px-6 lg:px-20">
           {encuentrosVisibles.length > 0 ? (
             encuentrosVisibles.map((encuentro) => (
-              <a href={`/encuentros/${encuentro.slug}`} class="block hover:scale-105 transition-transform duration-300 focus:outline-none focus:ring-2 focus:ring-custom-light-teal rounded-lg">
+              <a href={`/encuentros/${encuentro.slug}`} class="block hover:scale-105 transition-transform duration-300 focus:outline-none focus:ring-2 focus:ring-custom-light-teal rounded-lg h-full">
                 <EncuentroCard image={encuentro.image.url} imageAlt={encuentro.alt || encuentro.title} icon={cardIcon} width={encuentro.image.width} height={encuentro.image.height} title={encuentro.title}>
                   <div class="prose prose-p:text-custom-darker-teal prose-p:p-base prose-strong:font-semibold text-left">
                     <PortableText value={encuentro.description} />

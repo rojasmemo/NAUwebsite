@@ -33,9 +33,11 @@ import cardIcon from '../assets/images/CLIP-NUM.webp';
         containerClasses="py-20 md:py-24 lg:py-28 xl:py-36 2xl:py-44"
       >
         <h2 class="h2-base md:mb-4">{page.mainBanner.heading}</h2>
-        <p class="p-base-hero max-w-2xl mx-auto">
-          {page.mainBanner.subheading}
-        </p>
+        {page.mainBanner.subheading && (
+          <p class="p-base-hero max-w-2xl mx-auto">
+            {page.mainBanner.subheading}
+          </p>
+        )}
       </HeroBanner>
     )}
 

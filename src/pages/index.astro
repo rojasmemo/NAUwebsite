@@ -94,9 +94,9 @@ const feature2CtaLink = resolveCtaLink(featureSection?.feature2?.link);
     <p class="p-base-hero max-w-2xl mx-auto md:mb-8">{hero2.subheading2}</p>
     {hero2.cta?.text && (
       hero2CtaLink ? (
-        <a href={hero2CtaLink} class="btn btn-secondary">{hero2.cta.text}</a>
+        <a href={hero2CtaLink} class="btn btn-tertiary">{hero2.cta.text}</a>
       ) : (
-        <span class="btn btn-secondary btn-disabled">{hero2.cta.text}</span>
+        <span class="btn btn-tertiary btn-disabled">{hero2.cta.text}</span>
       )
     )}
   </HeroBanner>
@@ -170,9 +170,9 @@ const feature2CtaLink = resolveCtaLink(featureSection?.feature2?.link);
     <h2 class="h2-base max-w-2xl mx-auto">{hero3.heading}</h2>
     {hero3.cta?.text && (
       hero3CtaLink ? (
-        <a href={hero3CtaLink} class="btn btn-secondary">{hero3.cta.text}</a>
+        <a href={hero3CtaLink} class="btn btn-tertiarycondary">{hero3.cta.text}</a>
       ) : (
-        <span class="btn btn-secondary btn-disabled">{hero3.cta.text}</span>
+        <span class="btn btn-tertiary btn-disabled">{hero3.cta.text}</span>
       )
     )}
   </HeroBanner>

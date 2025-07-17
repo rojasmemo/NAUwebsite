@@ -138,7 +138,7 @@ export const paginaSimbolismoNumericoQuery = `{
     seoDescription,
     mainBanner {
       ...,
-      subheading,
+      tagline,
       "image": image.asset->{
         url,
         "width": metadata.dimensions.width,

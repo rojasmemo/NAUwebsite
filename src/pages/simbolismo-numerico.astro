@@ -33,9 +33,9 @@ import cardIcon from '../assets/images/CLIP-NUM.webp';
         containerClasses="py-20 md:py-24 lg:py-28 xl:py-36 2xl:py-44"
       >
         <h2 class="h2-base md:mb-4">{page.mainBanner.heading}</h2>
-        {page.mainBanner.subheading && (
+        {page.mainBanner.tagline && (
           <p class="p-base-hero max-w-2xl mx-auto">
-            {page.mainBanner.subheading}
+            {page.mainBanner.tagline}
           </p>
         )}
       </HeroBanner>
@@ -80,7 +80,7 @@ import cardIcon from '../assets/images/CLIP-NUM.webp';
         bgColorClass="bg-custom-medium-teal" 
         containerClasses="py-12 md:py-20 lg:py-28 xl:py-32 2xl:py-44"
       >
-        <p class="p-base-hero max-w-2xl mx-auto">{page.ctaBanner.subheading}</p>
+        <p class="p-base-hero max-w-2xl mx-auto">{page.ctaBanner.tagline}</p>
         <h2 class="h2-base max-w-2xl mx-auto">{page.ctaBanner.heading}</h2>
         {page.ctaBanner.cta?.text && (
           ctaBannerCtaLink ? (

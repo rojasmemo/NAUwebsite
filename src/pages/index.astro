@@ -104,35 +104,37 @@ const feature2CtaLink = resolveCtaLink(featureSection?.feature2?.link);
 
   <!-- Feature Section -->
   <section class="py-12 md:py-16 bg-custom-pale-teal">
-    <div class="text-center">
-      <h2 class="h2-base text-custom-darker-teal mb-12 md:mb-16">{featureSection.heading}</h2>
-      <div class="grid md:grid-cols-2 gap-12 md:gap-8 mb-8">
-        {featureSection.feature1?.icon && (
-        <FeatureCard
-          icon={featureSection.feature1.icon} 
-          iconAlt={featureSection.feature1.iconAlt}
-          title={featureSection.feature1.title}
-          link={feature1CtaLink}
-        >
-          <ul class="p-base list-disc list-outside text-custom-darker-teal text-left pl-4 md:pl-12 space-y-2">
-            {featureSection.feature1.items.map(item => <li>{item}</li>)}
-          </ul>
-        </FeatureCard>
-        )}
-        {featureSection.feature2?.icon && (
-        <FeatureCard
-          icon={featureSection.feature2.icon}
-          iconAlt={featureSection.feature2.iconAlt}
-          title={featureSection.feature2.title}
-          link={feature2CtaLink}
-        >
-          <ul class="p-base list-disc list-outside text-custom-darker-teal text-left pl-4 md:pl-12 space-y-2">
-            {featureSection.feature2.items.map(item => <li>{item}</li>)}
-          </ul>
-        </FeatureCard>
-        )}
+    <div class="max-w-[1440px] mx-auto px-4 md:px-8">
+      <div class="text-center">
+        <h2 class="h2-base text-custom-darker-teal mb-12 md:mb-16">{featureSection.heading}</h2>
+        <div class="grid md:grid-cols-2 gap-12 md:gap-8 mb-8">
+          {featureSection.feature1?.icon && (
+          <FeatureCard
+            icon={featureSection.feature1.icon} 
+            iconAlt={featureSection.feature1.iconAlt}
+            title={featureSection.feature1.title}
+            link={feature1CtaLink}
+          >
+            <ul class="p-base list-disc list-outside text-custom-darker-teal text-left pl-4 md:pl-12 space-y-2">
+              {featureSection.feature1.items.map(item => <li>{item}</li>)}
+            </ul>
+          </FeatureCard>
+          )}
+          {featureSection.feature2?.icon && (
+          <FeatureCard
+            icon={featureSection.feature2.icon}
+            iconAlt={featureSection.feature2.iconAlt}
+            title={featureSection.feature2.title}
+            link={feature2CtaLink}
+          >
+            <ul class="p-base list-disc list-outside text-custom-darker-teal text-left pl-4 md:pl-12 space-y-2">
+              {featureSection.feature2.items.map(item => <li>{item}</li>)}
+            </ul>
+          </FeatureCard>
+          )}
+        </div>
+        <h3 class="h3-base text-custom-darker-teal">{featureSection.subheading}</h3>
       </div>
-      <h3 class="h3-base text-custom-darker-teal">{featureSection.subheading}</h3>
     </div>
   </section>
 

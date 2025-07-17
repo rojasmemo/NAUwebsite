@@ -25,10 +25,8 @@ const { title, description, bodyClass } = Astro.props;
 </head>
 <body class:list={["font-sans", bodyClass]}>
   <Header />
-  <main>
-    <div class="max-w-[1440px] mx-auto px-4 md:px-8">
-      <slot />
-    </div>
+  <main class="max-w-[1440px] mx-auto px-4 md:px-8">
+    <slot />
   </main>
   <Footer />
 </body>

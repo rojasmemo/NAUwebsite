@@ -106,7 +106,7 @@
 
   /* Clases para fondos de secciones Hero con imágenes responsivas */
   .hero-bg {
-    @apply mx-auto max-w-[1920px] bg-cover bg-center bg-no-repeat;
+    @apply mx-auto bg-cover bg-center bg-no-repeat;
   }
 
   

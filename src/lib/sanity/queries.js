@@ -74,7 +74,7 @@ export const homePageQuery = `*[_type == "homePage" && !(_id in path("drafts.**"
       "width": metadata.dimensions.width,
       "height": metadata.dimensions.height
     },
-    button {
+    "cta": button {
       text,
       externalUrl,
       internalLink->{_type, "slug": slug.current}
@@ -88,7 +88,7 @@ export const homePageQuery = `*[_type == "homePage" && !(_id in path("drafts.**"
       "width": metadata.dimensions.width,
       "height": metadata.dimensions.height
     },
-    button {
+    "cta": button {
       text,
       externalUrl,
       internalLink->{_type, "slug": slug.current}
@@ -121,7 +121,7 @@ export const homePageQuery = `*[_type == "homePage" && !(_id in path("drafts.**"
       "width": metadata.dimensions.width,
       "height": metadata.dimensions.height
     },
-    button {
+    "cta": button {
       text,
       externalUrl,
       internalLink->{_type, "slug": slug.current}

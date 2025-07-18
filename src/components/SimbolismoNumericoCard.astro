@@ -2,6 +2,8 @@
 // src/components/SimbolismoNumericoCard.astro
 import { Picture, Image, type ImageMetadata } from 'astro:assets';
 import { PortableText } from 'astro-portabletext';
+import IconPlus from './icons/IconPlus.astro';
+import IconMinus from './icons/IconMinus.astro';
 
 interface Props {
   image?: ImageMetadata | string;
@@ -48,12 +50,8 @@ const { image, imageAlt, icon, iconAlt = "Icono representativo de NAU", title, d
     <div class="accordion-item">
       <button class="accordion-toggle flex justify-between items-center w-full text-left">
         <span class="text-lg font-semibold text-custom-darker-teal">Ver descripción</span>
-        <svg class="accordion-icon-plus w-6 h-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4" />
-        </svg>
-        <svg class="accordion-icon-minus w-6 h-6 hidden" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20 12H4" />
-        </svg>
+        <IconPlus class="accordion-icon-plus w-6 h-6" />
+        <IconMinus class="accordion-icon-minus w-6 h-6 hidden" />
       </button>
       <div class="accordion-content hidden mt-4">
         <div class="prose max-w-none">

@@ -114,6 +114,7 @@ const feature2CtaLink = resolveCtaLink(featureSection?.feature2?.link);
             iconAlt={featureSection.feature1.iconAlt}
             title={featureSection.feature1.title}
             link={feature1CtaLink}
+            linkText={featureSection.feature1.link?.text}
           >
             <ul class="p-base list-disc list-outside text-custom-darker-teal text-left pl-4 md:pl-12 space-y-2">
               {featureSection.feature1.items.map(item => <li>{item}</li>)}
@@ -126,6 +127,7 @@ const feature2CtaLink = resolveCtaLink(featureSection?.feature2?.link);
             iconAlt={featureSection.feature2.iconAlt}
             title={featureSection.feature2.title}
             link={feature2CtaLink}
+            linkText={featureSection.feature2.link?.text}
           >
             <ul class="p-base list-disc list-outside text-custom-darker-teal text-left pl-4 md:pl-12 space-y-2">
               {featureSection.feature2.items.map(item => <li>{item}</li>)}

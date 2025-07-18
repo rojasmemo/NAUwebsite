@@ -1,18 +1,20 @@
 ---
 // src/components/SimbolismoNumericoCard.astro
 import { Picture, Image, type ImageMetadata } from 'astro:assets';
+import { PortableText } from 'astro-portabletext';
 
 interface Props {
-  image?: ImageMetadata | string; // Acepta imagen local o URL remota
+  image?: ImageMetadata | string;
   imageAlt?: string;
   icon: ImageMetadata;
   iconAlt?: string;
   title: string;
-  width?: number; // Requerido para imágenes remotas
-  height?: number; // Requerido para imágenes remotas
+  description: any[]; // Contenido de Portable Text
+  width?: number;
+  height?: number;
 }
 
-const { image, imageAlt, icon, iconAlt = "Icono representativo de NAU", title, width, height } = Astro.props;
+const { image, imageAlt, icon, iconAlt = "Icono representativo de NAU", title, description, width, height } = Astro.props;
 ---
 <div class="relative flex flex-col rounded-lg text-custom-darker-teal">
   <!-- Imagen de cabecera de la tarjeta -->
@@ -42,5 +44,36 @@ const { image, imageAlt, icon, iconAlt = "Icono representativo de NAU", title, w
     <h3 class="text-2xl font-semibold mb-3 text-custom-specific-blue">{title}</h3>
     <hr class="border-t-4 border-custom-gray-blue mb-6 md:mb-8">
     
+    <!-- Acordeón -->
+    <div class="accordion-item">
+      <button class="accordion-toggle flex justify-between items-center w-full text-left">
+        <span class="text-lg font-semibold text-custom-darker-teal">Ver descripción</span>
+        <svg class="accordion-icon-plus w-6 h-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4" />
+        </svg>
+        <svg class="accordion-icon-minus w-6 h-6 hidden" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20 12H4" />
+        </svg>
+      </button>
+      <div class="accordion-content hidden mt-4">
+        <div class="prose max-w-none">
+          <PortableText value={description} />
+        </div>
+      </div>
+    </div>
   </div>
 </div>
+
+<script>
+  document.querySelectorAll('.accordion-toggle').forEach(button => {
+    button.addEventListener('click', () => {
+      const content = button.nextElementSibling;
+      const iconPlus = button.querySelector('.accordion-icon-plus');
+      const iconMinus = button.querySelector('.accordion-icon-minus');
+
+      content.classList.toggle('hidden');
+      iconPlus.classList.toggle('hidden');
+      iconMinus.classList.toggle('hidden');
+    });
+  });
+</script>

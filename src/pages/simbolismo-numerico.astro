@@ -54,20 +54,15 @@ import cardIcon from '../assets/images/CLIP-NUM.webp';
     <section class="relative content-section-wrapper z-10 -mt-20 md:-mt-28 pt-12 md:pt-16 pb-4 md:pb-6 px-4 md:px-16 rounded-t-lg md:rounded-t-xl">
       <div class="grid md:grid-cols-2 gap-y-12 gap-x-8 md:gap-y-16 md:gap-x-10 mb-8 px-4 md:px-6 lg:px-20">
         {servicios?.map(servicio => (
-          <a href={`/simbolismo-numerico/${servicio.slug}`} class="block no-underline">
-            <SimbolismoNumericoCard 
-              title={servicio.title}
-              icon={cardIcon}
-              image={servicio.image.url}
-              imageAlt={servicio.alt}
-              width={servicio.image.width}
-              height={servicio.image.height}
-            >
-              <div class="p-base text-custom-darker-teal text-left md:mb-8">
-                <PortableText value={servicio.description} />
-              </div>
-            </SimbolismoNumericoCard>
-          </a>
+          <SimbolismoNumericoCard 
+            title={servicio.title}
+            icon={cardIcon}
+            image={servicio.image.url}
+            imageAlt={servicio.alt}
+            width={servicio.image.width}
+            height={servicio.image.height}
+            description={servicio.description}
+          />
         ))}
       </div>
     </section>

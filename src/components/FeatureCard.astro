@@ -1,7 +1,7 @@
 ---
 // src/components/FeatureCard.astro
-import SanityImage from './SanityImage.astro';
-import type { SanityImage as SanityImageProps } from '../lib/sanity/types';
+import SanityImage from "./SanityImage.astro";
+import type { SanityImage as SanityImageProps } from "../lib/sanity/types";
 
 interface Props {
   icon: SanityImageProps;
@@ -11,18 +11,23 @@ interface Props {
   linkText?: string;
 }
 
-const { 
-  icon, 
-  iconAlt = "Icono decorativo", 
-  title, 
-  link, 
-  linkText = "Conoce más" 
+const {
+  icon,
+  iconAlt = "Icono decorativo",
+  title,
+  link,
+  linkText = "Conoce más",
 } = Astro.props;
 ---
-<div class="relative bg-white p-6 md:p-8 pt-8 md:pt-8 rounded-lg text-custom-darker-teal">
-  <div class="absolute top-0 left-1/2 -translate-x-1/2 -translate-y-1/2 w-auto h-12 md:h-16">
-    <SanityImage 
-      image={icon} 
+
+<div
+  class="relative bg-white p-6 md:p-8 pt-8 md:pt-8 rounded-lg text-custom-darker-teal"
+>
+  <div
+    class="absolute top-0 left-1/2 -translate-x-1/2 -translate-y-1/2 w-auto h-12 md:h-16 z-10"
+  >
+    <SanityImage
+      image={icon}
       alt={iconAlt}
       width={64}
       height={64}
@@ -30,15 +35,22 @@ const {
       noShadow={true}
     />
   </div>
-  <h3 class="text-2xl font-semibold mt-4 md:mt-8 mb-3 text-custom-darker-teal">{title}</h3>
+  <h3 class="text-2xl font-semibold mt-4 md:mt-8 mb-3 text-custom-darker-teal">
+    {title}
+  </h3>
   <slot />
-  {link ? (
-    <a href={link} class="inline-block bg-custom-dark-teal text-white font-semibold py-2 px-6 rounded-md hover:bg-gray-100 hover:text-custom-dark-teal transition duration-300 self-start">
-      {linkText}
-    </a>
-  ) : (
-    <span class="inline-block bg-custom-dark-teal text-white font-semibold py-2 px-6 rounded-md transition duration-300 self-start opacity-50 cursor-not-allowed">
-      {linkText}
-    </span>
-  )}
+  {
+    link ? (
+      <a
+        href={link}
+        class="inline-block bg-custom-dark-teal text-white font-semibold py-2 px-6 rounded-md hover:bg-gray-100 hover:text-custom-dark-teal transition duration-300 self-start"
+      >
+        {linkText}
+      </a>
+    ) : (
+      <span class="inline-block bg-custom-dark-teal text-white font-semibold py-2 px-6 rounded-md transition duration-300 self-start opacity-50 cursor-not-allowed">
+        {linkText}
+      </span>
+    )
+  }
 </div>

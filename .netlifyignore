@@ -1,0 +1,2 @@
+# Ignorar la carpeta de documentación en los despliegues de Netlify
+/documentation/

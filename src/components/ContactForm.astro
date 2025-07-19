@@ -1,8 +1,9 @@
 ---
 // src/components/ContactForm.astro
 
-// La clave pública de reCAPTCHA v3 es segura para exponer en el frontend.
-const recaptchaSiteKey = '6Lcy43grAAAAAPTd99MJiK7E42tofYVIbLD8sXgQ';
+// Leemos la clave pública de reCAPTCHA desde las variables de entorno.
+// Astro pone a disposición las variables con prefijo PUBLIC_ a través de import.meta.env.
+const recaptchaSiteKey = import.meta.env.PUBLIC_RECAPTCHA_SITE_KEY;
 ---
 
 <!-- Formulario gestionado por el script de abajo -->

@@ -10,3 +10,9 @@
 # Agregamos una variable de entorno para solucionar conflictos de dependencias.
 [build.environment]
   NPM_FLAGS = "--legacy-peer-deps"
+
+# Permite que el CDN de imágenes de Netlify procese imágenes de tu CDN de Sanity.
+[images]
+  # Esta es una lista de expresiones regulares.
+  # Este patrón permite cualquier imagen que provenga de https://cdn.sanity.io.
+  remote_images = ["^https://cdn\\.sanity\\.io/.*"]

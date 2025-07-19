@@ -20,36 +20,46 @@ const {
 } = Astro.props;
 ---
 
-<div class="relative bg-white p-6 pt-10 md:p-8 md:pt-12 rounded-lg shadow-md text-custom-darker-teal flex flex-col items-center">
+<div
+  class="relative bg-white p-6 pt-10 md:p-8 md:pt-12 rounded-lg shadow-md text-custom-darker-teal flex flex-col items-center"
+>
   <div
     class="absolute top-0 left-1/2 -translate-x-1/2 -translate-y-1/2 w-auto z-10"
   >
     <SanityImage
       image={icon}
       alt={iconAlt}
-      width={48}  // Tamaño para móvil (h-12 -> 48px)
-      height={48}
-      class="md:w-16 md:h-16" // Clases para cambiar tamaño en desktop
-      loading="lazy"
+      width={40}
+      Tamaño
+      para
+      móvil
+      (h-12
+      -
+    >
+      48px) height={40}
+      class="md:w-16 md:h-16" // Clases para cambiar tamaño en desktop loading="lazy"
       noShadow={true}
-    />
+      />
+    </SanityImage>
+    <h3
+      class="text-2xl font-semibold mt-4 md:mt-8 mb-3 text-custom-darker-teal"
+    >
+      {title}
+    </h3>
+    <slot />
+    {
+      link ? (
+        <a
+          href={link}
+          class="inline-block bg-custom-dark-teal text-white font-semibold py-2 px-6 rounded-md hover:bg-gray-100 hover:text-custom-dark-teal transition duration-300"
+        >
+          {linkText}
+        </a>
+      ) : (
+        <span class="inline-block bg-custom-dark-teal text-white font-semibold py-2 px-6 rounded-md transition duration-300 self-start opacity-50 cursor-not-allowed">
+          {linkText}
+        </span>
+      )
+    }
   </div>
-  <h3 class="text-2xl font-semibold mt-4 md:mt-8 mb-3 text-custom-darker-teal">
-    {title}
-  </h3>
-  <slot />
-  {
-    link ? (
-      <a
-        href={link}
-        class="inline-block bg-custom-dark-teal text-white font-semibold py-2 px-6 rounded-md hover:bg-gray-100 hover:text-custom-dark-teal transition duration-300"
-      >
-        {linkText}
-      </a>
-    ) : (
-      <span class="inline-block bg-custom-dark-teal text-white font-semibold py-2 px-6 rounded-md transition duration-300 self-start opacity-50 cursor-not-allowed">
-        {linkText}
-      </span>
-    )
-  }
 </div>

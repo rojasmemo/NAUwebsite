@@ -80,7 +80,10 @@ export const homePageQuery = `*[_type == "homePage" && !(_id in path("drafts.**"
       internalLink->{_type, "slug": slug.current}
     }
   },
-  splitSection1,
+  splitSection1 {
+    ...,
+    "image": image.asset->
+  },
   hero2 {
     ...,
     "image": image.asset->{
@@ -98,22 +101,27 @@ export const homePageQuery = `*[_type == "homePage" && !(_id in path("drafts.**"
     ...,
     feature1 {
       ...,
-      icon,
+      "icon": icon.asset->,
       link {
+        text,
         externalUrl,
         internalLink->{_type, "slug": slug.current}
       }
     },
     feature2 {
       ...,
-      icon,
+      "icon": icon.asset->,
       link {
+        text,
         externalUrl,
         internalLink->{_type, "slug": slug.current}
       }
     }
   },
-  splitSection2,
+  splitSection2 {
+    ...,
+    "image": image.asset->
+  },
   hero3 {
     ...,
     "image": image.asset->{

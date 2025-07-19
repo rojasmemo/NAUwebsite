@@ -1,6 +1,7 @@
 ---
 import { sanityClient } from 'sanity:client';
 import { homePageQuery } from '../lib/sanity/queries';
+import type { HomePage } from '../lib/sanity/types';
 import { resolveCtaLink } from '../lib/utils';
 import MainLayout from '../layouts/MainLayout.astro';
 import HeroBanner from '../components/HeroBanner.astro';
@@ -8,7 +9,7 @@ import SplitSection from '../components/SplitSection.astro';
 import FeatureCard from '../components/FeatureCard.astro';
 import SanityImage from '../components/SanityImage.astro';
 
-const data = await sanityClient.fetch(homePageQuery);
+const data = await sanityClient.fetch<HomePage>(homePageQuery);
 
 if (!data) {
   return new Response(null, {
@@ -108,29 +109,29 @@ const feature2CtaLink = resolveCtaLink(featureSection?.feature2?.link);
       <div class="text-center">
         <h2 class="h2-base text-custom-darker-teal mb-12 md:mb-16">{featureSection.heading}</h2>
         <div class="grid md:grid-cols-2 gap-12 md:gap-8 mb-8">
-          {featureSection.feature1?.icon && (
+          {featureSection.feature1 && (
           <FeatureCard
-            icon={featureSection.feature1.icon} 
+            icon={featureSection.feature1.icon}
             iconAlt={featureSection.feature1.iconAlt}
             title={featureSection.feature1.title}
-            link={feature1CtaLink}
+            link={feature1CtaLink || undefined}
             linkText={featureSection.feature1.link?.text}
           >
             <ul class="p-base list-disc list-outside text-custom-darker-teal text-left pl-4 md:pl-12 space-y-2">
-              {featureSection.feature1.items.map(item => <li>{item}</li>)}
+              {featureSection.feature1.items.map((item: string) => <li>{item}</li>)}
             </ul>
           </FeatureCard>
           )}
-          {featureSection.feature2?.icon && (
+          {featureSection.feature2 && (
           <FeatureCard
             icon={featureSection.feature2.icon}
             iconAlt={featureSection.feature2.iconAlt}
             title={featureSection.feature2.title}
-            link={feature2CtaLink}
+            link={feature2CtaLink || undefined}
             linkText={featureSection.feature2.link?.text}
           >
             <ul class="p-base list-disc list-outside text-custom-darker-teal text-left pl-4 md:pl-12 space-y-2">
-              {featureSection.feature2.items.map(item => <li>{item}</li>)}
+              {featureSection.feature2.items.map((item: string) => <li>{item}</li>)}
             </ul>
           </FeatureCard>
           )}
@@ -181,3 +182,9 @@ const feature2CtaLink = resolveCtaLink(featureSection?.feature2?.link);
   )}
 
 </MainLayout>
+
+<style>
+  .list-disc {
+    padding-left: 1.5rem; /* Ajusta este valor según sea necesario */
+  }
+</style>

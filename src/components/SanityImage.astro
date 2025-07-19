@@ -15,19 +15,26 @@ interface Props {
   class?: string;
   width?: number; // Ancho para la optimización de la URL
   noShadow?: boolean;
+  alt?: string; // Permitir anular el alt de la imagen
+  loading?: 'lazy' | 'eager'; // Permitir controlar la carga de la imagen
 }
 
-const { image, class: className, width = 800, noShadow = false } = Astro.props;
-const dimensions = image?.asset?.metadata?.dimensions;
+const { image, class: className, width = 800, noShadow = false, alt: altOverride, loading = 'lazy' } = Astro.props;
 
-// No renderizar nada si la imagen o su asset no existen.
-if (!image?.asset) {
+const asset = image?.asset;
+// La propiedad 'asset' puede ser una Referencia (sin 'metadata') o un Asset completo.
+// Esta guarda de tipo nos permite acceder a 'dimensions' de forma segura.
+const dimensions = asset && 'metadata' in asset ? (asset.metadata as { dimensions?: { width: number; height: number } }).dimensions : undefined;
+
+// No renderizar nada si el asset no existe.
+if (!asset) {
   return null;
 }
 
 // Construimos la URL de la imagen con las optimizaciones deseadas.
 const src = urlForImage(image).width(width).auto('format').url();
-const alt = image.alt || 'Imagen descriptiva de NAU'; // Fallback por si el alt no está definido
+// Usar el alt anulado si se proporciona, de lo contrario, usar el de la imagen, con un fallback final.
+const altText = altOverride || (typeof image.alt === 'string' && image.alt) || 'Imagen descriptiva de NAU';
 
 const imageClasses = [
   "w-full h-auto rounded-lg object-cover",
@@ -37,8 +44,8 @@ const imageClasses = [
 ---
 <img
   src={src}
-  alt={alt}
-  loading="lazy"
+  alt={altText}
+  loading={loading}
   decoding="async"
   width={dimensions?.width}
   height={dimensions?.height}

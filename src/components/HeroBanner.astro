@@ -1,6 +1,6 @@
 ---
 // src/components/HeroBanner.astro
-import { Picture, type ImageMetadata } from 'astro:assets';
+import { Picture } from 'astro:assets';
 
 interface Props {
   image: ImageMetadata | string; // Acepta metadatos de imagen local o una URL remota
@@ -17,17 +17,28 @@ interface Props {
 const { image, alt, bgColorClass, loading = 'lazy', containerClasses = 'py-12 md:py-16 lg:py-24', width, height } = Astro.props;
 ---
 <section class:list={["hero-bg relative text-white text-center px-4", containerClasses]}>
-  <Picture
-    src={image}
-    alt={alt}
-    width={width}
-    height={height}
-    widths={[360, 480, 768, 1024, 1280, 1920]}
-    sizes="100vw"
-    formats={['avif', 'webp']}
-    loading={loading}
-    class:list={["absolute top-0 left-0 w-full h-full object-cover -z-10", bgColorClass]}
-  />
+  {typeof image === 'string' ? (
+    <img
+      src={image}
+      alt={alt}
+      width={width}
+      height={height}
+      loading={loading}
+      class:list={["absolute top-0 left-0 w-full h-full object-cover -z-10", bgColorClass]}
+    />
+  ) : (
+    <Picture
+      src={image}
+      alt={alt}
+      width={width}
+      height={height}
+      widths={[360, 480, 768, 1024, 1280, 1920]}
+      sizes="100vw"
+      formats={['avif', 'webp']}
+      loading={loading}
+      class:list={["absolute top-0 left-0 w-full h-full object-cover -z-10", bgColorClass]}
+    />
+  )}
   <div class="relative z-10 px-4 md:px-8">
     <slot />
   </div>

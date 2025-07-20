@@ -157,6 +157,12 @@ export const paginaSimbolismoNumericoQuery = `{
 export const simbolismoNumericoSlugsQuery = `*[_type == "simbolismoNumerico" && defined(slug.current) && !(_id in path("drafts.**"))]{ "slug": slug.current }`;
 
 // Consulta para una página de servicio individual por slug
+export const simbolismoNumericoPorSlugQuery = `*[_type == "simbolismoNumerico" && slug.current == $slug && !(_id in path("drafts.**"))][0]{
+  title,
+  seoDescription,
+  "image": mainImage ${imageProjection},
+  "description": body
+}`;
 
 
 // Consulta para la página de Donar

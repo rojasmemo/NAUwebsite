@@ -3,6 +3,7 @@ import { defineConfig } from 'astro/config';
 import tailwind from "@astrojs/tailwind";
 import sanity from "@sanity/astro";
 import netlify from "@astrojs/netlify";
+import react from "@astrojs/react";
 import dotenv from 'dotenv';
 
 dotenv.config();
@@ -33,7 +34,8 @@ export default defineConfig({
       // y `true` en producción (Netlify) para máxima velocidad.
       useCdn: process.env.NODE_ENV === 'production',
       apiVersion: '2024-07-11' // Usa una fecha reciente en formato YYYY-MM-DD.
-    })
+    }),
+    react()
   ]
   // SIN CONFIGURACIÓN DE VITE O TEST
 });

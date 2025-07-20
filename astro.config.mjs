@@ -36,6 +36,10 @@ export default defineConfig({
       apiVersion: '2024-07-11' // Usa una fecha reciente en formato YYYY-MM-DD.
     }),
     react()
-  ]
-  // SIN CONFIGURACIÓN DE VITE O TEST
+  ],
+  vite: {
+    ssr: {
+      external: ['react', 'vite']
+    }
+  }
 });

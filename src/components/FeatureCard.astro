@@ -25,24 +25,21 @@ const isLocalImage = 'src' in icon;
 ---
 
 <div class="relative bg-white p-6 pt-10 md:p-8 md:pt-12 rounded-lg text-custom-darker-teal flex flex-col items-center">
-  <div
+  <div 
     class="absolute top-0 left-1/2 -translate-x-1/2 -translate-y-1/2 w-auto z-10"
   >
     {isLocalImage ? (
-      <Image
-        src={icon as ImageMetadata}
+      <Image 
+        src={icon as ImageMetadata} 
         alt={iconAlt}
-        width={40}
-        height={40}
-        class="md:w-32 md:h-32"
+        class="w-auto h-12 md:h-16"
         loading="lazy"
       />
     ) : (
-      <SanityImage
-        image={icon as SanityImageType}
+      <SanityImage 
+        image={icon as SanityImageType} 
         alt={iconAlt}
-        width={40}
-        class="md:w-32 md:h-32"
+        class="w-auto h-12 md:h-16"
         loading="lazy"
         noShadow={true}
       />

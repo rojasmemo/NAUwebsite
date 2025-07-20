@@ -4,65 +4,86 @@
 
 El sitio presentaba inconsistencias en el manejo de imágenes provenientes de Sanity. Algunas imágenes se renderizaban con una URL fija, lo cual no es una práctica responsiva y perjudica el rendimiento (Core Web Vitals, LCP). Otras implementaciones intentaban ser dinámicas pero fallaban en el entorno de producción (Netlify).
 
-El requisito fundamental es que **todas las imágenes deben ser responsivas**, es decir, el navegador debe poder descargar la versión más optimizada según el dispositivo del usuario.
+El requisito fundamental es que **todas las imágenes del sitio deben ser 100% responsivas**, adaptándose al tamaño de la pantalla del usuario para optimizar los tiempos de carga y la experiencia de usuario.
 
 ## 2. Solución Estratégica
 
-Se implementará una solución centralizada y robusta para renderizar todas las imágenes de Sanity de manera consistente y responsiva. La estrategia se basa en el uso de los atributos `srcset` y `sizes` en las etiquetas `<img>`, que es el estándar web moderno para el manejo de imágenes responsivas.
+Se ha implementado una solución centralizada y robusta para renderizar todas las imágenes de Sanity de manera consistente y responsiva. La estrategia se basa en el uso de los atributos `srcset` y `sizes` en las etiquetas `<img>`, que es el estándar web moderno para el manejo de imágenes responsivas.
 
-## 3. Componentes Clave de la Implementación
+Toda la lógica está encapsulada en un único componente: `src/components/SanityImage.astro`.
 
-### 3.1. El Componente `SanityImage.astro`
+## 3. El Componente `SanityImage.astro`
 
-Este será el único componente responsable de renderizar una imagen de Sanity.
+Este es el **único** componente que debe usarse para renderizar cualquier imagen proveniente de Sanity.
 
-- **Entrada (`Props`):**
-  - `image`: El objeto de imagen completo de Sanity (no solo la URL).
-  - `sizes`: Un string que describe qué tan ancha será la imagen en relación con el viewport (ej. `(max-width: 768px) 100vw, 50vw`). **Esta prop es crucial** y debe ser proporcionada por el componente padre que lo utiliza.
-  - `alt`: Texto alternativo.
-  - `loading`: `eager` o `lazy`.
-  - `class`: Clases CSS adicionales.
+### 3.1. Props (Entradas del Componente)
 
-- **Lógica Interna:**
-  1.  Utiliza la librería `@sanity/image-url` para generar un `srcset`, que es una lista de URLs de la misma imagen en diferentes anchos (ej. 480w, 800w, 1200w, 1920w).
-  2.  Renderiza una etiqueta `<img>` con los atributos `src`, `srcset` y `sizes`. El navegador usará esta información para descargar la imagen más eficiente.
+| Prop | Tipo | Requerido | Descripción |
+| :--- | :--- | :--- | :--- |
+| `image` | `object` | Sí | El objeto de imagen completo de Sanity. |
+| `sizes` | `string` | Sí | Describe qué tan ancha será la imagen en relación con el viewport. **Es la clave para la responsividad.** |
+| `alt` | `string` | No | Texto alternativo. Si no se provee, usa el `alt` definido en Sanity o un texto genérico. |
+| `loading` | '''lazy''' \| '''eager''' | No | Define la estrategia de carga. El valor por defecto es `lazy`. |
+| `class` | `string` | No | Permite añadir clases CSS adicionales desde el componente padre. |
 
-### 3.2. Estandarización de Consultas GROQ
+### 3.2. Lógica Interna
 
-Todas las consultas a Sanity en `src/lib/sanity/queries.js` que obtengan imágenes se modificarán para que devuelvan el objeto de imagen completo, no solo la URL. La estructura estándar será:
+1.  **Validación:** Si no recibe un objeto `image` válido, no renderiza nada.
+2.  **Generación de `srcset`:** Utiliza la librería `@sanity/image-url` para generar un `srcset`, que es una lista de URLs de la misma imagen en diferentes anchos predefinidos (`[320, 480, 640, ..., 2560]`).
+3.  **Generación de `src`:** Crea una URL de tamaño mediano (800w) como fallback para navegadores antiguos que no soportan `srcset`.
+4.  **Renderizado:** Produce una etiqueta `<img>` con los atributos `src`, `srcset`, `sizes`, `alt`, `loading`, y `decoding="async"`. El navegador usa `sizes` para entender el layout y luego elige la URL más adecuada de `srcset` según el tamaño de la pantalla y la densidad de píxeles.
+
+### 3.3. Estilos y Comportamiento por Defecto
+
+- **Clases Base:** El componente aplica las clases `w-full h-auto object-cover` por defecto para asegurar que la imagen ocupe todo el ancho de su contenedor y se escale correctamente.
+- **Texto Alternativo:** Prioriza el `alt` pasado como prop, luego el `alt` definido en Sanity, y finalmente un texto genérico (`'Imagen descriptiva de NAU'`).
+
+## 4. Cómo Usarlo
+
+### 4.1. Consulta GROQ
+
+Asegúrate de que tus consultas a Sanity devuelvan el objeto de imagen completo.
 
 ```javascript
 // Ejemplo en una consulta GROQ
-"nombreDelCampoDeImagen": imagen {
+"campoDeImagen": {
   ...,
   asset->
-},
+}
 ```
 
-Esto asegura que el componente `SanityImage.astro` siempre reciba los datos que necesita.
+### 4.2. Implementación en un Componente Astro
 
-## 4. Ejemplo de Uso
-
-Para usar el componente en cualquier página o componente de Astro (como `HeroBanner.astro` o `SplitSection.astro`), se hará de la siguiente manera:
+Importa y utiliza `SanityImage` en cualquier página o componente, proveyendo las props necesarias. El valor de `sizes` es el más importante y debe definirse cuidadosamente.
 
 ```astro
 ---
-import SanityImage from '../components/SanityImage.astro';
-const { data } = await sanityClient.fetch(...); // data.hero.image es un objeto de Sanity
+// Ejemplo: src/components/HeroBanner.astro
+import SanityImage from '~/components/SanityImage.astro';
+import { getHomePage } from '~/lib/sanity/queries'; // Asumiendo que la query existe
+
+const homeData = await getHomePage();
+const heroImage = homeData.hero.image;
 ---
 
-<SanityImage
-  image={data.hero.image}
-  alt={data.hero.image.alt || "Texto alternativo por defecto"}
-  sizes="(max-width: 800px) 100vw, 800px"
-  loading="eager"
-  class="clase-css-adicional"
-/>
+<div class="relative w-full h-96">
+  <SanityImage
+    image={heroImage}
+    alt={heroImage.alt}
+    sizes="(max-width: 768px) 100vw, 50vw"
+    loading="eager"
+    class="absolute inset-0 w-full h-full object-cover"
+  />
+</div>
 ```
+
+**Explicación del atributo `sizes`:**
+- `(max-width: 768px) 100vw`: En pantallas de hasta 768px de ancho, la imagen ocupará el 100% del ancho del viewport (`100vw`).
+- `50vw`: En pantallas de más de 768px, la imagen ocupará el 50% del ancho del viewport (`50vw`).
 
 ## 5. Beneficios
 
-- **Rendimiento (Core Web Vitals):** Mejora significativa del Largest Contentful Paint (LCP) al cargar imágenes de tamaño adecuado.
-- **Experiencia de Usuario:** Tiempos de carga más rápidos, especialmente en dispositivos móviles.
-- **Consistencia del Código:** Un único componente y una única forma de manejar las imágenes de Sanity.
-- **Mantenimiento:** Facilita futuras modificaciones y previene errores.
+- **Rendimiento (Core Web Vitals):** Mejora drástica del Largest Contentful Paint (LCP) al servir imágenes optimizadas.
+- **Experiencia de Usuario:** Tiempos de carga más rápidos, especialmente en móviles.
+- **Consistencia y Mantenimiento:** Un único componente y una única forma de manejar las imágenes de Sanity, previniendo errores y facilitando futuras actualizaciones.
+- **100% Responsivo:** El diseño se adapta a cualquier dispositivo, cumpliendo con el requisito principal del proyecto.

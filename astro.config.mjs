@@ -7,6 +7,8 @@ import dotenv from 'dotenv';
 
 dotenv.config();
 
+// No importamos react aquí para simplificar
+
 // https://astro.build/config
 export default defineConfig({
   // Cambiamos a 'server' para habilitar funciones del lado del servidor con el adaptador de Netlify.
@@ -32,5 +34,6 @@ export default defineConfig({
       useCdn: process.env.NODE_ENV === 'production',
       apiVersion: '2024-07-11' // Usa una fecha reciente en formato YYYY-MM-DD.
     })
-  ],
+  ]
+  // SIN CONFIGURACIÓN DE VITE O TEST
 });

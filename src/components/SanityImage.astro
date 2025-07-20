@@ -1,40 +1,26 @@
 ---
 // src/components/SanityImage.astro
-import { sanityClient } from 'sanity:client';
-import imageUrlBuilder from '@sanity/image-url';
-import type { Image as SanityImage } from 'sanity';
-
-// Recreamos el constructor de URLs de imágenes aquí
-const builder = imageUrlBuilder(sanityClient);
-function urlForImage(source: SanityImage) {
-  return builder.image(source);
-}
+// Componente simplificado que recibe una URL de imagen ya construida.
 
 interface Props {
-  image: SanityImage;
+  image: {
+    url: string;
+    alt?: string;
+    width?: number;
+    height?: number;
+  };
   class?: string;
-  width?: number; // Ancho para la optimización de la URL
   noShadow?: boolean;
-  alt?: string; // Permitir anular el alt de la imagen
-  loading?: 'lazy' | 'eager'; // Permitir controlar la carga de la imagen
+  loading?: 'lazy' | 'eager';
 }
 
-const { image, class: className, width = 800, noShadow = false, alt: altOverride, loading = 'lazy' } = Astro.props;
+const { image, class: className, noShadow = false, loading = 'lazy' } = Astro.props;
 
-const asset = image?.asset;
-// La propiedad 'asset' puede ser una Referencia (sin 'metadata') o un Asset completo.
-// Esta guarda de tipo nos permite acceder a 'dimensions' de forma segura.
-const dimensions = asset && 'metadata' in asset ? (asset.metadata as { dimensions?: { width: number; height: number } }).dimensions : undefined;
-
-// No renderizar nada si el asset no existe.
-if (!asset) {
+if (!image?.url) {
   return null;
 }
 
-// Construimos la URL de la imagen con las optimizaciones deseadas.
-const src = urlForImage(image).width(width).auto('format').url();
-// Usar el alt anulado si se proporciona, de lo contrario, usar el de la imagen, con un fallback final.
-const altText = altOverride || (typeof image.alt === 'string' && image.alt) || 'Imagen descriptiva de NAU';
+const altText = image.alt || 'Imagen descriptiva de NAU';
 
 const imageClasses = [
   "w-full h-auto rounded-lg object-cover",
@@ -42,12 +28,13 @@ const imageClasses = [
   className
 ].filter(Boolean).join(' ');
 ---
+
 <img
-  src={src}
+  src={image.url}
   alt={altText}
+  width={image.width}
+  height={image.height}
   loading={loading}
   decoding="async"
-  width={dimensions?.width}
-  height={dimensions?.height}
   class={imageClasses}
 />

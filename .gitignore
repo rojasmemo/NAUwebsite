@@ -27,3 +27,10 @@ yarn-error.log*
 
 # Local Netlify folder
 .netlify
+
+# Playwright reports and results
+playwright-report/
+test-results/
+
+# Obsidian settings
+.obsidian/

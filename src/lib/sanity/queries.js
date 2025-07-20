@@ -82,7 +82,12 @@ export const homePageQuery = `*[_type == "homePage" && !(_id in path("drafts.**"
   },
   splitSection1 {
     ...,
-    "image": image.asset->
+    "image": image.asset->{
+      url,
+      "width": metadata.dimensions.width,
+      "height": metadata.dimensions.height,
+      "alt": alt
+    }
   },
   hero2 {
     ...,
@@ -120,7 +125,12 @@ export const homePageQuery = `*[_type == "homePage" && !(_id in path("drafts.**"
   },
   splitSection2 {
     ...,
-    "image": image.asset->
+    "image": image.asset->{
+      url,
+      "width": metadata.dimensions.width,
+      "height": metadata.dimensions.height,
+      "alt": alt
+    }
   },
   hero3 {
     ...,

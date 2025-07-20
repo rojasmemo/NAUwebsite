@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "DOCUMENTACION_PRUEBAS_UNITARIAS.md",
+                "file": "ANALISIS_PROYECTO.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "DOCUMENTACION_PRUEBAS_UNITARIAS"
+              "title": "ANALISIS_PROYECTO"
             }
           }
         ]
@@ -170,6 +170,7 @@
   },
   "active": "b87ddd5e8b14649e",
   "lastOpenFiles": [
+    "DOCUMENTACION_PRUEBAS_UNITARIAS.md",
     "ANALISIS_PROYECTO.md",
     "component-FeatureCard.md"
   ]

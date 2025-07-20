@@ -9,6 +9,10 @@ import SplitSection from '../components/SplitSection.astro';
 import FeatureCard from '../components/FeatureCard.astro';
 import SanityImage from '../components/SanityImage.astro';
 
+// Import local assets for icons
+import iconEncuentros from '../assets/images/CLIP-ENCUENTROS.webp';
+import iconSimbolismo from '../assets/images/CLIP-NUM.webp';
+
 const data = await sanityClient.fetch<HomePage>(homePageQuery);
 
 if (!data) {
@@ -111,7 +115,7 @@ const feature2CtaLink = resolveCtaLink(featureSection?.feature2?.link);
         <div class="grid md:grid-cols-2 gap-12 md:gap-8 mb-8">
           {featureSection.feature1 && (
           <FeatureCard
-            icon={featureSection.feature1.icon}
+            icon={iconEncuentros}
             iconAlt={featureSection.feature1.iconAlt}
             title={featureSection.feature1.title}
             link={feature1CtaLink || undefined}
@@ -124,7 +128,7 @@ const feature2CtaLink = resolveCtaLink(featureSection?.feature2?.link);
           )}
           {featureSection.feature2 && (
           <FeatureCard
-            icon={featureSection.feature2.icon}
+            icon={iconSimbolismo}
             iconAlt={featureSection.feature2.iconAlt}
             title={featureSection.feature2.title}
             link={feature2CtaLink || undefined}

@@ -8,7 +8,7 @@
     "build": "astro build",
     "preview": "astro preview",
     "astro": "astro",
-    "test": "vitest"
+    "test:e2e": "playwright test"
   },
   "dependencies": {
     "@astrojs/netlify": "^6.5.1",
@@ -18,22 +18,21 @@
     "@sanity/image-url": "^1.1.0",
     "astro": "^5.12.0",
     "astro-portabletext": "^0.11.1",
+    "lodash": "^4.17.21",
     "node-fetch": "^3.3.2",
     "nodemailer": "^6.9.14",
-    "react": "^18.3.1",
-    "react-dom": "^18.3.1",
     "sanity": "^3.99.0",
     "tailwindcss": "^3.4.10"
   },
   "devDependencies": {
+    "@playwright/test": "^1.45.3",
     "@tailwindcss/aspect-ratio": "^0.4.2",
     "@tailwindcss/forms": "^0.5.10",
     "@tailwindcss/typography": "^0.5.16",
     "@types/nodemailer": "^6.4.17",
     "autoprefixer": "^10.4.21",
     "dotenv": "^17.2.0",
-    "postcss": "^8.5.6",
-    "vitest": "^3.2.4"
+    "postcss": "^8.5.6"
   },
   "overrides": {
     "prismjs": "^1.30.0"

@@ -26,7 +26,7 @@ import cardIcon from '../assets/images/CLIP-NUM.webp';
     <!-- Main Banner Section -->
     {page?.mainBanner && (
       <HeroBanner
-        image={page.mainBanner.image.url}
+        image={page.mainBanner.image}
         alt={page.mainBanner.alt || 'Banner principal de Simbolismo Numérico'}
         bgColorClass="bg-custom-medium-teal"
         loading="eager"
@@ -57,10 +57,8 @@ import cardIcon from '../assets/images/CLIP-NUM.webp';
           <SimbolismoNumericoCard 
             title={servicio.title}
             icon={cardIcon}
-            image={servicio.image.url}
+            image={servicio.image}
             imageAlt={servicio.alt}
-            width={servicio.image.width}
-            height={servicio.image.height}
             description={servicio.description}
           />
         ))}
@@ -70,7 +68,7 @@ import cardIcon from '../assets/images/CLIP-NUM.webp';
     <!-- CTA Banner Section -->
     {page?.ctaBanner && (
       <HeroBanner 
-        image={page.ctaBanner.image.url}
+        image={page.ctaBanner.image}
         alt={page.ctaBanner.alt || 'Banner de llamada a la acción'}
         bgColorClass="bg-custom-medium-teal" 
         containerClasses="py-12 md:py-20 lg:py-28 xl:py-32 2xl:py-44"

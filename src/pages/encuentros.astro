@@ -33,12 +33,10 @@ const ctaBannerCtaLink = resolveCtaLink(page.ctaBanner?.cta);
   <main>
     <!-- Sección Hero 1: "Encuentros NAU" -->
     {
-      page.mainBanner?.image?.url && (
+      page.mainBanner?.image && (
         <HeroBanner
-          image={page.mainBanner.image.url}
+          image={page.mainBanner.image}
           alt={page.mainBanner.alt || page.mainBanner.heading}
-          width={page.mainBanner.image.width}
-          height={page.mainBanner.image.height}
           bgColorClass="bg-custom-medium-teal"
           loading="eager"
           containerClasses="py-20 md:py-28 lg:py-32 xl:py-36 2xl:py-48"
@@ -94,11 +92,9 @@ const ctaBannerCtaLink = resolveCtaLink(page.ctaBanner?.cta);
                   class="block hover:scale-105 transition-transform duration-300 focus:outline-none focus:ring-2 focus:ring-custom-light-teal rounded-lg h-full"
                 >
                   <EncuentroCard
-                    image={encuentro.image.url}
+                    image={encuentro.image}
                     imageAlt={encuentro.alt || encuentro.title}
                     icon={cardIcon}
-                    width={encuentro.image.width}
-                    height={encuentro.image.height}
                     title={encuentro.title}
                   >
                     <div class="prose prose-p:text-custom-darker-teal prose-p:p-base prose-strong:font-semibold text-left">
@@ -125,12 +121,10 @@ const ctaBannerCtaLink = resolveCtaLink(page.ctaBanner?.cta);
 
     <!-- Sección Hero 2: "El momento es ahora." -->
     {
-      page.ctaBanner?.image?.url && (
+      page.ctaBanner?.image && (
         <HeroBanner
-          image={page.ctaBanner.image.url}
+          image={page.ctaBanner.image}
           alt={page.ctaBanner.alt || page.ctaBanner.heading}
-          width={page.ctaBanner.image.width}
-          height={page.ctaBanner.image.height}
           bgColorClass="bg-custom-medium-teal"
           containerClasses="py-12 md:py-20 lg:py-28 xl:py-36 2xl:py-48"
         >

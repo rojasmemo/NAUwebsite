@@ -1,44 +1,28 @@
 ---
 // src/components/HeroBanner.astro
-import { Picture } from 'astro:assets';
+import SanityImage from './SanityImage.astro';
+import type { Image as SanityImageType } from 'sanity';
 
 interface Props {
-  image: ImageMetadata | string; // Acepta metadatos de imagen local o una URL remota
+  image: SanityImageType;
   alt: string;
   bgColorClass: string;
   loading?: 'eager' | 'lazy';
   containerClasses?: string;
-  // Las dimensiones son opcionales para imágenes locales (vienen en ImageMetadata)
-  // pero requeridas para imágenes remotas (cuando `image` es un string).
-  width?: number;
-  height?: number;
 }
 
-const { image, alt, bgColorClass, loading = 'lazy', containerClasses = 'py-12 md:py-16 lg:py-24', width, height } = Astro.props;
+const { image, alt, bgColorClass, loading = 'lazy', containerClasses = 'py-12 md:py-16 lg:py-24' } = Astro.props;
 ---
 <section class:list={["hero-bg relative text-white text-center px-4", containerClasses]}>
-  {typeof image === 'string' ? (
-    <img
-      src={image}
+  <div class="absolute top-0 left-0 w-full h-full -z-10">
+    <SanityImage 
+      image={image} 
       alt={alt}
-      width={width}
-      height={height}
       loading={loading}
-      class:list={["absolute top-0 left-0 w-full h-full object-cover -z-10", bgColorClass]}
-    />
-  ) : (
-    <Picture
-      src={image}
-      alt={alt}
-      width={width}
-      height={height}
-      widths={[360, 480, 768, 1024, 1280, 1920]}
       sizes="100vw"
-      formats={['avif', 'webp']}
-      loading={loading}
-      class:list={["absolute top-0 left-0 w-full h-full object-cover -z-10", bgColorClass]}
+      class:list={["w-full h-full object-cover", bgColorClass]}
     />
-  )}
+  </div>
   <div class="relative z-10 px-4 md:px-8">
     <slot />
   </div>

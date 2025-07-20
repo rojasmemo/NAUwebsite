@@ -1,7 +1,13 @@
 /**
  * Este archivo centraliza todas las consultas GROQ para el sitio.
- * Esto hace que sean reutilizables y más fáciles de gestionar.
+ * La estrategia para imágenes es obtener el objeto de imagen completo (`asset->`)
+ * para que el componente `SanityImage.astro` pueda construir un `srcset` responsivo.
  */
+
+const imageProjection = `{
+  ...,
+  asset->
+}`;
 
 // Consulta para la página principal de /encuentros
 export const paginaEncuentrosQuery = `{
@@ -10,11 +16,7 @@ export const paginaEncuentrosQuery = `{
     seoDescription,
     mainBanner {
       ...,
-      "image": image.asset->{
-        url,
-        "width": metadata.dimensions.width,
-        "height": metadata.dimensions.height
-      },
+      "image": image ${imageProjection},
       cta {
         text,
         externalUrl,
@@ -24,11 +26,7 @@ export const paginaEncuentrosQuery = `{
     introduction,
     ctaBanner {
       ...,
-      "image": image.asset->{
-        url,
-        "width": metadata.dimensions.width,
-        "height": metadata.dimensions.height
-      },
+      "image": image ${imageProjection},
       cta {
         text,
         externalUrl,
@@ -39,11 +37,7 @@ export const paginaEncuentrosQuery = `{
   "encuentros": *[_type == "encuentro" && !(_id in path("drafts.**"))] | order(_createdAt asc) {
     title,
     "slug": slug.current,
-    "image": mainImage.asset->{
-      url,
-      "width": metadata.dimensions.width,
-      "height": metadata.dimensions.height
-    },
+    "image": mainImage ${imageProjection},
     "alt": mainImage.alt,
     "description": body
   }
@@ -56,10 +50,7 @@ export const encuentroSlugsQuery = `*[_type == "encuentro" && defined(slug.curre
 export const encuentroPorSlugQuery = `*[_type == "encuentro" && slug.current == $slug && !(_id in path("drafts.**"))][0]{
   title,
   seoDescription,
-  "image": mainImage {
-    ...,
-    asset->
-  },
+  "image": mainImage ${imageProjection},
   "description": body
 }`;
 
@@ -69,11 +60,7 @@ export const homePageQuery = `*[_type == "homePage" && !(_id in path("drafts.**"
   seoDescription,
   hero1 {
     ...,
-    "image": image.asset->{
-      url,
-      "width": metadata.dimensions.width,
-      "height": metadata.dimensions.height
-    },
+    "image": image ${imageProjection},
     "cta": button {
       text,
       externalUrl,
@@ -82,20 +69,11 @@ export const homePageQuery = `*[_type == "homePage" && !(_id in path("drafts.**"
   },
   splitSection1 {
     ...,
-    "image": image.asset->{
-      url,
-      "width": metadata.dimensions.width,
-      "height": metadata.dimensions.height,
-      "alt": alt
-    }
+    "image": image ${imageProjection}
   },
   hero2 {
     ...,
-    "image": image.asset->{
-      url,
-      "width": metadata.dimensions.width,
-      "height": metadata.dimensions.height
-    },
+    "image": image ${imageProjection},
     "cta": button {
       text,
       externalUrl,
@@ -106,7 +84,7 @@ export const homePageQuery = `*[_type == "homePage" && !(_id in path("drafts.**"
     ...,
     feature1 {
       ...,
-      "icon": icon.asset->,
+      "icon": icon.asset->, // Los iconos son pequeños, no necesitan srcset
       link {
         text,
         externalUrl,
@@ -115,7 +93,7 @@ export const homePageQuery = `*[_type == "homePage" && !(_id in path("drafts.**"
     },
     feature2 {
       ...,
-      "icon": icon.asset->,
+      "icon": icon.asset->, // Los iconos son pequeños, no necesitan srcset
       link {
         text,
         externalUrl,
@@ -125,20 +103,11 @@ export const homePageQuery = `*[_type == "homePage" && !(_id in path("drafts.**"
   },
   splitSection2 {
     ...,
-    "image": image.asset->{
-      url,
-      "width": metadata.dimensions.width,
-      "height": metadata.dimensions.height,
-      "alt": alt
-    }
+    "image": image ${imageProjection}
   },
   hero3 {
     ...,
-    "image": image.asset->{
-      url,
-      "width": metadata.dimensions.width,
-      "height": metadata.dimensions.height
-    },
+    "image": image ${imageProjection},
     "cta": button {
       text,
       externalUrl,
@@ -157,11 +126,7 @@ export const paginaSimbolismoNumericoQuery = `{
     mainBanner {
       ...,
       tagline,
-      "image": image.asset->{
-        url,
-        "width": metadata.dimensions.width,
-        "height": metadata.dimensions.height
-      },
+      "image": image ${imageProjection},
       cta {
         text,
         externalUrl,
@@ -171,11 +136,7 @@ export const paginaSimbolismoNumericoQuery = `{
     introduction,
     ctaBanner {
       ...,
-      "image": image.asset->{
-        url,
-        "width": metadata.dimensions.width,
-        "height": metadata.dimensions.height
-      },
+      "image": image ${imageProjection},
       cta {
         text,
         externalUrl,
@@ -186,11 +147,7 @@ export const paginaSimbolismoNumericoQuery = `{
   "servicios": *[_type == "simbolismoNumerico" && !(_id in path("drafts.**"))] | order(order asc) {
     title,
     "slug": slug.current,
-    "image": mainImage.asset->{
-      url,
-      "width": metadata.dimensions.width,
-      "height": metadata.dimensions.height
-    },
+    "image": mainImage ${imageProjection},
     "alt": mainImage.alt,
     "description": body
   }
@@ -203,9 +160,6 @@ export const simbolismoNumericoSlugsQuery = `*[_type == "simbolismoNumerico" && 
 export const simbolismoNumericoPorSlugQuery = `*[_type == "simbolismoNumerico" && slug.current == $slug && !(_id in path("drafts.**"))][0]{
   title,
   seoDescription,
-  "image": mainImage {
-    ...,
-    asset->
-  },
+  "image": mainImage ${imageProjection},
   "description": body
 }`;

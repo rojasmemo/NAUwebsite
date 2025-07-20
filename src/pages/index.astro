@@ -44,12 +44,10 @@ const feature2CtaLink = resolveCtaLink(featureSection?.feature2?.link);
 <MainLayout title={title} description={seoDescription}>
 
   <!-- Hero 1 -->
-  {hero1?.image?.url && (
+  {hero1?.image && (
   <HeroBanner 
-    image={hero1.image.url}
+    image={hero1.image}
     alt={hero1.alt || hero1.heading}
-    width={hero1.image.width}
-    height={hero1.image.height}
     bgColorClass="bg-custom-dark-teal"
     loading="eager"
   >
@@ -79,19 +77,22 @@ const feature2CtaLink = resolveCtaLink(featureSection?.feature2?.link);
     {splitSection1?.image && (
     <div slot="right" class="rounded-lg overflow-hidden flex justify-center items-center">
       <div class="max-w-xs">
-        <SanityImage image={splitSection1.image} width={320} noShadow={true} />
+        <SanityImage 
+          image={splitSection1.image} 
+          alt={splitSection1.image.alt || 'Imagen descriptiva'}
+          sizes="(max-width: 767px) 100vw, 320px"
+          noShadow={true} 
+        />
       </div>
     </div>
     )}
   </SplitSection>
 
   <!-- Hero 2 -->
-  {hero2?.image?.url && (
+  {hero2?.image && (
   <HeroBanner 
-    image={hero2.image.url}
+    image={hero2.image}
     alt={hero2.alt || hero2.heading}
-    width={hero2.image.width}
-    height={hero2.image.height}
     bgColorClass="bg-custom-dark-teal"
   >
     <h2 class="h2-base max-w-2xl mx-auto">{hero2.heading}</h2>
@@ -150,7 +151,12 @@ const feature2CtaLink = resolveCtaLink(featureSection?.feature2?.link);
     {splitSection2?.image && (
     <div slot="left" class="rounded-lg overflow-hidden flex justify-center items-center">
       <div class="max-w-sm">
-        <SanityImage image={splitSection2.image} width={400} noShadow={true} />
+        <SanityImage 
+          image={splitSection2.image} 
+          alt={splitSection2.image.alt || 'Imagen descriptiva'}
+          sizes="(max-width: 767px) 100vw, 400px"
+          noShadow={true} 
+        />
       </div>
     </div>
     )}
@@ -165,12 +171,10 @@ const feature2CtaLink = resolveCtaLink(featureSection?.feature2?.link);
   </SplitSection>
 
   <!-- Hero 3 -->
-  {hero3?.image?.url && (
+  {hero3?.image && (
   <HeroBanner 
-    image={hero3.image.url}
+    image={hero3.image}
     alt={hero3.alt || hero3.heading}
-    width={hero3.image.width}
-    height={hero3.image.height}
     bgColorClass="bg-custom-medium-teal"
   >
     <p class="p-base-hero max-w-2xl mx-auto">{hero3.subheading1}</p>

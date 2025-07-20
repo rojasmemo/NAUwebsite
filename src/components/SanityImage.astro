@@ -1,39 +1,51 @@
 ---
 // src/components/SanityImage.astro
-// Componente simplificado que recibe una URL de imagen ya construida.
+import { sanityClient } from 'sanity:client';
+import imageUrlBuilder from '@sanity/image-url';
+import type { Image as SanityImageType } from 'sanity';
+
+const builder = imageUrlBuilder(sanityClient);
 
 interface Props {
-  image: {
-    url: string;
-    alt?: string;
-    width?: number;
-    height?: number;
-  };
+  image: SanityImageType;
+  sizes: string;
   class?: string;
-  noShadow?: boolean;
+  alt?: string;
   loading?: 'lazy' | 'eager';
 }
 
-const { image, class: className, noShadow = false, loading = 'lazy' } = Astro.props;
+const { image, sizes, class: className, alt: altOverride, loading = 'lazy' } = Astro.props;
 
-if (!image?.url) {
+if (!image?.asset) {
   return null;
 }
 
-const altText = image.alt || 'Imagen descriptiva de NAU';
+// Definimos los anchos estándar para el srcset
+const widths = [320, 480, 640, 800, 1024, 1280, 1600, 1920, 2560];
+
+const srcset = widths
+  .map(width => {
+    const url = builder.image(image).width(width).auto('format').url();
+    return `${url} ${width}w`;
+  })
+  .join(', ');
+
+// La URL para 'src' es la de un tamaño mediano, como fallback
+const src = builder.image(image).width(800).auto('format').url();
+
+const altText = altOverride || image.alt || 'Imagen descriptiva de NAU';
 
 const imageClasses = [
-  "w-full h-auto rounded-lg object-cover",
-  !noShadow && "shadow-lg",
+  "w-full h-auto object-cover", // Clases base
   className
 ].filter(Boolean).join(' ');
 ---
 
 <img
-  src={image.url}
+  src={src}
+  srcset={srcset}
+  sizes={sizes}
   alt={altText}
-  width={image.width}
-  height={image.height}
   loading={loading}
   decoding="async"
   class={imageClasses}

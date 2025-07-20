@@ -14,7 +14,8 @@ interface Props {
   loading?: 'lazy' | 'eager';
 }
 
-const { image, sizes, class: className, alt: altOverride, loading = 'lazy' } = Astro.props;
+const { image: imageObj, sizes, class: className, alt: altOverride, loading = 'lazy' } = Astro.props;
+const image = imageObj;
 
 if (!image?.asset) {
   return null;
@@ -33,7 +34,7 @@ const srcset = widths
 // La URL para 'src' es la de un tamaño mediano, como fallback
 const src = builder.image(image).width(800).auto('format').url();
 
-const altText = altOverride || image.alt || 'Imagen descriptiva de NAU';
+const altText = image.alt || 'Imagen descriptiva de NAU';
 
 const imageClasses = [
   "w-full h-auto object-cover", // Clases base

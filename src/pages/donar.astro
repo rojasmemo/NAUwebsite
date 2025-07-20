@@ -45,7 +45,7 @@ const hero2CtaLink = resolveCtaLink(hero2?.cta);
     <!-- Hero 1: Fetched from Sanity -->
     {hero1?.image && (
       <HeroBanner
-        sanityImage={hero1.image}
+        image={hero1.image}
         alt={hero1.alt || hero1.heading}
         bgColorClass="bg-custom-medium-teal"
         loading="eager"
@@ -134,7 +134,7 @@ const hero2CtaLink = resolveCtaLink(hero2?.cta);
     <!-- Hero 2: Fetched from Sanity -->
     {hero2?.image && (
       <HeroBanner 
-        sanityImage={hero2.image} 
+        image={hero2.image} 
         alt={hero2.alt || hero2.heading} 
         bgColorClass="bg-custom-medium-teal" 
         containerClasses="py-12 md:py-20 lg:py-28"

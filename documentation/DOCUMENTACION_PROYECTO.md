@@ -158,3 +158,9 @@ Para asegurar que la configuración de despliegue sea consistente y parte del co
 ```
 
 Este archivo define explícitamente cómo Netlify debe construir el sitio, haciendo el proceso más robusto y predecible.
+
+## 5. Arquitectura de Datos
+
+Para entender cómo fluyen los datos desde el CMS hasta los componentes de Astro, consulta el siguiente documento:
+
+- **[Arquitectura de Datos: Sanity y TypeScript](./ARQUITECTURA_DATOS.md)**

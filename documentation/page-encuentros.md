@@ -17,7 +17,7 @@ Este archivo construye la página principal de "Encuentros" (`/encuentros`), que
 3.  **Procesamiento y Filtrado de Datos:**
     *   Se desestructura `data` en las variables `page` y `encuentros`.
     *   Se realiza un filtrado de seguridad sobre el array `encuentros` para crear `encuentrosVisibles`. Esto asegura que solo se intenten renderizar las tarjetas que tienen la información mínima necesaria (un `slug` y un `title`), previniendo errores en la plantilla si un dato en el CMS está incompleto.
-    *   Se procesan los enlaces de los banners con la función `resolveCtaLink`.
+    *   Se procesan los enlaces de los banners con la función `resolveCtaLink`, que determina la URL de destino del botón a partir de la información del CMS.
 
 #### 3. Construcción de la Interfaz (Componentes Utilizados)
 
@@ -43,11 +43,15 @@ La página se ensambla utilizando una combinación de componentes de Astro y ren
     *   **Entradas (Props):**
         *   `image`: URL de la imagen principal de la tarjeta (de `encuentro.image.url`).
         *   `title`: Título del encuentro.
-        *   `icon`: **Importante:** El icono es estático y se importa directamente desde `src/assets/images/`. No viene de Sanity, es el mismo para todas las tarjetas.
+        *   `icon`: **Importante:** El icono es estático y se importa directamente desde `src/assets/images/CLIP-ENCUENTROS.webp`. No viene de Sanity, es el mismo para todas las tarjetas.
         *   `width`, `height`: Dimensiones de la imagen para optimización.
     *   **Contenido (Slot):** Recibe el componente `PortableText` que renderiza la descripción breve del encuentro.
 
-#### 4. Flujo de Runtime (Navegador del Usuario)
+#### 4. Lógica Adicional
+
+*   **Manejo de "No Hay Encuentros":** Si el array `encuentrosVisibles` está vacío, se muestra un mensaje informativo en lugar de las tarjetas. Esto evita una sección vacía y comunica al usuario que no hay contenido disponible en ese momento.
+
+#### 5. Flujo de Runtime (Navegador del Usuario)
 
 *   **Carga:** El usuario recibe un archivo HTML estático, completamente renderizado con toda la información de los encuentros.
 *   **Interactividad:** Al igual que la página de inicio, esta página es estática. La interactividad se limita a:

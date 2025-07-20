@@ -157,9 +157,37 @@ export const paginaSimbolismoNumericoQuery = `{
 export const simbolismoNumericoSlugsQuery = `*[_type == "simbolismoNumerico" && defined(slug.current) && !(_id in path("drafts.**"))]{ "slug": slug.current }`;
 
 // Consulta para una página de servicio individual por slug
-export const simbolismoNumericoPorSlugQuery = `*[_type == "simbolismoNumerico" && slug.current == $slug && !(_id in path("drafts.**"))][0]{
+
+
+// Consulta para la página de Donar
+export const paginaDonarQuery = `*[_type == "paginaDonar" && !(_id in path("drafts.**"))][0] {
   title,
   seoDescription,
-  "image": mainImage ${imageProjection},
-  "description": body
+  hero1 {
+    ...,
+    "image": image ${imageProjection}
+  },
+  introduction,
+  donationSection {
+    ...,
+    donationCard1 {
+      ...
+    },
+    donationCard2 {
+      ...
+    }
+  },
+  splitSection {
+    ...,
+    "image": image ${imageProjection}
+  },
+  hero2 {
+    ...,
+    "image": image ${imageProjection},
+    cta {
+      text,
+      externalUrl,
+      internalLink->{_type, "slug": slug.current}
+    }
+  }
 }`;

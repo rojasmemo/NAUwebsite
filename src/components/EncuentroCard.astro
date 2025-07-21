@@ -3,12 +3,14 @@
 import SanityImage from './SanityImage.astro';
 import { Image } from 'astro:assets';
 import type { Image as SanityImageType } from 'sanity';
-import type { ImageProps } from 'astro:assets';
+
+
+import type { ImageMetadata } from 'astro:assets';
 
 interface Props {
   image: SanityImageType;
   imageAlt?: string;
-  icon: ImageProps['src'];
+  icon: ImageMetadata;
   iconAlt?: string;
   title: string;
 }

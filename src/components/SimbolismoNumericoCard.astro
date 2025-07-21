@@ -6,12 +6,11 @@ import { PortableText } from 'astro-portabletext';
 import IconPlus from './icons/IconPlus.astro';
 import IconMinus from './icons/IconMinus.astro';
 import type { Image as SanityImageType } from 'sanity';
-import type { ImageProps } from 'astro:assets';
 
 interface Props {
   image: SanityImageType;
   imageAlt?: string;
-  icon: ImageProps['src'];
+  icon: ImageMetadata;
   iconAlt?: string;
   title: string;
   description: any[]; // Contenido de Portable Text

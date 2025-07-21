@@ -11,7 +11,10 @@ export const resolveCtaLink = (cta: Cta | undefined): string | null => {
         return '/encuentros';
       case 'paginaSimbolismoNumerico':
         return '/simbolismo-numerico';
-      // Agrega más casos según los tipos de página que tengas
+      case 'paginaContacto':
+        return '/contacto';
+      case 'paginaDonar':
+        return '/donar';
       default:
         return cta.internalLink.slug ? `/${cta.internalLink.slug}` : null;
     }

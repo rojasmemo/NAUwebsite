@@ -15,17 +15,14 @@
     "sanity"
   ],
   "dependencies": {
+    "@sanity/icons": "^3.7.4",
     "@sanity/vision": "^3.99.0",
     "react": "^19.1",
     "react-dom": "^19.1",
     "sanity": "^3.99.0",
     "styled-components": "^6.1.18"
   },
-  "pnpm": {
-    "overrides": {
-      "date-fns": "2.30.0"
-    }
-  },
+  
   "devDependencies": {
     "@sanity/eslint-config-studio": "^5.0.2",
     "@types/react": "^19.1",

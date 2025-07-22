@@ -1,45 +1,39 @@
-# NAU Website
+# NAU Website (`nau-astro-site`)
 
-This is the official website for NAU, built with Astro and Sanity.
+[![Netlify Status](https://api.netlify.com/api/v1/badges/YOUR_BADGE_ID/deploy-status)](https://app.netlify.com/sites/YOUR_SITE_NAME/deploys)
 
-[![Open in StackBlitz](https://developer.stackblitz.com/img/open_in_stackblitz.svg)](https://stackblitz.com/github/withastro/astro/tree/latest/examples/minimal)
-[![Open with CodeSandbox](https://assets.codesandbox.io/github/button-edit-lime.svg)](https://codesandbox.io/p/sandbox/github/withastro/astro/tree/latest/examples/minimal)
-[![Open in GitHub Codespaces](https://github.com/codespaces/badge.svg)](https://codespaces.new/withastro/astro?devcontainer_path=.devcontainer/minimal/devcontainer.json)
+**NAU es una plataforma para el autoconocimiento y el desarrollo personal, materializada en un sitio web construido con Astro, Sanity y TailwindCSS.**
 
-> 🧑‍🚀 **Seasoned astronaut?** Delete this file. Have fun!
+![Captura de pantalla del sitio web de NAU](https://placehold.co/800x400.png 'Una imagen del hero banner del sitio de NAU')
 
-## 🚀 Project Structure
+## Quick Start
 
-Inside of your Astro project, you'll see the following folders and files:
+Sigue estos pasos para levantar el entorno de desarrollo local.
 
-```text
-/
-├── public/
-├── src/
-│   └── pages/
-│       └── index.astro
-└── package.json
-```
+1.  **Clonar el repositorio:**
+    ```bash
+    git clone https://github.com/YOUR_USERNAME/YOUR_REPONAME.git
+    cd nau-astro-site
+    ```
 
-Astro looks for `.astro` or `.md` files in the `src/pages/` directory. Each page is exposed as a route based on its file name.
+2.  **Instalar dependencias:**
+    ```bash
+    npm install
+    ```
 
-There's nothing special about `src/components/`, but that's where we like to put any Astro/React/Vue/Svelte/Preact components.
+3.  **Configurar variables de entorno:**
+    Copia `.env.template` a `.env` y rellena los valores de Sanity.
 
-Any static assets, like images, can be placed in the `public/` directory.
+4.  **Ejecutar el servidor de desarrollo:**
+    ```bash
+    npm run dev
+    ```
 
-## 🧞 Commands
+El sitio estará disponible en `http://localhost:4321`.
 
-All commands are run from the root of the project, from a terminal:
+## Enlaces Clave
 
-| Command                   | Action                                           |
-| :------------------------ | :----------------------------------------------- |
-| `npm install`             | Installs dependencies                            |
-| `npm run dev`             | Starts local dev server at `localhost:4321`      |
-| `npm run build`           | Build your production site to `./dist/`          |
-| `npm run preview`         | Preview your build locally, before deploying     |
-| `npm run astro ...`       | Run CLI commands like `astro add`, `astro check` |
-| `npm run astro -- --help` | Get help using the Astro CLI                     |
+-   **Sitio en Producción:** [URL del sitio en Netlify]
+-   **Sanity Studio:** [URL del Sanity Studio]
+-   **Documentación Completa:** [./docs/README.md](./docs/README.md)
 
-## 👀 Want to learn more?
-
-Feel free to check [our documentation](https://docs.astro.build) or jump into our [Discord server](https://astro.build/chat).

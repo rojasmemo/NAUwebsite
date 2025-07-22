@@ -4,6 +4,7 @@ import tailwind from "@astrojs/tailwind";
 import sanity from "@sanity/astro";
 import netlify from "@astrojs/netlify";
 import react from "@astrojs/react";
+import sitemap from "@astrojs/sitemap"; // <-- Nueva importación
 import dotenv from 'dotenv';
 
 dotenv.config();
@@ -12,6 +13,8 @@ dotenv.config();
 
 // https://astro.build/config
 export default defineConfig({
+  // Añade la URL de tu sitio para el sitemap
+  site: 'https://naufundacion.org', // <-- Nueva línea
   // Cambiamos a 'server' para habilitar funciones del lado del servidor con el adaptador de Netlify.
   output: 'server',
   adapter: netlify(),
@@ -35,7 +38,8 @@ export default defineConfig({
       useCdn: process.env.NODE_ENV === 'production',
       apiVersion: '2024-07-11' // Usa una fecha reciente en formato YYYY-MM-DD.
     }),
-    react()
+    react(),
+    sitemap() // <-- Nueva integración
   ],
   vite: {
     ssr: {

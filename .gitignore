@@ -1,36 +1,31 @@
-# build output
-dist/
-# generated types
-.astro/
-
-# dependencies
-node_modules/
-
-# logs
+# Archivos de Log y Sistema
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
-
-
-# environment variables
-.env
-.env.production
-
-# macOS-specific files
 .DS_Store
 
-# jetbrains setting folder
-.idea/
+# Dependencias de Node
+# Ignora cualquier carpeta node_modules en cualquier subdirectorio
+**/node_modules
 
-# VS Code editor settings
-.vscode/
+# Archivos de entorno - ¡NUNCA SUBIR A GIT!
+**/.env
+**/.env.*
 
-# Local Netlify folder
+# Directorios de Build
+nau-astro-site/dist
+nau-sanity-studio/dist
+
+# Archivos de caché y configuración local
+nau-astro-site/.astro/
+nau-sanity-studio/.sanity/
 .netlify
 
-# Playwright reports and results
-playwright-report/
-test-results/
+# Archivos de Playwright
+nau-astro-site/test-results/
+nau-astro-site/playwright-report/
 
-# Obsidian settings
+# Configuraciones de editores
+.idea/
+.vscode/
 .obsidian/

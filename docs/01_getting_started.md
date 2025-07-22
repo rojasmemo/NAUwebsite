@@ -15,6 +15,7 @@ Creemos en la documentación clara y accionable. Si algún paso de esta guía es
 **Software:**
 - **Node.js:** Versión `20.x` o superior.
 - **npm:** Versión `10.x` o superior (se instala con Node.js).
+- **pnpm:** Gestor de paquetes recomendado. Instálalo con `npm install -g pnpm`.
 - **Git:** Para clonar y gestionar el código fuente.
 
 **Conocimientos Previos:**
@@ -44,13 +45,13 @@ El Studio es una aplicación local que te permite gestionar el contenido del sit
     ```bash
     # Desde la raíz del proyecto (NAU-website/)
     cd nau-sanity-studio
-    npm install
+    pnpm install
     ```
 
 2.  **Inicia el Studio:**
     ```bash
     # Asegúrate de estar en la carpeta nau-sanity-studio
-    npm run dev
+    pnpm run dev
     ```
 
 Por defecto, el Studio se ejecutará en `http://localhost:3333`. La primera vez que lo abras, te pedirá que inicies sesión con un proveedor (como Google o GitHub) para asociar tu sesión al proyecto de Sanity en la nube. No necesitas credenciales en un archivo `.env` para que funcione en desarrollo.
@@ -63,7 +64,7 @@ El sitio de Astro consume los datos de Sanity para renderizar las páginas.
     ```bash
     # Desde la raíz del proyecto (NAU-website/), en una nueva terminal
     cd nau-astro-site
-    npm install
+    pnpm install
     ```
 
 2.  **Configura las Variables de Entorno:**
@@ -94,7 +95,7 @@ El sitio de Astro consume los datos de Sanity para renderizar las páginas.
 3.  **Inicia el Servidor de Desarrollo:**
     ```bash
     # Asegúrate de estar en la carpeta nau-astro-site
-    npm run dev
+    pnpm run dev
     ```
     El sitio web se ejecutará en `http://localhost:4321`.
 
@@ -135,7 +136,7 @@ Modifica el código, añade nuevas funcionalidades o corrige errores. Escribe c�
 Antes de enviar tu cambio, asegúrate de que no has roto nada. Desde el directorio `nau-astro-site/`, ejecuta los tests end-to-end:
 
 ```bash
-npm run test:e2e
+pnpm run test:e2e
 ```
 
 Esto ejecutará las pruebas de Playwright que simulan la navegación de un usuario. Todos los tests deben pasar.

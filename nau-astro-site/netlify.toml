@@ -2,8 +2,7 @@
 # Tiene prioridad sobre cualquier configuración en la interfaz de Netlify.
 
 [build]
-  # Cambiamos el comando para usar npm, que es el estándar.
-  command = "npm run build"
+  command = "pnpm run build"
   # La carpeta que Netlify debe publicar después de la construcción.
   publish = "dist"
 

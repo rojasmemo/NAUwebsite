@@ -1,6 +1,5 @@
 # Configuración para el sitio de Astro (Frontend)
 [build]
-  base = "nau-astro-site/"
   publish = "dist/"
   command = "pnpm install && pnpm run build"
 

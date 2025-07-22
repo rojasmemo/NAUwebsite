@@ -20,11 +20,11 @@ El flujo es el siguiente:
 1.  **Push a GitHub:** Un desarrollador empuja nuevos cambios a la rama `main`.
 2.  **Webhook a Netlify:** GitHub notifica a Netlify sobre los nuevos cambios.
 3.  **Inicio del Build:** Netlify identifica qué sitio ha cambiado (el frontend, el backend, o ambos) y comienza el proceso de construcción para cada uno.
-4.  **Construcción y Despliegue:** Netlify ejecuta los comandos de construcción definidos y, si tienen éxito, despliega la nueva versión del sitio o del estudio.
+ 4.  **Construcción y Despliegue:** Netlify ejecuta los comandos de construcción definidos para cada sitio y, si tienen éxito, despliega la nueva versión.
 
 ## 3. Configuración del Frontend (Astro) en Netlify
 
-La configuración del sitio de Astro se gestiona principalmente a través del archivo `netlify.toml` ubicado en la raíz de `nau-astro-site/`.
+La configuración del sitio de Astro en la UI de Netlify debe especificar `nau-astro-site/` como el **Directorio Base**. El archivo `netlify.toml` dentro de ese directorio se encargará del resto.
 
 ### `netlify.toml`
 
@@ -53,11 +53,11 @@ Las credenciales sensibles (como los tokens de API) se configuran de forma segur
 
 ## 4. Configuración del Backend (Sanity Studio) en Netlify
 
-El Sanity Studio es una aplicación de React y su despliegue también está automatizado.
+El Sanity Studio es una aplicación de React y su despliegue también está automatizado en un sitio separado de Netlify.
 
 -   **Directorio Base:** `nau-sanity-studio/`
 -   **Comando de Construcción:** `npm run build` (o `sanity build`)
--   **Directorio de Publicación:** `dist/`
+-   **Directorio de Publicación:** `dist/` (relativo al directorio base)
 
 Netlify compila el estudio y lo despliega como una aplicación web estática, que se conecta al "Content Lake" de Sanity.
 

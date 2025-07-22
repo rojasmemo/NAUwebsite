@@ -34,6 +34,7 @@ cd NAU-website
 La estructura principal es:
 - `nau-astro-site/`: El sitio web construido con Astro (nuestro frontend).
 - `nau-sanity-studio/`: El estudio de contenido de Sanity (nuestro backend).
+- `docs/`: La documentación del proyecto que estás leyendo ahora mismo.
 
 ### 2. Configuración del Backend (Sanity Studio)
 
@@ -41,12 +42,14 @@ El Studio es una aplicación local que te permite gestionar el contenido del sit
 
 1.  **Navega al directorio y instala dependencias:**
     ```bash
+    # Desde la raíz del proyecto (NAU-website/)
     cd nau-sanity-studio
     npm install
     ```
 
 2.  **Inicia el Studio:**
     ```bash
+    # Asegúrate de estar en la carpeta nau-sanity-studio
     npm run dev
     ```
 
@@ -58,7 +61,7 @@ El sitio de Astro consume los datos de Sanity para renderizar las páginas.
 
 1.  **Navega al directorio y instala dependencias:**
     ```bash
-    # Desde la raíz del proyecto
+    # Desde la raíz del proyecto (NAU-website/), en una nueva terminal
     cd nau-astro-site
     npm install
     ```
@@ -90,6 +93,7 @@ El sitio de Astro consume los datos de Sanity para renderizar las páginas.
 
 3.  **Inicia el Servidor de Desarrollo:**
     ```bash
+    # Asegúrate de estar en la carpeta nau-astro-site
     npm run dev
     ```
     El sitio web se ejecutará en `http://localhost:4321`.

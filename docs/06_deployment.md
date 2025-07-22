@@ -30,11 +30,8 @@ La configuración del sitio de Astro en la UI de Netlify debe especificar `nau-a
 
 ```toml
 [build]
-  command = "npm run build"
+  command = "pnpm run build"
   publish = "dist"
-
-[build.environment]
-  NPM_FLAGS = "--legacy-peer-deps"
 
 [images]
   remote_images = ["^https://cdn\\.sanity\\.io/.*"]

@@ -1,0 +1,25 @@
+---
+// src/components/RichTextSection.astro
+import { PortableText } from 'astro-portabletext';
+
+const {
+  title,
+  content, // El objeto de Portable Text
+  backgroundColor = 'bg-white',
+  textColor = 'text-custom-specific-blue',
+} = Astro.props;
+
+const components = {
+  // Aquí se pueden personalizar los componentes de renderizado si es necesario
+  // Por ejemplo, para los encabezados, listas, etc.
+};
+---
+
+<section class={`py-16 ${backgroundColor} ${textColor}`}>
+  <div class="container mx-auto max-w-4xl text-lg">
+    {title && <h2 class="mb-8 text-center text-4xl font-bold">{title}</h2>}
+    <div class="prose lg:prose-xl max-w-none">
+      <PortableText value={content} components={components} />
+    </div>
+  </div>
+</section>

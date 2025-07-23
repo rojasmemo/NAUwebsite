@@ -133,7 +133,23 @@ export const paginaSimbolismoNumericoQuery = `{
         internalLink->{_type, "slug": slug.current}
       }
     },
-    introduction,
+    introSection {
+      body
+    },
+    bannerWithCards {
+      title,
+      "backgroundImage": backgroundImage ${imageProjection},
+      cards,
+      "bottomIcon": bottomIcon ${imageProjection}
+    },
+    detailedSection {
+      title,
+      body
+    },
+    finalSection {
+      title,
+      body
+    },
     ctaBanner {
       ...,
       "image": image ${imageProjection},

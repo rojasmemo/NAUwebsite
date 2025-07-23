@@ -1,0 +1,45 @@
+---
+// src/components/BannerWithCards.astro
+import { urlFor } from '../lib/sanity/client';
+import SanityImage from './SanityImage.astro';
+
+const {
+  title,
+  backgroundImage,
+  cards, // Array de 3 tarjetas con { description }
+  bottomIcon,
+} = Astro.props;
+
+const cardIcons = [
+  '/assets/images/NUM-PASO1.webp',
+  '/assets/images/NUM-PASO2.webp',
+  '/assets/images/NUM-PASO3.webp',
+];
+---
+
+<section
+  class="relative bg-cover bg-center bg-no-repeat py-20 text-center text-white"
+  style={`background-image: url(${urlFor(backgroundImage).url()})`}
+>
+  <div class="absolute inset-0 bg-black/50"></div>
+  <div class="container relative z-10">
+    <h2 class="mb-16 text-4xl font-bold md:text-5xl">{title}</h2>
+
+    <div class="grid grid-cols-1 gap-8 md:grid-cols-3 md:gap-4">
+      {cards.map((card, index) => (
+        <div class="relative rounded-lg bg-white p-6 pt-12 text-custom-specific-blue shadow-lg">
+          <div class="absolute -top-10 left-1/2 -translate-x-1/2 transform">
+            <img src={cardIcons[index]} alt={`Paso ${index + 1}`} class="h-20 w-20" />
+          </div>
+          <p class="text-base">{card.description}</p>
+        </div>
+      ))}
+    </div>
+  </div>
+
+  {bottomIcon && (
+    <div class="absolute -bottom-10 left-1/2 -translate-x-1/2 transform">
+      <SanityImage image={bottomIcon} alt="Icono decorativo" width={80} />
+    </div>
+  )}
+</section>

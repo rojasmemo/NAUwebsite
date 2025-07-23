@@ -4,9 +4,11 @@ import HeroBanner from '../components/HeroBanner.astro';
 import SimbolismoNumericoCard from '../components/SimbolismoNumericoCard.astro';
 import { sanityClient } from 'sanity:client';
 import { paginaSimbolismoNumericoQuery } from '../lib/sanity/queries';
-import { PortableText } from 'astro-portabletext';
-import SanityImage from '../components/SanityImage.astro';
 import { resolveCtaLink } from '../lib/utils';
+
+// Importamos los nuevos componentes
+import BannerWithCards from '../components/BannerWithCards.astro';
+import RichTextSection from '../components/RichTextSection.astro';
 
 // Fetch data from Sanity
 const data = await sanityClient.fetch(paginaSimbolismoNumericoQuery);
@@ -41,17 +43,47 @@ import cardIcon from '../assets/images/CLIP-NUM.webp';
       </HeroBanner>
     )}
 
-    <!-- Introduction Section -->
-    {page?.introduction && (
-      <section class="content-section-wrapper pt-12 md:pt-16 pb-24 md:pb-32 px-8 md:px-16 bg-custom-pale-teal relative">
-        <div class="text-left max-w-3xl mx-auto text-custom-specific-blue">
-          <PortableText value={page.introduction} />
-        </div>
-      </section>
+    <!-- 1. Intro Section (Pale Teal) -->
+    {page?.introSection?.body && (
+      <RichTextSection
+        content={page.introSection.body}
+        backgroundColor="bg-custom-pale-teal"
+        textColor="text-custom-specific-blue"
+      />
+    )}
+
+    <!-- 2. Banner with 3 Cards -->
+    {page?.bannerWithCards && (
+      <BannerWithCards
+        title={page.bannerWithCards.title}
+        backgroundImage={page.bannerWithCards.backgroundImage}
+        cards={page.bannerWithCards.cards}
+        bottomIcon={page.bannerWithCards.bottomIcon}
+      />
+    )}
+
+    <!-- 3. Detailed Section (White) -->
+    {page?.detailedSection?.body && (
+      <RichTextSection
+        title={page.detailedSection.title}
+        content={page.detailedSection.body}
+        backgroundColor="bg-white"
+        textColor="text-custom-specific-blue"
+      />
+    )}
+
+    <!-- 4. Final Section (replaces old introduction) -->
+    {page?.finalSection?.body && (
+      <RichTextSection
+        title={page.finalSection.title}
+        content={page.finalSection.body}
+        backgroundColor="bg-custom-pale-teal"
+        textColor="text-custom-specific-blue"
+      />
     )}
 
     <!-- Services Section -->
-    <section class="relative content-section-wrapper z-10 -mt-20 md:-mt-28 pt-12 md:pt-16 pb-4 md:pb-6 px-4 md:px-16 rounded-t-lg md:rounded-t-xl">
+    <section class="relative content-section-wrapper z-10 pt-12 md:pt-16 pb-4 md:pb-6 px-4 md:px-16 rounded-t-lg md:rounded-t-xl">
       <div class="grid md:grid-cols-2 gap-y-12 gap-x-8 md:gap-y-16 md:gap-x-10 mb-8 px-4 md:px-6 lg:px-20">
         {servicios?.map(servicio => (
           <SimbolismoNumericoCard 

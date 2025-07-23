@@ -28,11 +28,100 @@ export default {
       type: 'banner', // Usamos nuestro objeto banner reutilizable
     },
     {
-      name: 'introduction',
-      title: 'Texto de Introducción',
-      description: 'Los párrafos que aparecen debajo del banner principal.',
-      type: 'array',
-      of: [{type: 'block'}],
+      name: 'introSection',
+      title: 'Sección de Introducción (Fondo claro)',
+      description: 'Bloque de texto enriquecido que aparece justo debajo del banner principal.',
+      type: 'object',
+      fields: [
+        {
+          name: 'body',
+          title: 'Contenido',
+          type: 'array',
+          of: [{type: 'block'}],
+        },
+      ],
+    },
+    {
+      name: 'bannerWithCards',
+      title: 'Banner con 3 Tarjetas',
+      type: 'object',
+      fields: [
+        {
+          name: 'title',
+          title: 'Título del Banner',
+          type: 'string',
+        },
+        {
+          name: 'backgroundImage',
+          title: 'Imagen de Fondo',
+          type: 'image',
+          options: {
+            hotspot: true,
+          },
+        },
+        {
+          name: 'cards',
+          title: 'Tarjetas',
+          type: 'array',
+          of: [
+            {
+              title: 'Tarjeta',
+              type: 'object',
+              fields: [
+                {
+                  name: 'description',
+                  title: 'Texto descriptivo',
+                  type: 'text',
+                },
+              ],
+            },
+          ],
+          validation: (Rule) => Rule.length(3).error('Deben ser exactamente 3 tarjetas.'),
+        },
+        {
+          name: 'bottomIcon',
+          title: 'Icono Inferior',
+          type: 'image',
+        },
+      ],
+    },
+    {
+      name: 'detailedSection',
+      title: 'Sección Detallada (Fondo blanco)',
+      description: 'Sección con título y cuerpo de texto enriquecido.',
+      type: 'object',
+      fields: [
+        {
+          name: 'title',
+          title: 'Título',
+          type: 'string',
+        },
+        {
+          name: 'body',
+          title: 'Contenido',
+          type: 'array',
+          of: [{type: 'block'}],
+        },
+      ],
+    },
+    {
+      name: 'finalSection',
+      title: 'Sección Final (Pre-CTA)',
+      description: 'La última sección de texto antes del banner de llamada a la acción final.',
+      type: 'object',
+      fields: [
+        {
+          name: 'title',
+          title: 'Título',
+          type: 'string',
+        },
+        {
+          name: 'body',
+          title: 'Contenido',
+          type: 'array',
+          of: [{type: 'block'}],
+        },
+      ],
     },
     {
       name: 'ctaBanner',

@@ -50,6 +50,27 @@ Los encuentros son un tipo de contenido que puede tener múltiples entradas.
 
 El proceso es idéntico al de los Encuentros, pero seleccionando **"Simbolismo Numérico"** en el menú de la izquierda.
 
+### 3.4. Editar la Página de Simbolismo Numérico
+
+Esta página tiene una estructura de contenido más compleja. Para editarla:
+
+1.  En la columna izquierda, selecciona **"Página de Simbolismo Numérico"**.
+2.  En la columna central, selecciona el único documento que aparece.
+3.  En la columna derecha, encontrarás los siguientes campos para editar:
+
+    -   **Título (SEO):** El título que aparece en la pestaña del navegador y en los resultados de Google.
+    -   **Descripción (SEO):** El texto que verán los usuarios en los resultados de búsqueda de Google.
+    -   **Banner Principal:** La primera imagen y texto que ven los usuarios al entrar a la página.
+    -   **Sección de Introducción (Fondo claro):** Un bloque de texto enriquecido (con formato) que aparece justo debajo del banner principal. No tiene título, solo cuerpo de texto.
+    -   **Banner con 3 Tarjetas:** Una sección visualmente destacada.
+        -   **Título del Banner:** El encabezado principal de esta sección.
+        -   **Imagen de Fondo:** La imagen que se mostrará detrás del título y las tarjetas.
+        -   **Tarjetas:** Debes rellenar el texto descriptivo para cada una de las 3 tarjetas. Los iconos de las tarjetas son fijos y no se editan aquí.
+        -   **Icono Inferior:** La imagen pequeña que aparece centrada en la parte inferior de este banner.
+    -   **Sección Detallada (Fondo blanco):** Una sección con un título y un cuerpo de texto enriquecido, ideal para dar más detalles o explicaciones.
+    -   **Sección Final (Pre-CTA):** La última sección de texto antes del banner final. También tiene un título y un cuerpo de texto enriquecido.
+    -   **Banner de Llamada a la Acción (Final):** El último banner de la página, que invita al usuario a realizar una acción (ej. contactar).
+
 ## 4. El Editor de Texto Enriquecido (Portable Text)
 
 Campos como "Contenido Principal" o "Descripción" utilizan un editor de texto enriquecido. Esto te permite:

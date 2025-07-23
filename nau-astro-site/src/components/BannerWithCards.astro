@@ -1,7 +1,21 @@
 ---
 // src/components/BannerWithCards.astro
-import { urlFor } from '../lib/sanity/client';
 import SanityImage from './SanityImage.astro';
+import { createClient } from '@sanity/client';
+import imageUrlBuilder from '@sanity/image-url';
+
+const sanityClient = createClient({
+  projectId: import.meta.env.PUBLIC_SANITY_PROJECT_ID,
+  dataset: import.meta.env.PUBLIC_SANITY_DATASET,
+  useCdn: false,
+  apiVersion: '2024-06-10',
+});
+
+const builder = imageUrlBuilder(sanityClient);
+
+function urlFor(source) {
+  return builder.image(source);
+}
 
 const {
   title,

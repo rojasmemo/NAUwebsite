@@ -39,13 +39,13 @@ const cardIcons = [cardIcon1, cardIcon2, cardIcon3];
 >
   <div class="absolute inset-0 bg-black/20"></div>
   <div class="container relative z-10 mx-auto px-4 sm:px-6 lg:px-8">
-    <h2 class="mb-24 text-4xl font-bold md:text-5xl">{title}</h2>
+    <h2 class="h2-base max-w-2xl mx-auto mb-16">{title}</h2>
 
     <div class="grid grid-cols-1 gap-16 md:grid-cols-3 md:gap-8">
       {cards.map((card, index) => (
         <div class="relative rounded-lg bg-white p-6 pt-12 text-custom-specific-blue shadow-lg">
-          <div class="absolute -top-12 left-1/2 -translate-x-1/2 transform">
-            <Image src={cardIcons[index]} alt={`Paso ${index + 1}`} class="h-24 w-24 object-contain" />
+          <div class="absolute -top-12 left-1/2 -translate-x-1/2 transform mb-4">
+            <Image src={cardIcons[index]} alt={`Paso ${index + 1}`} class="h-20 w-20 object-contain" />
           </div>
           <p class="p-base">{card.description}</p>
         </div>
@@ -54,10 +54,11 @@ const cardIcons = [cardIcon1, cardIcon2, cardIcon3];
   </div>
 
   {bottomIcon && (
-    <div class="absolute -bottom-8 left-1/2 w-full -translate-x-1/2 transform px-4">
-      <div class="mx-auto w-16 h-16 md:w-20 md:h-20">
-        <SanityImage image={bottomIcon} alt="Icono decorativo" sizes="(max-width: 768px) 64px, 80px" />
+    <div class="absolute -bottom-12 left-1/2 w-full -translate-x-1/2 transform px-4">
+      <div class="mx-auto w-16 h-16 md:w-28 md:h-28 lg:w-40 lg:h-40">
+        <SanityImage image={bottomIcon} alt="Icono decorativo" sizes="(max-width: 767px) 64px, (max-width: 1023px) 112px, 160px" />
       </div>
     </div>
   )}
 </section>
+

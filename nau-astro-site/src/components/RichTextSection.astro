@@ -15,8 +15,8 @@ const components = {
 };
 ---
 
-<section class={`pt-24 pb-16 ${backgroundColor} ${textColor}`}>
-  <div class="container mx-auto max-w-4xl text-lg">
+<section class={`pt-16 md:pt-24 lg:pt-32 pb-16 ${backgroundColor} ${textColor}`}>
+  <div class="container mx-auto max-w-4xl text-lg px-4 sm:px-6 lg:px-8">
     {title && <h2 class="h2-base text-center">{title}</h2>}
     <div class="prose lg:prose-xl max-w-none">
       <PortableText value={content} components={components} />

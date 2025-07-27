@@ -7,10 +7,7 @@
   command = "pnpm --filter nau-astro-site build"
   
   # Directorio de publicación, relativo a la raíz del repositorio
-  publish = "nau-astro-site/dist/"
-
-[functions]
-  directory = "nau-astro-site/netlify/functions"
+  publish = "dist/"
 
 [images]
   remote_images = ["^https://cdn\\.sanity\\.io/.*"]

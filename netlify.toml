@@ -13,4 +13,4 @@
   directory = "nau-astro-site/netlify/functions"
 
 [images]
-  remote_images = ["^https://cdn\.sanity\.io/.*"]
+  remote_images = ["^https://cdn\\.sanity\\.io/.*"]

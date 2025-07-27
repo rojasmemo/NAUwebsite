@@ -10,8 +10,7 @@
   publish = "dist/"
 
 [functions]
-  directory = "nau-astro-site/netlify/functions"
+  directory = "netlify/functions"
 
 [images]
   remote_images = ["^https://cdn\.sanity\.io/.*"]
-

@@ -1,6 +1,6 @@
 [build]
   # Directorio base del proyecto de Astro
-  base = "nau-astro-site"
+  base = "."
   
   # Comando de construcción a ejecutar desde la raíz del monorepo
   # Filtramos para construir solo el sitio de Astro

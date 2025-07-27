@@ -6,11 +6,11 @@
   # Filtramos para construir solo el sitio de Astro
   command = "pnpm --filter nau-astro-site build"
   
-  # Directorio de publicación, relativo a 'base'
-  publish = "dist/"
+  # Directorio de publicación, relativo a la raíz del repositorio
+  publish = "nau-astro-site/dist/"
 
 [functions]
-  directory = "netlify/functions"
+  directory = "nau-astro-site/netlify/functions"
 
 [images]
   remote_images = ["^https://cdn\.sanity\.io/.*"]

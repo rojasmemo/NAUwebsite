@@ -10,6 +10,11 @@ import heroImage2 from '../assets/images/5-SOBRE-NAU-WEB-1920w.webp';
 import decorativeImage from '../assets/images/2-SOBRE-NAU-WEB.webp';
 import contentImage from '../assets/images/3-SOBRE-NAU-WEB-400w.webp';
 import iconImage from '../assets/images/4-SOBRE-NAU-WEB.webp';
+import bannerBgImage from '../assets/images/6-BANNER-NAU-WEB-1920w.webp';
+import cardIcon1 from '../assets/images/sobre-nau-con-costo.webp';
+import cardIcon2 from '../assets/images/sobre-nau-donaciones.webp';
+import cardIcon3 from '../assets/images/sobre-nau-padrinos.webp';
+import CustomBannerWithCards from '../components/CustomBannerWithCards.astro';
 ---
 
 <MainLayout
@@ -91,6 +96,30 @@ import iconImage from '../assets/images/4-SOBRE-NAU-WEB.webp';
         </div>
       </div>
     </section>
+
+    <!-- Banner con Tarjetas: "¿Cómo lo hacemos?" -->
+    <CustomBannerWithCards
+      title="¿Cómo lo hacemos?<br>Un modelo que transforma vidas a través del dar y recibir"
+      backgroundImage={bannerBgImage}
+      cards={[
+        {
+          icon: cardIcon1,
+          iconAlt: 'Icono de contribución',
+          description: 'Ofrecemos encuentros y herramientas con costo para quienes pueden contribuir, y eso nos permite ofrecer gratuitamente esos mismos espacios a personas que los necesitan, pero no pueden pagarlos.'
+        },
+        {
+          icon: cardIcon2,
+          iconAlt: 'Icono de donaciones',
+          description: 'Recibimos donaciones de personas, empresas y organizaciones que resuenan con nuestra misión y desean ser parte de la transformación colectiva aportando recursos económicos.'
+        },
+        {
+          icon: cardIcon3,
+          iconAlt: 'Icono de padrinos',
+          description: 'Tenemos padrinos de transformación. Quienes quieren dar a alguien, cercano o no, el regalo de la transformación: puede pagar por nuestras herramientas para que nosotros acompañemos su proceso.'
+        }
+      ]}
+      bottomText="Así, cada participación y cada donación se convierte en una puerta abierta para que otros inicien su camino de transformación."
+    />
 
     <!-- Sección de Contenido 3: "Nuestro Propósito" -->
     <section class="content-section-wrapper py-10 md:py-16 bg-white px-8 md:px-36">

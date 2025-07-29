@@ -3,45 +3,54 @@
 import MainLayout from '../layouts/MainLayout.astro';
 import HeroBanner from '../components/HeroBanner.astro';
 import { Image } from 'astro:assets';
+import CustomBannerWithCards from '../components/CustomBannerWithCards.astro';
+import { sanityClient } from 'sanity:client';
+import { paginaSobreNauQuery } from '../lib/sanity/queries.js';
+import SanityImage from '../components/SanityImage.astro';
+import { resolveCtaLink } from '../lib/utils';
 
-// Importamos las imágenes que Astro optimizará
-import heroImage1 from '../assets/images/1-SOBRE-NAU-WEB-1920w.webp';
-import heroImage2 from '../assets/images/5-SOBRE-NAU-WEB-1920w.webp';
-import decorativeImage from '../assets/images/2-SOBRE-NAU-WEB.webp';
-import contentImage from '../assets/images/3-SOBRE-NAU-WEB-400w.webp';
-import iconImage from '../assets/images/4-SOBRE-NAU-WEB.webp';
-import bannerBgImage from '../assets/images/6-SOBRE-NAU-WEB-1920w.webp';
+// Importamos los iconos estáticos
+import decorativeIcon from '../assets/images/2-SOBRE-NAU-WEB.webp';
+import purposeIcon from '../assets/images/4-SOBRE-NAU-WEB.webp';
 import cardIcon1 from '../assets/images/SOBRE-NAU-CON-COSTO.webp';
 import cardIcon2 from '../assets/images/SOBRE-NAU-DONACIONES.webp';
 import cardIcon3 from '../assets/images/SOBRE-NAU-PADRINOS.webp';
-import CustomBannerWithCards from '../components/CustomBannerWithCards.astro';
+
+const data = await sanityClient.fetch(paginaSobreNauQuery);
+
+if (!data) {
+  return new Response("Página no encontrada", { status: 404 });
+}
+
+const contentSection2CtaLink = resolveCtaLink(data.contentSection2.cta);
+const heroBanner2CtaLink = resolveCtaLink(data.heroBanner2.cta);
 ---
 
 <MainLayout
-  title="Sobre NAU"
-  description="Descubre NAU: te ayudamos a conectar con tu esencia, romper bloqueos y transformar tu vida a través de encuentros y simbolismo numérico."
+  title={data.title}
+  description={data.seoDescription}
 >
   <main>
     <!-- Sección Hero 1: "Bienvenid@ a NAU." -->
     <HeroBanner
-      image={heroImage1}
+      image={data.heroBanner1.heroImage1}
       alt="Paisaje inspirador que representa un nuevo comienzo."
       bgColorClass="bg-custom-dark-teal"
       loading="eager"
       containerClasses="py-12 md:py-24 lg:py-28 xl:py-32 2xl:py-48 mb-4 md:mb-16 lg:mb-22"
     >
-      <h2 class="h2-base md:mb-4">Bienvenid@ a NAU</h2>
+      <h2 class="h2-base md:mb-4">{data.heroBanner1.title}</h2>
       <p class="p-base-hero max-w-2xl mx-auto">
-        Un nuevo camino comienza. Uno con más claridad, propósito y conexión.
+        {data.heroBanner1.mainText}
       </p>
       <p class="p-base-hero font-semibold max-w-2xl mx-auto">
-        Estamos aquí para caminar contigo.
+        {data.heroBanner1.secondaryText}
       </p>
 
       <!-- Imagen decorativa posicionada en la parte inferior -->
       <Image
         slot="decoration"
-        src={decorativeImage} 
+        src={decorativeIcon}
         alt="Imagen decorativa Sobre NAU"
         class="absolute bottom-0 left-1/2 transform -translate-x-1/2 translate-y-1/2 w-16 md:w-28 lg:w-40 h-auto"
         loading="lazy"
@@ -54,20 +63,16 @@ import CustomBannerWithCards from '../components/CustomBannerWithCards.astro';
     <section class="content-section-wrapper py-10 md:py-16 bg-white px-8 md:px-36">
       <div class="text-center">
         <h2 class="h2-base text-custom-specific-blue">
-          ¿Por qué existimos?
+          {data.contentSection1.title}
         </h2>
         <h3 class="h3-base max-w-5xl mx-auto text-custom-darker-teal text-left md:text-center">
-          Porque sabemos cómo se siente estar perdido… y elegimos acompañar.
+          {data.contentSection1.subtitle}
         </h3>
-        <p class="p-base max-w-5xl mx-auto text-left">
-          NAU nació del deseo profundo de tender la mano. Cada uno de nosotros ha recorrido su propio camino de búsqueda, confusión, ansiedad y transformación. Sabemos lo que es sentirnos desconectados, y también lo que significa volver a encontrarnos con claridad y sentido.
-        </p>
-        <p class="p-base max-w-5xl mx-auto text-left">
-          Desde esa experiencia vivida, creamos espacios donde otros puedan hacer lo mismo: reconectar consigo, soltar lo que duele, descubrir lo que necesitan, y caminar con más paz, propósito y verdad.
-        </p>
-        <p class="p-base max-w-5xl mx-auto text-left">
-          Acompañamos desde la empatía, porque hemos estado allí. Y porque creemos que nadie debería transitar su proceso en soledad.
-        </p>
+        {data.contentSection1.paragraphs.map((paragraph) => (
+          <p class="p-base max-w-5xl mx-auto text-left">
+            {paragraph}
+          </p>
+        ))}
       </div>
     </section>
 
@@ -76,86 +81,87 @@ import CustomBannerWithCards from '../components/CustomBannerWithCards.astro';
       <div class="grid md:grid-cols-5 gap-8 items-center">
         <div class="p-4 rounded-lg flex flex-col justify-center order-2 md:order-1 md:col-span-3">
           <h2 class="h2-base text-custom-darker-teal">
-            ¿Qué hacemos y cómo?
+            {data.contentSection2.title}
           </h2>
           <h3 class="h3-base text-custom-darker-teal text-left">
-            En NAU abrimos puertas a tu interior, invitándote a explorar con valentía y sin temor.
+            {data.contentSection2.subtitle}
           </h3>
-          <p class="p-base text-left md:mb-8">
-            No prometemos soluciones rápidas ni fórmulas mágicas. Te ofrecemos herramientas auténticas, preguntas que despiertan y un acompañamiento cercano y respetuoso.
-          </p>
-          <p class="p-base text-left">
-            Mediante encuentros, talleres y prácticas de autoconocimiento, te guiamos para que descubras tus propias respuestas y camines hacia tu transformación.
-          </p>
-          <a href="/encuentros" class="inline-block bg-custom-specific-blue text-white text-center font-semibold py-2 px-6 rounded-md hover:bg-gray-100 hover:text-custom-dark-teal transition duration-300 self-center">
-            Conoce nuestras Experiencias
-          </a>
+          {data.contentSection2.paragraphs.map((paragraph) => (
+            <p class="p-base text-left md:mb-8">
+              {paragraph}
+            </p>
+          ))}
+          {data.contentSection2.cta?.text && (
+            contentSection2CtaLink ? (
+              <a href={contentSection2CtaLink} class="btn btn-primary self-center">{data.contentSection2.cta.text}</a>
+            ) : (
+              <span class="btn btn-primary btn-disabled self-center">{data.contentSection2.cta.text}</span>
+            )
+          )}
         </div>
         <div class="rounded-lg overflow-hidden flex justify-center items-center order-1 md:order-2 md:col-span-2 px-6 md:px-0">
-          <Image src={contentImage} alt="Personas trabajando en equipo conectando con su esencia" class="w-full max-w-xs h-auto object-contain rounded-lg" widths={[320, 400]} sizes="(max-width: 767px) 90vw, 320px" />
+          <SanityImage image={data.contentSection2.contentImage} alt="Personas trabajando en equipo conectando con su esencia" class="w-full max-w-xs h-auto object-contain rounded-lg" widths={[320, 400]} sizes="(max-width: 767px) 90vw, 320px" />
         </div>
       </div>
     </section>
 
     <!-- Banner con Tarjetas: "¿Cómo lo hacemos?" -->
     <CustomBannerWithCards
-      title="¿Cómo lo hacemos?<br>Un modelo que transforma vidas a través del dar y recibir"
-      backgroundImage={bannerBgImage}
-      cards={[
-        {
-          icon: cardIcon1,
-          iconAlt: 'Icono de contribución',
-          description: 'Ofrecemos encuentros y herramientas con costo para quienes pueden contribuir, y eso nos permite ofrecer gratuitamente esos mismos espacios a personas que los necesitan, pero no pueden pagarlos.'
-        },
-        {
-          icon: cardIcon2,
-          iconAlt: 'Icono de donaciones',
-          description: 'Recibimos donaciones de personas, empresas y organizaciones que resuenan con nuestra misión y desean ser parte de la transformación colectiva aportando recursos económicos.'
-        },
-        {
-          icon: cardIcon3,
-          iconAlt: 'Icono de padrinos',
-          description: 'Tenemos padrinos de transformación. Quienes quieren dar a alguien, cercano o no, el regalo de la transformación: puede pagar por nuestras herramientas para que nosotros acompañemos su proceso.'
-        }
-      ]}
-      bottomText="Así, cada participación y cada donación se convierte en una puerta abierta para que otros inicien su camino de transformación."
+      title={data.bannerWithCards.title}
+      subtitle={data.bannerWithCards.subtitle}
+      backgroundImage={data.bannerWithCards.backgroundImage}
+      cards={data.bannerWithCards.cards.map((card, index) => ({
+        icon: [cardIcon1, cardIcon2, cardIcon3][index],
+        iconAlt: 'Icono de contribución',
+        description: card.description
+      }))}
+      bottomText={data.bannerWithCards.bottomText}
     />
 
     <!-- Sección de Contenido 3: "Nuestro Propósito" -->
     <section class="content-section-wrapper py-10 md:py-16 bg-white px-8 md:px-36">
       <div class="text-center">
-        <Image src={iconImage} alt="Icono representativo de NAU" class="block mx-auto w-24 md:w-36 h-auto mb-8" loading="lazy" widths={[96, 144]} sizes="(max-width: 767px) 96px, 144px" />
+        <Image src={purposeIcon} alt="Icono representativo de NAU" class="block mx-auto w-24 md:w-36 h-auto mb-8" loading="lazy" widths={[96, 144]} sizes="(max-width: 767px) 96px, 144px" />
         <h2 class="h2-base text-custom-specific-blue">
-          Nuestro Propósito:
+          {data.contentSection3.title}
         </h2>
         <h3 class="h3-base max-w-5xl mx-auto text-custom-darker-teal text-left md:text-center">
-          Creemos en el poder transformador de sentirse visto y acompañado.
+          {data.contentSection3.subtitle}
         </h3>
+        {data.contentSection3.paragraphs.map((paragraph) => (
         <p class="p-base max-w-5xl mx-auto text-left">
-          No creemos en etiquetas, diagnósticos que limitan ni caminos rígidos. Creemos en la fuerza de la consciencia, en la libertad de elegir y en la capacidad real de cambiar cuando te sientes sostenido y apoyado.
+          {paragraph}
         </p>
-        <p class="p-base max-w-5xl mx-auto text-left">
-          Nuestra misión es sembrar consciencia para construir una sociedad donde cada persona viva con calma, autenticidad y verdadera conexión consigo misma y con los demás.
-        </p>
+        ))}
       </div>
     </section>
 
     <!-- Sección Hero 2: "Empecemos el camino, a tu manera." -->
     <HeroBanner
-      image={heroImage2}
+      image={data.heroBanner2.heroImage2}
       alt="Un camino que se abre paso en un paisaje natural, simbolizando el inicio de un viaje."
       bgColorClass="bg-custom-medium-teal"
       containerClasses="py-12 md:py-16 lg:py-24 xl:py-28 2xl:py-40"
     >
       <h2 class="h2-base">
-        Da el primer paso hacia tu transformación
+        {data.heroBanner2.title}
       </h2>
       <p class="p-base-hero max-w-2xl mx-auto md:mb-4">
-        El momento es ahora.
+        {data.heroBanner2.mainText}
       </p>
-      <a href="/contacto" class="inline-block bg-custom-light-teal text-custom-darker-teal font-semibold py-2 px-6 rounded-md hover:bg-opacity-80 hover:text-custom-dark-teal transition duration-300">
-        Contáctanos
-      </a>
+      {data.heroBanner2.cta?.text && (
+        heroBanner2CtaLink ? (
+          <a href={heroBanner2CtaLink} class="btn btn-tertiary">{data.heroBanner2.cta.text}</a>
+        ) : (
+          <span class="btn btn-tertiary btn-disabled">{data.heroBanner2.cta.text}</span>
+        )
+      )}
     </HeroBanner>
   </main>
 </MainLayout>
+
+<style>
+  .content-section-wrapper p.p-base:not(:last-of-type) {
+    margin-bottom: 1.5rem;
+  }
+</style>

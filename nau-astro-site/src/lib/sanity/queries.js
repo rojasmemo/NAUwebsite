@@ -213,3 +213,39 @@ export const paginaDonarQuery = `*[_type == "paginaDonar" && !(_id in path("draf
     }
   }
 }`;
+
+// Consulta para la página Sobre NAU
+export const paginaSobreNauQuery = `*[_type == "paginaSobreNau" && !(_id in path("drafts.**"))][0] {
+  title,
+  seoDescription,
+  heroBanner1 {
+    ...,
+    "heroImage1": heroImage1 ${imageProjection},
+    "decorativeImage": decorativeImage ${imageProjection}
+  },
+  contentSection1,
+  contentSection2 {
+    ...,
+    "contentImage": contentImage ${imageProjection},
+    cta {
+      text,
+      externalUrl,
+      internalLink->{_type, "slug": slug.current}
+    }
+  },
+  bannerWithCards {
+    ...,
+    subtitle,
+    "backgroundImage": backgroundImage ${imageProjection}
+  },
+  contentSection3,
+  heroBanner2 {
+    ...,
+    "heroImage2": heroImage2 ${imageProjection},
+    cta {
+      text,
+      externalUrl,
+      internalLink->{_type, "slug": slug.current}
+    }
+  }
+}`;

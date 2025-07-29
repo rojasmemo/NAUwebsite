@@ -7,6 +7,7 @@ import link from './link'
 import simbolismoNumerico from './simbolismoNumerico'
 import paginaSimbolismoNumerico from './paginaSimbolismoNumerico'
 import paginaDonar from './paginaDonar';
+import paginaSobreNau from './paginaSobreNau';
 
 export const schemaTypes = [
   homePage,
@@ -15,6 +16,7 @@ export const schemaTypes = [
   simbolismoNumerico,
   paginaSimbolismoNumerico,
   paginaDonar,
+  paginaSobreNau,
   paginaContacto,
   banner,
   link,

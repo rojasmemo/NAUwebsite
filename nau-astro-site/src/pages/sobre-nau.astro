@@ -22,6 +22,7 @@ if (!data) {
   return new Response("Página no encontrada", { status: 404 });
 }
 
+const heroBanner1CtaLink = resolveCtaLink(data.heroBanner1.cta);
 const contentSection2CtaLink = resolveCtaLink(data.contentSection2.cta);
 const heroBanner2CtaLink = resolveCtaLink(data.heroBanner2.cta);
 ---
@@ -46,6 +47,13 @@ const heroBanner2CtaLink = resolveCtaLink(data.heroBanner2.cta);
       <p class="p-base-hero font-semibold max-w-2xl mx-auto">
         {data.heroBanner1.secondaryText}
       </p>
+      {data.heroBanner1.cta?.text && (
+        heroBanner1CtaLink ? (
+          <a href={heroBanner1CtaLink} class="btn btn-primary mt-8">{data.heroBanner1.cta.text}</a>
+        ) : (
+          <span class="btn btn-primary btn-disabled mt-8">{data.heroBanner1.cta.text}</span>
+        )
+      )}
 
       <!-- Imagen decorativa posicionada en la parte inferior -->
       <Image
@@ -146,8 +154,11 @@ const heroBanner2CtaLink = resolveCtaLink(data.heroBanner2.cta);
       <h2 class="h2-base">
         {data.heroBanner2.title}
       </h2>
-      <p class="p-base-hero max-w-2xl mx-auto md:mb-4">
+      <p class="p-base-hero max-w-2xl mx-auto">
         {data.heroBanner2.mainText}
+      </p>
+      <p class="p-base-hero max-w-3xl mx-auto md:mb-4">
+        {data.heroBanner2.additionalText}
       </p>
       {data.heroBanner2.cta?.text && (
         heroBanner2CtaLink ? (

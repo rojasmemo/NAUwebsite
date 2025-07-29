@@ -221,7 +221,12 @@ export const paginaSobreNauQuery = `*[_type == "paginaSobreNau" && !(_id in path
   heroBanner1 {
     ...,
     "heroImage1": heroImage1 ${imageProjection},
-    "decorativeImage": decorativeImage ${imageProjection}
+    "decorativeImage": decorativeImage ${imageProjection},
+    cta {
+      text,
+      externalUrl,
+      internalLink->{_type, "slug": slug.current}
+    }
   },
   contentSection1,
   contentSection2 {
@@ -242,6 +247,7 @@ export const paginaSobreNauQuery = `*[_type == "paginaSobreNau" && !(_id in path
   heroBanner2 {
     ...,
     "heroImage2": heroImage2 ${imageProjection},
+    additionalText,
     cta {
       text,
       externalUrl,

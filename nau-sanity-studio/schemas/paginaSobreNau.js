@@ -26,6 +26,7 @@ export default {
         { name: 'title', title: 'Título', type: 'string' },
         { name: 'mainText', title: 'Texto Principal', type: 'text' },
         { name: 'secondaryText', title: 'Texto Secundario', type: 'text' },
+        { name: 'cta', title: 'Botón (CTA)', type: 'link' },
         { name: 'heroImage1', title: 'Imagen de Fondo', type: 'image' },
         { name: 'decorativeImage', title: 'Imagen Decorativa', type: 'image' },
       ],
@@ -108,6 +109,7 @@ export default {
       fields: [
         { name: 'title', title: 'Título', type: 'string' },
         { name: 'mainText', title: 'Texto Principal', type: 'text' },
+        { name: 'additionalText', title: 'Texto Adicional', type: 'text' },
         { name: 'cta', title: 'Botón (CTA)', type: 'link' },
         { name: 'heroImage2', title: 'Imagen de Fondo', type: 'image' },
       ],

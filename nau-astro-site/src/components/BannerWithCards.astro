@@ -69,17 +69,15 @@ const {
                 />
               </div>
             )}
-            <p class="p-base flex-grow">{card.description}</p>
-          </div>
-        );
-      })}
+            <p class="p-base flex-grow text-left">{card.description}</p>
+        </div>
+      ))}
     </div>
 
     {bottomText && (
-      <p class="p-base font-semibold max-w-4xl mx-auto mt-16">
+      <p class="p-base font-semibold max-w-4xl mx-auto mt-16 text-white">
         {bottomText}
       </p>
-    )}
   </div>
 
   {bottomIcon && (

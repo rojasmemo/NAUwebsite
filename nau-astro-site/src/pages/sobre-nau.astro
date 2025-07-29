@@ -3,7 +3,7 @@
 import MainLayout from '../layouts/MainLayout.astro';
 import HeroBanner from '../components/HeroBanner.astro';
 import { Image } from 'astro:assets';
-import CustomBannerWithCards from '../components/CustomBannerWithCards.astro';
+import BannerWithCards from '../components/BannerWithCards.astro';
 import { sanityClient } from 'sanity:client';
 import { paginaSobreNauQuery } from '../lib/sanity/queries.js';
 import SanityImage from '../components/SanityImage.astro';
@@ -106,7 +106,7 @@ const heroBanner2CtaLink = resolveCtaLink(data.heroBanner2.cta);
     </section>
 
     <!-- Banner con Tarjetas: "¿Cómo lo hacemos?" -->
-    <CustomBannerWithCards
+    <BannerWithCards
       title={data.bannerWithCards.title}
       subtitle={data.bannerWithCards.subtitle}
       backgroundImage={data.bannerWithCards.backgroundImage}

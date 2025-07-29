@@ -36,6 +36,7 @@ const {
 const hero1CtaLink = resolveCtaLink(hero1?.cta);
 const hero2CtaLink = resolveCtaLink(hero2?.cta);
 const hero3CtaLink = resolveCtaLink(hero3?.cta);
+const splitSection2CtaLink = resolveCtaLink(splitSection2?.button);
 
 const feature1CtaLink = resolveCtaLink(featureSection?.feature1?.link);
 const feature2CtaLink = resolveCtaLink(featureSection?.feature2?.link);
@@ -166,6 +167,13 @@ const feature2CtaLink = resolveCtaLink(featureSection?.feature2?.link);
         <p class="p-base text-left">{splitSection2.paragraph1}</p>
         <p class="p-base text-left mb-6">{splitSection2.paragraph2}</p>
         <h3 class="h3-base text-custom-dark-teal text-center md:text-left mb-0">{splitSection2.subheading}</h3>
+        {splitSection2.button?.text && (
+          splitSection2CtaLink ? (
+            <a href={splitSection2CtaLink} class="btn btn-primary mt-6">{splitSection2.button.text}</a>
+          ) : (
+            <span class="btn btn-primary btn-disabled mt-6">{splitSection2.button.text}</span>
+          )
+        )}
       </div>
     </div>
   </SplitSection>
@@ -178,6 +186,7 @@ const feature2CtaLink = resolveCtaLink(featureSection?.feature2?.link);
     bgColorClass="bg-custom-medium-teal"
   >
     <p class="p-base-hero max-w-2xl mx-auto">{hero3.subheading1}</p>
+    <p class="p-base-hero max-w-2xl mx-auto">{hero3.subheading2}</p>
     <h2 class="h2-base max-w-2xl mx-auto">{hero3.heading}</h2>
     {hero3.cta?.text && (
       hero3CtaLink ? (

@@ -122,6 +122,7 @@ export default {
         {name: 'paragraph1', title: 'Párrafo 1', type: 'text'},
         {name: 'paragraph2', title: 'Párrafo 2', type: 'text'},
         {name: 'subheading', title: 'Sub-encabezado final', type: 'string'},
+        {name: 'button', title: 'Botón', type: 'link'},
         {
           name: 'image',
           title: 'Imagen',
@@ -138,6 +139,7 @@ export default {
       fields: [
         {name: 'heading', title: 'Encabezado', type: 'string'},
         {name: 'subheading1', title: 'Sub-encabezado (línea superior)', type: 'string'},
+        {name: 'subheading2', title: 'Sub-encabezado 2 (opcional)', type: 'string'},
         {name: 'button', title: 'Botón', type: 'link'},
         {
           name: 'image',

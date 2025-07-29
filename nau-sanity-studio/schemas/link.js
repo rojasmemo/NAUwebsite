@@ -1,4 +1,3 @@
-
 // schemas/link.js
 export default {
   name: 'link',
@@ -20,6 +19,7 @@ export default {
         {type: 'homePage'}, 
         {type: 'paginaEncuentros'}, 
         {type: 'paginaSimbolismoNumerico'},
+        {type: 'paginaSobreNau'},
         {type: 'paginaContacto'},
         {type: 'paginaDonar'},
       ],

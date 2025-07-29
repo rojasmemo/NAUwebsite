@@ -103,10 +103,16 @@ export const homePageQuery = `*[_type == "homePage" && !(_id in path("drafts.**"
   },
   splitSection2 {
     ...,
-    "image": image ${imageProjection}
+    "image": image ${imageProjection},
+    "button": button {
+      text,
+      externalUrl,
+      internalLink->{_type, "slug": slug.current}
+    }
   },
   hero3 {
     ...,
+    subheading2, // Agregado para el nuevo párrafo
     "image": image ${imageProjection},
     "cta": button {
       text,

@@ -104,7 +104,7 @@ export const homePageQuery = `*[_type == "homePage" && !(_id in path("drafts.**"
   splitSection2 {
     ...,
     "image": image ${imageProjection},
-    "cta": button {
+    cta {
       text,
       externalUrl,
       internalLink->{_type, "slug": slug.current}

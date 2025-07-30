@@ -145,7 +145,10 @@ export const paginaSimbolismoNumericoQuery = `{
     bannerWithCards {
       title,
       "backgroundImage": backgroundImage ${imageProjection},
-      cards,
+      cards[] {
+        ...,
+        "icon": icon ${imageProjection}
+      },
       "bottomIcon": bottomIcon ${imageProjection}
     },
     detailedSection {

@@ -53,7 +53,7 @@ const {
     <h2 class="h2-base max-w-3xl mx-auto mb-4" set:html={title} />
     {subtitle && <h3 class="h3-base max-w-3xl mx-auto mb-16">{subtitle}</h3>}
 
-    <div class="grid grid-cols-1 gap-16 md:grid-cols-3 md:gap-6 lg:gap-8">
+    <div class:list={["grid grid-cols-1 gap-16 md:grid-cols-3 md:gap-6 lg:gap-8", { "mt-16": !subtitle }]}>
       {cards.map((card, index) => {
         const iconToUse = useDefaultIcons ? defaultCardIcons[index] : card.icon;
         const altText = useDefaultIcons ? `Paso ${index + 1}` : card.iconAlt;

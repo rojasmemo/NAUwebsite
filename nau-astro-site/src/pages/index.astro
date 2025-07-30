@@ -167,11 +167,11 @@ const feature2CtaLink = resolveCtaLink(featureSection?.feature2?.link);
         <p class="p-base text-left">{splitSection2.paragraph1}</p>
         <p class="p-base text-left mb-6">{splitSection2.paragraph2}</p>
         <h3 class="h3-base text-custom-dark-teal text-center md:text-left mb-0">{splitSection2.subheading}</h3>
-        {splitSection2.button?.text && (
+        {splitSection2.cta?.text && (
           splitSection2CtaLink ? (
-            <a href={splitSection2CtaLink} class="btn btn-primary mt-6">{splitSection2.button.text}</a>
+            <a href={splitSection2CtaLink} class="btn btn-primary mt-6">{splitSection2.cta.text}</a>
           ) : (
-            <span class="btn btn-primary btn-disabled mt-6">{splitSection2.button.text}</span>
+            <span class="btn btn-primary btn-disabled mt-6">{splitSection2.cta.text}</span>
           )
         )}
       </div>

@@ -39,7 +39,7 @@ const {
 ---
 
 <section
-  class="relative bg-cover bg-center bg-no-repeat pt-16 pb-24 md:pb-36 lg:pb-44 text-center text-white"
+  class="relative bg-cover bg-center bg-no-repeat pt-16 pb-24 md:pt-20 md:pb-32 lg:pt-24 lg:pb-40 text-center text-white"
 >
   <SanityImage
     image={backgroundImage}
@@ -49,22 +49,22 @@ const {
     quality={80}
   />
   <div class="absolute inset-0 bg-black/40"></div>
-  <div class="container relative z-10 mx-auto px-6 sm:px-8 lg:px-12">
+  <div class="container relative z-10 mx-auto px-4 sm:px-6 md:px-8 lg:px-10 xl:px-12">
     <h2 class="h2-base max-w-3xl mx-auto mb-4" set:html={title} />
-    {subtitle && <h3 class="h3-base max-w-3xl mx-auto mb-16">{subtitle}</h3>}
+    {subtitle && <h3 class="h3-base max-w-3xl mx-auto mb-12 md:mb-16">{subtitle}</h3>}
 
-    <div class:list={["grid grid-cols-1 gap-16 md:grid-cols-3 md:gap-6 lg:gap-8", { "mt-16": !subtitle }]}>
+    <div class:list={["grid grid-cols-1 gap-16 md:grid-cols-3 md:gap-8 lg:gap-10", { "mt-16": !subtitle }]}>
       {cards.map((card, index) => {
         const iconToUse = useDefaultIcons ? defaultCardIcons[index] : card.icon;
         const altText = useDefaultIcons ? `Paso ${index + 1}` : card.iconAlt;
         return (
           <div class="relative rounded-lg bg-white p-6 pt-12 text-custom-specific-blue shadow-lg flex flex-col">
             {iconToUse && (
-              <div class="absolute -top-8 md:-top-10 left-1/2 -translate-x-1/2 transform">
+              <div class="absolute -top-8 left-1/2 -translate-x-1/2 transform">
                 <Image
                   src={iconToUse}
                   alt={altText}
-                  class="h-16 w-16 md:h-20 md:w-20 object-contain"
+                  class="h-16 w-16 md:h-18 md:w-18 lg:h-20 lg:w-20 object-contain"
                   loading="lazy"
                 />
               </div>
@@ -76,15 +76,15 @@ const {
     </div>
 
     {bottomText && (
-      <p class="p-base font-semibold max-w-4xl mx-auto mt-16 text-white">
+      <p class="p-base font-semibold max-w-4xl mx-auto mt-12 md:mt-16 text-white">
         {bottomText}
       </p>
     )}
   </div>
 
   {bottomIcon && (
-    <div class="absolute -bottom-8 md:-bottom-14 lg:-bottom-20 left-1/2 w-full -translate-x-1/2 transform px-4">
-      <div class="mx-auto w-16 h-16 md:w-28 md:h-28 lg:w-40 lg:h-40">
+    <div class="absolute -bottom-8 md:-bottom-12 lg:-bottom-16 left-1/2 w-full -translate-x-1/2 transform px-4">
+      <div class="mx-auto w-16 h-16 md:w-24 md:h-24 lg:w-32 lg:h-32">
         <SanityImage image={bottomIcon} alt="Icono decorativo" sizes="(max-width: 767px) 64px, (max-width: 1023px) 112px, 160px" />
       </div>
     </div>

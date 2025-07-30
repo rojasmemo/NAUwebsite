@@ -49,10 +49,10 @@ const hero2CtaLink = resolveCtaLink(hero2?.cta);
         alt={hero1.alt || hero1.heading}
         bgColorClass="bg-custom-medium-teal"
         loading="eager"
-        containerClasses="pt-16 pb-24 md:pt-16 md:pb-48 lg:pt-24 lg:pb-52 2xl:pt-28 2xl:pb-56 mb-4 md:mb-16 lg:mb-22"
+        containerClasses="pt-16 pb-24 sm:pt-20 sm:pb-32 md:pt-24 md:pb-40 lg:pt-28 lg:pb-48 xl:pt-32 xl:pb-56 2xl:pt-36 2xl:pb-64 mb-4 md:mb-16 lg:mb-22"
       >
         <h2 class="h2-base md:mb-4">{hero1.heading}</h2>
-        <p class="p-base-hero max-w-2xl mx-auto">
+        <p class="p-base-hero max-w-2xl lg:max-w-3xl xl:max-w-4xl mx-auto">
           {hero1.subheading}
         </p>
         <!-- Local Static Image -->
@@ -60,14 +60,14 @@ const hero2CtaLink = resolveCtaLink(hero2?.cta);
           slot="decoration"
           src={decorativeImage}
           alt="Imagen decorativa de donación"
-          class="absolute bottom-0 left-3/4 transform translate-y-1/2 w-16 md:w-28 lg:w-40 h-auto"
+          class="absolute bottom-0 left-1/2 transform -translate-x-1/2 translate-y-1/2 w-16 md:w-24 lg:w-32 xl:w-40 h-auto"
           loading="lazy"
         />
       </HeroBanner>
     )}
 
     <!-- Introduction: Fetched from Sanity -->
-    <section class="content-section-wrapper py-10 md:py-16 bg-white px-8 md:px-36">
+    <section class="content-section-wrapper py-10 md:py-16 bg-white px-4 sm:px-6 md:px-8 lg:px-16 xl:px-24 2xl:px-32">
       <div class="text-center">
         <p class="p-base max-w-3xl mx-auto text-left">
           {introduction}
@@ -76,10 +76,10 @@ const hero2CtaLink = resolveCtaLink(hero2?.cta);
     </section>
 
     <!-- Donation Section: Fetched from Sanity -->
-    <section class="content-section-wrapper py-12 md:py-16 px-4 md:px-16 bg-custom-specific-blue">
+    <section class="content-section-wrapper py-12 md:py-16 px-4 sm:px-6 md:px-8 lg:px-16 xl:px-24 2xl:px-32 bg-custom-specific-blue">
       <div class="text-center">
         <h2 class="h2-base text-white mb-12 md:mb-16">{donationSection.heading}</h2>
-        <div class="grid md:grid-cols-2 gap-12 md:gap-8 mb-8 px-4 md:px-8 lg:px-24">
+        <div class="grid md:grid-cols-2 gap-12 md:gap-8 lg:gap-10 xl:gap-12 mb-8">
           <!-- Donation Card 1 -->
           {donationSection.donationCard1 && (
             <DonationCard icon={cardIcon} iconAlt="Icono de donación online">
@@ -109,7 +109,6 @@ const hero2CtaLink = resolveCtaLink(hero2?.cta);
     {splitSection?.image && (
       <SplitSection
         bgColorClass="bg-custom-pale-teal"
-        containerClasses="py-10 md:py-16 px-4 md:px-36"
         reverseOnMobile={true}
         gridColsClass="md:grid-cols-5"
         leftColClass="md:col-span-3"
@@ -124,7 +123,7 @@ const hero2CtaLink = resolveCtaLink(hero2?.cta);
           <SanityImage
             image={splitSection.image}
             alt={splitSection.image.alt || 'Imagen de agradecimiento'}
-            class="-mt-12 md:-mt-16 lg:-mt-20 w-full max-w-xs h-auto object-contain rounded-lg mx-auto relative z-10"
+            class="-mt-12 md:-mt-14 lg:-mt-16 xl:-mt-20 w-full max-w-xs h-auto object-contain rounded-lg mx-auto relative z-10"
             sizes="(max-width: 767px) 90vw, 320px"
           />
         </div>
@@ -137,10 +136,10 @@ const hero2CtaLink = resolveCtaLink(hero2?.cta);
         image={hero2.image} 
         alt={hero2.alt || hero2.heading} 
         bgColorClass="bg-custom-medium-teal" 
-        containerClasses="py-12 md:py-20 lg:py-28"
+        containerClasses="py-12 md:py-16 lg:py-20 xl:py-24 2xl:py-28"
       >
         <h2 class="h2-base max-w-2xl mx-auto">{hero2.heading}</h2>
-        <p class="p-base-hero max-w-2xl mx-auto">{hero2.subheading}</p>
+        <p class="p-base-hero max-w-2xl lg:max-w-3xl xl:max-w-4xl mx-auto">{hero2.subheading}</p>
         {hero2.cta?.text && (
           hero2CtaLink ? (
             <a href={hero2CtaLink} class="inline-block bg-custom-light-teal text-custom-darker-teal font-semibold py-2 px-6 rounded-md hover:bg-opacity-80 hover:text-custom-dark-teal transition duration-300">

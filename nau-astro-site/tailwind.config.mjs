@@ -24,11 +24,6 @@ export default {
       fontFamily: {
         sans: ['Poppins', ...defaultTheme.fontFamily.sans],
       },
-      // Breakpoints personalizados
-      screens: {
-        'bp601': '601px',
-        'bp1201': '1201px',
-      },
     },
   },
   plugins: [typography, forms, aspectRatio],

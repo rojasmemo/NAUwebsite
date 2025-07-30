@@ -85,8 +85,8 @@ const heroBanner2CtaLink = resolveCtaLink(data.heroBanner2.cta);
     </section>
 
     <!-- Sección de Contenido 2: "¿Qué hacemos y cómo?" -->
-    <section class="content-section-wrapper py-10 md:py-16 px-4 md:px-36 bg-custom-pale-teal">
-      <div class="grid md:grid-cols-5 gap-8 items-center">
+    <section class="content-section-wrapper py-10 md:py-16 px-4 sm:px-6 md:px-8 lg:px-16 xl:px-24 2xl:px-32 bg-custom-pale-teal">
+      <div class="grid lg:grid-cols-5 gap-8 items-center">
         <div class="p-4 rounded-lg flex flex-col justify-center order-2 md:order-1 md:col-span-3">
           <h2 class="h2-base text-custom-darker-teal">
             {data.contentSection2.title}
@@ -129,7 +129,7 @@ const heroBanner2CtaLink = resolveCtaLink(data.heroBanner2.cta);
     <!-- Sección de Contenido 3: "Nuestro Propósito" -->
     <section class="content-section-wrapper py-10 md:py-16 bg-white px-8 md:px-36">
       <div class="text-center">
-        <Image src={purposeIcon} alt="Icono representativo de NAU" class="block mx-auto w-24 md:w-36 h-auto mb-8" loading="lazy" widths={[96, 144]} sizes="(max-width: 767px) 96px, 144px" />
+        <Image src={purposeIcon} alt="Icono representativo de NAU" class="block mx-auto w-24 md:w-28 lg:w-32 xl:w-36 h-auto mb-8" loading="lazy" widths={[96, 144]} sizes="(max-width: 767px) 96px, 144px" />
         <h2 class="h2-base text-custom-specific-blue">
           {data.contentSection3.title}
         </h2>

@@ -9,9 +9,9 @@ interface Props {
 
 const { icon, iconAlt = "Icono representativo de NAU" } = Astro.props;
 ---
-<div class="relative bg-white p-6 md:p-8 pt-8 md:pt-8 rounded-lg shadow-md text-custom-darker-teal">
+<div class="relative bg-white p-6 pt-8 sm:p-7 sm:pt-9 md:p-8 md:pt-10 lg:p-9 lg:pt-11 rounded-lg shadow-md text-custom-darker-teal">
   <!-- Icono posicionado en la parte superior de la tarjeta -->
-  <Image src={icon} alt={iconAlt || 'Icono decorativo'} class="absolute top-0 left-1/2 -translate-x-1/2 -translate-y-1/2 w-auto h-12 md:h-16" loading="lazy" />
+  <Image src={icon} alt={iconAlt || 'Icono decorativo'} class="absolute top-0 left-1/2 -translate-x-1/2 -translate-y-1/2 w-auto h-12 md:h-14 lg:h-16" loading="lazy" />
   
   <!-- Contenido de la tarjeta -->
   <slot />

@@ -24,7 +24,7 @@ const {
 const isLocalImage = 'src' in icon;
 ---
 
-<div class="relative bg-white p-6 pt-10 md:p-8 md:pt-12 rounded-lg text-custom-darker-teal flex flex-col items-center">
+<div class="relative bg-white p-6 pt-10 sm:p-7 sm:pt-11 md:p-8 md:pt-12 lg:p-9 lg:pt-14 rounded-lg text-custom-darker-teal flex flex-col items-center">
   <div 
     class="absolute top-0 left-1/2 -translate-x-1/2 -translate-y-1/2 w-auto z-10"
   >
@@ -32,20 +32,20 @@ const isLocalImage = 'src' in icon;
       <Image 
         src={icon as ImageMetadata} 
         alt={iconAlt}
-        class="w-auto h-12 md:h-16"
+        class="w-auto h-12 md:h-14 lg:h-16"
         loading="lazy"
       />
     ) : (
       <SanityImage 
         image={icon as SanityImageType} 
         alt={iconAlt}
-        class="w-auto h-12 md:h-16"
+        class="w-auto h-12 md:h-14 lg:h-16"
         loading="lazy"
         noShadow={true}
       />
     )}
   </div>
-  <h3 class="text-2xl font-semibold mt-4 md:mt-8 mb-3 text-custom-darker-teal">
+  <h3 class="text-2xl font-semibold mt-4 md:mt-6 lg:mt-8 mb-3 text-custom-darker-teal">
     {title}
   </h3>
   <slot />

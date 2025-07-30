@@ -11,6 +11,8 @@ export const resolveCtaLink = (cta: Cta | undefined): string | null => {
         return '/encuentros';
       case 'paginaSimbolismoNumerico':
         return '/simbolismo-numerico';
+      case 'paginaSobreNau':
+        return '/sobre-nau';
       case 'paginaContacto':
         return '/contacto';
       case 'paginaDonar':

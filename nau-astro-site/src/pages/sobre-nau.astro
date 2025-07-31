@@ -68,16 +68,16 @@ const heroBanner2CtaLink = resolveCtaLink(data.heroBanner2.cta);
     </HeroBanner>
 
     <!-- Sección de Contenido 1: "¿Por qué existimos?" -->
-    <section class="content-section-wrapper py-10 md:py-16 bg-white px-8 md:px-36">
+    <section class="content-section-wrapper py-10 md:py-16 bg-white px-8 sm:px-10 md:px-16 lg:px-20 xl:px-24 2xl:px-28">
       <div class="text-center">
         <h2 class="h2-base text-custom-specific-blue">
           {data.contentSection1.title}
         </h2>
-        <h3 class="h3-base max-w-5xl mx-auto text-custom-darker-teal text-left md:text-center">
+        <h3 class="h3-base max-w-3xl mx-auto text-custom-darker-teal text-left md:text-center">
           {data.contentSection1.subtitle}
         </h3>
         {data.contentSection1.paragraphs.map((paragraph) => (
-          <p class="p-base max-w-5xl mx-auto text-left">
+          <p class="p-base max-w-3xl mx-auto text-left">
             {paragraph}
           </p>
         ))}
@@ -127,17 +127,17 @@ const heroBanner2CtaLink = resolveCtaLink(data.heroBanner2.cta);
     />
 
     <!-- Sección de Contenido 3: "Nuestro Propósito" -->
-    <section class="content-section-wrapper py-10 md:py-16 bg-white px-8 md:px-36">
+    <section class="content-section-wrapper py-10 md:py-16 bg-white px-8 sm:px-10 md:px-16 lg:px-20 xl:px-24 2xl:px-28">
       <div class="text-center">
         <Image src={purposeIcon} alt="Icono representativo de NAU" class="block mx-auto w-24 md:w-28 lg:w-32 xl:w-36 h-auto mb-8" loading="lazy" widths={[96, 144]} sizes="(max-width: 767px) 96px, 144px" />
         <h2 class="h2-base text-custom-specific-blue">
           {data.contentSection3.title}
         </h2>
-        <h3 class="h3-base max-w-5xl mx-auto text-custom-darker-teal text-left md:text-center">
+        <h3 class="h3-base max-w-3xl mx-auto text-custom-darker-teal text-left md:text-center">
           {data.contentSection3.subtitle}
         </h3>
         {data.contentSection3.paragraphs.map((paragraph) => (
-        <p class="p-base max-w-5xl mx-auto text-left">
+        <p class="p-base max-w-3xl mx-auto text-left">
           {paragraph}
         </p>
         ))}

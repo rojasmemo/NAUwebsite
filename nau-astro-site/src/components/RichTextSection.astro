@@ -4,25 +4,31 @@ import { PortableText } from 'astro-portabletext';
 
 const {
   title,
-  content, // El objeto de Portable Text
+  content, // Puede ser un objeto de Portable Text o un string
   backgroundColor = 'bg-white',
   textColor = 'text-custom-specific-blue',
-  paddingTopClass = 'pt-16 md:pt-24 lg:pt-32', // Default padding top
-  paddingBottomClass = 'pb-16', // Default padding bottom
-  textAlign = 'text-left', // Default text alignment
+  paddingTopClass = 'pt-16 md:pt-24 lg:pt-32',
+  paddingBottomClass = 'pb-16',
+  textAlign = 'text-left',
+  proseTextColorClass = '',
 } = Astro.props;
 
+const isPortableText = Array.isArray(content) && content.some(block => block._type === 'block');
+
 const components = {
-  // Aquí se pueden personalizar los componentes de renderizado si es necesario
-  // Por ejemplo, para los encabezados, listas, etc.
+  // Personalizaciones futuras si son necesarias
 };
 ---
 
 <section class={`${paddingTopClass} ${paddingBottomClass} ${backgroundColor} ${textColor}`}>
   <div class={`container mx-auto max-w-4xl text-lg px-8 sm:px-10 md:px-16 lg:px-20 xl:px-24 2xl:px-28 ${textAlign}`}>
     {title && <h2 class="h2-base text-center">{title}</h2>}
-    <div class="prose lg:prose-xl max-w-none">
-      <PortableText value={content} components={components} />
+    <div class={`prose lg:prose-xl max-w-none ${proseTextColorClass}`}>
+      {isPortableText ? (
+        <PortableText value={content} components={components} />
+      ) : (
+        <p class="p-base">{content}</p>
+      )}
     </div>
   </div>
 </section>

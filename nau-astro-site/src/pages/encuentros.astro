@@ -5,6 +5,7 @@ import EncuentroCard from "../components/EncuentroCard.astro";
 import { sanityClient } from "sanity:client";
 import { paginaEncuentrosQuery } from "../lib/sanity/queries.js";
 import { PortableText } from "astro-portabletext";
+import RichTextSection from "../components/RichTextSection.astro";
 import { resolveCtaLink } from "../lib/utils";
 
 // Importamos el icono que es estático para todas las tarjetas
@@ -64,16 +65,19 @@ const ctaBannerCtaLink = resolveCtaLink(page.ctaBanner?.cta);
     }
 
     <!-- Sección de contenido 1: Introducción -->
-    <section
-      class="content-section-wrapper pt-12 md:pt-16 pb-24 md:pb-32 px-8 sm:px-10 md:px-16 lg:px-20 xl:px-24 2xl:px-28 bg-custom-specific-blue relative"
-    >
-      <div class="text-left">
-        <!-- Usamos PortableText para renderizar el texto enriquecido de Sanity -->
-        <div class="prose prose-p:text-white prose-p:p-base max-w-3xl mx-auto">
-          <PortableText value={page.introduction} />
-        </div>
-      </div>
-    </section>
+    {
+      page.introduction && (
+        <RichTextSection
+          content={page.introduction}
+          backgroundColor="bg-custom-specific-blue"
+          textColor="text-white"
+          paddingTopClass="pt-8 md:pt-12 lg:pt-16"
+          paddingBottomClass="pb-32"
+          textAlign="text-left"
+          proseTextColorClass="prose-p:text-white"
+        />
+      )
+    }
 
     <!-- Sección de contenido 2: Descripción de cada uno de los 4 Encuentros -->
     <section

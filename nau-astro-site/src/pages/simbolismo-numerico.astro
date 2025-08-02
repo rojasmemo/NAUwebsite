@@ -10,6 +10,11 @@ import { resolveCtaLink } from '../lib/utils';
 import BannerWithCards from '../components/BannerWithCards.astro';
 import RichTextSection from '../components/RichTextSection.astro';
 
+// Importamos los iconos para las tarjetas del banner
+import cardBannerIcon1 from '../assets/images/NUM-PASO1.webp';
+import cardBannerIcon2 from '../assets/images/NUM-PASO2.webp';
+import cardBannerIcon3 from '../assets/images/NUM-PASO3.webp';
+
 // Fetch data from Sanity
 const data = await sanityClient.fetch(paginaSimbolismoNumericoQuery);
 const { page, servicios } = data;
@@ -18,6 +23,13 @@ const ctaBannerCtaLink = resolveCtaLink(page?.ctaBanner?.cta);
 
 // Import a local icon since it's the same for all cards
 import cardIcon from '../assets/images/CLIP-NUM.webp';
+
+// Preparamos los datos de las tarjetas del banner, inyectando los iconos importados
+const bannerCardsWithIcons = page?.bannerWithCards?.cards.map((card, index) => ({
+  ...card,
+  icon: [cardBannerIcon1, cardBannerIcon2, cardBannerIcon3][index],
+  iconAlt: `Ilustración paso ${index + 1}`
+}));
 ---
 
 <MainLayout
@@ -60,9 +72,8 @@ import cardIcon from '../assets/images/CLIP-NUM.webp';
       <BannerWithCards
         title={page.bannerWithCards.title}
         backgroundImage={page.bannerWithCards.backgroundImage}
-        cards={page.bannerWithCards.cards}
+        cards={bannerCardsWithIcons} // Pasamos las tarjetas con los iconos ya inyectados
         bottomIcon={page.bannerWithCards.bottomIcon}
-        useDefaultIcons={true}
       />
     )}
 

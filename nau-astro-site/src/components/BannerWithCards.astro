@@ -49,18 +49,18 @@ const {
     quality={80}
   />
   <div class="absolute inset-0 bg-black/40"></div>
-  <div class="container relative z-10 mx-auto px-4 sm:px-6 md:px-8 lg:px-10 xl:px-12">
+  <div class="relative z-10 mx-auto w-full max-w-7xl px-4 sm:px-6 md:px-8 lg:px-10 xl:px-12">
     <h2 class="h2-base max-w-3xl mx-auto mb-4" set:html={title} />
-    {subtitle && <h3 class="h3-base max-w-3xl mx-auto mb-12 md:mb-16">{subtitle}</h3>}
+    {subtitle && <h3 class="h3-base max-w-3xl mx-auto mb-20 md:mb-24">{subtitle}</h3>}
 
-    <div class:list={["grid grid-cols-1 gap-16 md:grid-cols-3 md:gap-8 lg:gap-10", { "mt-16": !subtitle }]}>
+    <div class:list={["grid grid-cols-1 gap-12 md:grid-cols-3 md:gap-8 lg:gap-10 w-full", { "mt-24": !subtitle }]}>
       {cards.map((card, index) => {
         const iconToUse = useDefaultIcons ? defaultCardIcons[index] : card.icon;
         const altText = useDefaultIcons ? `Paso ${index + 1}` : card.iconAlt;
         return (
           <div class="relative rounded-lg bg-white p-6 pt-12 text-custom-specific-blue shadow-lg flex flex-col">
             {iconToUse && (
-              <div class="absolute -top-8 left-1/2 -translate-x-1/2 transform">
+              <div class="absolute -top-8 md:-top-10 lg:-top-12 left-1/2 -translate-x-1/2 transform">
                 <Image
                   src={iconToUse}
                   alt={altText}
